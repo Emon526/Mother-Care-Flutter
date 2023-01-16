@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 import '../../const/consts.dart';
+import '../../widget/mammogramnote.dart';
 
 class PredictionResult extends StatelessWidget {
   const PredictionResult({super.key, required this.outputs});
@@ -94,11 +95,13 @@ class PredictionResult extends StatelessWidget {
                     MarkerPointer(
                       markerType: MarkerType.circle,
                       color: Theme.of(context).colorScheme.secondary,
-                      markerHeight: 15,
-                      markerWidth: 15,
+                      markerHeight: 20,
+                      markerWidth: 20,
                       value: double.parse(
-                        (outputs![0]["confidence"] * 100).toStringAsFixed(1),
-                      ),
+                            (outputs![0]["confidence"] * 100)
+                                .toStringAsFixed(1),
+                          ) -
+                          2,
                     ),
                     // NeedlePointer(
                     //   value: double.parse(
@@ -156,6 +159,7 @@ class PredictionResult extends StatelessWidget {
                 ),
               ],
             ),
+            const MammogramNote(),
           ],
         ),
       ),
