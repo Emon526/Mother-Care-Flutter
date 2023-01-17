@@ -40,9 +40,9 @@ class Styles {
       //   color: isDarkTheme ? Colors.white : Colors.black,
       // ),
 
-      // progressIndicatorTheme: ProgressIndicatorThemeData(
-      //   color: isDarkTheme ? Colors.deepOrangeAccent : Colors.deepOrangeAccent,
-      // ),
+      progressIndicatorTheme: ProgressIndicatorThemeData(
+        color: isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor,
+      ),
 
       // indicatorColor: Colors.red,
       // snackBarTheme: const SnackBarThemeData(
