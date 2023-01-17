@@ -1,23 +1,35 @@
-import 'dart:io';
+// ignore_for_file: use_build_context_synchronously
 
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 
+import '../../providers/predictionprovider.dart';
 import '../../widget/mammogramnote.dart';
 import 'result.dart';
 
-class MemmographyPrediction extends StatefulWidget {
+class MemmographyPrediction extends StatelessWidget {
   const MemmographyPrediction({super.key});
 
   @override
-  State<MemmographyPrediction> createState() => _MemmographyPredictionState();
-}
-
-class _MemmographyPredictionState extends State<MemmographyPrediction> {
-  File? _image;
-
-  @override
   Widget build(BuildContext context) {
+    void pickImage() async {
+      try {
+        ImagePicker picker = ImagePicker();
+        var image = await picker.pickImage(source: ImageSource.gallery);
+        if (image == null) return;
+
+        context.read<PredictionProvider>().image = File(image.path);
+      } catch (error) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(error.toString()),
+          ),
+        );
+      }
+    }
+
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
@@ -47,7 +59,7 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
                     color: Theme.of(context).primaryColor,
                   ),
                 ),
-                child: _image == null
+                child: context.watch<PredictionProvider>().image == null
                     ? Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -69,7 +81,7 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
                     : ClipRRect(
                         borderRadius: BorderRadius.circular(20),
                         child: Image.file(
-                          _image!,
+                          context.watch<PredictionProvider>().image!,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -77,7 +89,7 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
               const SizedBox(
                 height: 10,
               ),
-              _image == null
+              context.watch<PredictionProvider>().image == null
                   ? GestureDetector(
                       onTap: () {},
                       child: RichText(
@@ -108,9 +120,7 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => PredictionResult(
-                                  image: _image!,
-                                ),
+                                builder: (context) => const PredictionResult(),
                               ),
                             );
                           },
@@ -126,22 +136,5 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
         ],
       ),
     );
-  }
-
-  void pickImage() async {
-    try {
-      ImagePicker picker = ImagePicker();
-      var image = await picker.pickImage(source: ImageSource.gallery);
-      if (image == null) return;
-      setState(() {
-        _image = File(image.path);
-      });
-    } catch (error) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(error.toString()),
-        ),
-      );
-    }
   }
 }
