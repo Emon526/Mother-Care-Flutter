@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mothercare/const/consts.dart';
+
+import 'consts.dart';
 
 class Styles {
   static ThemeData themeData(
@@ -123,6 +124,10 @@ class Styles {
       //     foregroundColor: Colors.deepOrangeAccent,
       //   ),
       // ),
+      listTileTheme: ListTileThemeData(
+        textColor: isDarkTheme ? Colors.white : Colors.white,
+        iconColor: isDarkTheme ? Colors.white : Colors.white,
+      ),
 
       // buttonColor:
       //     isDarkTheme ? const Color(0xffD5D5D5) : const Color(0xffD5D5D5),

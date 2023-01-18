@@ -5,6 +5,7 @@ import 'const/consts.dart';
 import 'const/theme.dart';
 import 'nav_bar.dart';
 import 'providers/predictionprovider.dart';
+import 'providers/themeprovider.dart';
 
 void main() async {
   runApp(const MyApp());
@@ -20,17 +21,26 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => PredictionProvider(),
         ),
-      ],
-      builder: (context, child) => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: Consts.APP_NAME,
-        theme: Styles.themeData(
-          context: context,
-          isDarkTheme: false,
+        ChangeNotifierProvider(
+          create: (_) => ThemeProvider(),
         ),
-        themeMode: ThemeMode.system,
-        // home: Splashscreen(),
-        home: const NavBar(),
+      ],
+      builder: (context, child) => Consumer<ThemeProvider>(
+        builder: (context, value, child) => MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: Consts.APP_NAME,
+          theme: Styles.themeData(
+            context: context,
+            isDarkTheme: false,
+          ),
+          darkTheme: Styles.themeData(
+            context: context,
+            isDarkTheme: true,
+          ),
+          themeMode: context.watch<ThemeProvider>().themeMode,
+          // home: Splashscreen(),
+          home: const NavBar(),
+        ),
       ),
     );
   }
