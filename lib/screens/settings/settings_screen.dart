@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../providers/modelprovider.dart';
 import '../../providers/themeprovider.dart';
 import 'themetile.dart';
 
@@ -24,6 +25,13 @@ class SettingsScreen extends StatelessWidget {
               return const ThemeTile();
             },
           ),
+        ),
+        _buildListtile(
+          iconData: Icons.mobile_friendly,
+          tiletitle: 'Delete Model',
+          onTap: () {
+            context.read<ModelProvider>().deleteModel();
+          },
         ),
       ],
     );

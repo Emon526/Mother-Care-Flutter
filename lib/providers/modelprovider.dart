@@ -10,6 +10,16 @@ import 'package:flutter_tflite/flutter_tflite.dart';
 import 'package:firebase_ml_model_downloader/firebase_ml_model_downloader.dart';
 
 class ModelProvider extends ChangeNotifier {
+  final modelDownloader = FirebaseModelDownloader.instance;
+  bool _isDownloading = true;
+  bool get isDownloading => _isDownloading;
+
+  // set isDownloading(bool status) {
+  //   log('message');
+  //   _isDownloading = status;
+  //   notifyListeners();
+  // }
+
   final kModelName = "breastcancerprediction";
   FirebaseCustomModel? model;
 
@@ -22,23 +32,31 @@ class ModelProvider extends ChangeNotifier {
   //   print(res);
   // }
 
-  initWithLocalModel() async {
-    final _model = await FirebaseModelDownloader.instance.getModel(
-      kModelName,
-      FirebaseModelDownloadType.localModel,
-      //  FirebaseModelDownloadConditions(
-      //     iosAllowsCellularAccess: true,
-      //     iosAllowsBackgroundDownloading: false,
-      //     androidChargingRequired: false,
-      //     androidWifiRequired: false,
-      //     androidDeviceIdleRequired: false,
-      //   )
-    );
+  void deleteModel() async {
+    await modelDownloader.deleteDownloadedModel(kModelName);
+  }
 
-    model = _model;
+  void initWithLocalModel() async {
+    final data = await modelDownloader.listDownloadedModels();
 
-    log('Model name: ${model!.name}');
-    await loadTFLiteModel(model!.file);
+    if (data.isEmpty) {
+      final _model = await modelDownloader.getModel(
+        kModelName,
+        FirebaseModelDownloadType.localModel,
+        //  FirebaseModelDownloadConditions(
+        //     iosAllowsCellularAccess: true,
+        //     iosAllowsBackgroundDownloading: false,
+        //     androidChargingRequired: false,
+        //     androidWifiRequired: false,
+        //     androidDeviceIdleRequired: false,
+        //   )
+      );
+      model = _model;
+      await loadTFLiteModel(model!.file);
+      log('Model name: ${model!.name}');
+      _isDownloading = false;
+      notifyListeners();
+    }
   }
 
   static Future<String> loadTFLiteModel(File modelFile) async {
@@ -54,6 +72,7 @@ class ModelProvider extends ChangeNotifier {
             isAsset: false,
           ) ==
           'success');
+
       return 'Model is loaded';
     } catch (exception) {
       print(
