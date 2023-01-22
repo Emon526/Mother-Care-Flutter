@@ -2,7 +2,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_tflite/flutter_tflite.dart';
 
+import 'modelprovider.dart';
+
 class PredictionProvider extends ChangeNotifier {
+  ModelProvider modelProvider = ModelProvider();
   bool _loading = false;
   bool get loading => _loading;
 
@@ -29,7 +32,6 @@ class PredictionProvider extends ChangeNotifier {
     try {
       await classifyImage(_image!);
     } catch (e) {
-      // print(e.toString());
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(e.toString()),
@@ -40,18 +42,7 @@ class PredictionProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> loadModel() async {
-    // String? res =
-    await Tflite.loadModel(
-      model: "assets/model_unquant.tflite",
-      labels: "assets/labels.txt",
-      // useGpuDelegate: true,
-    );
-    // print(res);
-  }
-
   Future<void> classifyImage(File image) async {
-    await loadModel();
     var output = await Tflite.runModelOnImage(
       path: image.path,
       numResults: 2,

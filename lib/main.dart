@@ -3,11 +3,18 @@ import 'package:provider/provider.dart';
 
 import 'const/consts.dart';
 import 'const/theme.dart';
+import 'firebase_options.dart';
 import 'nav_bar.dart';
+import 'providers/modelprovider.dart';
 import 'providers/predictionprovider.dart';
 import 'providers/themeprovider.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -23,6 +30,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => ThemeProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ModelProvider(),
         ),
       ],
       builder: (context, child) => Consumer<ThemeProvider>(

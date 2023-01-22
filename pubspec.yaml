@@ -43,6 +43,9 @@ dependencies:
   flashy_tab_bar2: ^0.0.6
   syncfusion_flutter_gauges: ^20.4.43
   provider: ^6.0.5
+  firebase_ml_model_downloader: ^0.2.0+7
+  firebase_core: ^2.4.1
+  path_provider: ^2.0.11
 
 dev_dependencies:
   flutter_test:

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
+import '../../providers/modelprovider.dart';
 import '../../providers/predictionprovider.dart';
 import '../../widget/mammogramnote.dart';
 import 'result.dart';
@@ -14,6 +15,7 @@ class MemmographyPrediction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read<ModelProvider>().initWithLocalModel();
     void pickImage() async {
       try {
         ImagePicker picker = ImagePicker();
