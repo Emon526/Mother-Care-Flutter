@@ -13,6 +13,9 @@ class Consts {
   static const TOPICAPI =
       'https://health.gov/myhealthfinder/api/v3/topicsearch.json?lang=en&categoryId=91';
 
+  static const MEMMOGRAPHYPREDICTIONMODEL = "breastcancerprediction";
+  static const MEMMOGRAPHYPREDICTIONLABEL = "labels.txt";
+
   static const Color primaryColor = Color(0xffff80ab);
   static const Color secondaryColor = Color(0xffffdff0);
   static const Color textColor = Color(0xff000000);
