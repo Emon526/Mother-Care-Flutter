@@ -38,6 +38,8 @@ class ModelProvider extends ChangeNotifier {
         modelFile: memmographyPredictionModel!.file,
         labelFile: memmographyPredictionLabel!,
       );
+      log(memmographyPredictionModel!.name);
+      log(memmographyPredictionLabel!.path);
       log('Model Downloaded');
     } else {
       final Directory appDirectory = await getApplicationDocumentsDirectory();
@@ -48,6 +50,8 @@ class ModelProvider extends ChangeNotifier {
         modelFile: memmographyPredictionModel!.file,
         labelFile: memmographyPredictionLabel!,
       );
+      log(memmographyPredictionModel!.name);
+      log(memmographyPredictionLabel!.path);
       log('Model loaded');
     }
     _isDownloading = false;

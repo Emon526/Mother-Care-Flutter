@@ -2,6 +2,7 @@
 
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_tflite/flutter_tflite.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
@@ -10,14 +11,31 @@ import '../../providers/predictionprovider.dart';
 import '../../widget/mammogramnote.dart';
 import 'result.dart';
 
-class MemmographyPrediction extends StatelessWidget {
+class MemmographyPrediction extends StatefulWidget {
   const MemmographyPrediction({super.key});
+
+  @override
+  State<MemmographyPrediction> createState() => _MemmographyPredictionState();
+}
+
+class _MemmographyPredictionState extends State<MemmographyPrediction> {
+  ImagePicker picker = ImagePicker();
+  @override
+  void initState() {
+    context.read<ModelProvider>().initWithLocalModel();
+    super.initState();
+  }
+
+  // @override
+  // void dispose() {
+  //   Tflite.close();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
     void pickImage() async {
       try {
-        ImagePicker picker = ImagePicker();
         var image = await picker.pickImage(source: ImageSource.gallery);
         if (image == null) return;
 
@@ -130,17 +148,17 @@ class MemmographyPrediction extends StatelessWidget {
                                 icon: const Icon(Icons.photo_camera_outlined),
                               ),
                               ElevatedButton.icon(
-                                onPressed: () {
-                                  context
+                                onPressed: () async {
+                                  await context
                                       .read<PredictionProvider>()
-                                      .prediction(context: context);
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          const PredictionResult(),
-                                    ),
-                                  );
+                                      .prediction()
+                                      .then((value) => Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const PredictionResult(),
+                                            ),
+                                          ));
                                 },
                                 icon: const Icon(
                                   Icons.description_outlined,

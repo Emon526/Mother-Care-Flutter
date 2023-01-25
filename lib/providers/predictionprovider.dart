@@ -27,18 +27,22 @@ class PredictionProvider extends ChangeNotifier {
   List? _output;
   List? get output => _output;
 
-  void prediction({
-    required BuildContext context,
-  }) async {
+  Future<void> prediction(
+
+      // { required BuildContext context,  }
+
+      ) async {
     _loading = true;
     try {
       await classifyImage(_image!);
+      // await Tflite.close();
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(e.toString()),
-        ),
-      );
+      // ScaffoldMessenger.of(context).showSnackBar(
+      //   SnackBar(
+      //     content: Text(e.toString()),
+      //   ),
+      // );
+      log(e.toString());
     }
     _loading = false;
     notifyListeners();
@@ -52,8 +56,9 @@ class PredictionProvider extends ChangeNotifier {
       imageMean: 127.5,
       imageStd: 127.5,
     );
-    Tflite.close();
+
     log('output: $output');
     _output = output!;
+    // await Tflite.close();
   }
 }
