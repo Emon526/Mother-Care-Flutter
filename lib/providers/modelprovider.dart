@@ -27,7 +27,7 @@ class ModelProvider extends ChangeNotifier {
         .deleteDownloadedModel(Consts.MEMMOGRAPHYPREDICTIONMODEL);
   }
 
-  void initWithLocalModel() async {
+  Future<void> initWithLocalModel() async {
     final data = await modelDownloader.listDownloadedModels();
 
     if (data.isEmpty) {
@@ -38,6 +38,7 @@ class ModelProvider extends ChangeNotifier {
         modelFile: memmographyPredictionModel!.file,
         labelFile: memmographyPredictionLabel!,
       );
+      log('Model Downloaded');
     } else {
       final Directory appDirectory = await getApplicationDocumentsDirectory();
       memmographyPredictionModel = data.first;
@@ -47,6 +48,7 @@ class ModelProvider extends ChangeNotifier {
         modelFile: memmographyPredictionModel!.file,
         labelFile: memmographyPredictionLabel!,
       );
+      log('Model loaded');
     }
     _isDownloading = false;
     notifyListeners();
