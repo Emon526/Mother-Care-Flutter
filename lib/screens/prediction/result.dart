@@ -13,7 +13,6 @@ class PredictionResult extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<PredictionProvider>().prediction(context: context);
     return Consumer<PredictionProvider>(
       builder: (context, value, child) => Scaffold(
         appBar: AppBar(

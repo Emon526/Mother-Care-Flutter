@@ -37,6 +37,7 @@ class _NavBarState extends State<NavBar> {
           Consts.APP_NAME,
         ),
       ),
+      drawer: const Drawer(),
       body: Center(
         child: tabItems[_selectedIndex],
       ),

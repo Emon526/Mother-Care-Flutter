@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_tflite/flutter_tflite.dart';
@@ -19,6 +20,7 @@ class PredictionProvider extends ChangeNotifier {
 
   set image(File? image) {
     _image = image;
+    log('image');
     notifyListeners();
   }
 
@@ -51,7 +53,7 @@ class PredictionProvider extends ChangeNotifier {
       imageStd: 127.5,
     );
     Tflite.close();
-    // print('output: $output');
+    log('output: $output');
     _output = output!;
   }
 }

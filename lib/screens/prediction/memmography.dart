@@ -15,8 +15,6 @@ class MemmographyPrediction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<ModelProvider>().initWithLocalModel();
-
     void pickImage() async {
       try {
         ImagePicker picker = ImagePicker();
@@ -70,7 +68,7 @@ class MemmographyPrediction extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20),
                         border: Border.all(
                           width: 2.0,
-                          strokeAlign: StrokeAlign.outside,
+                          strokeAlign: BorderSide.strokeAlignOutside,
                           style: BorderStyle.solid,
                           color: Theme.of(context).primaryColor,
                         ),
@@ -133,6 +131,9 @@ class MemmographyPrediction extends StatelessWidget {
                               ),
                               ElevatedButton.icon(
                                 onPressed: () {
+                                  context
+                                      .read<PredictionProvider>()
+                                      .prediction(context: context);
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(

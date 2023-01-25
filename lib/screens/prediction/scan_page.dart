@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../providers/modelprovider.dart';
 import 'memmography.dart';
 import 'symptom.dart';
 
@@ -19,6 +21,7 @@ class ScanScreen extends StatelessWidget {
         ),
         ElevatedButton(
           onPressed: () {
+            context.read<ModelProvider>().initWithLocalModel();
             Navigator.push(
               context,
               MaterialPageRoute(

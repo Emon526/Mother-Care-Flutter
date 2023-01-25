@@ -38,25 +38,31 @@ class ModelProvider extends ChangeNotifier {
         modelFile: memmographyPredictionModel!.file,
         labelFile: memmographyPredictionLabel!,
       );
-      log('Model name: ${memmographyPredictionModel!.name}');
-      log('Label path: ${memmographyPredictionLabel!.path}');
-      _isDownloading = false;
-      notifyListeners();
+    } else {
+      final Directory appDirectory = await getApplicationDocumentsDirectory();
+      memmographyPredictionModel = data.first;
+      memmographyPredictionLabel =
+          File('${appDirectory.path}/_${Consts.MEMMOGRAPHYPREDICTIONLABEL}');
+      await loadTFLiteModel(
+        modelFile: memmographyPredictionModel!.file,
+        labelFile: memmographyPredictionLabel!,
+      );
     }
+    _isDownloading = false;
+    notifyListeners();
   }
 
   Future<FirebaseCustomModel> downloadModel() async {
     final model = await modelDownloader.getModel(
-      Consts.MEMMOGRAPHYPREDICTIONMODEL,
-      FirebaseModelDownloadType.localModel,
-      //  FirebaseModelDownloadConditions(
-      //     iosAllowsCellularAccess: true,
-      //     iosAllowsBackgroundDownloading: false,
-      //     androidChargingRequired: false,
-      //     androidWifiRequired: false,
-      //     androidDeviceIdleRequired: false,
-      //   )
-    );
+        Consts.MEMMOGRAPHYPREDICTIONMODEL,
+        FirebaseModelDownloadType.localModel,
+        FirebaseModelDownloadConditions(
+          iosAllowsCellularAccess: true,
+          iosAllowsBackgroundDownloading: false,
+          androidChargingRequired: false,
+          androidWifiRequired: false,
+          androidDeviceIdleRequired: false,
+        ));
     return model;
   }
 
@@ -66,7 +72,6 @@ class ModelProvider extends ChangeNotifier {
     final file =
         File("${appDirectory.path}/${Consts.MEMMOGRAPHYPREDICTIONLABEL}");
 
-    // final downloadTask =
     await storage
         .ref()
         .child(Consts.MEMMOGRAPHYPREDICTIONLABEL)
@@ -77,27 +82,6 @@ class ModelProvider extends ChangeNotifier {
         await File('${appDirectory.path}/_${Consts.MEMMOGRAPHYPREDICTIONLABEL}')
             .writeAsBytes(bytes);
 
-    // downloadTask.snapshotEvents.listen((taskSnapshot) async {
-    //   switch (taskSnapshot.state) {
-    //     case TaskState.running:
-    //       break;
-    //     case TaskState.paused:
-    //       break;
-    //     case TaskState.success:
-    //       Uint8List bytes = await file.readAsBytes();
-
-    //       memmographyPredictionLabel =
-    //           await File('${appDirectory.path}/_labels.txt')
-    //               .writeAsBytes(bytes);
-    //       log(memmographyPredictionLabel!.path);
-
-    //       break;
-    //     case TaskState.canceled:
-    //       break;
-    //     case TaskState.error:
-    //       break;
-    //   }
-    // });
     return memmographyPredictionLabel!;
   }
 
