@@ -42,7 +42,7 @@ class PredictionProvider extends ChangeNotifier {
       //     content: Text(e.toString()),
       //   ),
       // );
-      log(e.toString());
+      print(e.toString());
     }
     _loading = false;
     notifyListeners();
@@ -57,7 +57,7 @@ class PredictionProvider extends ChangeNotifier {
       imageStd: 127.5,
     );
 
-    log('output: $output');
+    print('output: $output');
     _output = output!;
     // await Tflite.close();
   }

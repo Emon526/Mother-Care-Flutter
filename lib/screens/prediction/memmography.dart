@@ -151,14 +151,14 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
                                 onPressed: () async {
                                   await context
                                       .read<PredictionProvider>()
-                                      .prediction()
-                                      .then((value) => Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const PredictionResult(),
-                                            ),
-                                          ));
+                                      .prediction();
+                                  await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const PredictionResult(),
+                                    ),
+                                  );
                                 },
                                 icon: const Icon(
                                   Icons.description_outlined,

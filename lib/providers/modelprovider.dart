@@ -96,12 +96,11 @@ class ModelProvider extends ChangeNotifier {
     required File labelFile,
   }) async {
     try {
-      assert(await Tflite.loadModel(
-            model: modelFile.path,
-            labels: labelFile.path,
-            isAsset: false,
-          ) ==
-          'success');
+      await Tflite.loadModel(
+        model: modelFile.path,
+        labels: labelFile.path,
+        isAsset: false,
+      );
       return 'Model is loaded';
     } catch (exception) {
       print(
