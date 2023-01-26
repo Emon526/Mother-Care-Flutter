@@ -3,6 +3,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_tflite/flutter_tflite.dart';
+
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
@@ -20,17 +21,18 @@ class MemmographyPrediction extends StatefulWidget {
 
 class _MemmographyPredictionState extends State<MemmographyPrediction> {
   ImagePicker picker = ImagePicker();
+  File? pickedimage;
   @override
   void initState() {
     context.read<ModelProvider>().initWithLocalModel();
     super.initState();
   }
 
-  // @override
-  // void dispose() {
-  //   Tflite.close();
-  //   super.dispose();
-  // }
+  @override
+  void dispose() {
+    Tflite.close();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +41,9 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
         var image = await picker.pickImage(source: ImageSource.gallery);
         if (image == null) return;
 
-        context.read<PredictionProvider>().image = File(image.path);
+        setState(() {
+          pickedimage = File(image.path);
+        });
       } catch (error) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -91,7 +95,7 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
                           color: Theme.of(context).primaryColor,
                         ),
                       ),
-                      child: context.watch<PredictionProvider>().image == null
+                      child: pickedimage == null
                           ? Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -113,7 +117,7 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
                           : ClipRRect(
                               borderRadius: BorderRadius.circular(20),
                               child: Image.file(
-                                context.watch<PredictionProvider>().image!,
+                                pickedimage!,
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -121,7 +125,7 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
                     const SizedBox(
                       height: 10,
                     ),
-                    context.watch<PredictionProvider>().image == null
+                    pickedimage == null
                         ? GestureDetector(
                             onTap: () {},
                             child: RichText(
@@ -151,7 +155,9 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
                                 onPressed: () async {
                                   await context
                                       .read<PredictionProvider>()
-                                      .prediction();
+                                      .prediction(
+                                        image: pickedimage!,
+                                      );
                                   await Navigator.push(
                                     context,
                                     MaterialPageRoute(

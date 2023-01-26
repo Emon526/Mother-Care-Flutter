@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_tflite/flutter_tflite.dart';
@@ -15,33 +14,15 @@ class PredictionProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  File? _image;
-  File? get image => _image;
-
-  set image(File? image) {
-    _image = image;
-    log('image');
-    notifyListeners();
-  }
-
   List? _output;
   List? get output => _output;
 
-  Future<void> prediction(
-
-      // { required BuildContext context,  }
-
-      ) async {
+  Future<void> prediction({required File image}) async {
     _loading = true;
     try {
-      await classifyImage(_image!);
+      await classifyImage(image);
       // await Tflite.close();
     } catch (e) {
-      // ScaffoldMessenger.of(context).showSnackBar(
-      //   SnackBar(
-      //     content: Text(e.toString()),
-      //   ),
-      // );
       print(e.toString());
     }
     _loading = false;

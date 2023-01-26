@@ -1,6 +1,3 @@
-// ignore_for_file: avoid_print
-
-import 'dart:developer';
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:path_provider/path_provider.dart';
@@ -16,7 +13,7 @@ class ModelProvider extends ChangeNotifier {
   final storage = FirebaseStorage.instance;
   final modelDownloader = FirebaseModelDownloader.instance;
 
-  bool _isDownloading = true;
+  bool _isDownloading = false;
   bool get isDownloading => _isDownloading;
 
   FirebaseCustomModel? memmographyPredictionModel;
@@ -28,6 +25,7 @@ class ModelProvider extends ChangeNotifier {
   }
 
   Future<void> initWithLocalModel() async {
+    _isDownloading = true;
     final data = await modelDownloader.listDownloadedModels();
 
     if (data.isEmpty) {
@@ -38,9 +36,6 @@ class ModelProvider extends ChangeNotifier {
         modelFile: memmographyPredictionModel!.file,
         labelFile: memmographyPredictionLabel!,
       );
-      log(memmographyPredictionModel!.name);
-      log(memmographyPredictionLabel!.path);
-      log('Model Downloaded');
     } else {
       final Directory appDirectory = await getApplicationDocumentsDirectory();
       memmographyPredictionModel = data.first;
@@ -50,9 +45,6 @@ class ModelProvider extends ChangeNotifier {
         modelFile: memmographyPredictionModel!.file,
         labelFile: memmographyPredictionLabel!,
       );
-      log(memmographyPredictionModel!.name);
-      log(memmographyPredictionLabel!.path);
-      log('Model loaded');
     }
     _isDownloading = false;
     notifyListeners();
