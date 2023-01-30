@@ -18,10 +18,10 @@ class _NavBarState extends State<NavBar> {
   int _selectedIndex = 0;
 
   List<Widget> tabItems = [
-    const NewsPage(),
     const Awareness(),
+    const NewsPage(),
     const ScanScreen(),
-    const SettingsScreen(),
+    // const SettingsScreen(),
   ];
 
   @override
@@ -51,29 +51,29 @@ class _NavBarState extends State<NavBar> {
         }),
         items: [
           FlashyTabBarItem(
-            icon: const Icon(Icons.newspaper_outlined),
-            title: const Text('News'),
-            activeColor: Theme.of(context).primaryColor,
-            inactiveColor: Theme.of(context).colorScheme.secondary,
-          ),
-          FlashyTabBarItem(
             icon: const Icon(Icons.auto_awesome_outlined),
             title: const Text('Awareness'),
             activeColor: Theme.of(context).primaryColor,
             inactiveColor: Theme.of(context).colorScheme.secondary,
           ),
           FlashyTabBarItem(
-            icon: const Icon(Icons.analytics_outlined),
-            title: const Text('Scan'),
+            icon: const Icon(Icons.coronavirus_outlined),
+            title: const Text('Breast Cancer'),
             activeColor: Theme.of(context).primaryColor,
             inactiveColor: Theme.of(context).colorScheme.secondary,
           ),
           FlashyTabBarItem(
-            icon: const Icon(Icons.settings_outlined),
-            title: const Text('Settings'),
+            icon: const Icon(Icons.medical_information_outlined),
+            title: const Text('Self Check'),
             activeColor: Theme.of(context).primaryColor,
             inactiveColor: Theme.of(context).colorScheme.secondary,
           ),
+          // FlashyTabBarItem(
+          //   icon: const Icon(Icons.settings_outlined),
+          //   title: const Text('Settings'),
+          //   activeColor: Theme.of(context).primaryColor,
+          //   inactiveColor: Theme.of(context).colorScheme.secondary,
+          // ),
         ],
       ),
     );
