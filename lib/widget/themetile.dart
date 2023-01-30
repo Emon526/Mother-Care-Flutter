@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../providers/themeprovider.dart';
-import '../../widget/themeradiobuttonwidget.dart';
+import '../providers/themeprovider.dart';
+import 'themeradiobuttonwidget.dart';
 
 class ThemeTile extends StatelessWidget {
   const ThemeTile({super.key});
