@@ -4,10 +4,11 @@ import 'package:provider/provider.dart';
 
 import 'const/consts.dart';
 import 'providers/modelprovider.dart';
+import 'providers/nav_bar_provider.dart';
 import 'providers/themeprovider.dart';
 import 'screens/awareness/awareness.dart';
 import 'screens/breastcancer/breastcancer.dart';
-import 'screens/prediction/memmography.dart';
+import 'screens/screening/memmography.dart';
 import 'screens/selfcheck/self_check_page.dart';
 import 'widget/themetile.dart';
 
@@ -19,8 +20,6 @@ class NavBar extends StatefulWidget {
 }
 
 class _NavBarState extends State<NavBar> {
-  int _selectedIndex = 0;
-
   List<Widget> tabItems = [
     const Awareness(),
     const BreastCancerPage(),
@@ -140,16 +139,16 @@ class _NavBarState extends State<NavBar> {
         ),
       ),
       body: Center(
-        child: tabItems[_selectedIndex],
+        child: tabItems[context.watch<NavBarProvider>().selectedIndex],
       ),
       bottomNavigationBar: FlashyTabBar(
         animationCurve: Curves.linear,
-        selectedIndex: _selectedIndex,
+        selectedIndex: context.watch<NavBarProvider>().selectedIndex,
         iconSize: 30,
         showElevation: false, // use this to remove appBar's elevation
-        onItemSelected: (index) => setState(() {
-          _selectedIndex = index;
-        }),
+        onItemSelected: (index) {
+          context.read<NavBarProvider>().selectedIndex = index;
+        },
         items: [
           FlashyTabBarItem(
             icon: const Icon(Icons.auto_awesome_outlined),

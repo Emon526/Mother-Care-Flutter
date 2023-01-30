@@ -6,6 +6,7 @@ import 'const/theme.dart';
 import 'firebase_options.dart';
 import 'nav_bar.dart';
 import 'providers/modelprovider.dart';
+import 'providers/nav_bar_provider.dart';
 import 'providers/predictionprovider.dart';
 import 'providers/themeprovider.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -33,6 +34,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => ModelProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => NavBarProvider(),
         ),
       ],
       builder: (context, child) => Consumer<ThemeProvider>(
