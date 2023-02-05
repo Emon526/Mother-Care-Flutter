@@ -1,5 +1,6 @@
 import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
 import 'package:flutter/material.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
 
 import 'const/consts.dart';
@@ -12,27 +13,16 @@ import 'screens/screening/memmography.dart';
 import 'screens/selfcheck/self_check_page.dart';
 import 'widget/themetile.dart';
 
-class NavBar extends StatefulWidget {
+class NavBar extends StatelessWidget {
   const NavBar({super.key});
 
   @override
-  State<NavBar> createState() => _NavBarState();
-}
-
-class _NavBarState extends State<NavBar> {
-  List<Widget> tabItems = [
-    const Awareness(),
-    const BreastCancerPage(),
-    const SelfCheckPage(),
-  ];
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    List<Widget> tabItems = [
+      const Awareness(),
+      const BreastCancerPage(),
+      const SelfCheckPage(),
+    ];
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -89,12 +79,12 @@ class _NavBarState extends State<NavBar> {
                 height: 10,
               ),
               _buildListtile(
-                iconData: Icons.mobile_friendly,
+                iconData: LineIcons.calendarAlt,
                 tiletitle: 'Reminder',
                 onTap: () {},
               ),
               _buildListtile(
-                iconData: Icons.mobile_friendly,
+                iconData: Icons.insights_outlined,
                 tiletitle: 'Memmography Screening',
                 onTap: () {
                   Navigator.push(
@@ -106,7 +96,7 @@ class _NavBarState extends State<NavBar> {
                 },
               ),
               _buildListtile(
-                iconData: Icons.mobile_friendly,
+                iconData: LineIcons.stethoscope,
                 tiletitle: 'Doctors',
                 onTap: () {},
               ),
