@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'const/consts.dart';
 import 'const/theme.dart';
 import 'firebase_options.dart';
-import 'nav_bar.dart';
+import 'widget/persistent_nav_bar.dart';
 import 'providers/modelprovider.dart';
 import 'providers/nav_bar_provider.dart';
 import 'providers/predictionprovider.dart';
@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
           ),
           themeMode: context.watch<ThemeProvider>().themeMode,
           // home: Splashscreen(),
-          home: const NavBar(),
+          home: const PersistentNavBar(),
         ),
       ),
     );

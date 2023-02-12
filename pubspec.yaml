@@ -49,6 +49,7 @@ dependencies:
   firebase_storage: ^11.0.10
   carousel_slider: ^4.2.1
   line_icons: ^2.0.1
+  persistent_bottom_nav_bar: ^5.0.2
 
 dev_dependencies:
   flutter_test:
