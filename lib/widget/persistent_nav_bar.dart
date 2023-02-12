@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:provider/provider.dart';
 import '../const/consts.dart';
+import '../providers/nav_bar_provider.dart';
 import '../screens/awareness/awareness.dart';
 import '../screens/breastcancer/breastcancer.dart';
 import '../screens/selfcheck/self_check_page.dart';
@@ -14,9 +17,6 @@ class PersistentNavBar extends StatefulWidget {
 }
 
 class _PersistentNavBarState extends State<PersistentNavBar> {
-  final PersistentTabController _controller =
-      PersistentTabController(initialIndex: 0);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +29,7 @@ class _PersistentNavBarState extends State<PersistentNavBar> {
       body: SafeArea(
         child: PersistentTabView(
           context,
-          controller: _controller,
+          controller: context.watch<NavBarProvider>().controller,
           screens: const [
             Awareness(),
             BreastCancerPage(),

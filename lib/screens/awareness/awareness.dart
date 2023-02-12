@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:provider/provider.dart';
@@ -175,8 +173,7 @@ class Awareness extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                log('Navigate to Cancer Details Page');
-                context.read<NavBarProvider>().selectedIndex = 1;
+                context.read<NavBarProvider>().setControllerIndex = 1;
               },
               child: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -266,7 +263,7 @@ class Awareness extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                context.read<NavBarProvider>().selectedIndex = 2;
+                context.read<NavBarProvider>().setControllerIndex = 2;
               },
               child: const Text('How to self-check'),
             ),
