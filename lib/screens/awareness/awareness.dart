@@ -10,119 +10,25 @@ class Awareness extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Widget> items = [
-      Container(
-        width: double.infinity,
-        padding: const EdgeInsets.all(16),
-        color: Theme.of(context).primaryColor,
-        child: Flex(
-          direction: Axis.vertical,
-          children: [
-            Flexible(
-              flex: 8,
-              child: Image.asset('assets/images/body.png'),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Flexible(
-              flex: 2,
-              child: Text(
-                "Check your breasts",
-                style: TextStyle(
-                  fontWeight: FontWeight.normal,
-                  fontSize: 18,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            const Flexible(
-              flex: 3,
-              child: Text(
-                "Save Your Lives",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-      Container(
-        width: double.infinity,
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-            color: Theme.of(context).primaryColor,
-            image: const DecorationImage(
-                fit: BoxFit.cover,
-                image: AssetImage('assets/images/bca_darkskintype.jpg'))),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: const [
-            Text(
-              "Check your breasts",
-              style: TextStyle(
-                fontWeight: FontWeight.normal,
-                fontSize: 18,
-                color: Colors.white,
-              ),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Text(
-              "Save Your Lives",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 30,
-                color: Colors.white,
-              ),
-            ),
-          ],
-        ),
-      ),
-      Container(
-        width: double.infinity,
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: Theme.of(context).primaryColor,
-          image: const DecorationImage(
-            fit: BoxFit.cover,
-            image: AssetImage('assets/images/shutterstock_1797240619.jpg'),
-          ),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: const [
-            Text(
-              "Get the free",
-              style: TextStyle(
-                fontWeight: FontWeight.normal,
-                fontSize: 18,
-                color: Colors.white,
-              ),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Text(
-              "SELF CHECK GUIDE",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 26,
-                color: Colors.white,
-              ),
-            ),
-          ],
-        ),
+      _buildHeader(
+          context: context,
+          headerTitle: "Check your breasts",
+          headerSubtitle: "Save Your Lives",
+          imagePath: 'assets/images/body.png'),
+      _buildHeader(
+          context: context,
+          headerTitle: "Check your breasts",
+          headerSubtitle: "Save Your Lives",
+          imagePath: 'assets/images/bca_darkskintype.jpg'),
+      _buildHeader(
+        context: context,
+        headerTitle: "Get the free",
+        headerSubtitle: "SELF CHECK GUIDE",
+        imagePath: 'assets/images/shutterstock_1797240619.jpg',
       ),
     ];
-    double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
+    final size = MediaQuery.of(context).size;
+
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(12.0),
@@ -146,8 +52,9 @@ class Awareness extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
               ),
             ),
-            const SizedBox(
-              height: 20,
+            SizedBox(
+              // height: 20,
+              height: size.height * 0.03,
             ),
             Center(
               child: Text(
@@ -158,8 +65,9 @@ class Awareness extends StatelessWidget {
                     color: Theme.of(context).primaryColor),
               ),
             ),
-            const SizedBox(
-              height: 10,
+            SizedBox(
+              // height: 10,
+              height: size.height * 0.015,
             ),
             const Text(
               "The earlier breast cancer is is treated, the greater the chance of long-term survival. Regular self-checks can help you detect problems earlier and get treatment faster.",
@@ -168,8 +76,9 @@ class Awareness extends StatelessWidget {
                 fontSize: 18,
               ),
             ),
-            const SizedBox(
-              height: 10,
+            SizedBox(
+              // height: 10,
+              height: size.height * 0.015,
             ),
             ElevatedButton(
               onPressed: () {
@@ -186,8 +95,9 @@ class Awareness extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(
-              height: 20,
+            SizedBox(
+              // height: 20,
+              height: size.height * 0.03,
             ),
             Center(
               child: Text(
@@ -198,8 +108,9 @@ class Awareness extends StatelessWidget {
                     color: Theme.of(context).primaryColor),
               ),
             ),
-            const SizedBox(
-              height: 10,
+            SizedBox(
+              // height: 10,
+              height: size.height * 0.015,
             ),
             const Text(
               "Checking your breasts for changes each month is free, easy and might save your life.",
@@ -208,58 +119,20 @@ class Awareness extends StatelessWidget {
                 fontSize: 18,
               ),
             ),
-            const SizedBox(
-              height: 10,
+            SizedBox(
+              // height: 10,
+              height: size.height * 0.015,
             ),
             const Text(
-              "Why? Because the earlier signs of breast cancer are detected and treated, the better the chances of recovery.",
+              "Why? Because the earlier signs of breast cancer are detected and treated, the better the chances of recovery.\n\nRegular check-ups with your gynaecologist or trusted health professional can help to detect breast cancer at an early stage. Your doctor may also recommend a mammogram.\n\nBut you can do more to protect yourself by checking your own breasts regularly!\n\nRegular self-checks are the best way to get to know what is normal for you, and will help you notice changes more quickly. The faster you notice, the sooner you'll be able to react and get treatment if needed.\n\nAnd if there's one thing we know about breast cancer, it's that the earlier it's treated, the greater the likelihood of survival.",
               style: TextStyle(
                 fontWeight: FontWeight.normal,
                 fontSize: 18,
               ),
             ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              "Regular check-ups with your gynaecologist or trusted health professional can help to detect breast cancer at an early stage. Your doctor may also recommend a mammogram.",
-              style: TextStyle(
-                fontWeight: FontWeight.normal,
-                fontSize: 18,
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Text(
-              "But you can do more to protect yourself by checking your own breasts regularly!",
-              style: TextStyle(
-                fontWeight: FontWeight.normal,
-                fontSize: 18,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              "Regular self-checks are the best way to get to know what is normal for you, and will help you notice changes more quickly. The faster you notice, the sooner you'll be able to react and get treatment if needed.",
-              style: TextStyle(
-                fontWeight: FontWeight.normal,
-                fontSize: 18,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              "And if there's one thing we know about breast cancer, it's that the earlier it's treated, the greater the likelihood of survival.",
-              style: TextStyle(
-                fontWeight: FontWeight.normal,
-                fontSize: 18,
-              ),
-            ),
-            const SizedBox(
-              height: 20,
+            SizedBox(
+              // height: 20,
+              height: size.height * 0.03,
             ),
             ElevatedButton(
               onPressed: () {
@@ -269,6 +142,50 @@ class Awareness extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  _buildHeader({
+    required String headerTitle,
+    required String headerSubtitle,
+    required String imagePath,
+    required BuildContext context,
+  }) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Theme.of(context).primaryColor,
+        borderRadius: BorderRadius.circular(5),
+        image: DecorationImage(
+          fit: BoxFit.cover,
+          image: AssetImage(imagePath),
+        ),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Text(
+            headerTitle,
+            style: const TextStyle(
+              fontWeight: FontWeight.normal,
+              fontSize: 18,
+              color: Colors.white,
+            ),
+          ),
+          const SizedBox(
+            height: 5,
+          ),
+          Text(
+            headerSubtitle,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 26,
+              color: Colors.white,
+            ),
+          ),
+        ],
       ),
     );
   }

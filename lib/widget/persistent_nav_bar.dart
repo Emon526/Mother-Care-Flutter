@@ -43,7 +43,6 @@ class _PersistentNavBarState extends State<PersistentNavBar> {
             curve: Curves.easeIn,
           ),
           navBarStyle: NavBarStyle.style9,
-          // backgroundColor: Theme.of(context).navigationBarTheme.backgroundColor!,
         ),
       ),
     );
