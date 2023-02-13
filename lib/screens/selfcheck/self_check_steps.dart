@@ -154,9 +154,12 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
           ),
           child: Column(
             children: [
-              Image.asset(
-                stepimagepath,
-                width: size.width / 2,
+              ClipRRect(
+                borderRadius: BorderRadius.circular(5),
+                child: Image.asset(
+                  stepimagepath,
+                  fit: BoxFit.cover,
+                ),
               ),
               const SizedBox(
                 height: 20,
@@ -205,8 +208,11 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
                 const SizedBox(
                   height: 10,
                 ),
-                Image.asset(
-                  'assets/images/shower.jpg',
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(5),
+                  child: Image.asset(
+                    'assets/images/shower.jpg',
+                  ),
                 ),
                 const SizedBox(
                   height: 10,

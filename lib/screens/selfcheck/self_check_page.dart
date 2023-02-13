@@ -15,6 +15,7 @@ class _SelfCheckPageState extends State<SelfCheckPage> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+
     List<Widget> items = [
       _buildDataCard(
         size: size,
@@ -67,8 +68,8 @@ class _SelfCheckPageState extends State<SelfCheckPage> {
                     _current = index;
                   });
                 },
-                viewportFraction: 0.8,
-                aspectRatio: 1.1,
+                viewportFraction: 0.9,
+                aspectRatio: 1,
                 initialPage: 0,
                 enableInfiniteScroll: true,
                 reverse: false,
@@ -96,8 +97,8 @@ class _SelfCheckPageState extends State<SelfCheckPage> {
                             color: Theme.of(context).primaryColor,
                           ),
                         ),
-                        const SizedBox(
-                          width: 10,
+                        SizedBox(
+                          width: size.width * 0.015,
                         ),
                       ],
                     )
@@ -109,8 +110,8 @@ class _SelfCheckPageState extends State<SelfCheckPage> {
                           backgroundColor:
                               Theme.of(context).colorScheme.secondary,
                         ),
-                        const SizedBox(
-                          width: 10,
+                        SizedBox(
+                          width: size.width * 0.015,
                         ),
                       ],
                     ),
@@ -151,12 +152,15 @@ class _SelfCheckPageState extends State<SelfCheckPage> {
       padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
-          Image.asset(
-            imagepath,
-            width: size.width / 2,
+          ClipRRect(
+            borderRadius: BorderRadius.circular(5),
+            child: Image.asset(
+              imagepath,
+              fit: BoxFit.cover,
+            ),
           ),
-          const SizedBox(
-            height: 10,
+          SizedBox(
+            height: size.height * 0.015,
           ),
           Text(
             title,
@@ -165,8 +169,8 @@ class _SelfCheckPageState extends State<SelfCheckPage> {
               fontSize: 18,
             ),
           ),
-          const SizedBox(
-            height: 10,
+          SizedBox(
+            height: size.height * 0.015,
           ),
           Expanded(
             child: Text(
