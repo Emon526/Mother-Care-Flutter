@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cool_stepper/cool_stepper.dart';
+import 'package:mothercare/screens/selfcheck/self_check_finish.dart';
 
 class SelfCheckSteps extends StatefulWidget {
   const SelfCheckSteps({super.key});
@@ -106,12 +107,15 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
     ];
 
     return FutureBuilder(
-      future: _showDialog(context),
+      future: _showHintDialog(context),
       builder: (context, snapshot) => Scaffold(
         body: CoolStepper(
           showErrorSnackbar: false,
           onCompleted: () {
-            // print('Steps completed!');
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const SelfCheckFinish()));
           },
           steps: steps,
           config: const CoolStepperConfig(
@@ -178,7 +182,7 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
     );
   }
 
-  Future<void> _showDialog(
+  Future<void> _showHintDialog(
     BuildContext context,
   ) async {
     WidgetsBinding.instance.addPostFrameCallback((_) {
