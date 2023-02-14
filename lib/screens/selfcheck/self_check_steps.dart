@@ -2,13 +2,24 @@
 
 import 'package:flutter/material.dart';
 import 'package:cool_stepper/cool_stepper.dart';
-import 'package:mothercare/screens/selfcheck/self_check_finish.dart';
 
 import '../../const/consts.dart';
 import '../../widget/drawer_widget.dart';
+import 'self_check_finish.dart';
 
-class SelfCheckSteps extends StatelessWidget {
+class SelfCheckSteps extends StatefulWidget {
   const SelfCheckSteps({super.key});
+
+  @override
+  State<SelfCheckSteps> createState() => _SelfCheckStepsState();
+}
+
+class _SelfCheckStepsState extends State<SelfCheckSteps> {
+  @override
+  void initState() {
+    super.initState();
+    _showHintDialog(context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -112,28 +123,26 @@ class SelfCheckSteps extends StatelessWidget {
         validation: () {},
       ),
     ];
-
-    return FutureBuilder(
-      future: _showHintDialog(context),
-      builder: (context, snapshot) => Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            Consts.APP_NAME,
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          Consts.APP_NAME,
         ),
-        drawer: const DrawerWidget(),
-        body: CoolStepper(
-          showErrorSnackbar: false,
-          onCompleted: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const SelfCheckFinish()));
-          },
-          steps: steps,
-          config: const CoolStepperConfig(
-            backText: 'PREV',
-          ),
+      ),
+      drawer: const DrawerWidget(),
+      body: CoolStepper(
+        showErrorSnackbar: false,
+        onCompleted: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const SelfCheckFinish(),
+            ),
+          );
+        },
+        steps: steps,
+        config: const CoolStepperConfig(
+          backText: 'PREV',
         ),
       ),
     );
