@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mothercare/routes.dart';
 import 'package:provider/provider.dart';
 
 import 'const/consts.dart';
@@ -52,8 +53,9 @@ class MyApp extends StatelessWidget {
             isDarkTheme: true,
           ),
           themeMode: context.watch<ThemeProvider>().themeMode,
-          // home: Splashscreen(),
           home: const PersistentNavBar(),
+          //   initialRoute: RouteManager.initialRoute,
+          //   onGenerateRoute: RouteManager.generateRoute,
         ),
       ),
     );
