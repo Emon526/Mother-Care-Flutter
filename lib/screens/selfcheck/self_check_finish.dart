@@ -39,7 +39,7 @@ class SelfCheckFinish extends StatelessWidget {
                   'Keep calm - most changes are not dangerous.\n\nCheck again after your next menstrual cycle. If it\'s still there, consult your doctor or health professional.',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontWeight: FontWeight.normal,
+                    fontWeight: FontWeight.bold,
                     fontSize: 18,
                   ),
                 ),
