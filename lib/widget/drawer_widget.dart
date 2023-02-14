@@ -6,6 +6,7 @@ import '../providers/modelprovider.dart';
 import '../providers/themeprovider.dart';
 import '../screens/doctors/doctorslist.dart';
 import '../screens/memmographyscreening/memmography.dart';
+import '../screens/reminder/reminder.dart';
 import 'themetile.dart';
 
 class DrawerWidget extends StatelessWidget {
@@ -96,7 +97,14 @@ class DrawerWidget extends StatelessWidget {
             _buildListtile(
               iconData: LineIcons.calendarAlt,
               tiletitle: 'Reminder',
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Reminder(),
+                  ),
+                );
+              },
             ),
             _buildListtile(
               tiletitle: 'Theme',

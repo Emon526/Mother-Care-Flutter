@@ -4,6 +4,7 @@ import 'package:line_icons/line_icons.dart';
 import '../../const/consts.dart';
 import '../../widget/drawer_widget.dart';
 import '../doctors/doctorslist.dart';
+import '../reminder/reminder.dart';
 
 class SelfCheckFinish extends StatelessWidget {
   const SelfCheckFinish({super.key});
@@ -46,7 +47,14 @@ class SelfCheckFinish extends StatelessWidget {
               ),
               const Spacer(),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const Reminder(),
+                    ),
+                  );
+                },
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: const [
