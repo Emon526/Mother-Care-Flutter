@@ -7,14 +7,9 @@ import 'package:mothercare/screens/selfcheck/self_check_finish.dart';
 import '../../const/consts.dart';
 import '../../widget/drawer_widget.dart';
 
-class SelfCheckSteps extends StatefulWidget {
+class SelfCheckSteps extends StatelessWidget {
   const SelfCheckSteps({super.key});
 
-  @override
-  State<SelfCheckSteps> createState() => _SelfCheckStepsState();
-}
-
-class _SelfCheckStepsState extends State<SelfCheckSteps> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -24,6 +19,7 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
         title: 'Step 1',
         subtitle: 'Begin',
         content: _buildStepCard(
+          context: context,
           size: size,
           stepimagepath: 'assets/images/self-check_step_1.jpg',
           steptitle: "Begin",
@@ -37,6 +33,7 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
         title: 'Step 2',
         subtitle: 'Look',
         content: _buildStepCard(
+          context: context,
           size: size,
           stepimagepath: 'assets/images/self-check_step_2.jpg',
           steptitle: "Look",
@@ -50,6 +47,7 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
         title: 'Step 3',
         subtitle: 'Feel',
         content: _buildStepCard(
+          context: context,
           size: size,
           stepimagepath: 'assets/images/self-check_step_3.jpg',
           steptitle: "Feel",
@@ -63,6 +61,7 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
         title: 'Step 4',
         subtitle: 'Circles',
         content: _buildStepCard(
+          context: context,
           size: size,
           stepimagepath: 'assets/images/self-check_step_4.jpg',
           steptitle: "Circles",
@@ -76,6 +75,7 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
         title: 'Step 5',
         subtitle: 'Armpit',
         content: _buildStepCard(
+          context: context,
           size: size,
           stepimagepath: 'assets/images/self-check_step_5.jpg',
           steptitle: "Armpit",
@@ -89,6 +89,7 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
         title: 'Step 6',
         subtitle: 'Nipple',
         content: _buildStepCard(
+          context: context,
           size: size,
           stepimagepath: 'assets/images/self-check_step_6.jpg',
           steptitle: "Nipple",
@@ -101,6 +102,7 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
         title: 'Step 7',
         subtitle: 'Lie down',
         content: _buildStepCard(
+          context: context,
           size: size,
           stepimagepath: 'assets/images/self-check_step_7.jpg',
           steptitle: "Lie down",
@@ -142,6 +144,7 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
     required String stepimagepath,
     required String steptitle,
     required String stepsubtitle,
+    required BuildContext context,
   }) {
     return Column(
       children: [
