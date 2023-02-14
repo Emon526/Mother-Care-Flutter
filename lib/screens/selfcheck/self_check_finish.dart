@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 
+import '../doctors/doctorslist.dart';
+
 class SelfCheckFinish extends StatelessWidget {
   const SelfCheckFinish({super.key});
 
@@ -51,7 +53,14 @@ class SelfCheckFinish extends StatelessWidget {
             ),
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const DoctorsList(),
+                ),
+              );
+            },
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: const [

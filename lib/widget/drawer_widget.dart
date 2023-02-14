@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../providers/modelprovider.dart';
 import '../providers/themeprovider.dart';
+import '../screens/doctors/doctorslist.dart';
 import '../screens/memmographyscreening/memmography.dart';
 import 'themetile.dart';
 
@@ -62,9 +63,23 @@ class DrawerWidget extends StatelessWidget {
               height: 10,
             ),
             _buildListtile(
-              iconData: LineIcons.calendarAlt,
-              tiletitle: 'Reminder',
-              onTap: () {},
+              iconData: LineIcons.stethoscope,
+              tiletitle: 'Doctors',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const DoctorsList(),
+                  ),
+                );
+              },
+            ),
+            _buildListtile(
+              iconData: Icons.mobile_friendly,
+              tiletitle: 'Delete Model',
+              onTap: () {
+                context.read<ModelProvider>().deleteModel();
+              },
             ),
             _buildListtile(
               iconData: Icons.insights_outlined,
@@ -79,16 +94,9 @@ class DrawerWidget extends StatelessWidget {
               },
             ),
             _buildListtile(
-              iconData: LineIcons.stethoscope,
-              tiletitle: 'Doctors',
+              iconData: LineIcons.calendarAlt,
+              tiletitle: 'Reminder',
               onTap: () {},
-            ),
-            _buildListtile(
-              iconData: Icons.mobile_friendly,
-              tiletitle: 'Delete Model',
-              onTap: () {
-                context.read<ModelProvider>().deleteModel();
-              },
             ),
             _buildListtile(
               tiletitle: 'Theme',
