@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../providers/modelprovider.dart';
 import '../providers/themeprovider.dart';
-import '../screens/screening/memmography.dart';
+import '../screens/memmographyscreening/memmography.dart';
 import 'themetile.dart';
 
 class DrawerWidget extends StatelessWidget {
