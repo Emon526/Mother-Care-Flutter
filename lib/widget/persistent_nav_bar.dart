@@ -20,12 +20,6 @@ class _PersistentNavBarState extends State<PersistentNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          Consts.APP_NAME,
-        ),
-      ),
-      drawer: const DrawerWidget(),
       body: SafeArea(
         child: PersistentTabView(
           context,

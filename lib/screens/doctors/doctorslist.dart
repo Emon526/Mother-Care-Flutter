@@ -1,7 +1,6 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:mothercare/screens/doctors/doctor.dart';
+import '../../widget/drawer_widget.dart';
+import 'doctor.dart';
 
 class DoctorsList extends StatelessWidget {
   const DoctorsList({super.key});
@@ -9,6 +8,12 @@ class DoctorsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          "Doctors",
+        ),
+      ),
+      drawer: const DrawerWidget(),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),

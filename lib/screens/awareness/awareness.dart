@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:provider/provider.dart';
 
+import '../../const/consts.dart';
 import '../../providers/nav_bar_provider.dart';
+import '../../widget/drawer_widget.dart';
 
 class Awareness extends StatelessWidget {
   const Awareness({super.key});
@@ -29,118 +31,126 @@ class Awareness extends StatelessWidget {
     ];
     final size = MediaQuery.of(context).size;
 
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CarouselSlider(
-              items: items,
-              options: CarouselOptions(
-                viewportFraction: 1,
-                initialPage: 0,
-                enableInfiniteScroll: true,
-                reverse: false,
-                autoPlay: true,
-                autoPlayInterval: const Duration(seconds: 3),
-                autoPlayAnimationDuration: const Duration(milliseconds: 800),
-                autoPlayCurve: Curves.fastOutSlowIn,
-                enlargeCenterPage: true,
-                // enlargeFactor: 0.3,
-                // onPageChanged: callbackFunction,
-                scrollDirection: Axis.horizontal,
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          Consts.APP_NAME,
+        ),
+      ),
+      drawer: const DrawerWidget(),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CarouselSlider(
+                items: items,
+                options: CarouselOptions(
+                  viewportFraction: 1,
+                  initialPage: 0,
+                  enableInfiniteScroll: true,
+                  reverse: false,
+                  autoPlay: true,
+                  autoPlayInterval: const Duration(seconds: 3),
+                  autoPlayAnimationDuration: const Duration(milliseconds: 800),
+                  autoPlayCurve: Curves.fastOutSlowIn,
+                  enlargeCenterPage: true,
+                  // enlargeFactor: 0.3,
+                  // onPageChanged: callbackFunction,
+                  scrollDirection: Axis.horizontal,
+                ),
               ),
-            ),
-            SizedBox(
-              // height: 20,
-              height: size.height * 0.03,
-            ),
-            Center(
-              child: Text(
-                "Early Detection Saves Lives",
+              SizedBox(
+                // height: 20,
+                height: size.height * 0.03,
+              ),
+              Center(
+                child: Text(
+                  "Early Detection Saves Lives",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22,
+                      color: Theme.of(context).primaryColor),
+                ),
+              ),
+              SizedBox(
+                // height: 10,
+                height: size.height * 0.015,
+              ),
+              const Text(
+                "The earlier breast cancer is is treated, the greater the chance of long-term survival. Regular self-checks can help you detect problems earlier and get treatment faster.",
                 style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 22,
-                    color: Theme.of(context).primaryColor),
+                  fontWeight: FontWeight.normal,
+                  fontSize: 18,
+                ),
               ),
-            ),
-            SizedBox(
-              // height: 10,
-              height: size.height * 0.015,
-            ),
-            const Text(
-              "The earlier breast cancer is is treated, the greater the chance of long-term survival. Regular self-checks can help you detect problems earlier and get treatment faster.",
-              style: TextStyle(
-                fontWeight: FontWeight.normal,
-                fontSize: 18,
+              SizedBox(
+                // height: 10,
+                height: size.height * 0.015,
               ),
-            ),
-            SizedBox(
-              // height: 10,
-              height: size.height * 0.015,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                context.read<NavBarProvider>().setControllerIndex = 1;
-              },
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: const [
-                  Text('Learn more'),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  Icon(Icons.arrow_forward_ios_outlined),
-                ],
+              ElevatedButton(
+                onPressed: () {
+                  context.read<NavBarProvider>().setControllerIndex = 1;
+                },
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: const [
+                    Text('Learn more'),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Icon(Icons.arrow_forward_ios_outlined),
+                  ],
+                ),
               ),
-            ),
-            SizedBox(
-              // height: 20,
-              height: size.height * 0.03,
-            ),
-            Center(
-              child: Text(
-                "WHY IT MATTERS",
+              SizedBox(
+                // height: 20,
+                height: size.height * 0.03,
+              ),
+              Center(
+                child: Text(
+                  "WHY IT MATTERS",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22,
+                      color: Theme.of(context).primaryColor),
+                ),
+              ),
+              SizedBox(
+                // height: 10,
+                height: size.height * 0.015,
+              ),
+              const Text(
+                "Checking your breasts for changes each month is free, easy and might save your life.",
                 style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 22,
-                    color: Theme.of(context).primaryColor),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
               ),
-            ),
-            SizedBox(
-              // height: 10,
-              height: size.height * 0.015,
-            ),
-            const Text(
-              "Checking your breasts for changes each month is free, easy and might save your life.",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
+              SizedBox(
+                // height: 10,
+                height: size.height * 0.015,
               ),
-            ),
-            SizedBox(
-              // height: 10,
-              height: size.height * 0.015,
-            ),
-            const Text(
-              "Why? Because the earlier signs of breast cancer are detected and treated, the better the chances of recovery.\n\nRegular check-ups with your gynaecologist or trusted health professional can help to detect breast cancer at an early stage. Your doctor may also recommend a mammogram.\n\nBut you can do more to protect yourself by checking your own breasts regularly!\n\nRegular self-checks are the best way to get to know what is normal for you, and will help you notice changes more quickly. The faster you notice, the sooner you'll be able to react and get treatment if needed.\n\nAnd if there's one thing we know about breast cancer, it's that the earlier it's treated, the greater the likelihood of survival.",
-              style: TextStyle(
-                fontWeight: FontWeight.normal,
-                fontSize: 18,
+              const Text(
+                "Why? Because the earlier signs of breast cancer are detected and treated, the better the chances of recovery.\n\nRegular check-ups with your gynaecologist or trusted health professional can help to detect breast cancer at an early stage. Your doctor may also recommend a mammogram.\n\nBut you can do more to protect yourself by checking your own breasts regularly!\n\nRegular self-checks are the best way to get to know what is normal for you, and will help you notice changes more quickly. The faster you notice, the sooner you'll be able to react and get treatment if needed.\n\nAnd if there's one thing we know about breast cancer, it's that the earlier it's treated, the greater the likelihood of survival.",
+                style: TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 18,
+                ),
               ),
-            ),
-            SizedBox(
-              // height: 20,
-              height: size.height * 0.03,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                context.read<NavBarProvider>().setControllerIndex = 2;
-              },
-              child: const Text('How to self-check'),
-            ),
-          ],
+              SizedBox(
+                // height: 20,
+                height: size.height * 0.03,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  context.read<NavBarProvider>().setControllerIndex = 2;
+                },
+                child: const Text('How to self-check'),
+              ),
+            ],
+          ),
         ),
       ),
     );

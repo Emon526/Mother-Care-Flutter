@@ -56,8 +56,8 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Memmography Prediction'),
-        centerTitle: true,
+        title: const Text('Memmography Screening'),
+        // centerTitle: true,
       ),
       body: context.watch<ModelProvider>().isDownloading
           ? Center(

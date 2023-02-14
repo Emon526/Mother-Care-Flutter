@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:cool_stepper/cool_stepper.dart';
 import 'package:mothercare/screens/selfcheck/self_check_finish.dart';
 
+import '../../const/consts.dart';
+import '../../widget/drawer_widget.dart';
+
 class SelfCheckSteps extends StatefulWidget {
   const SelfCheckSteps({super.key});
 
@@ -111,6 +114,12 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
     return FutureBuilder(
       future: _showHintDialog(context),
       builder: (context, snapshot) => Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            Consts.APP_NAME,
+          ),
+        ),
+        drawer: const DrawerWidget(),
         body: CoolStepper(
           showErrorSnackbar: false,
           onCompleted: () {

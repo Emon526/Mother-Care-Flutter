@@ -1,6 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
+import '../../const/consts.dart';
+import '../../widget/drawer_widget.dart';
 import 'self_check_steps.dart';
 
 class SelfCheckPage extends StatefulWidget {
@@ -47,98 +49,109 @@ class _SelfCheckPageState extends State<SelfCheckPage> {
       ),
     ];
 
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Text(
-          "WHAT TO LOOK FOR",
-          style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 22,
-              color: Theme.of(context).primaryColor),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          Consts.APP_NAME,
         ),
-        Column(
-          mainAxisSize: MainAxisSize.min,
+      ),
+      drawer: const DrawerWidget(),
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            CarouselSlider(
-              items: items,
-              options: CarouselOptions(
-                onPageChanged: (index, reason) {
-                  setState(() {
-                    _current = index;
-                  });
-                },
-                viewportFraction: 0.9,
-                aspectRatio: 1,
-                initialPage: 0,
-                enableInfiniteScroll: true,
-                reverse: false,
-                autoPlay: true,
-                autoPlayInterval: const Duration(seconds: 3),
-                autoPlayAnimationDuration: const Duration(milliseconds: 800),
-                autoPlayCurve: Curves.fastOutSlowIn,
-                enlargeCenterPage: true,
-                scrollDirection: Axis.horizontal,
-              ),
+            Text(
+              "WHAT TO LOOK FOR",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 22,
+                  color: Theme.of(context).primaryColor),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+            Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                for (int i = 0; i < items.length; i++)
-                  if (i == _current)
-                    Row(
-                      children: [
-                        Container(
-                          width: size.width * 0.07,
-                          height: size.width * 0.03,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.rectangle,
-                            borderRadius: BorderRadius.circular(10),
-                            color: Theme.of(context).primaryColor,
-                          ),
+                CarouselSlider(
+                  items: items,
+                  options: CarouselOptions(
+                    onPageChanged: (index, reason) {
+                      setState(() {
+                        _current = index;
+                      });
+                    },
+                    viewportFraction: 0.9,
+                    aspectRatio: 1,
+                    initialPage: 0,
+                    enableInfiniteScroll: true,
+                    reverse: false,
+                    autoPlay: true,
+                    autoPlayInterval: const Duration(seconds: 3),
+                    autoPlayAnimationDuration:
+                        const Duration(milliseconds: 800),
+                    autoPlayCurve: Curves.fastOutSlowIn,
+                    enlargeCenterPage: true,
+                    scrollDirection: Axis.horizontal,
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    for (int i = 0; i < items.length; i++)
+                      if (i == _current)
+                        Row(
+                          children: [
+                            Container(
+                              width: size.width * 0.07,
+                              height: size.width * 0.03,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.rectangle,
+                                borderRadius: BorderRadius.circular(10),
+                                color: Theme.of(context).primaryColor,
+                              ),
+                            ),
+                            SizedBox(
+                              width: size.width * 0.015,
+                            ),
+                          ],
+                        )
+                      else
+                        Row(
+                          children: [
+                            CircleAvatar(
+                              radius: 5.0,
+                              backgroundColor:
+                                  Theme.of(context).colorScheme.secondary,
+                            ),
+                            SizedBox(
+                              width: size.width * 0.015,
+                            ),
+                          ],
                         ),
-                        SizedBox(
-                          width: size.width * 0.015,
-                        ),
-                      ],
-                    )
-                  else
-                    Row(
-                      children: [
-                        CircleAvatar(
-                          radius: 5.0,
-                          backgroundColor:
-                              Theme.of(context).colorScheme.secondary,
-                        ),
-                        SizedBox(
-                          width: size.width * 0.015,
-                        ),
-                      ],
-                    ),
+                  ],
+                ),
               ],
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SelfCheckSteps(),
+                    ));
+              },
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: const [
+                  Text('CHECK YOURSELF STEP BY STEP'),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Icon(Icons.arrow_forward_ios_outlined),
+                ],
+              ),
             ),
           ],
         ),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const SelfCheckSteps(),
-                ));
-          },
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: const [
-              Text('CHECK YOURSELF STEP BY STEP'),
-              SizedBox(
-                width: 5,
-              ),
-              Icon(Icons.arrow_forward_ios_outlined),
-            ],
-          ),
-        ),
-      ],
+      ),
     );
   }
 
