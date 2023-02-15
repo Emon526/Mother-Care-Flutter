@@ -48,6 +48,7 @@ dependencies:
   line_icons: ^2.0.1
   persistent_bottom_nav_bar: ^5.0.2
   cool_stepper: ^1.2.1
+  readmore: ^2.2.0
 
 dev_dependencies:
   flutter_test:
