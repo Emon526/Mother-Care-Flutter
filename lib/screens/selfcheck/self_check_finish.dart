@@ -21,8 +21,7 @@ class SelfCheckFinish extends StatelessWidget {
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            // mainAxisAlignment: MainAxisAlignment.spaceAround,
-            // mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Text(
                 'DID YOU NOTICE ANYTHING UNUSUAL?',
@@ -33,7 +32,6 @@ class SelfCheckFinish extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const Spacer(),
               const Padding(
                 padding: EdgeInsets.all(20.0),
                 child: Text(
@@ -45,51 +43,54 @@ class SelfCheckFinish extends StatelessWidget {
                   ),
                 ),
               ),
-              const Spacer(),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const Reminder(),
+              Column(
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Reminder(),
+                        ),
+                      );
+                    },
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: const [
+                        Text('Set a Reminder'),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Icon(
+                          LineIcons.calendarAlt,
+                        ),
+                      ],
                     ),
-                  );
-                },
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: const [
-                    Text('Set a Reminder'),
-                    SizedBox(
-                      width: 5,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const DoctorsList(),
+                        ),
+                      );
+                    },
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: const [
+                        Text('Consult Doctor'),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Icon(
+                          LineIcons.stethoscope,
+                        ),
+                      ],
                     ),
-                    Icon(
-                      LineIcons.calendarAlt,
-                    ),
-                  ],
-                ),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const DoctorsList(),
-                    ),
-                  );
-                },
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: const [
-                    Text('Consult Doctor'),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    Icon(
-                      LineIcons.stethoscope,
-                    ),
-                  ],
-                ),
-              ),
+                  ),
+                ],
+              )
             ],
           ),
         ));
