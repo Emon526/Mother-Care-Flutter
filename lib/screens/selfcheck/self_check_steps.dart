@@ -168,6 +168,7 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
           width: size.width,
           child: Text(
             steptitle,
+            textAlign: TextAlign.center,
             style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 18,

@@ -49,6 +49,10 @@ dependencies:
   persistent_bottom_nav_bar: ^5.0.2
   cool_stepper: ^1.2.1
   readmore: ^2.2.0
+  syncfusion_flutter_datepicker: ^20.4.50
+  day_night_time_picker: ^1.1.5
+  intl: ^0.17.0
+
 
 dev_dependencies:
   flutter_test:

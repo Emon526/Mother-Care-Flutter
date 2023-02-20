@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mothercare/routes.dart';
+
 import 'package:provider/provider.dart';
 
 import 'const/consts.dart';
 import 'const/theme.dart';
 import 'firebase_options.dart';
+import 'providers/reminderprovider.dart';
 import 'widget/persistent_nav_bar.dart';
 import 'providers/modelprovider.dart';
 import 'providers/nav_bar_provider.dart';
@@ -38,6 +39,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => NavBarProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ReminderProvider(),
         ),
       ],
       builder: (context, child) => Consumer<ThemeProvider>(

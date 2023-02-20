@@ -6,7 +6,7 @@ import '../providers/modelprovider.dart';
 import '../providers/themeprovider.dart';
 import '../screens/doctors/doctorslist.dart';
 import '../screens/memmographyscreening/memmography.dart';
-import '../screens/reminder/reminder.dart';
+import '../screens/reminder/reminderlist.dart';
 import 'themetile.dart';
 
 class DrawerWidget extends StatelessWidget {
@@ -101,7 +101,7 @@ class DrawerWidget extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const Reminder(),
+                    builder: (context) => const ReminderList(),
                   ),
                 );
               },
