@@ -160,7 +160,7 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
         Container(
           decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.secondary,
-              borderRadius: BorderRadius.circular(5)),
+              borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius)),
           padding: const EdgeInsets.symmetric(
             horizontal: 10,
             vertical: 20,
@@ -183,7 +183,7 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
           child: Column(
             children: [
               ClipRRect(
-                borderRadius: BorderRadius.circular(5),
+                borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
                 child: Image.asset(
                   stepimagepath,
                   fit: BoxFit.cover,
@@ -215,7 +215,7 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
         context: context,
         builder: (context) => Dialog(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
+            borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
           ),
           child: Padding(
             padding: const EdgeInsets.all(16.0),
@@ -237,7 +237,8 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
                   height: 10,
                 ),
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(5),
+                  borderRadius:
+                      BorderRadius.circular(Consts.DefaultBorderRadius),
                   child: Image.asset(
                     'assets/images/shower.jpg',
                   ),

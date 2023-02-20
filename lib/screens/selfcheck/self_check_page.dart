@@ -104,7 +104,8 @@ class _SelfCheckPageState extends State<SelfCheckPage> {
                               height: size.width * 0.03,
                               decoration: BoxDecoration(
                                 shape: BoxShape.rectangle,
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: BorderRadius.circular(
+                                    Consts.DefaultBorderRadius),
                                 color: Theme.of(context).primaryColor,
                               ),
                             ),
@@ -166,7 +167,7 @@ class _SelfCheckPageState extends State<SelfCheckPage> {
       child: Column(
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.circular(5),
+            borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
             child: Image.asset(
               imagepath,
               fit: BoxFit.cover,

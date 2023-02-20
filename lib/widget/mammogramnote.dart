@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../const/consts.dart';
+
 class MammogramNote extends StatelessWidget {
   const MammogramNote({super.key});
 
@@ -14,7 +16,8 @@ class MammogramNote extends StatelessWidget {
             width: 30,
             decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.secondary,
-                borderRadius: BorderRadius.circular(5)),
+                borderRadius:
+                    BorderRadius.circular(Consts.DefaultBorderRadius)),
             child: Container(
               margin: const EdgeInsets.all(10),
               decoration: BoxDecoration(

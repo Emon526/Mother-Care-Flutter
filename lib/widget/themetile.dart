@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../const/consts.dart';
 import '../providers/themeprovider.dart';
 import 'themeradiobuttonwidget.dart';
 
@@ -11,7 +12,7 @@ class ThemeTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dialog(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20.0),
+        borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
       ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),

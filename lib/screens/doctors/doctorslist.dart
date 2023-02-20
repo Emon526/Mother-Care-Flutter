@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../const/consts.dart';
 import '../../widget/drawer_widget.dart';
 import 'doctor.dart';
 
@@ -46,7 +47,7 @@ class DoctorsList extends StatelessWidget {
   Widget _buildDoctorcard(
       {required BuildContext context, required Function onTap}) {
     return InkWell(
-      borderRadius: BorderRadius.circular(5),
+      borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
       onTap: () {
         onTap();
       },
@@ -55,7 +56,7 @@ class DoctorsList extends StatelessWidget {
           border: Border.all(
             color: Theme.of(context).primaryColor,
           ),
-          borderRadius: BorderRadius.circular(5),
+          borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
         ),
         child: Flex(
           direction: Axis.vertical,
@@ -65,7 +66,8 @@ class DoctorsList extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(5),
+                  borderRadius:
+                      BorderRadius.circular(Consts.DefaultBorderRadius),
                   child: Image.asset(
                     'assets/images/doctor.jpg',
                     height: 400,

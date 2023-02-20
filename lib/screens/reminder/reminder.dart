@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:day_night_time_picker/lib/constants.dart';
 
+import '../../const/consts.dart';
 import '../../models/reminder.dart';
 import '../../providers/reminderprovider.dart';
 
@@ -130,7 +131,7 @@ class _ReminderState extends State<Reminder> {
       builder: (BuildContext context) {
         return Dialog(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
+            borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,

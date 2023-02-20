@@ -167,7 +167,7 @@ class Awareness extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Theme.of(context).primaryColor,
-        borderRadius: BorderRadius.circular(5),
+        borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
         image: DecorationImage(
           fit: BoxFit.cover,
           image: AssetImage(imagePath),

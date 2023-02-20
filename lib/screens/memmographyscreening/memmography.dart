@@ -7,6 +7,7 @@ import 'package:flutter_tflite/flutter_tflite.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
+import '../../const/consts.dart';
 import '../../providers/modelprovider.dart';
 import '../../providers/predictionprovider.dart';
 import '../../widget/mammogramnote.dart';
@@ -87,7 +88,8 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
                       width: size.width * 0.7,
                       decoration: BoxDecoration(
                         color: Theme.of(context).colorScheme.secondary,
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius:
+                            BorderRadius.circular(Consts.DefaultBorderRadius),
                         border: Border.all(
                           width: 2.0,
                           strokeAlign: BorderSide.strokeAlignOutside,
@@ -115,7 +117,8 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
                               ],
                             )
                           : ClipRRect(
-                              borderRadius: BorderRadius.circular(20),
+                              borderRadius: BorderRadius.circular(
+                                  Consts.DefaultBorderRadius),
                               child: Image.file(
                                 pickedimage!,
                                 fit: BoxFit.cover,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../const/consts.dart';
 import '../providers/themeprovider.dart';
 
 class ThemeRadioButtonWidget extends StatelessWidget {
@@ -17,7 +18,7 @@ class ThemeRadioButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      borderRadius: BorderRadius.circular(10.0),
+      borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
       onTap: () => ontap(),
       child: Padding(
         padding: const EdgeInsets.all(8.0),

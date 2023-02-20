@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../const/consts.dart';
+
 class Doctor extends StatelessWidget {
   const Doctor({super.key});
 
@@ -23,7 +25,8 @@ class Doctor extends StatelessWidget {
               Stack(
                 children: [
                   ClipRRect(
-                    borderRadius: BorderRadius.circular(5),
+                    borderRadius:
+                        BorderRadius.circular(Consts.DefaultBorderRadius),
                     child: Image.asset(
                       'assets/images/doctor.jpg',
                     ),
@@ -76,7 +79,8 @@ class Doctor extends StatelessWidget {
                     decoration: BoxDecoration(
                         border:
                             Border.all(color: Theme.of(context).primaryColor),
-                        borderRadius: BorderRadius.circular(5)),
+                        borderRadius:
+                            BorderRadius.circular(Consts.DefaultBorderRadius)),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 10),
@@ -95,7 +99,8 @@ class Doctor extends StatelessWidget {
                     decoration: BoxDecoration(
                         border:
                             Border.all(color: Theme.of(context).primaryColor),
-                        borderRadius: BorderRadius.circular(5)),
+                        borderRadius:
+                            BorderRadius.circular(Consts.DefaultBorderRadius)),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 10),
@@ -114,7 +119,8 @@ class Doctor extends StatelessWidget {
                     decoration: BoxDecoration(
                         border:
                             Border.all(color: Theme.of(context).primaryColor),
-                        borderRadius: BorderRadius.circular(5)),
+                        borderRadius:
+                            BorderRadius.circular(Consts.DefaultBorderRadius)),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 10),
@@ -168,7 +174,8 @@ class Doctor extends StatelessWidget {
               Card(
                 child: InkWell(
                   onTap: () => _makePhoneCall('0123456789'),
-                  borderRadius: BorderRadius.circular(5),
+                  borderRadius:
+                      BorderRadius.circular(Consts.DefaultBorderRadius),
                   child: const ListTile(
                     title: Text(
                       'Call for Appointment',
