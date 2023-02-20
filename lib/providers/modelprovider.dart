@@ -95,9 +95,9 @@ class ModelProvider extends ChangeNotifier {
       );
       return 'Model is loaded';
     } catch (exception) {
-      print(
+      debugPrint(
           'Failed on loading your model to the TFLite interpreter: $exception');
-      print('The program will not be resumed');
+      debugPrint('The program will not be resumed');
       rethrow;
     }
   }

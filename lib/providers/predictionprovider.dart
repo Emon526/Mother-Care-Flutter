@@ -23,7 +23,7 @@ class PredictionProvider extends ChangeNotifier {
       await classifyImage(image);
       // await Tflite.close();
     } catch (e) {
-      print(e.toString());
+      debugPrint(e.toString());
     }
     _loading = false;
     notifyListeners();
@@ -38,7 +38,7 @@ class PredictionProvider extends ChangeNotifier {
       imageStd: 127.5,
     );
 
-    print('output: $output');
+    debugPrint('output: $output');
     _output = output!;
     // await Tflite.close();
   }
