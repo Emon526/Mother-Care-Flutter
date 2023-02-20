@@ -14,52 +14,13 @@ class DrawerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Drawer(
-      width: 250,
+      width: size.width * 0.65,
       child: SafeArea(
         child: Column(
           children: [
-            Container(
-              color: Theme.of(context).primaryColor,
-              height: 200,
-              width: double.infinity,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
-                      'Mr. Asraful Islam',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.white,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      'Emonats526@gmai.com',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.white,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      'Dhaka, Bangladesh',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            _buildHeader(),
             const SizedBox(
               height: 10,
             ),
@@ -125,6 +86,50 @@ class DrawerWidget extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  _buildHeader() {
+    return Stack(
+      alignment: Alignment.bottomLeft,
+      children: [
+        Image.asset('assets/logo.png'),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              Text(
+                'Mr. Asraful Islam',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.white,
+                ),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Text(
+                'Emonats526@gmai.com',
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.white,
+                ),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Text(
+                'Dhaka, Bangladesh',
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 

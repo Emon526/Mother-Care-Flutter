@@ -14,7 +14,7 @@ class DoctorsList extends StatelessWidget {
           "Doctors",
         ),
       ),
-      drawer: const DrawerWidget(),
+      // drawer: const DrawerWidget(),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),

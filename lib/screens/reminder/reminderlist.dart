@@ -28,7 +28,6 @@ class ReminderList extends StatelessWidget {
           'Reminder',
         ),
       ),
-      drawer: const DrawerWidget(),
       body: context.watch<ReminderProvider>().reminders.isEmpty
           ? const Center(
               child: Text('No reminder Added Yet!'),
@@ -48,16 +47,61 @@ class ReminderList extends StatelessWidget {
                       //   ),
                       // );
                     },
-                    child: ListTile(
-                      title: Text(
-                        reminder.reminderTitle,
-                      ),
-                      subtitle: Row(
-                        children: [
-                          const Icon(LineIcons.clock),
-                          Text(
-                              '${reminder.reminderDate},${reminder.reminderTime}'),
-                        ],
+                    child: Material(
+                      color: Theme.of(context).primaryColor,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              reminder.reminderTitle,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                                fontSize: 18,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Flex(
+                              direction: Axis.horizontal,
+                              children: [
+                                Flexible(
+                                  child: Row(
+                                    children: [
+                                      const Icon(
+                                        LineIcons.calendar,
+                                        color: Colors.white,
+                                      ),
+                                      Text(
+                                        reminder.reminderDate,
+                                        style: const TextStyle(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    const Icon(
+                                      LineIcons.clock,
+                                      color: Colors.white,
+                                    ),
+                                    Text(
+                                      reminder.reminderTime,
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),

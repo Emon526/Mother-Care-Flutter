@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
@@ -29,76 +31,85 @@ class _ReminderState extends State<Reminder> {
             'Add Reminder',
           ),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              TextField(
-                controller: titleController,
-                decoration: const InputDecoration(
-                  labelText: 'Title',
-                  border: OutlineInputBorder(),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                TextField(
+                  textInputAction: TextInputAction.done,
+                  textCapitalization: TextCapitalization.words,
+                  controller: titleController,
+                  decoration: const InputDecoration(
+                    labelText: 'Title',
+                    hintText: 'Menstrual Self Check',
+                    border: OutlineInputBorder(),
+                  ),
                 ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Flex(
-                direction: Axis.horizontal,
-                children: [
-                  Flexible(
-                    flex: 2,
-                    child: TextField(
-                      onTap: () => _showCalender(),
-                      readOnly: true,
-                      controller: dateController,
-                      decoration: const InputDecoration(
-                        labelText: 'Date',
-                        border: OutlineInputBorder(),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  Expanded(
-                    child: TextField(
-                      readOnly: true,
-                      onTap: () => Navigator.of(context).push(
-                        _showClock(),
-                      ),
-                      controller: timeController,
-                      decoration: const InputDecoration(
-                        labelText: 'Time',
-                        border: OutlineInputBorder(),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  context.read<ReminderProvider>().addReminder(
-                        reminder: ReminderModel(
-                          reminderTitle: titleController.text.trim(),
-                          reminderDate: dateController.text.trim(),
-                          reminderTime: timeController.text.trim(),
+                const SizedBox(
+                  height: 20,
+                ),
+                Flex(
+                  direction: Axis.horizontal,
+                  children: [
+                    Flexible(
+                      flex: 2,
+                      child: TextField(
+                        onTap: () => _showCalender(),
+                        readOnly: true,
+                        controller: dateController,
+                        decoration: const InputDecoration(
+                          labelText: 'Date',
+                          hintText: 'Date',
+                          border: OutlineInputBorder(),
                         ),
-                      );
-                  Navigator.pop(context);
-                },
-                child: const Text('Add Reminder'),
-              ),
-            ],
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    Expanded(
+                      child: TextField(
+                        readOnly: true,
+                        onTap: () => Navigator.of(context).push(
+                          _showClock(),
+                        ),
+                        controller: timeController,
+                        decoration: const InputDecoration(
+                          labelText: 'Time',
+                          hintText: 'Time',
+                          border: OutlineInputBorder(),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    context.read<ReminderProvider>().addReminder(
+                          reminder: ReminderModel(
+                            reminderTitle: titleController.text.trim(),
+                            reminderDate: dateController.text.trim(),
+                            reminderTime: timeController.text.trim(),
+                          ),
+                        );
+                    Navigator.pop(context);
+                  },
+                  child: const Text('Add Reminder'),
+                ),
+              ],
+            ),
           ),
         ));
   }
 
   _showClock() {
     return showPicker(
+      okText: 'OK',
+      cancelText: 'CANCEL',
       iosStylePicker: true,
       context: context,
       barrierDismissible: false,
@@ -136,34 +147,38 @@ class _ReminderState extends State<Reminder> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              GestureDetector(
-                onTap: () => Navigator.pop(context),
-                child: Container(
-                  margin: const EdgeInsets.all(5.0),
-                  alignment: Alignment.topRight,
-                  child: const Icon(
-                    Icons.close,
-                    color: Colors.grey,
-                    size: 20.0,
+              ClipRRect(
+                borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+                child: SfDateRangePicker(
+                  onSubmit: (date) {
+                    var formattedDate = DateFormat('EEE, dd MMMM yyyy')
+                        .format(DateTime.parse(date.toString()));
+                    log(formattedDate.toString());
+                    dateController.text = formattedDate;
+                    Navigator.pop(context);
+                  },
+                  onCancel: () {
+                    Navigator.pop(context);
+                  },
+                  selectionColor: Theme.of(context).primaryColor,
+                  todayHighlightColor: Theme.of(context).primaryColor,
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
+
+                  //  onSelectionChanged: (arg) {
+                  // dateController.text = arg.value.toString();
+                  // dateController.text =
+                  //     DateFormat('EEE, dd MMMM yyyy').format(arg.value);
+                  // Navigator.pop(context);
+                  // },
+                  showActionButtons: true,
+                  enablePastDates: false,
+                  selectionMode: DateRangePickerSelectionMode.single,
+                  view: DateRangePickerView.month,
+                  initialDisplayDate: DateTime.now(),
+                  initialSelectedDate: DateTime.now().add(
+                    const Duration(days: 10),
                   ),
                 ),
-              ),
-              SfDateRangePicker(
-                selectionColor: Theme.of(context).primaryColor,
-                todayHighlightColor: Theme.of(context).primaryColor,
-                backgroundColor: Theme.of(context).colorScheme.secondary,
-                onSelectionChanged: (arg) {
-                  // dateController.text = arg.value.toString();
-                  dateController.text =
-                      DateFormat('EEE, dd MMMM yyyy').format(arg.value);
-                  Navigator.pop(context);
-                },
-                enablePastDates: false,
-                selectionMode: DateRangePickerSelectionMode.single,
-                view: DateRangePickerView.month,
-                initialDisplayDate: DateTime.now(),
-                initialSelectedDate:
-                    DateTime.now().add(const Duration(days: 10)),
               ),
             ],
           ),
