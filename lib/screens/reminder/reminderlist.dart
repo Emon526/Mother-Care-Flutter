@@ -30,7 +30,9 @@ class ReminderList extends StatelessWidget {
       ),
       drawer: const DrawerWidget(),
       body: context.watch<ReminderProvider>().reminders.isEmpty
-          ? const Center(child: Text('No reminder Added Yet!'))
+          ? const Center(
+              child: Text('No reminder Added Yet!'),
+            )
           : ListView.builder(
               itemCount: context.watch<ReminderProvider>().reminders.length,
               itemBuilder: (context, index) {
