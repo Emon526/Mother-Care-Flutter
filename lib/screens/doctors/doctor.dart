@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../widget/drawer_widget.dart';
 import 'package:readmore/readmore.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Doctor extends StatelessWidget {
   const Doctor({super.key});
@@ -14,7 +14,6 @@ class Doctor extends StatelessWidget {
           'Dr.Jakaria Sajib',
         ),
       ),
-      drawer: const DrawerWidget(),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(
@@ -168,7 +167,7 @@ class Doctor extends StatelessWidget {
               ),
               Card(
                 child: InkWell(
-                  onTap: () {},
+                  onTap: () => _makePhoneCall('0123456789'),
                   borderRadius: BorderRadius.circular(5),
                   child: const ListTile(
                     title: Text(
@@ -186,5 +185,13 @@ class Doctor extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> _makePhoneCall(String phoneNumber) async {
+    final Uri launchUri = Uri(
+      scheme: 'tel',
+      path: phoneNumber,
+    );
+    await launchUrl(launchUri);
   }
 }

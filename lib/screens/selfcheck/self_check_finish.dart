@@ -4,7 +4,7 @@ import 'package:line_icons/line_icons.dart';
 import '../../const/consts.dart';
 import '../../widget/drawer_widget.dart';
 import '../doctors/doctorslist.dart';
-import '../reminder/reminderlist.dart';
+import '../reminder/reminder.dart';
 
 class SelfCheckFinish extends StatelessWidget {
   const SelfCheckFinish({super.key});
@@ -51,7 +51,7 @@ class SelfCheckFinish extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const ReminderList(),
+                      builder: (context) => const Reminder(),
                     ),
                   );
                 },
