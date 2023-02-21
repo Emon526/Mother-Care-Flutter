@@ -5,10 +5,10 @@ packages:
     dependency: transitive
     description:
       name: _flutterfire_internals
-      sha256: "953f097772b5fd095e0ee6eeeab34e3a42de91d5f43fa86b5de8485a57494f96"
+      sha256: "64fcb0dbca4386356386c085142fa6e79c00a3326ceaa778a2d25f5d9ba61441"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.15"
+    version: "1.0.16"
   another_flushbar:
     dependency: transitive
     description:
@@ -165,10 +165,10 @@ packages:
     dependency: "direct main"
     description:
       name: firebase_core
-      sha256: "46b80acfb472d8abc500c2cb6ce65c4b5237d825e4c23bfc3efc70df9eec1a6e"
+      sha256: fe30ac230f12f8836bb97e6e09197340d3c584526825b1746ea362a82e1e43f7
       url: "https://pub.dev"
     source: hosted
-    version: "2.6.1"
+    version: "2.7.0"
   firebase_core_platform_interface:
     dependency: transitive
     description:
@@ -189,42 +189,42 @@ packages:
     dependency: "direct main"
     description:
       name: firebase_ml_model_downloader
-      sha256: d35238637efd9d807c15f169d7be2cc0ede03453cc966dae03f7088864b4cf19
+      sha256: "0dbeac4fb47d15b476e4a037825df657cf1cc565e1ade3cdc63834f80e59f604"
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.0+10"
+    version: "0.2.0+11"
   firebase_ml_model_downloader_platform_interface:
     dependency: transitive
     description:
       name: firebase_ml_model_downloader_platform_interface
-      sha256: "54b2c097c2a296124370727fc93b31a51b673c177c0e289ff3f5093614f34851"
+      sha256: e87e47a4e4a5b8cc9e3fdbb4434ff23825c625fea5e1c99db708e163e4fb3eb3
       url: "https://pub.dev"
     source: hosted
-    version: "0.1.1+29"
+    version: "0.1.1+30"
   firebase_storage:
     dependency: "direct main"
     description:
       name: firebase_storage
-      sha256: "09094544c6860e26b61db6b1e0b8de3b7c8f7c2c033755e9c29eb4ff72431dcd"
+      sha256: fac4ebf20da0ff7c7f23596d741130a85e8bd5fac4cabf8f568f38ba55fba19d
       url: "https://pub.dev"
     source: hosted
-    version: "11.0.13"
+    version: "11.0.14"
   firebase_storage_platform_interface:
     dependency: transitive
     description:
       name: firebase_storage_platform_interface
-      sha256: ddcc3d61b7160cef1441a02d3c5da030347716fc775ddff972fb857700c6c443
+      sha256: c58dedec6d12416306e08dde463f3c65443aa2d5ccc100856ae7da75bab63e29
       url: "https://pub.dev"
     source: hosted
-    version: "4.1.29"
+    version: "4.1.30"
   firebase_storage_web:
     dependency: transitive
     description:
       name: firebase_storage_web
-      sha256: "33947b07685db92b37a3c208e6f5ee9541a439a00476c8a539a4223dbb54b41a"
+      sha256: "28e2c6317214f63af56b1b3f2907d168534a7629ec24269b036556f399063d5a"
       url: "https://pub.dev"
     source: hosted
-    version: "3.3.22"
+    version: "3.3.23"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -270,6 +270,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.7"
+  flutter_svg:
+    dependency: "direct main"
+    description:
+      name: flutter_svg
+      sha256: b9be7260c1fdbe0090a11d9d356fc2c88e14cf33407fc0c1829d76ab13808035
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -424,6 +432,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.8.2"
+  path_parsing:
+    dependency: transitive
+    description:
+      name: path_parsing
+      sha256: e3e67b1629e6f7e8100b367d3db6ba6af4b1f0bb80f64db18ef1fbabd2fa9ccf
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
   path_provider:
     dependency: "direct main"
     description:
@@ -577,26 +593,26 @@ packages:
     dependency: transitive
     description:
       name: syncfusion_flutter_core
-      sha256: "33141f9073c607bd113898d241aa6a03ccc1856a314bd061015180c35d47012f"
+      sha256: "5f7dae40707df507325ee045d1a172aea9f449ac4244d7c52391dd97208eeef8"
       url: "https://pub.dev"
     source: hosted
-    version: "20.4.50"
+    version: "20.4.51"
   syncfusion_flutter_datepicker:
     dependency: "direct main"
     description:
       name: syncfusion_flutter_datepicker
-      sha256: "19f90a9e70c9edf5c23f900af224dea1e12fd9b2108ab528098c3cfd7508c57a"
+      sha256: "5e7bfe47437c1a106f8c4502a13ab7d57ed8195c1578b40ffa50dea1120e26e3"
       url: "https://pub.dev"
     source: hosted
-    version: "20.4.50"
+    version: "20.4.51"
   syncfusion_flutter_gauges:
     dependency: "direct main"
     description:
       name: syncfusion_flutter_gauges
-      sha256: a27244f63a0553880be385435ed7a5bc367a010830161069d56cc26e863c5797
+      sha256: e11893a8680f65dcdcb00937f0ddb3e41e4186292d580757a47c08b76ad688ec
       url: "https://pub.dev"
     source: hosted
-    version: "20.4.50"
+    version: "20.4.51"
   term_glyph:
     dependency: transitive
     description:
@@ -693,6 +709,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.3"
+  vector_graphics:
+    dependency: transitive
+    description:
+      name: vector_graphics
+      sha256: "09562ef5f47aa84f6567495adb6b9cb2a3192b82c352623b8bd00b300d62603b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
+  vector_graphics_codec:
+    dependency: transitive
+    description:
+      name: vector_graphics_codec
+      sha256: "886e57742644ebed024dc3ade29712e37eea1b03d294fb314c0a3386243fe5a6"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
+  vector_graphics_compiler:
+    dependency: transitive
+    description:
+      name: vector_graphics_compiler
+      sha256: "5d9010c4a292766c55395b2288532579a85673f8148460d1e233d98ffe10d24e"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
   vector_math:
     dependency: transitive
     description:
@@ -727,4 +767,4 @@ packages:
     version: "6.2.2"
 sdks:
   dart: ">=2.19.2 <3.0.0"
-  flutter: ">=3.3.0"
+  flutter: ">=3.7.0-0"

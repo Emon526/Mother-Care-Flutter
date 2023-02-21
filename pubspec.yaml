@@ -31,14 +31,15 @@ environment:
 dependencies:
   carousel_slider: ^4.2.1
   cool_stepper: ^1.2.1
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.5
   day_night_time_picker: ^1.1.5
-  firebase_core: ^2.4.1
-  firebase_ml_model_downloader: ^0.2.0+10
-  firebase_storage: ^11.0.13
+  firebase_core: ^2.7.0
+  firebase_ml_model_downloader: ^0.2.0+11
+  firebase_storage: ^11.0.14
   flutter:
     sdk: flutter
   flutter_local_notifications: ^13.0.0
+  flutter_svg: ^2.0.1
   flutter_tflite: ^1.0.1
   image_picker: ^0.8.6+2
   intl: ^0.18.0
@@ -47,8 +48,8 @@ dependencies:
   persistent_bottom_nav_bar: ^5.0.2
   provider: ^6.0.5
   readmore: ^2.2.0
-  syncfusion_flutter_datepicker: ^20.4.50
-  syncfusion_flutter_gauges: ^20.4.50
+  syncfusion_flutter_datepicker: ^20.4.51
+  syncfusion_flutter_gauges: ^20.4.51
   url_launcher: ^6.1.9
 
 dev_dependencies:
