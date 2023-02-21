@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
@@ -10,6 +8,7 @@ import 'package:day_night_time_picker/lib/constants.dart';
 import '../../const/consts.dart';
 import '../../models/remindermodel.dart';
 import '../../providers/reminderprovider.dart';
+import '../../services/notificationservice.dart';
 import '../../widget/responsivesnackbar.dart';
 
 class Reminder extends StatefulWidget {
@@ -23,6 +22,7 @@ class _ReminderState extends State<Reminder> {
   final titleController = TextEditingController();
   final dateController = TextEditingController();
   final timeController = TextEditingController();
+  final _reminderformKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -35,77 +35,108 @@ class _ReminderState extends State<Reminder> {
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                TextField(
-                  textInputAction: TextInputAction.done,
-                  textCapitalization: TextCapitalization.words,
-                  controller: titleController,
-                  decoration: const InputDecoration(
-                    labelText: 'Title',
-                    hintText: 'Menstrual Self Check',
-                    border: OutlineInputBorder(),
+            child: Form(
+              key: _reminderformKey,
+              child: Column(
+                children: [
+                  TextFormField(
+                    textInputAction: TextInputAction.done,
+                    textCapitalization: TextCapitalization.words,
+                    controller: titleController,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please Enter Title';
+                      }
+                      return null;
+                    },
+                    decoration: const InputDecoration(
+                      labelText: 'Title',
+                      hintText: 'Menstrual Self Check',
+                      border: OutlineInputBorder(),
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Flex(
-                  direction: Axis.horizontal,
-                  children: [
-                    Flexible(
-                      flex: 2,
-                      child: TextField(
-                        onTap: () => _showCalender(),
-                        readOnly: true,
-                        controller: dateController,
-                        decoration: const InputDecoration(
-                          labelText: 'Date',
-                          hintText: 'Date',
-                          border: OutlineInputBorder(),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Flex(
+                    direction: Axis.horizontal,
+                    children: [
+                      Flexible(
+                        flex: 2,
+                        child: TextFormField(
+                          onTap: () => _showCalender(),
+                          readOnly: true,
+                          controller: dateController,
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Pick a Date';
+                            }
+                            return null;
+                          },
+                          decoration: const InputDecoration(
+                            labelText: 'Date',
+                            hintText: 'Date',
+                            border: OutlineInputBorder(),
+                          ),
                         ),
                       ),
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    Expanded(
-                      child: TextField(
-                        readOnly: true,
-                        onTap: () => Navigator.of(context).push(
-                          _showClock(),
-                        ),
-                        controller: timeController,
-                        decoration: const InputDecoration(
-                          labelText: 'Time',
-                          hintText: 'Time',
-                          border: OutlineInputBorder(),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      Expanded(
+                        child: TextFormField(
+                          readOnly: true,
+                          onTap: () => Navigator.of(context).push(
+                            _showClock(),
+                          ),
+                          controller: timeController,
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Pick a Time';
+                            }
+                            return null;
+                          },
+                          decoration: const InputDecoration(
+                            labelText: 'Time',
+                            hintText: 'Time',
+                            border: OutlineInputBorder(),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    context.read<ReminderProvider>().addReminder(
-                          reminder: ReminderModel(
-                            reminderTitle: titleController.text.trim(),
-                            reminderDate: dateController.text.trim(),
-                            reminderTime: timeController.text.trim(),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      if (_reminderformKey.currentState!.validate()) {
+                        context.read<ReminderProvider>().addReminder(
+                              reminder: ReminderModel(
+                                reminderTitle: titleController.text.trim(),
+                                reminderDate: dateController.text.trim(),
+                                reminderTime: timeController.text.trim(),
+                              ),
+                            );
+                        NotificationService().showScheduleNotification(
+                          title: titleController.text.trim(),
+                          body: 'It\'s works',
+                          scheduleDateTime:
+                              DateFormat('E, dd MMMM yyyy h:mma').parse(
+                            '${dateController.text} ${timeController.text}',
                           ),
                         );
-                    ResponsiveSnackbar.show(
-                      context,
-                      'Reminder Added',
-                    );
-                    Navigator.pop(context);
-                  },
-                  child: const Text('Add Reminder'),
-                ),
-              ],
+                        ResponsiveSnackbar.show(
+                          context,
+                          'Reminder Added',
+                        );
+                        Navigator.pop(context);
+                      }
+                    },
+                    child: const Text('Add Reminder'),
+                  ),
+                ],
+              ),
             ),
           ),
         ));
@@ -158,7 +189,7 @@ class _ReminderState extends State<Reminder> {
                   onSubmit: (date) {
                     var formattedDate = DateFormat('EEE, dd MMMM yyyy')
                         .format(DateTime.parse(date.toString()));
-                    log(formattedDate.toString());
+                    debugPrint(formattedDate.toString());
                     dateController.text = formattedDate;
                     Navigator.pop(context);
                   },
@@ -168,21 +199,12 @@ class _ReminderState extends State<Reminder> {
                   selectionColor: Theme.of(context).primaryColor,
                   todayHighlightColor: Theme.of(context).primaryColor,
                   backgroundColor: Theme.of(context).colorScheme.secondary,
-
-                  //  onSelectionChanged: (arg) {
-                  // dateController.text = arg.value.toString();
-                  // dateController.text =
-                  //     DateFormat('EEE, dd MMMM yyyy').format(arg.value);
-                  // Navigator.pop(context);
-                  // },
                   showActionButtons: true,
                   enablePastDates: false,
                   selectionMode: DateRangePickerSelectionMode.single,
                   view: DateRangePickerView.month,
                   initialDisplayDate: DateTime.now(),
-                  initialSelectedDate: DateTime.now().add(
-                    const Duration(days: 10),
-                  ),
+                  initialSelectedDate: DateTime.now(),
                 ),
               ),
             ],

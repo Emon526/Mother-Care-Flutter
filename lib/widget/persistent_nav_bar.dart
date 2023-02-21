@@ -5,6 +5,7 @@ import '../providers/nav_bar_provider.dart';
 import '../screens/awareness/awareness.dart';
 import '../screens/breastcancer/breastcancer.dart';
 import '../screens/selfcheck/self_check_page.dart';
+import '../services/notificationservice.dart';
 
 class PersistentNavBar extends StatefulWidget {
   const PersistentNavBar({super.key});
@@ -14,6 +15,12 @@ class PersistentNavBar extends StatefulWidget {
 }
 
 class _PersistentNavBarState extends State<PersistentNavBar> {
+  @override
+  void initState() {
+    super.initState();
+    NotificationService().initNotification();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

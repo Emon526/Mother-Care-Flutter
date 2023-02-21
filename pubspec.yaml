@@ -50,6 +50,7 @@ dependencies:
   readmore: ^2.2.0
   syncfusion_flutter_datepicker: ^20.4.51
   syncfusion_flutter_gauges: ^20.4.51
+  timezone: ^0.9.1
   url_launcher: ^6.1.9
 
 dev_dependencies:
