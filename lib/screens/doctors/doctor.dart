@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
-
 import 'package:readmore/readmore.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import '../../const/consts.dart';
+import '../../models/doctormodel.dart';
 
 class Doctor extends StatelessWidget {
-  const Doctor({super.key});
+  final DoctorModel doctor;
+  const Doctor({
+    super.key,
+    required this.doctor,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Dr.Jakaria Sajib',
+        title: Text(
+          doctor.doctorName,
         ),
       ),
       body: Padding(
@@ -28,7 +31,7 @@ class Doctor extends StatelessWidget {
                     borderRadius:
                         BorderRadius.circular(Consts.DefaultBorderRadius),
                     child: Image.asset(
-                      'assets/images/doctor.jpg',
+                      doctor.doctorimagePath,
                     ),
                   ),
                   Positioned(
@@ -37,30 +40,30 @@ class Doctor extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         Text(
-                          'Dr.Jakaria Sajib',
-                          style: TextStyle(
+                          doctor.doctorName,
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
                             color: Colors.white,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 5,
                         ),
                         Text(
-                          'Medicine Specialist',
-                          style: TextStyle(
+                          '${doctor.speciality} Specialist',
+                          style: const TextStyle(
                             color: Colors.white,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 5,
                         ),
                         Text(
-                          'MBBS,FCPS,MD',
-                          style: TextStyle(
+                          doctor.degisnation,
+                          style: const TextStyle(
                             color: Colors.white,
                           ),
                         ),
@@ -85,12 +88,12 @@ class Doctor extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 10),
                       child: Column(
-                        children: const [
-                          Text('Patients'),
-                          SizedBox(
+                        children: [
+                          const Text('Patients'),
+                          const SizedBox(
                             height: 5,
                           ),
-                          Text('3.08k+'),
+                          Text('${doctor.patient}k+'),
                         ],
                       ),
                     ),
@@ -105,12 +108,12 @@ class Doctor extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 10),
                       child: Column(
-                        children: const [
-                          Text('Experience'),
-                          SizedBox(
+                        children: [
+                          const Text('Experience'),
+                          const SizedBox(
                             height: 5,
                           ),
-                          Text('5+ Years'),
+                          Text('${doctor.experience}+ Years'),
                         ],
                       ),
                     ),
@@ -125,12 +128,12 @@ class Doctor extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 10),
                       child: Column(
-                        children: const [
-                          Text('Review'),
-                          SizedBox(
+                        children: [
+                          const Text('Review'),
+                          const SizedBox(
                             height: 5,
                           ),
-                          Text('2.00k'),
+                          Text('${doctor.review} k'),
                         ],
                       ),
                     ),
@@ -151,7 +154,7 @@ class Doctor extends StatelessWidget {
                 height: 10,
               ),
               ReadMoreText(
-                'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.',
+                doctor.bioGraphy,
                 trimLines: 5,
                 colorClickableText: Colors.red,
                 // trimMode: TrimMode.Line,
@@ -173,7 +176,7 @@ class Doctor extends StatelessWidget {
               ),
               Card(
                 child: InkWell(
-                  onTap: () => _makePhoneCall('0123456789'),
+                  onTap: () => _makePhoneCall(doctor.appointmentNumber),
                   borderRadius:
                       BorderRadius.circular(Consts.DefaultBorderRadius),
                   child: const ListTile(

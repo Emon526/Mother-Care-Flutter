@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../const/consts.dart';
-import '../../widget/drawer_widget.dart';
+import '../../models/doctormodel.dart';
+import '../../providers/doctorprovider.dart';
 import 'doctor.dart';
 
 class DoctorsList extends StatelessWidget {
@@ -14,7 +16,6 @@ class DoctorsList extends StatelessWidget {
           "Doctors",
         ),
       ),
-      // drawer: const DrawerWidget(),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -24,15 +25,20 @@ class DoctorsList extends StatelessWidget {
               mainAxisSpacing: 10,
               crossAxisSpacing: 10,
             ),
-            itemCount: 15,
+            itemCount: context.watch<DoctorProvider>().doctorlist.length,
             itemBuilder: (context, index) {
+              var doctordata =
+                  context.watch<DoctorProvider>().doctorlist[index];
               return _buildDoctorcard(
+                doctorModel: doctordata,
                 context: context,
                 onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const Doctor(),
+                      builder: (context) => Doctor(
+                        doctor: doctordata,
+                      ),
                     ),
                   );
                 },
@@ -44,8 +50,11 @@ class DoctorsList extends StatelessWidget {
     );
   }
 
-  Widget _buildDoctorcard(
-      {required BuildContext context, required Function onTap}) {
+  Widget _buildDoctorcard({
+    required BuildContext context,
+    required Function onTap,
+    required DoctorModel doctorModel,
+  }) {
     return InkWell(
       borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
       onTap: () {
@@ -69,7 +78,7 @@ class DoctorsList extends StatelessWidget {
                   borderRadius:
                       BorderRadius.circular(Consts.DefaultBorderRadius),
                   child: Image.asset(
-                    'assets/images/doctor.jpg',
+                    doctorModel.doctorimagePath,
                     height: 400,
                   ),
                 ),
@@ -82,21 +91,21 @@ class DoctorsList extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     Text(
-                      'Dr.Jakaria Sajib',
-                      style: TextStyle(
+                      doctorModel.doctorName,
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
-                    Text('Medicine'),
-                    SizedBox(
+                    Text(doctorModel.speciality),
+                    const SizedBox(
                       height: 5,
                     ),
-                    Text('Dhaka Medical College'),
+                    Text(doctorModel.medicalCollege),
                   ],
                 ),
               ),

@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'const/consts.dart';
 import 'const/theme.dart';
 import 'firebase_options.dart';
+import 'providers/doctorprovider.dart';
 import 'providers/reminderprovider.dart';
 import 'widget/persistent_nav_bar.dart';
 import 'providers/modelprovider.dart';
@@ -42,6 +43,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => ReminderProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => DoctorProvider(),
         ),
       ],
       builder: (context, child) => Consumer<ThemeProvider>(
