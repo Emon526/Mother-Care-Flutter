@@ -7,6 +7,10 @@ class Styles {
   static ThemeData themeData(
       {required bool isDarkTheme, required BuildContext context}) {
     return ThemeData(
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor:
+            isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor,
+      ),
       brightness: isDarkTheme ? Brightness.dark : Brightness.light,
       visualDensity: VisualDensity.adaptivePlatformDensity,
       primaryColor: isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor,

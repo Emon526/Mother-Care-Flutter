@@ -10,6 +10,7 @@ import 'package:day_night_time_picker/lib/constants.dart';
 import '../../const/consts.dart';
 import '../../models/remindermodel.dart';
 import '../../providers/reminderprovider.dart';
+import '../../widget/responsivesnackbar.dart';
 
 class Reminder extends StatefulWidget {
   const Reminder({super.key});
@@ -96,6 +97,10 @@ class _ReminderState extends State<Reminder> {
                             reminderTime: timeController.text.trim(),
                           ),
                         );
+                    ResponsiveSnackbar.show(
+                      context,
+                      'Reminder Added',
+                    );
                     Navigator.pop(context);
                   },
                   child: const Text('Add Reminder'),

@@ -12,7 +12,7 @@ class ReminderList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: IconButton(
+      floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
             context,
@@ -21,7 +21,7 @@ class ReminderList extends StatelessWidget {
             ),
           );
         },
-        icon: const Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
       appBar: AppBar(
         title: const Text(
