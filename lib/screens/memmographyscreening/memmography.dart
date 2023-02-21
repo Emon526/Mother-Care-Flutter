@@ -23,17 +23,6 @@ class MemmographyPrediction extends StatefulWidget {
 class _MemmographyPredictionState extends State<MemmographyPrediction> {
   ImagePicker picker = ImagePicker();
   File? pickedimage;
-  @override
-  void initState() {
-    context.read<ModelProvider>().initWithLocalModel();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    Tflite.close();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {

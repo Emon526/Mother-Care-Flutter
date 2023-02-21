@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
-
-import '../providers/modelprovider.dart';
 import '../providers/themeprovider.dart';
 import '../screens/doctors/doctorslist.dart';
 import '../screens/memmographyscreening/memmography.dart';
@@ -36,13 +34,13 @@ class DrawerWidget extends StatelessWidget {
                 );
               },
             ),
-            _buildListtile(
-              iconData: Icons.mobile_friendly,
-              tiletitle: 'Delete Model',
-              onTap: () {
-                context.read<ModelProvider>().deleteModel();
-              },
-            ),
+            // _buildListtile(
+            //   iconData: Icons.mobile_friendly,
+            //   tiletitle: 'Delete Model',
+            //   onTap: () {
+            //     context.read<ModelProvider>().deleteModel();
+            //   },
+            // ),
             _buildListtile(
               iconData: Icons.insights_outlined,
               tiletitle: 'Memmography Screening',

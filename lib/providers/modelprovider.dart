@@ -4,48 +4,43 @@ import 'package:path_provider/path_provider.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_tflite/flutter_tflite.dart';
 import 'package:firebase_ml_model_downloader/firebase_ml_model_downloader.dart';
 
 import '../const/consts.dart';
 
 class ModelProvider extends ChangeNotifier {
+  ModelProvider() {
+    checkModel();
+  }
   final storage = FirebaseStorage.instance;
   final modelDownloader = FirebaseModelDownloader.instance;
 
   bool _isDownloading = false;
   bool get isDownloading => _isDownloading;
 
-  FirebaseCustomModel? memmographyPredictionModel;
-  File? memmographyPredictionLabel;
+  static FirebaseCustomModel? memmographyPredictionModel;
+  static File? memmographyPredictionLabel;
 
-  void deleteModel() async {
-    await modelDownloader
-        .deleteDownloadedModel(Consts.MEMMOGRAPHYPREDICTIONMODEL);
-  }
+  // void deleteModel() async {
+  //   await modelDownloader
+  //       .deleteDownloadedModel(Consts.MEMMOGRAPHYPREDICTIONMODEL);
+  //   debugPrint('Model Deleted');
+  // }
 
-  Future<void> initWithLocalModel() async {
+  void checkModel() async {
     _isDownloading = true;
-    final data = await modelDownloader.listDownloadedModels();
+    final model = await modelDownloader.listDownloadedModels();
 
-    if (data.isEmpty) {
+    if (model.isEmpty) {
       memmographyPredictionModel = await downloadModel();
       memmographyPredictionLabel = await downloadLabel();
-
-      await loadTFLiteModel(
-        modelFile: memmographyPredictionModel!.file,
-        labelFile: memmographyPredictionLabel!,
-      );
     } else {
       final Directory appDirectory = await getApplicationDocumentsDirectory();
-      memmographyPredictionModel = data.first;
+      memmographyPredictionModel = model.first;
       memmographyPredictionLabel =
           File('${appDirectory.path}/_${Consts.MEMMOGRAPHYPREDICTIONLABEL}');
-      await loadTFLiteModel(
-        modelFile: memmographyPredictionModel!.file,
-        labelFile: memmographyPredictionLabel!,
-      );
     }
+
     _isDownloading = false;
     notifyListeners();
   }
@@ -53,7 +48,7 @@ class ModelProvider extends ChangeNotifier {
   Future<FirebaseCustomModel> downloadModel() async {
     final model = await modelDownloader.getModel(
         Consts.MEMMOGRAPHYPREDICTIONMODEL,
-        FirebaseModelDownloadType.localModel,
+        FirebaseModelDownloadType.latestModel,
         FirebaseModelDownloadConditions(
           iosAllowsCellularAccess: true,
           iosAllowsBackgroundDownloading: false,
@@ -81,24 +76,5 @@ class ModelProvider extends ChangeNotifier {
             .writeAsBytes(bytes);
 
     return memmographyPredictionLabel!;
-  }
-
-  Future<String> loadTFLiteModel({
-    required File modelFile,
-    required File labelFile,
-  }) async {
-    try {
-      await Tflite.loadModel(
-        model: modelFile.path,
-        labels: labelFile.path,
-        isAsset: false,
-      );
-      return 'Model is loaded';
-    } catch (exception) {
-      debugPrint(
-          'Failed on loading your model to the TFLite interpreter: $exception');
-      debugPrint('The program will not be resumed');
-      rethrow;
-    }
   }
 }
