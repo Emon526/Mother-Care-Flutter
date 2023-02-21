@@ -8,7 +8,7 @@ import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:day_night_time_picker/lib/constants.dart';
 
 import '../../const/consts.dart';
-import '../../models/reminder.dart';
+import '../../models/remindermodel.dart';
 import '../../providers/reminderprovider.dart';
 
 class Reminder extends StatefulWidget {

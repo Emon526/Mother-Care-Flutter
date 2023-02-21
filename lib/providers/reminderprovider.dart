@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../models/reminder.dart';
+import '../models/remindermodel.dart';
 
 class ReminderProvider extends ChangeNotifier {
   final List<ReminderModel> _reminders = [];
