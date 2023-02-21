@@ -4,6 +4,7 @@ import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/reminderprovider.dart';
+import '../../services/notificationservice.dart';
 import 'reminder.dart';
 
 class ReminderList extends StatelessWidget {
@@ -74,13 +75,38 @@ class ReminderList extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              reminder.reminderTitle,
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                                fontSize: 18,
-                              ),
+                            Flex(
+                              direction: Axis.horizontal,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Flexible(
+                                  child: Text(
+                                    reminder.reminderTitle,
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ),
+                                InkWell(
+                                  onTap: () {
+                                    context
+                                        .read<ReminderProvider>()
+                                        .deleteReminder(
+                                          id: reminder.reminderId,
+                                        );
+                                    NotificationService()
+                                        .deleteScheduleNotification(
+                                      id: reminder.reminderId,
+                                    );
+                                  },
+                                  child: const Icon(
+                                    Icons.delete_outline,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ],
                             ),
                             const SizedBox(
                               height: 10,
@@ -94,6 +120,9 @@ class ReminderList extends StatelessWidget {
                                       const Icon(
                                         LineIcons.calendar,
                                         color: Colors.white,
+                                      ),
+                                      const SizedBox(
+                                        width: 5,
                                       ),
                                       Text(
                                         reminder.reminderDate,
@@ -109,6 +138,9 @@ class ReminderList extends StatelessWidget {
                                     const Icon(
                                       LineIcons.clock,
                                       color: Colors.white,
+                                    ),
+                                    const SizedBox(
+                                      width: 5,
                                     ),
                                     Text(
                                       reminder.reminderTime,

@@ -111,14 +111,18 @@ class _ReminderState extends State<Reminder> {
                   ElevatedButton(
                     onPressed: () {
                       if (_reminderformKey.currentState!.validate()) {
+                        int id =
+                            context.read<ReminderProvider>().reminders.length;
                         context.read<ReminderProvider>().addReminder(
                               reminder: ReminderModel(
+                                reminderId: id,
                                 reminderTitle: titleController.text.trim(),
                                 reminderDate: dateController.text.trim(),
                                 reminderTime: timeController.text.trim(),
                               ),
                             );
                         NotificationService().showScheduleNotification(
+                          id: id,
                           title: titleController.text.trim(),
                           body: 'It\'s works',
                           scheduleDateTime:

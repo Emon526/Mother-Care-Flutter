@@ -20,4 +20,9 @@ class ReminderProvider extends ChangeNotifier {
     _reminders.add(reminder);
     notifyListeners();
   }
+
+  deleteReminder({required int id}) {
+    _reminders.removeWhere((element) => element.reminderId == id);
+    notifyListeners();
+  }
 }

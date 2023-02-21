@@ -24,8 +24,14 @@ class NotificationService {
     );
   }
 
+  Future deleteScheduleNotification({
+    required int id,
+  }) async {
+    return notificationsPlugin.cancel(id);
+  }
+
   Future showScheduleNotification({
-    int id = 0,
+    required int id,
     required String title,
     required String body,
     required DateTime scheduleDateTime,
