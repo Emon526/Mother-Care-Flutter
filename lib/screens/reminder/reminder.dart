@@ -23,7 +23,6 @@ class _ReminderState extends State<Reminder> {
   final dateController = TextEditingController();
   final timeController = TextEditingController();
   final _reminderformKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -121,18 +120,22 @@ class _ReminderState extends State<Reminder> {
                                 reminderTime: timeController.text.trim(),
                               ),
                             );
+                        context.read<ReminderProvider>().reminderDate =
+                            DateFormat('E, dd MMMM yyyy h:mma').parse(
+                          '${dateController.text} ${timeController.text}',
+                        );
+
                         NotificationService().showScheduleNotification(
                           id: id,
                           title: titleController.text.trim(),
-                          body: 'It\'s works',
+                          body: 'Reminder ID : $id',
                           scheduleDateTime:
-                              DateFormat('E, dd MMMM yyyy h:mma').parse(
-                            '${dateController.text} ${timeController.text}',
-                          ),
+                              context.read<ReminderProvider>().reminderDate,
                         );
+
                         ResponsiveSnackbar.show(
                           context,
-                          'Reminder Added',
+                          'You will be reminded in ${context.read<ReminderProvider>().getDuration()}',
                         );
                         Navigator.pop(context);
                       }
@@ -148,6 +151,7 @@ class _ReminderState extends State<Reminder> {
 
   _showClock() {
     return showPicker(
+      borderRadius: Consts.DefaultBorderRadius,
       okText: 'OK',
       cancelText: 'CANCEL',
       iosStylePicker: true,
@@ -155,11 +159,11 @@ class _ReminderState extends State<Reminder> {
       barrierDismissible: false,
       okStyle: const TextStyle(
         color: Colors.white,
-        fontWeight: FontWeight.bold,
+        fontWeight: FontWeight.w500,
       ),
       cancelStyle: const TextStyle(
         color: Colors.white,
-        fontWeight: FontWeight.bold,
+        fontWeight: FontWeight.w500,
       ),
       value: context.read<ReminderProvider>().time,
       onChange: (newTime) {
@@ -169,7 +173,7 @@ class _ReminderState extends State<Reminder> {
       // Optional onChange to receive value as DateTime
       onChangeDateTime: (DateTime dateTime) {
         // print(dateTime);
-        debugPrint("[debug datetime]:  $dateTime");
+        // debugPrint("[debug datetime]:  $dateTime");
         timeController.text = DateFormat("h:mma").format(dateTime);
       },
     );
@@ -184,34 +188,74 @@ class _ReminderState extends State<Reminder> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
           ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
-                child: SfDateRangePicker(
+          backgroundColor: Theme.of(context).colorScheme.secondary,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        DateFormat('yyyy').format(
+                            context.watch<ReminderProvider>().seletedDate),
+                        style: const TextStyle(
+                          fontSize: 14,
+                        ),
+                      ),
+                      Text(
+                        DateFormat('EEE, MMM dd').format(
+                            context.watch<ReminderProvider>().seletedDate),
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SfDateRangePicker(
+                  onSelectionChanged: (args) {
+                    context.read<ReminderProvider>().seletedDate =
+                        DateTime.parse(args.value.toString());
+                  },
                   onSubmit: (date) {
-                    var formattedDate = DateFormat('EEE, dd MMMM yyyy')
+                    dateController.text = DateFormat('EEE, dd MMMM yyyy')
                         .format(DateTime.parse(date.toString()));
-                    debugPrint(formattedDate.toString());
-                    dateController.text = formattedDate;
                     Navigator.pop(context);
                   },
                   onCancel: () {
                     Navigator.pop(context);
                   },
+                  // selectionTextStyle: TextStyle(
+                  //   color: Colors.red,
+                  // ),
+
+                  // viewSpacing: 100,
+                  // headerStyle: DateRangePickerHeaderStyle(
+                  //   backgroundColor: Colors.red,
+                  // ),
+
                   selectionColor: Theme.of(context).primaryColor,
-                  todayHighlightColor: Theme.of(context).primaryColor,
-                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                  todayHighlightColor: Colors.white,
+                  backgroundColor: Theme.of(context).primaryColor,
                   showActionButtons: true,
                   enablePastDates: false,
+                  showNavigationArrow: true,
                   selectionMode: DateRangePickerSelectionMode.single,
                   view: DateRangePickerView.month,
                   initialDisplayDate: DateTime.now(),
                   initialSelectedDate: DateTime.now(),
+                  navigationDirection:
+                      DateRangePickerNavigationDirection.vertical,
+                  navigationMode: DateRangePickerNavigationMode.snap,
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },
