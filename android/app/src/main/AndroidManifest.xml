@@ -22,7 +22,7 @@
 
    </queries>
    <application
-        android:label="mothercare"
+        android:label="Mother Care"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
