@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 import 'package:provider/provider.dart';
 import 'package:timezone/data/latest.dart' as tz;
@@ -8,6 +10,7 @@ import 'const/theme.dart';
 import 'firebase_options.dart';
 import 'providers/doctorprovider.dart';
 import 'providers/reminderprovider.dart';
+import 'services/notificationservice.dart';
 import 'widget/persistent_nav_bar.dart';
 import 'providers/modelprovider.dart';
 import 'providers/nav_bar_provider.dart';
@@ -20,7 +23,15 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
   tz.initializeTimeZones();
+  await Permission.notification.isDenied.then((value) {
+    if (value) {
+      Permission.notification.request();
+    }
+  });
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  await NotificationService().initNotification();
   runApp(const MyApp());
 }
 
