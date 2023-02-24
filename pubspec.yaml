@@ -39,12 +39,12 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_local_notifications: ^13.0.0
-  flutter_svg: ^2.0.1
+  flutter_svg: ^2.0.2
   flutter_tflite: ^1.0.1
-  image_picker: ^0.8.6+2
+  image_picker: ^0.8.6+3
   intl: ^0.18.0
   line_icons: ^2.0.1
-  path_provider: ^2.0.12
+  path_provider: ^2.0.13
   permission_handler: ^10.2.0
   persistent_bottom_nav_bar: ^5.0.2
   provider: ^6.0.5
@@ -52,7 +52,7 @@ dependencies:
   syncfusion_flutter_datepicker: ^20.4.51
   syncfusion_flutter_gauges: ^20.4.51
   timezone: ^0.9.1
-  url_launcher: ^6.1.9
+  url_launcher: ^6.1.10
 
 dev_dependencies:
   flutter_launcher_icons: ^0.11.0
@@ -63,26 +63,23 @@ dev_dependencies:
 #   image_path: "assets/logo.png"
 #   adaptive_icon_background: "#ff80ab"
 #   adaptive_icon_foreground: "assets/logo.png"
-  
 #   min_sdk_android: 16 # android min sdk min:16, default 21
 #   android: "ic_launcher"
 #   image_path_android: "assets/logo.png"
-
 #   ios: true
 #   image_path_ios: "assets/logo.png"
 #   remove_alpha_ios: true
-
 #   web:
-#     generate: true
+#     generate: false
 #     image_path: "assets/logo.png"
 #     # background_color: "#hexcode"
 #     # theme_color: "#hexcode"
 #   windows:
-#     generate: true
+#     generate: false
 #     image_path: "assets/logo.png"
 #     # icon_size: 48 # min:48, max:256, default: 48
 #   macos:
-#     generate: true
+#     generate: false
 #     image_path: "assets/logo.png"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
