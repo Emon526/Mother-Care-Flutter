@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
-
+import 'package:intl/intl.dart';
 import '../models/remindermodel.dart';
+import '../services/notificationservice.dart';
 
 class ReminderProvider extends ChangeNotifier {
-  final List<ReminderModel> _reminders = [];
+  ReminderProvider() {
+    getPendingReminders();
+  }
+  List<ReminderModel> _reminders = [];
   List<ReminderModel> get reminders => _reminders;
   DateTime _seletedDate = DateTime.now();
   DateTime get seletedDate => _seletedDate;
@@ -63,5 +67,24 @@ class ReminderProvider extends ChangeNotifier {
         '$days days $hoursRemainder hours $minutesRemainder minutes $secondsRemainder seconds';
 
     return formattedDuration;
+  }
+
+  Future<void> getPendingReminders() async {
+    var pendingNotifications = await NotificationService()
+        .notificationsPlugin
+        .pendingNotificationRequests();
+    _reminders = pendingNotifications.map((notification) {
+      debugPrint(notification.payload.toString());
+      return ReminderModel(
+        reminderId: notification.id,
+        reminderTitle: notification.title ?? '',
+        reminderDate: DateFormat('EEE, dd MMMM yyyy')
+            .format(DateTime.parse(notification.payload ?? '')),
+        reminderTime: DateFormat("h:mma")
+            .format(DateTime.parse(notification.payload ?? '')),
+      );
+    }).toList();
+    debugPrint(reminders.length.toString());
+    notifyListeners();
   }
 }

@@ -131,6 +131,8 @@ class _ReminderState extends State<Reminder> {
                           body: 'Reminder ID : $id',
                           scheduleDateTime:
                               context.read<ReminderProvider>().reminderDate,
+                          payload:
+                              '${context.read<ReminderProvider>().reminderDate}',
                         );
 
                         ResponsiveSnackbar.show(
