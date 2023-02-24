@@ -18,7 +18,7 @@ class DrawerWidget extends StatelessWidget {
       child: SafeArea(
         child: Column(
           children: [
-            _buildHeader(),
+            _buildHeader(context: context),
             const SizedBox(
               height: 10,
             ),
@@ -87,11 +87,16 @@ class DrawerWidget extends StatelessWidget {
     );
   }
 
-  _buildHeader() {
+  _buildHeader({required BuildContext context}) {
     return Stack(
       alignment: Alignment.bottomLeft,
       children: [
-        Image.asset('assets/logo.png'),
+        Container(
+          color: Theme.of(context).primaryColor,
+          child: Image.asset(
+            'assets/logo.png',
+          ),
+        ),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
