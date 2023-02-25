@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import '../models/remindermodel.dart';
 import '../services/notificationservice.dart';
 
@@ -44,9 +43,9 @@ class ReminderProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  String getDuration() {
+  String getDuration(DateTime reminderDate) {
     List<String> durationParts =
-        _reminderDate.difference(DateTime.now()).toString().split(':');
+        reminderDate.difference(DateTime.now()).toString().split(':');
 
     int hours = int.parse(durationParts[0]);
     int minutes = int.parse(durationParts[1]);
@@ -64,9 +63,16 @@ class ReminderProvider extends ChangeNotifier {
     int secondsRemainder = duration.inSeconds % 60;
 
     String formattedDuration =
-        '$days days $hoursRemainder hours $minutesRemainder minutes $secondsRemainder seconds';
-
+        '${checkEmpty(days, 'days')}${checkEmpty(hoursRemainder, 'hours')}${checkEmpty(minutesRemainder, 'minutes')}${checkEmpty(secondsRemainder, 'seconds')}';
     return formattedDuration;
+  }
+
+  String checkEmpty(int duration, String days) {
+    if (duration == 0) {
+      return '';
+    } else {
+      return '$duration $days ';
+    }
   }
 
   Future<void> getPendingReminders() async {
@@ -78,10 +84,7 @@ class ReminderProvider extends ChangeNotifier {
       return ReminderModel(
         reminderId: notification.id,
         reminderTitle: notification.title ?? '',
-        reminderDate: DateFormat('EEE, dd MMMM yyyy')
-            .format(DateTime.parse(notification.payload ?? '')),
-        reminderTime: DateFormat("h:mma")
-            .format(DateTime.parse(notification.payload ?? '')),
+        reminderDateTime: DateTime.parse(notification.payload ?? ''),
       );
     }).toList();
     debugPrint(reminders.length.toString());

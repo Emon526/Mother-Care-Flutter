@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:intl/intl.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
 
@@ -125,7 +126,8 @@ class ReminderList extends StatelessWidget {
                                         width: 5,
                                       ),
                                       Text(
-                                        reminder.reminderDate,
+                                        DateFormat('EEE, dd MMMM yyyy')
+                                            .format(reminder.reminderDateTime),
                                         style: const TextStyle(
                                           color: Colors.white,
                                         ),
@@ -143,7 +145,8 @@ class ReminderList extends StatelessWidget {
                                       width: 5,
                                     ),
                                     Text(
-                                      reminder.reminderTime,
+                                      DateFormat('h:mma')
+                                          .format(reminder.reminderDateTime),
                                       style: const TextStyle(
                                         color: Colors.white,
                                       ),

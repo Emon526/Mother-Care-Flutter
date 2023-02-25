@@ -112,32 +112,29 @@ class _ReminderState extends State<Reminder> {
                       if (_reminderformKey.currentState!.validate()) {
                         int id =
                             context.read<ReminderProvider>().reminders.length;
+                        DateTime reminderDate =
+                            DateFormat('E, dd MMMM yyyy h:mma').parse(
+                          '${dateController.text} ${timeController.text}',
+                        );
                         context.read<ReminderProvider>().addReminder(
                               reminder: ReminderModel(
                                 reminderId: id,
                                 reminderTitle: titleController.text.trim(),
-                                reminderDate: dateController.text.trim(),
-                                reminderTime: timeController.text.trim(),
+                                reminderDateTime: reminderDate,
                               ),
                             );
-                        context.read<ReminderProvider>().reminderDate =
-                            DateFormat('E, dd MMMM yyyy h:mma').parse(
-                          '${dateController.text} ${timeController.text}',
-                        );
 
                         NotificationService().showScheduleNotification(
                           id: id,
                           title: titleController.text.trim(),
                           body: 'Reminder ID : $id',
-                          scheduleDateTime:
-                              context.read<ReminderProvider>().reminderDate,
-                          payload:
-                              '${context.read<ReminderProvider>().reminderDate}',
+                          scheduleDateTime: reminderDate,
+                          payload: '$reminderDate',
                         );
 
                         ResponsiveSnackbar.show(
                           context,
-                          'You will be reminded in ${context.read<ReminderProvider>().getDuration()}',
+                          'You will be reminded in ${context.read<ReminderProvider>().getDuration(reminderDate)}',
                         );
                         Navigator.pop(context);
                       }
@@ -153,6 +150,10 @@ class _ReminderState extends State<Reminder> {
 
   _showClock() {
     return showPicker(
+      dialogInsetPadding: const EdgeInsets.symmetric(
+        horizontal: 20,
+        vertical: 24,
+      ),
       borderRadius: Consts.DefaultBorderRadius,
       okText: 'OK',
       cancelText: 'CANCEL',
@@ -187,6 +188,10 @@ class _ReminderState extends State<Reminder> {
       barrierDismissible: false,
       builder: (BuildContext context) {
         return Dialog(
+          insetPadding: const EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 24,
+          ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
           ),
