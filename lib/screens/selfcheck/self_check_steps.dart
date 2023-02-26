@@ -1,10 +1,7 @@
-// ignore_for_file: body_might_complete_normally_nullable
-
 import 'package:flutter/material.dart';
 import 'package:cool_stepper/cool_stepper.dart';
-
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import '../../const/consts.dart';
-import '../../widget/drawer_widget.dart';
 import 'self_check_finish.dart';
 
 class SelfCheckSteps extends StatefulWidget {
@@ -124,20 +121,14 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
       ),
     ];
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          Consts.APP_NAME,
-        ),
-      ),
-      drawer: const DrawerWidget(),
       body: CoolStepper(
         showErrorSnackbar: false,
         onCompleted: () {
-          Navigator.push(
+          PersistentNavBarNavigator.pushNewScreen(
             context,
-            MaterialPageRoute(
-              builder: (context) => const SelfCheckFinish(),
-            ),
+            screen: const SelfCheckFinish(),
+            withNavBar: true, // OPTIONAL VALUE. True by default.
+            pageTransitionAnimation: PageTransitionAnimation.cupertino,
           );
         },
         steps: steps,

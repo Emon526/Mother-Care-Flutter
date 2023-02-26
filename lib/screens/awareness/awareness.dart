@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 
 import '../../const/consts.dart';
 import '../../providers/nav_bar_provider.dart';
-import '../../widget/drawer_widget.dart';
 
 class Awareness extends StatelessWidget {
   const Awareness({super.key});
@@ -32,12 +31,6 @@ class Awareness extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          Consts.APP_NAME,
-        ),
-      ),
-      drawer: const DrawerWidget(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12.0),
