@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:provider/provider.dart';
 import '../../const/consts.dart';
 import '../../models/doctormodel.dart';
@@ -33,13 +34,13 @@ class DoctorsList extends StatelessWidget {
                 doctorModel: doctordata,
                 context: context,
                 onTap: () {
-                  Navigator.push(
+                  PersistentNavBarNavigator.pushNewScreen(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => Doctor(
-                        doctor: doctordata,
-                      ),
+                    screen: Doctor(
+                      doctor: doctordata,
                     ),
+                    withNavBar: false, // OPTIONAL VALUE. True by default.
+                    pageTransitionAnimation: PageTransitionAnimation.cupertino,
                   );
                 },
               );

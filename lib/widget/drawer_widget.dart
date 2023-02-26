@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:provider/provider.dart';
 import '../providers/themeprovider.dart';
 import '../screens/doctors/doctorslist.dart';
@@ -26,11 +27,11 @@ class DrawerWidget extends StatelessWidget {
               iconData: LineIcons.stethoscope,
               tiletitle: 'Doctors',
               onTap: () {
-                Navigator.push(
+                PersistentNavBarNavigator.pushNewScreen(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => const DoctorsList(),
-                  ),
+                  screen: const DoctorsList(),
+                  withNavBar: false, // OPTIONAL VALUE. True by default.
+                  pageTransitionAnimation: PageTransitionAnimation.cupertino,
                 );
               },
             ),
@@ -45,11 +46,11 @@ class DrawerWidget extends StatelessWidget {
               iconData: Icons.insights_outlined,
               tiletitle: 'Memmography Screening',
               onTap: () {
-                Navigator.push(
+                PersistentNavBarNavigator.pushNewScreen(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => const MemmographyPrediction(),
-                  ),
+                  screen: const MemmographyPrediction(),
+                  withNavBar: false, // OPTIONAL VALUE. True by default.
+                  pageTransitionAnimation: PageTransitionAnimation.cupertino,
                 );
               },
             ),
@@ -57,11 +58,11 @@ class DrawerWidget extends StatelessWidget {
               iconData: LineIcons.calendarAlt,
               tiletitle: 'Reminder',
               onTap: () {
-                Navigator.push(
+                PersistentNavBarNavigator.pushNewScreen(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => const ReminderList(),
-                  ),
+                  screen: const ReminderList(),
+                  withNavBar: false, // OPTIONAL VALUE. True by default.
+                  pageTransitionAnimation: PageTransitionAnimation.cupertino,
                 );
               },
             ),

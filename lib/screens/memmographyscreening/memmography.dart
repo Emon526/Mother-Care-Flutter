@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 
 import 'package:image_picker/image_picker.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:provider/provider.dart';
 
 import '../../const/consts.dart';
@@ -149,12 +150,13 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
                                       .prediction(
                                         image: pickedimage!,
                                       );
-                                  await Navigator.push(
+                                  await PersistentNavBarNavigator.pushNewScreen(
                                     context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          const PredictionResult(),
-                                    ),
+                                    screen: const PredictionResult(),
+                                    withNavBar:
+                                        false, // OPTIONAL VALUE. True by default.
+                                    pageTransitionAnimation:
+                                        PageTransitionAnimation.cupertino,
                                   );
                                 },
                                 icon: const Icon(
