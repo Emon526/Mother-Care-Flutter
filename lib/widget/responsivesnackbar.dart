@@ -6,10 +6,14 @@ class ResponsiveSnackbar {
   static show(BuildContext context, String message) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
+        backgroundColor: Theme.of(context).primaryColor,
         content: Text(
           message,
           textAlign: TextAlign.center,
-          style: const TextStyle(fontSize: 16),
+          style: const TextStyle(
+            fontSize: 16,
+            color: Colors.white,
+          ),
         ),
         duration: const Duration(seconds: 3),
         behavior: SnackBarBehavior.floating,
