@@ -5,6 +5,12 @@ class BreastCancerPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: Placeholder());
+    return const Scaffold(
+      body: Card(
+        child: ListTile(
+          title: Text('What Is Breast Cancer?'),
+        ),
+      ),
+    );
   }
 }
