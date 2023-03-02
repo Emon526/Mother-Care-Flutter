@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -16,7 +17,7 @@ class Doctor extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          doctor.doctorName,
+          doctor.doctorname,
         ),
       ),
       body: Padding(
@@ -30,8 +31,16 @@ class Doctor extends StatelessWidget {
                   ClipRRect(
                     borderRadius:
                         BorderRadius.circular(Consts.DefaultBorderRadius),
-                    child: Image.asset(
-                      doctor.doctorimagePath,
+                    child: CachedNetworkImage(
+                      fit: BoxFit.fitHeight,
+                      width: double.infinity,
+                      imageUrl: doctor.doctorimagePath,
+                      progressIndicatorBuilder:
+                          (context, url, downloadProgress) => Center(
+                              child: CircularProgressIndicator(
+                                  value: downloadProgress.progress)),
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
                     ),
                   ),
                   Positioned(
@@ -42,7 +51,7 @@ class Doctor extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          doctor.doctorName,
+                          doctor.doctorname,
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
@@ -62,7 +71,7 @@ class Doctor extends StatelessWidget {
                           height: 5,
                         ),
                         Text(
-                          doctor.degisnation,
+                          doctor.degree,
                           style: const TextStyle(
                             color: Colors.white,
                           ),

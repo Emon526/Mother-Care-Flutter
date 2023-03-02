@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 class Consts {
   static const THEME_STATUS = "THEME_STATUS";
+  static const BASE_URL = 'https://mother-care.onrender.com';
   static const APP_NAME = "Mother Care";
   static const LOGO = 'assets/logo.png';
   static const TITLE_1 = '';
