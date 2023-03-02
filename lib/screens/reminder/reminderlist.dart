@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 
 import '../../providers/reminderprovider.dart';
 import '../../services/notificationservice.dart';
+import '../../widget/emptywidget.dart';
 import 'reminder.dart';
 
 class ReminderList extends StatelessWidget {
@@ -32,28 +33,9 @@ class ReminderList extends StatelessWidget {
         ),
       ),
       body: context.watch<ReminderProvider>().reminders.isEmpty
-          ? Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Flexible(
-                  child: SvgPicture.asset(
-                    'assets/images/emptyreminder.svg',
-                    semanticsLabel: 'Empty Reminder',
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const Flexible(
-                  child: Text(
-                    'No reminder Added Yet!',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
-                  ),
-                ),
-              ],
+          ? const EmptyWidget(
+              svgAsset: 'assets/images/emptyreminder.svg',
+              message: 'No reminder Added Yet!',
             )
           : ListView.builder(
               itemCount: context.watch<ReminderProvider>().reminders.length,
