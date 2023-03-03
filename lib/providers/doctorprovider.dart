@@ -25,4 +25,11 @@ class DoctorProvider extends ChangeNotifier {
       return lastdata.compareTo(firstdata);
     });
   }
+
+  // List<DoctorModel> getFilteredDoctor({required String searchQuery}) {
+  //   return _doctorList
+  //       .where((element) =>
+  //           element.location.toLowerCase().contains(searchQuery.toLowerCase()))
+  //       .toList();
+  // }
 }
