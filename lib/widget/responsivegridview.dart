@@ -24,10 +24,10 @@ class ResponsiveGridView extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         final double containerWidth = constraints.maxWidth;
-        debugPrint(containerWidth.toString());
+        // debugPrint(containerWidth.toString());
         final int itemPerRow =
             (containerWidth / (maxWidth + crossAxisSpacing)).floor();
-        debugPrint(itemPerRow.toString());
+        // debugPrint(itemPerRow.toString());
         return GridView.builder(
           shrinkWrap: true,
           physics: const BouncingScrollPhysics(),
