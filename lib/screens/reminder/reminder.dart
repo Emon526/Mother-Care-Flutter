@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:intl/intl.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
-import 'package:day_night_time_picker/lib/constants.dart';
 
 import '../../const/consts.dart';
 import '../../models/remindermodel.dart';
@@ -150,6 +149,8 @@ class _ReminderState extends State<Reminder> {
 
   _showClock() {
     return showPicker(
+      // accentColor: Colors.red,
+      // barrierColor: Colors.black,
       dialogInsetPadding: const EdgeInsets.symmetric(
         horizontal: 20,
         vertical: 24,
@@ -172,7 +173,7 @@ class _ReminderState extends State<Reminder> {
       onChange: (newTime) {
         context.read<ReminderProvider>().time = newTime;
       },
-      minuteInterval: MinuteInterval.ONE,
+      minuteInterval: TimePickerInterval.ONE,
       // Optional onChange to receive value as DateTime
       onChangeDateTime: (DateTime dateTime) {
         // print(dateTime);

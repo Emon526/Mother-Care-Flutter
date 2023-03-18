@@ -1,3 +1,4 @@
+import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:flutter/material.dart';
 import '../models/remindermodel.dart';
 import '../services/notificationservice.dart';
@@ -22,13 +23,12 @@ class ReminderProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  TimeOfDay _time = TimeOfDay.fromDateTime(
-    DateTime.now().add(
-      const Duration(minutes: 1),
-    ),
+  Time _time = Time(
+    hour: DateTime.now().hour,
+    minute: DateTime.now().minute,
   );
-  TimeOfDay get time => _time;
-  set time(TimeOfDay newtime) {
+  Time get time => _time;
+  set time(Time newtime) {
     _time = newtime;
     notifyListeners();
   }
