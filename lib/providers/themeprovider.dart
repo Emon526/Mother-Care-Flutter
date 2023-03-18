@@ -13,7 +13,7 @@ class ThemeProvider with ChangeNotifier {
   //   notifyListeners();
   // }
 
-  ThemeMode _themeMode = ThemeMode.system;
+  ThemeMode _themeMode = ThemeMode.light;
   ThemeMode get themeMode => _themeMode;
 
   set themeMode(ThemeMode themeMode) {
