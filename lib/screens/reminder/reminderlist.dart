@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
@@ -15,6 +14,8 @@ class ReminderList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final viewPadding = MediaQuery.of(context).viewPadding;
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -33,25 +34,24 @@ class ReminderList extends StatelessWidget {
         ),
       ),
       body: context.watch<ReminderProvider>().reminders.isEmpty
-          ? const EmptyWidget(
+          ? EmptyWidget(
+              onRefresh: () {
+                return context.read<ReminderProvider>().getPendingReminders();
+              },
+              viewPadding: viewPadding,
+              size: size,
               svgAsset: 'assets/images/emptyreminder.svg',
               message: 'No reminder Added Yet!',
             )
-          : ListView.builder(
-              itemCount: context.watch<ReminderProvider>().reminders.length,
-              itemBuilder: (context, index) {
-                var reminder =
-                    context.watch<ReminderProvider>().reminders[index];
-                return Card(
-                  child: InkWell(
-                    onTap: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => const Reminder(),
-                      //   ),
-                      // );
-                    },
+          : RefreshIndicator(
+              onRefresh: () =>
+                  context.read<ReminderProvider>().getPendingReminders(),
+              child: ListView.builder(
+                itemCount: context.watch<ReminderProvider>().reminders.length,
+                itemBuilder: (context, index) {
+                  var reminder =
+                      context.watch<ReminderProvider>().reminders[index];
+                  return Card(
                     child: Material(
                       color: Theme.of(context).primaryColor,
                       child: Padding(
@@ -142,9 +142,9 @@ class ReminderList extends StatelessWidget {
                         ),
                       ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
     );
   }
