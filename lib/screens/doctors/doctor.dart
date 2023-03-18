@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
@@ -34,13 +36,15 @@ class Doctor extends StatelessWidget {
                     child: CachedNetworkImage(
                       fit: BoxFit.fitHeight,
                       width: double.infinity,
-                      imageUrl: doctor.doctorimagePath,
+                      imageUrl:
+                          "data:image/png;base64,${doctor.doctorimagePath}",
                       progressIndicatorBuilder:
                           (context, url, downloadProgress) => Center(
                               child: CircularProgressIndicator(
                                   value: downloadProgress.progress)),
-                      errorWidget: (context, url, error) =>
-                          const Icon(Icons.error),
+                      errorWidget: (context, url, error) => Image.memory(
+                        base64Decode(doctor.doctorimagePath),
+                      ),
                     ),
                   ),
                   Positioned(

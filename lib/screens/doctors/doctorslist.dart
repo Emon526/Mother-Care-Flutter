@@ -5,51 +5,92 @@ import 'package:provider/provider.dart';
 import '../../const/consts.dart';
 import '../../models/doctormodel.dart';
 import '../../providers/doctorprovider.dart';
+import '../../utils/exception_hander.dart';
 import '../../widget/ResponsiveGridView.dart';
+import '../../widget/emptywidget.dart';
+import '../../widget/errorwidget.dart';
 import 'doctor.dart';
+import 'dart:convert';
 
 class DoctorsList extends StatelessWidget {
   const DoctorsList({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final viewPadding = MediaQuery.of(context).viewPadding;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
           "Doctors",
         ),
       ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: context.watch<DoctorProvider>().isLoading
-              ? const Center(
-                  child: CircularProgressIndicator(),
-                )
-              : ResponsiveGridView(
-                  crossAxisCount: 2,
-                  itemCount: context.watch<DoctorProvider>().doctorlist.length,
-                  itemBuilder: (context, index) {
-                    var doctordata =
-                        context.watch<DoctorProvider>().doctorlist[index];
-                    return _buildDoctorcard(
-                      doctorModel: doctordata,
-                      context: context,
-                      onTap: () {
-                        PersistentNavBarNavigator.pushNewScreen(
-                          context,
-                          screen: Doctor(
-                            doctor: doctordata,
-                          ),
-                          withNavBar: false, // OPTIONAL VALUE. True by default.
-                          pageTransitionAnimation:
-                              PageTransitionAnimation.cupertino,
-                        );
-                      },
-                    );
-                  },
+      body: FutureBuilder<List<DoctorModel>>(
+        future: context.watch<DoctorProvider>().doctorsList(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData &&
+              snapshot.connectionState == ConnectionState.done) {
+            List<DoctorModel> doctors = snapshot.data!;
+
+            if (doctors.isEmpty) {
+              return EmptyWidget(
+                onRefresh: () => context.read<DoctorProvider>().refresh(),
+                viewPadding: viewPadding,
+                size: size,
+                svgAsset: 'assets/images/doctor.svg',
+                message: 'No Doctor Found!',
+              );
+            }
+
+            return RefreshIndicator(
+              onRefresh: () => context.read<DoctorProvider>().refresh(),
+              child: SingleChildScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: ResponsiveGridView(
+                    crossAxisCount: 2,
+                    itemCount: doctors.length,
+                    itemBuilder: (context, index) {
+                      var doctordata = doctors[index];
+                      return _buildDoctorcard(
+                        doctorModel: doctordata,
+                        context: context,
+                        onTap: () {
+                          PersistentNavBarNavigator.pushNewScreen(
+                            context,
+                            screen: Doctor(
+                              doctor: doctordata,
+                            ),
+                            withNavBar:
+                                false, // OPTIONAL VALUE. True by default.
+                            pageTransitionAnimation:
+                                PageTransitionAnimation.cupertino,
+                          );
+                        },
+                      );
+                    },
+                  ),
                 ),
-        ),
+              ),
+            );
+          }
+
+          if (snapshot.hasError) {
+            var error = snapshot.error as ErrorModel;
+
+            return CustomErrorWidget(
+              onRefresh: () => context.read<DoctorProvider>().refresh(),
+              svgAsset: error.url,
+              message: error.message,
+              size: size,
+              viewPadding: viewPadding,
+            );
+          }
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        },
       ),
     );
   }
@@ -68,7 +109,6 @@ class DoctorsList extends StatelessWidget {
       child: LayoutBuilder(
         builder: (context, constraints) {
           final double containerWidth = constraints.maxWidth;
-          debugPrint(containerWidth.toString());
           final double width =
               containerWidth > maxWidth ? maxWidth : containerWidth;
           return Container(
@@ -99,13 +139,15 @@ class DoctorsList extends StatelessWidget {
                         ),
                       ),
                       width: double.infinity,
-                      imageUrl: doctorModel.doctorimagePath,
+                      imageUrl:
+                          "data:image/png;base64,${doctorModel.doctorimagePath}",
                       progressIndicatorBuilder:
                           (context, url, downloadProgress) => Center(
                               child: CircularProgressIndicator(
                                   value: downloadProgress.progress)),
-                      errorWidget: (context, url, error) =>
-                          const Icon(Icons.error),
+                      errorWidget: (context, url, error) => Image.memory(
+                        base64Decode(doctorModel.doctorimagePath),
+                      ),
                     ),
                   ),
                 ),

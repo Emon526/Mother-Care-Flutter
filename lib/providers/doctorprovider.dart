@@ -1,21 +1,29 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
-
 import '../models/doctormodel.dart';
 import '../services/doctorapiservice.dart';
+import '../utils/exception_hander.dart';
 
 class DoctorProvider extends ChangeNotifier {
-  bool isLoading = true;
-
   List<DoctorModel> _doctorList = [];
   List<DoctorModel> get doctorlist => _doctorList;
-  DoctorProvider() {
-    fatchDoctors();
-  }
-  void fatchDoctors() async {
-    _doctorList = await DoctorsApiService.doctorslist();
-    sortDoctors();
-    isLoading = false;
-    notifyListeners();
+
+  Future<List<DoctorModel>> doctorsList() async {
+    try {
+      _doctorList = [];
+      var response = await DoctorsApiService.doctorslist();
+      var decodeddoctorsList = jsonDecode(response.body)['doctors'];
+      for (var doctor in decodeddoctorsList) {
+        DoctorModel newDoctor = DoctorModel.fromMap(doctor);
+        _doctorList.add(newDoctor);
+      }
+
+      sortDoctors();
+    } catch (e) {
+      throw ExceptionHandlers.getExceptionString(e);
+    }
+
+    return _doctorList;
   }
 
   void sortDoctors() {
@@ -24,6 +32,11 @@ class DoctorProvider extends ChangeNotifier {
       var lastdata = b.review;
       return lastdata.compareTo(firstdata);
     });
+  }
+
+  refresh() async {
+    _doctorList = await doctorsList();
+    notifyListeners();
   }
 
   // List<DoctorModel> getFilteredDoctor({required String searchQuery}) {

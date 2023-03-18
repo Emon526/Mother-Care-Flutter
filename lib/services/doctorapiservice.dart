@@ -1,10 +1,6 @@
-import 'dart:convert';
-
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:mothercare/models/doctormodel.dart';
-
 import '../const/consts.dart';
+import '../utils/exception_hander.dart';
 
 class DoctorsApiService {
   static const String _baseUrl = "${Consts.BASE_URL}/doctors";
@@ -44,20 +40,28 @@ class DoctorsApiService {
   //   return notes;
   // }
 
-  static Future<List<DoctorModel>> doctorslist() async {
-    List<DoctorModel> doctors = [];
-    try {
-      Uri requestUri = Uri.parse("$_baseUrl/list");
-      var response = await http.post(requestUri);
-      var decoded = jsonDecode(response.body);
+  // static Future<List<DoctorModel>> doctorslist() async {
+  //   List<DoctorModel> doctors = [];
+  //   try {
+  //     Uri requestUri = Uri.parse("$_baseUrl/lis");
+  //     var response = await http.post(requestUri);
+  //     var decoded = ExceptionHandlers.processResponse(response);
+  //     for (var doctor in decoded) {
+  //       DoctorModel newDoctor = DoctorModel.fromMap(doctor);
+  //       doctors.add(newDoctor);
+  //     }
+  //     return doctors;
+  //   } catch (e) {
+  //     // debugPrint(e.toString());
+  //     throw e.toString();
+  //     // throw ExceptionHandlers.getExceptionString(e);
+  //   }
+  // }
 
-      for (var doctor in decoded) {
-        DoctorModel newDoctor = DoctorModel.fromMap(doctor);
-        doctors.add(newDoctor);
-      }
-    } catch (e) {
-      debugPrint(e.toString());
-    }
-    return doctors;
+  static Future doctorslist() async {
+    Uri requestUri = Uri.parse("$_baseUrl/list");
+    var response = await http.post(requestUri);
+    var decoded = ExceptionHandlers.processResponse(response);
+    return decoded;
   }
 }
