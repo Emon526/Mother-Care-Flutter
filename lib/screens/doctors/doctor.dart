@@ -1,11 +1,11 @@
-import 'dart:convert';
-
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:readmore/readmore.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../const/consts.dart';
 import '../../models/doctormodel.dart';
+import '../../providers/doctorprovider.dart';
 
 class Doctor extends StatelessWidget {
   final DoctorModel doctor;
@@ -22,191 +22,187 @@ class Doctor extends StatelessWidget {
           doctor.doctorname,
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Stack(
-                children: [
-                  ClipRRect(
+      body: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constraints) {
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: constraints.maxWidth,
+                  height: constraints.maxWidth,
+                  child: ClipRRect(
                     borderRadius:
                         BorderRadius.circular(Consts.DefaultBorderRadius),
-                    child: CachedNetworkImage(
-                      fit: BoxFit.fitHeight,
-                      width: double.infinity,
-                      imageUrl:
-                          "data:image/png;base64,${doctor.doctorimagePath}",
-                      progressIndicatorBuilder:
-                          (context, url, downloadProgress) => Center(
-                              child: CircularProgressIndicator(
-                                  value: downloadProgress.progress)),
-                      errorWidget: (context, url, error) => Image.memory(
-                        base64Decode(doctor.doctorimagePath),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 20,
-                    right: 20,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          doctor.doctorname,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                            color: Colors.white,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          '${doctor.speciality} Specialist',
-                          style: const TextStyle(
-                            color: Colors.white,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          doctor.degree,
-                          style: const TextStyle(
-                            color: Colors.white,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                        border:
-                            Border.all(color: Theme.of(context).primaryColor),
-                        borderRadius:
-                            BorderRadius.circular(Consts.DefaultBorderRadius)),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 10),
-                      child: Column(
-                        children: [
-                          const Text('Patients'),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          Text('${doctor.patient}k+'),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                        border:
-                            Border.all(color: Theme.of(context).primaryColor),
-                        borderRadius:
-                            BorderRadius.circular(Consts.DefaultBorderRadius)),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 10),
-                      child: Column(
-                        children: [
-                          const Text('Experience'),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          Text('${doctor.experience}+ Years'),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                        border:
-                            Border.all(color: Theme.of(context).primaryColor),
-                        borderRadius:
-                            BorderRadius.circular(Consts.DefaultBorderRadius)),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 10),
-                      child: Column(
-                        children: [
-                          const Text('Review'),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          Text('${doctor.review} k'),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const Text(
-                'Biography',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              ReadMoreText(
-                doctor.bioGraphy,
-                trimLines: 5,
-                colorClickableText: Colors.red,
-                // trimMode: TrimMode.Line,
-                trimMode: TrimMode.Length,
+                    child: FutureBuilder(
+                      future: context
+                          .watch<DoctorProvider>()
+                          .getDoctorImage(doctor.doctorimagePath),
+                      builder: (BuildContext context,
+                          AsyncSnapshot<Uint8List?> snapshot) {
+                        if (snapshot.connectionState == ConnectionState.done &&
+                            snapshot.hasData) {
+                          return Image.memory(
+                            snapshot.data!,
+                            fit: BoxFit.fill,
+                          );
+                        }
 
-                trimCollapsedText: 'Read more',
-                trimExpandedText: 'Show less',
-                moreStyle: TextStyle(
-                    fontSize: 14,
+                        if (snapshot.hasError) {
+                          return SizedBox(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: const [
+                                Icon(Icons.error_outline),
+                                Text('Unable to Load Image'),
+                              ],
+                            ),
+                          );
+                        }
+
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      },
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  doctor.doctorname,
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: Theme.of(context).primaryColor),
-                lessStyle: TextStyle(
-                    fontSize: 14,
+                    fontSize: 24,
+                  ),
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  '${doctor.speciality} Specialist',
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  doctor.degree,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Flex(
+                  direction: Axis.horizontal,
+                  children: [
+                    Expanded(
+                      child: Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                color: Theme.of(context).primaryColor),
+                            borderRadius: BorderRadius.circular(
+                                Consts.DefaultBorderRadius)),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 10),
+                          child: Column(
+                            children: [
+                              const Text('Experience'),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              Text('${doctor.experience}+ Years'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                color: Theme.of(context).primaryColor),
+                            borderRadius: BorderRadius.circular(
+                                Consts.DefaultBorderRadius)),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 10),
+                          child: Column(
+                            children: [
+                              const Text('Rating'),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              Text('${doctor.review} k'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                const Text(
+                  'Biography',
+                  style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: Theme.of(context).primaryColor),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Card(
-                child: InkWell(
-                  onTap: () => _makePhoneCall(doctor.appointmentNumber),
-                  borderRadius:
-                      BorderRadius.circular(Consts.DefaultBorderRadius),
-                  child: const ListTile(
-                    title: Text(
-                      'Call for Appointment',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                ReadMoreText(
+                  doctor.bioGraphy,
+                  trimLines: 5,
+                  colorClickableText: Colors.red,
+                  // trimMode: TrimMode.Line,
+                  trimMode: TrimMode.Length,
+
+                  trimCollapsedText: 'Read more',
+                  trimExpandedText: 'Show less',
+                  moreStyle: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).primaryColor),
+                  lessStyle: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).primaryColor),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Card(
+                  child: InkWell(
+                    onTap: () => _makePhoneCall(doctor.appointmentNumber),
+                    borderRadius:
+                        BorderRadius.circular(Consts.DefaultBorderRadius),
+                    child: const ListTile(
+                      title: Text(
+                        'Call for Appointment',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-      ),
+        );
+      }),
     );
   }
 

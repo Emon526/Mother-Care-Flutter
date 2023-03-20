@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../models/doctormodel.dart';
 import '../services/doctorapiservice.dart';
 import '../utils/exception_hander.dart';
@@ -45,4 +46,10 @@ class DoctorProvider extends ChangeNotifier {
   //           element.location.toLowerCase().contains(searchQuery.toLowerCase()))
   //       .toList();
   // }
+
+  Future<Uint8List?> getDoctorImage(String imagebyte) async {
+    // debugPrint(imagebyte);
+
+    return base64Decode(imagebyte);
+  }
 }

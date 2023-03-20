@@ -38,7 +38,7 @@ class ResponsiveGridView extends StatelessWidget {
             childAspectRatio: aspectRatio,
             mainAxisSpacing: mainAxisSpacing,
             crossAxisSpacing: crossAxisSpacing,
-            mainAxisExtent: 310,
+            // mainAxisExtent: 310,
           ),
           itemBuilder: itemBuilder,
         );

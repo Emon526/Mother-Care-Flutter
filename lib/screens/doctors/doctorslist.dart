@@ -1,5 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:provider/provider.dart';
 import '../../const/consts.dart';
@@ -10,7 +10,6 @@ import '../../widget/ResponsiveGridView.dart';
 import '../../widget/emptywidget.dart';
 import '../../widget/errorwidget.dart';
 import 'doctor.dart';
-import 'dart:convert';
 
 class DoctorsList extends StatelessWidget {
   const DoctorsList({super.key});
@@ -99,7 +98,7 @@ class DoctorsList extends StatelessWidget {
     required BuildContext context,
     required Function onTap,
     required DoctorModel doctorModel,
-    double maxWidth = 210,
+    // double maxWidth = 210,
   }) {
     return InkWell(
       borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
@@ -109,6 +108,7 @@ class DoctorsList extends StatelessWidget {
       child: LayoutBuilder(
         builder: (context, constraints) {
           final double containerWidth = constraints.maxWidth;
+          final double maxWidth = MediaQuery.of(context).size.width * 0.8;
           final double width =
               containerWidth > maxWidth ? maxWidth : containerWidth;
           return Container(
@@ -123,30 +123,48 @@ class DoctorsList extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ClipRRect(
-                    borderRadius:
-                        BorderRadius.circular(Consts.DefaultBorderRadius),
-                    child: CachedNetworkImage(
-                      height: 200,
-                      imageBuilder: (context, imageProvider) => Container(
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: imageProvider,
-                            fit: BoxFit.fitHeight,
-                          ),
-                        ),
-                      ),
-                      width: double.infinity,
-                      imageUrl:
-                          "data:image/png;base64,${doctorModel.doctorimagePath}",
-                      progressIndicatorBuilder:
-                          (context, url, downloadProgress) => Center(
-                              child: CircularProgressIndicator(
-                                  value: downloadProgress.progress)),
-                      errorWidget: (context, url, error) => Image.memory(
-                        base64Decode(doctorModel.doctorimagePath),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ClipRRect(
+                      borderRadius:
+                          BorderRadius.circular(Consts.DefaultBorderRadius),
+                      child: FutureBuilder(
+                        future: context
+                            .watch<DoctorProvider>()
+                            .getDoctorImage(doctorModel.doctorimagePath),
+                        builder: (BuildContext context,
+                            AsyncSnapshot<Uint8List?> snapshot) {
+                          if (snapshot.connectionState ==
+                                  ConnectionState.done &&
+                              snapshot.hasData) {
+                            return Image.memory(
+                              snapshot.data!,
+                              errorBuilder: (context, error, stackTrace) =>
+                                  Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: const [
+                                  Icon(Icons.error_outline),
+                                  Text('Unable to Load Image'),
+                                ],
+                              ),
+                            );
+                          }
+
+                          if (snapshot.hasError) {
+                            return Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: const [
+                                Icon(Icons.error_outline),
+                                Text('Unable to Load Image'),
+                              ],
+                            );
+                          }
+
+                          return const CircularProgressIndicator();
+                        },
                       ),
                     ),
                   ),
