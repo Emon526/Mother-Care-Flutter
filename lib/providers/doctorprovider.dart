@@ -29,8 +29,8 @@ class DoctorProvider extends ChangeNotifier {
 
   void sortDoctors() {
     _doctorList.sort((a, b) {
-      var firstdata = a.review;
-      var lastdata = b.review;
+      var firstdata = a.rating;
+      var lastdata = b.rating;
       return lastdata.compareTo(firstdata);
     });
   }

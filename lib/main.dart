@@ -76,6 +76,7 @@ class MyApp extends StatelessWidget {
           ),
           themeMode: context.watch<ThemeProvider>().themeMode,
           home: const PersistentNavBar(),
+          // home: const DoctorsList(),
           //   initialRoute: RouteManager.initialRoute,
           //   onGenerateRoute: RouteManager.generateRoute,
         ),

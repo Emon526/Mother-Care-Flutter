@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:readmore/readmore.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -140,7 +141,15 @@ class Doctor extends StatelessWidget {
                               const SizedBox(
                                 height: 5,
                               ),
-                              Text('${doctor.review} k'),
+                              RatingBarIndicator(
+                                itemSize: 15,
+                                rating: double.parse(doctor.rating),
+                                physics: const BouncingScrollPhysics(),
+                                itemBuilder: (context, _) => const Icon(
+                                  Icons.star,
+                                  color: Colors.amber,
+                                ),
+                              ),
                             ],
                           ),
                         ),
