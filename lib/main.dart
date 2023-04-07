@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mothercare/providers/breastcancerprovider.dart';
 import 'package:mothercare/screens/doctors/doctorslist.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -60,6 +61,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => DoctorProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => BreastCancerProvider(),
         ),
       ],
       builder: (context, child) => Consumer<ThemeProvider>(

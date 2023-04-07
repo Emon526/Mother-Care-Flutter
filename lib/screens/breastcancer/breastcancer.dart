@@ -1,24 +1,75 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
+import '../../const/consts.dart';
 import '../../models/articlemodel.dart';
+import '../../providers/breastcancerprovider.dart';
+import '../../utils/exception_hander.dart';
+import '../../widget/emptywidget.dart';
+import '../../widget/errorwidget.dart';
 
 class BreastCancerPage extends StatelessWidget {
   const BreastCancerPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final viewPadding = MediaQuery.of(context).viewPadding;
     return Scaffold(
-      body: ListView.builder(
-        itemCount: 5,
-        itemBuilder: (context, index) => responsiveArticleTile(
-          article: ArticleModel(
-            articleId: 1,
-            articleTitle: 'What Is Breast Cancer?',
-            articleDescription:
-                'Breast cancer is a disease in which cells in the breast grow out of control. There are different kinds of breast cancer. The kind of breast cancer depends on which cells in the breast turn into cancer.Breast cancer can begin in different parts of the breast. A breast is made up of three main parts: lobules, ducts, and connective tissue. The lobules are the glands that produce milk. The ducts are tubes that carry milk to the nipple. The connective tissue (which consists of fibrous and fatty tissue) surrounds and holds everything together. Most breast cancers begin in the ducts or lobules.Breast cancer can spread outside the breast through blood vessels and lymph vessels. When breast cancer spreads to other parts of the body, it is said to have metastasized.',
-            articleImage: 'assets/images/breast_cancer_image.jpg',
-          ),
-        ),
+      body: FutureBuilder<List<ArticleModel>>(
+        future: context.watch<BreastCancerProvider>().articlesList(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData &&
+              snapshot.connectionState == ConnectionState.done) {
+            List<ArticleModel> articles = snapshot.data!;
+
+            if (articles.isEmpty) {
+              return EmptyWidget(
+                onRefresh: () => context.read<BreastCancerProvider>().refresh(),
+                viewPadding: viewPadding,
+                size: size,
+                svgAsset: 'assets/images/doctor.svg',
+                message: 'No Article Found!',
+              );
+            }
+
+            return RefreshIndicator(
+              onRefresh: () => context.read<BreastCancerProvider>().refresh(),
+              child: SingleChildScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: articles.length,
+                    itemBuilder: (context, index) {
+                      var articlesdata = articles[index];
+                      return responsiveArticleTile(
+                        article: articlesdata,
+                      );
+                    },
+                  ),
+                ),
+              ),
+            );
+          }
+
+          if (snapshot.hasError) {
+            var error = snapshot.error as ErrorModel;
+
+            return CustomErrorWidget(
+              onRefresh: () => context.read<BreastCancerProvider>().refresh(),
+              svgAsset: error.url,
+              message: error.message,
+              size: size,
+              viewPadding: viewPadding,
+            );
+          }
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        },
       ),
     );
   }
@@ -29,7 +80,12 @@ class BreastCancerPage extends StatelessWidget {
         trailing: const SizedBox(),
         textColor: Colors.white,
         collapsedTextColor: Colors.white,
-        title: Text(article.articleTitle),
+        title: Text(
+          article.articleTitle,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         children: [
           LayoutBuilder(
             builder: (context, constraints) {
@@ -50,13 +106,50 @@ class BreastCancerPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      width: imageWidth,
-                      child: Image.asset(
-                        article.articleImage,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+                    article.articleImage != null
+                        ? SizedBox(
+                            width: imageWidth,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(
+                                  Consts.DefaultBorderRadius),
+                              child: FutureBuilder(
+                                future: context
+                                    .watch<BreastCancerProvider>()
+                                    .getArticleImage(article.articleImage!),
+                                builder: (BuildContext context,
+                                    AsyncSnapshot<Uint8List?> snapshot) {
+                                  if (snapshot.connectionState ==
+                                          ConnectionState.done &&
+                                      snapshot.hasData) {
+                                    return Image.memory(
+                                      snapshot.data!,
+                                      fit: BoxFit.fill,
+                                    );
+                                  }
+
+                                  if (snapshot.hasError) {
+                                    return SizedBox(
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: const [
+                                          Icon(Icons.error_outline),
+                                          Text('Unable to Load Image'),
+                                        ],
+                                      ),
+                                    );
+                                  }
+
+                                  return const Center(
+                                    child: CircularProgressIndicator(),
+                                  );
+                                },
+                              ),
+                            ),
+                          )
+                        : const SizedBox(),
                   ],
                 ),
               );
