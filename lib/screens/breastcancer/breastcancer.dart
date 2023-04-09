@@ -37,10 +37,11 @@ class BreastCancerPage extends StatelessWidget {
             return RefreshIndicator(
               onRefresh: () => context.read<BreastCancerProvider>().refresh(),
               child: SingleChildScrollView(
-                physics: const AlwaysScrollableScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: articles.length,
                     itemBuilder: (context, index) {
@@ -84,13 +85,14 @@ class BreastCancerPage extends StatelessWidget {
           article.articleTitle,
           style: const TextStyle(
             fontWeight: FontWeight.bold,
+            fontSize: 20,
           ),
         ),
         children: [
           LayoutBuilder(
             builder: (context, constraints) {
-              final textWidth = constraints.maxWidth * 0.7;
-              final imageWidth = constraints.maxWidth * 0.3;
+              // final textWidth = constraints.maxWidth * 0.7;
+              // final imageWidth = constraints.maxWidth * 0.3;
 
               return Padding(
                 padding: const EdgeInsets.all(16.0),
@@ -98,64 +100,95 @@ class BreastCancerPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
-                      child: Text(
-                        article.articleDescription,
-                        softWrap: true,
-                        style: const TextStyle(
-                          color: Colors.white,
-                        ),
+                      child: Column(
+                        children: [
+                          // Text(
+                          //   article.articleDescription,
+                          //   softWrap: true,
+                          //   style: const TextStyle(
+                          //     color: Colors.white,
+                          //     fontSize: 18,
+                          //   ),
+                          // ),
+                          boldMarkedLine(article.articleDescription),
+                          const SizedBox(height: 16),
+                          article.articleImage != null
+                              ? ClipRRect(
+                                  borderRadius: BorderRadius.circular(
+                                      Consts.DefaultBorderRadius),
+                                  child: FutureBuilder(
+                                    future: context
+                                        .watch<BreastCancerProvider>()
+                                        .getArticleImage(article.articleImage!),
+                                    builder: (BuildContext context,
+                                        AsyncSnapshot<Uint8List?> snapshot) {
+                                      if (snapshot.connectionState ==
+                                              ConnectionState.done &&
+                                          snapshot.hasData) {
+                                        return Image.memory(
+                                          snapshot.data!,
+                                          fit: BoxFit.fill,
+                                        );
+                                      }
+
+                                      if (snapshot.hasError) {
+                                        return SizedBox(
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: const [
+                                              Icon(Icons.error_outline),
+                                              Text('Unable to Load Image'),
+                                            ],
+                                          ),
+                                        );
+                                      }
+
+                                      return const Center(
+                                        child: CircularProgressIndicator(),
+                                      );
+                                    },
+                                  ),
+                                )
+                              : const SizedBox(),
+                        ],
                       ),
                     ),
-                    article.articleImage != null
-                        ? SizedBox(
-                            width: imageWidth,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(
-                                  Consts.DefaultBorderRadius),
-                              child: FutureBuilder(
-                                future: context
-                                    .watch<BreastCancerProvider>()
-                                    .getArticleImage(article.articleImage!),
-                                builder: (BuildContext context,
-                                    AsyncSnapshot<Uint8List?> snapshot) {
-                                  if (snapshot.connectionState ==
-                                          ConnectionState.done &&
-                                      snapshot.hasData) {
-                                    return Image.memory(
-                                      snapshot.data!,
-                                      fit: BoxFit.fill,
-                                    );
-                                  }
-
-                                  if (snapshot.hasError) {
-                                    return SizedBox(
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: const [
-                                          Icon(Icons.error_outline),
-                                          Text('Unable to Load Image'),
-                                        ],
-                                      ),
-                                    );
-                                  }
-
-                                  return const Center(
-                                    child: CircularProgressIndicator(),
-                                  );
-                                },
-                              ),
-                            ),
-                          )
-                        : const SizedBox(),
                   ],
                 ),
               );
             },
           ),
         ],
+      ),
+    );
+  }
+
+  Widget boldMarkedLine(String text) {
+    List<String> parts = text.split('**');
+    List<TextSpan> spans = [];
+
+    for (int i = 0; i < parts.length; i++) {
+      if (i % 2 == 0) {
+        spans.add(TextSpan(text: parts[i]));
+      } else {
+        spans.add(TextSpan(
+            text: parts[i],
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+              fontSize: 18,
+            )));
+      }
+    }
+
+    return Text.rich(
+      TextSpan(children: spans),
+      style: const TextStyle(
+        color: Colors.white,
+        fontSize: 18,
       ),
     );
   }
