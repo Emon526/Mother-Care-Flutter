@@ -98,41 +98,41 @@ class DrawerWidget extends StatelessWidget {
             'assets/logo.png',
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Text(
-                'Mr. Asraful Islam',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.white,
-                ),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Text(
-                'Emonats526@gmai.com',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.white,
-                ),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Text(
-                'Dhaka, Bangladesh',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.white,
-                ),
-              ),
-            ],
-          ),
-        ),
+        // Padding(
+        //   padding: const EdgeInsets.all(8.0),
+        //   child: Column(
+        //     crossAxisAlignment: CrossAxisAlignment.start,
+        //     children: const [
+        //       Text(
+        //         'Mr. Asraful Islam',
+        //         style: TextStyle(
+        //           fontSize: 16,
+        //           color: Colors.white,
+        //         ),
+        //       ),
+        //       SizedBox(
+        //         height: 5,
+        //       ),
+        //       Text(
+        //         'Emonats526@gmai.com',
+        //         style: TextStyle(
+        //           fontSize: 14,
+        //           color: Colors.white,
+        //         ),
+        //       ),
+        //       SizedBox(
+        //         height: 5,
+        //       ),
+        //       Text(
+        //         'Dhaka, Bangladesh',
+        //         style: TextStyle(
+        //           fontSize: 14,
+        //           color: Colors.white,
+        //         ),
+        //       ),
+        //     ],
+        //   ),
+        // ),
       ],
     );
   }

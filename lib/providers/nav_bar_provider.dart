@@ -10,7 +10,7 @@ class NavBarProvider with ChangeNotifier {
   }
 
   final PersistentTabController _controller =
-      PersistentTabController(initialIndex: 1);
+      PersistentTabController(initialIndex: 0);
 
   PersistentTabController get controller => _controller;
 
