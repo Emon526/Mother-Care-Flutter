@@ -8,6 +8,15 @@ import '../utils/exception_hander.dart';
 class DoctorProvider extends ChangeNotifier {
   List<DoctorModel> _doctorList = [];
   List<DoctorModel> get doctorlist => _doctorList;
+  List<DoctorModel> _filterdoctorList = [];
+  List<DoctorModel> get filterdoctorList => _filterdoctorList;
+  List<String> _filterChoice = [];
+  List<String> get filterChoice => _filterChoice;
+  set filterChoice(List<String> filters) {
+    _filterChoice = filters;
+    _filterdoctorList = getFilteredDoctor(searchQuery: filters);
+    notifyListeners();
+  }
 
   Future<List<DoctorModel>> doctorsList() async {
     try {
@@ -40,12 +49,22 @@ class DoctorProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // List<DoctorModel> getFilteredDoctor({required String searchQuery}) {
-  //   return _doctorList
-  //       .where((element) =>
-  //           element.location.toLowerCase().contains(searchQuery.toLowerCase()))
-  //       .toList();
-  // }
+  List<DoctorModel> getFilteredDoctor({required List<String> searchQuery}) {
+    return _doctorList.where((doctor) {
+      final doctorLocation = doctor.location.toLowerCase();
+      return searchQuery
+          .any((query) => doctorLocation.contains(query.toLowerCase()));
+    }).toList();
+  }
+
+  List<String> getAllDoctorLocations() {
+    Set<String> uniqueLocations = <String>{};
+    for (DoctorModel doctor in _doctorList) {
+      uniqueLocations.add(doctor.location);
+    }
+    List<String> formattedLocations = uniqueLocations.toList()..sort();
+    return formattedLocations;
+  }
 
   Future<Uint8List?> getDoctorImage(String imagebyte) async {
     // debugPrint(imagebyte);
