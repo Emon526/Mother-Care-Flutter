@@ -10,7 +10,6 @@ import 'package:provider/provider.dart';
 import '../../const/consts.dart';
 import '../../providers/modelprovider.dart';
 import '../../providers/predictionprovider.dart';
-import '../../widget/mammogramnote.dart';
 import 'result.dart';
 
 class MemmographyPrediction extends StatefulWidget {
@@ -66,7 +65,40 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const MammogramNote(),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        height: 30,
+                        width: 30,
+                        decoration: BoxDecoration(
+                            color: Theme.of(context).colorScheme.secondary,
+                            borderRadius: BorderRadius.circular(
+                                Consts.DefaultBorderRadius)),
+                        child: Container(
+                          margin: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).primaryColor,
+                            shape: BoxShape.circle,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Text('The Patient should be photographed by a'),
+                        Text(
+                          'Mammogram',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
                 const SizedBox(
                   height: 10,
                 ),
