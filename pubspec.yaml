@@ -44,7 +44,7 @@ dependencies:
   flutter_svg: ^2.0.5
   flutter_tflite: ^1.0.1
   http: ^0.13.5
-  image_picker: ^0.8.7
+  image_picker: ^0.8.7+2
   intl: ^0.18.0
   line_icons: ^2.0.1
   path_provider: ^2.0.13
@@ -52,8 +52,8 @@ dependencies:
   persistent_bottom_nav_bar: ^5.0.2
   provider: ^6.0.5
   readmore: ^2.2.0
-  syncfusion_flutter_datepicker: ^21.1.38
-  syncfusion_flutter_gauges: ^21.1.38
+  syncfusion_flutter_datepicker: ^21.1.39
+  syncfusion_flutter_gauges: ^21.1.39
   timezone: ^0.9.1
   url_launcher: ^6.1.10
 

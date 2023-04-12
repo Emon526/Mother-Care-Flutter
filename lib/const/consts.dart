@@ -11,8 +11,6 @@ class Consts {
   static const TITLE_2 = '';
   static const SUBTITLE_1 = '';
   static const SUBTITLE_2 = '';
-  static const TOPICAPI =
-      'https://health.gov/myhealthfinder/api/v3/topicsearch.json?lang=en&categoryId=91';
 
   static const MEMMOGRAPHYPREDICTIONMODEL = "breastcancerprediction";
   static const MEMMOGRAPHYPREDICTIONLABEL = "labels.txt";

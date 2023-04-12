@@ -34,7 +34,9 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
           stepsubtitle:
               "Start in an upright position, hands on your hips. Look at your breasts with the help of a mirror, your mobile phone, or a friend.",
         ),
-        validation: () {},
+        validation: () {
+          return null;
+        },
       ),
       CoolStep(
         isHeaderEnabled: false,
@@ -48,7 +50,9 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
           stepsubtitle:
               "Do you see any changes in size, shape or colour. Swelling? Puckering of the skin? Raise your arms and check again.",
         ),
-        validation: () {},
+        validation: () {
+          return null;
+        },
       ),
       CoolStep(
         isHeaderEnabled: false,
@@ -62,7 +66,9 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
           stepsubtitle:
               "Use the pads of your fingers and feel your breast. Follow a pattern. Feel for lumps, hardened knots and thickenings.",
         ),
-        validation: () {},
+        validation: () {
+          return null;
+        },
       ),
       CoolStep(
         isHeaderEnabled: false,
@@ -76,7 +82,9 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
           stepsubtitle:
               "Keep your fingers together and flat. Move in small circles. Repeat using light, medium and then firm pressure. With firm pressure you should feel your ribcage.",
         ),
-        validation: () {},
+        validation: () {
+          return null;
+        },
       ),
       CoolStep(
         isHeaderEnabled: false,
@@ -90,7 +98,9 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
           stepsubtitle:
               "Cover all the way up to your armpit. The left hand feels the right side and the right hand feels the left side.",
         ),
-        validation: () {},
+        validation: () {
+          return null;
+        },
       ),
       CoolStep(
         isHeaderEnabled: false,
@@ -103,7 +113,9 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
           steptitle: "Nipple",
           stepsubtitle: "Squeeze the nipple. Is there any unusual discharge?",
         ),
-        validation: () {},
+        validation: () {
+          return null;
+        },
       ),
       CoolStep(
         isHeaderEnabled: false,
@@ -117,7 +129,9 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
           stepsubtitle:
               "Lie down so the tissue spreads out evenly. Repeat the examination of your breasts.",
         ),
-        validation: () {},
+        validation: () {
+          return null;
+        },
       ),
     ];
     return Scaffold(
