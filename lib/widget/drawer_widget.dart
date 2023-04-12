@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:provider/provider.dart';
+import '../const/consts.dart';
+import '../providers/nav_bar_provider.dart';
 import '../providers/themeprovider.dart';
 import '../screens/doctors/doctorslist.dart';
 import '../screens/memmographyscreening/memmography.dart';
@@ -82,6 +84,21 @@ class DrawerWidget extends StatelessWidget {
                 },
               ),
             ),
+            // _buildListtile(
+            //   iconData: LineIcons.envelope,
+            //   tiletitle: 'Contact Us',
+            //   onTap: () {},
+            // ),
+            _buildListtile(
+              iconData: LineIcons.code,
+              tiletitle: 'Credits',
+              onTap: () => _credits(context),
+            ),
+            _buildListtile(
+              iconData: LineIcons.infoCircle,
+              tiletitle: 'About ${Consts.APP_NAME}',
+              onTap: () => _about(context),
+            ),
           ],
         ),
       ),
@@ -137,6 +154,148 @@ class DrawerWidget extends StatelessWidget {
     );
   }
 
+  Future<void> _credits(
+    BuildContext context,
+  ) async {
+    return showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (context) => Dialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                margin: const EdgeInsets.only(top: 5.0, bottom: 5.0),
+                child: Text(
+                  'This project has been submitted in partial fulfilment of the requirements for the Bachelor of Science in Computer Science and Engineering degree.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                    // fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Text(
+                'Submitted By',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              _submittedBy(
+                name: 'Asraful Islam',
+                id: '191-15-12515',
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              _submittedBy(
+                name: 'MD Shahajada Hasib',
+                id: '191-15-12812',
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Text(
+                'And',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              _submittedBy(
+                name: 'Sabbir Hossain Riad',
+                id: '191-15-12135',
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('Ok'),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Future<void> _about(
+    BuildContext context,
+  ) async {
+    return showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (context) => Dialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                margin: const EdgeInsets.only(top: 5.0, bottom: 5.0),
+                child: Text(
+                  Consts.APP_NAME,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Text(
+                // 'Version no ${}',
+                context.watch<NavBarProvider>().appVersion,
+                style: const TextStyle(
+                    // fontWeight: FontWeight.bold,
+                    ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Text(
+                'You are using latest version of this application ',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    // fontWeight: FontWeight.bold,
+                    ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('Ok'),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   _buildListtile({
     required IconData iconData,
     required String tiletitle,
@@ -152,6 +311,20 @@ class DrawerWidget extends StatelessWidget {
           trailing: Icon(iconData),
         ),
       ),
+    );
+  }
+
+  _submittedBy({
+    required String name,
+    required String id,
+  }) {
+    return Column(
+      children: [
+        Text(name),
+        Text(id),
+        const Text('Department of CSE'),
+        const Text('Daffodil International University'),
+      ],
     );
   }
 }
