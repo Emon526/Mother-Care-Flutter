@@ -125,8 +125,9 @@ class _ReminderState extends State<Reminder> {
 
                         NotificationService().showScheduleNotification(
                           id: id,
-                          title: titleController.text.trim(),
-                          body: 'Reminder ID : $id',
+                          title: Consts.APP_NAME,
+                          // body: 'Reminder ID : $id',
+                          body: titleController.text.trim(),
                           scheduleDateTime: reminderDate,
                           payload: '$reminderDate',
                         );
@@ -155,6 +156,7 @@ class _ReminderState extends State<Reminder> {
         horizontal: 20,
         vertical: 24,
       ),
+      height: 390,
       borderRadius: Consts.DefaultBorderRadius,
       okText: 'OK',
       cancelText: 'CANCEL',
@@ -189,6 +191,11 @@ class _ReminderState extends State<Reminder> {
       barrierDismissible: false,
       builder: (BuildContext context) {
         return Dialog(
+          insetAnimationDuration: const Duration(
+            // milliseconds: 1000,
+            seconds: 10,
+          ),
+          insetAnimationCurve: Curves.easeInOut,
           insetPadding: const EdgeInsets.symmetric(
             horizontal: 20,
             vertical: 24,
@@ -196,73 +203,98 @@ class _ReminderState extends State<Reminder> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
           ),
-          backgroundColor: Theme.of(context).colorScheme.secondary,
+          backgroundColor: Theme.of(context).primaryColor,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        DateFormat('yyyy').format(
-                            context.watch<ReminderProvider>().seletedDate),
-                        style: const TextStyle(
-                          fontSize: 14,
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          DateFormat('yyyy').format(
+                              context.watch<ReminderProvider>().seletedDate),
+                          style: const TextStyle(
+                            fontSize: 14,
+                            color: Colors.white,
+                          ),
                         ),
-                      ),
-                      Text(
-                        DateFormat('EEE, MMM dd').format(
-                            context.watch<ReminderProvider>().seletedDate),
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30,
+                        const SizedBox(
+                          height: 5,
                         ),
-                      ),
-                    ],
+                        Text(
+                          DateFormat('EEE, MMM dd').format(
+                              context.watch<ReminderProvider>().seletedDate),
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 30,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                SfDateRangePicker(
-                  onSelectionChanged: (args) {
-                    context.read<ReminderProvider>().seletedDate =
-                        DateTime.parse(args.value.toString());
-                  },
-                  onSubmit: (date) {
-                    dateController.text = DateFormat('EEE, dd MMMM yyyy')
-                        .format(DateTime.parse(date.toString()));
-                    Navigator.pop(context);
-                  },
-                  onCancel: () {
-                    Navigator.pop(context);
-                  },
-                  // selectionTextStyle: TextStyle(
-                  //   color: Colors.red,
-                  // ),
-
-                  // viewSpacing: 100,
-                  // headerStyle: DateRangePickerHeaderStyle(
-                  //   backgroundColor: Colors.red,
-                  // ),
-
-                  selectionColor: Theme.of(context).primaryColor,
-                  todayHighlightColor: Colors.white,
-                  backgroundColor: Theme.of(context).primaryColor,
-                  showActionButtons: true,
-                  enablePastDates: false,
-                  showNavigationArrow: true,
-                  selectionMode: DateRangePickerSelectionMode.single,
-                  view: DateRangePickerView.month,
-                  initialDisplayDate: DateTime.now(),
-                  initialSelectedDate: DateTime.now(),
-                  navigationDirection:
-                      DateRangePickerNavigationDirection.vertical,
-                  navigationMode: DateRangePickerNavigationMode.snap,
-                ),
-              ],
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  SfDateRangePicker(
+                    onSelectionChanged: (args) {
+                      context.read<ReminderProvider>().seletedDate =
+                          DateTime.parse(args.value.toString());
+                    },
+                    onSubmit: (date) {
+                      dateController.text = DateFormat('EEE, dd MMMM yyyy')
+                          .format(DateTime.parse(date.toString()));
+                      Navigator.pop(context);
+                    },
+                    onCancel: () {
+                      Navigator.pop(context);
+                    },
+                    headerStyle: const DateRangePickerHeaderStyle(
+                      textStyle: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    selectionTextStyle: TextStyle(
+                      color: Theme.of(context).primaryColor,
+                    ),
+                    monthCellStyle: const DateRangePickerMonthCellStyle(
+                      todayTextStyle: TextStyle(
+                        color: Colors.white,
+                      ),
+                      textStyle: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    yearCellStyle: DateRangePickerYearCellStyle(
+                      textStyle: const TextStyle(
+                        color: Colors.white,
+                      ),
+                      todayTextStyle: TextStyle(
+                        color: Theme.of(context).colorScheme.secondary,
+                      ),
+                    ),
+                    selectionColor: Theme.of(context).colorScheme.secondary,
+                    todayHighlightColor: Colors.white,
+                    showActionButtons: true,
+                    enablePastDates: false,
+                    showNavigationArrow: true,
+                    selectionMode: DateRangePickerSelectionMode.single,
+                    view: DateRangePickerView.month,
+                    initialDisplayDate: DateTime.now(),
+                    initialSelectedDate: DateTime.now(),
+                    navigationDirection:
+                        DateRangePickerNavigationDirection.vertical,
+                    navigationMode: DateRangePickerNavigationMode.snap,
+                  ),
+                ],
+              ),
             ),
           ),
         );

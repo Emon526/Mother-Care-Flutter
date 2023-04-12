@@ -85,6 +85,7 @@ class DoctorsList extends StatelessWidget {
                   }
 
                   return RefreshIndicator(
+                    color: Theme.of(context).primaryColor,
                     onRefresh: () => context.read<DoctorProvider>().refresh(),
                     child: SingleChildScrollView(
                       physics: const AlwaysScrollableScrollPhysics(),

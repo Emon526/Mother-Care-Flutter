@@ -33,20 +33,20 @@ class ReminderList extends StatelessWidget {
           'Reminder',
         ),
       ),
-      body: context.watch<ReminderProvider>().reminders.isEmpty
-          ? EmptyWidget(
-              onRefresh: () {
-                return context.read<ReminderProvider>().getPendingReminders();
-              },
-              viewPadding: viewPadding,
-              size: size,
-              svgAsset: 'assets/images/emptyreminder.svg',
-              message: 'No reminder Added Yet!',
-            )
-          : RefreshIndicator(
-              onRefresh: () =>
-                  context.read<ReminderProvider>().getPendingReminders(),
-              child: ListView.builder(
+      body: RefreshIndicator(
+        color: Theme.of(context).primaryColor,
+        onRefresh: () => context.read<ReminderProvider>().getPendingReminders(),
+        child: context.watch<ReminderProvider>().reminders.isEmpty
+            ? EmptyWidget(
+                onRefresh: () {
+                  return context.read<ReminderProvider>().getPendingReminders();
+                },
+                viewPadding: viewPadding,
+                size: size,
+                svgAsset: 'assets/images/emptyreminder.svg',
+                message: 'No reminder Added Yet!',
+              )
+            : ListView.builder(
                 itemCount: context.watch<ReminderProvider>().reminders.length,
                 itemBuilder: (context, index) {
                   var reminder =
@@ -145,7 +145,7 @@ class ReminderList extends StatelessWidget {
                   );
                 },
               ),
-            ),
+      ),
     );
   }
 }

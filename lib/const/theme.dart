@@ -49,7 +49,6 @@ class Styles {
         color: isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor,
       ),
 
-      // indicatorColor: Colors.red,
       // snackBarTheme: const SnackBarThemeData(
       //   backgroundColor: Colors.deepOrangeAccent,
       //   contentTextStyle: TextStyle(
@@ -88,33 +87,34 @@ class Styles {
       //     return null;
       //   }),
       // ),
-      // textSelectionTheme: const TextSelectionThemeData(
-      //   cursorColor: Colors.deepOrangeAccent,
-      //   selectionHandleColor: Colors.deepOrangeAccent,
-      // ),
-      // inputDecorationTheme: InputDecorationTheme(
-      //   labelStyle: const TextStyle(
-      //     color: Colors.deepOrangeAccent,
-      //   ),
-      //   focusColor: Colors.red,
-      //   enabledBorder: OutlineInputBorder(
-      //     borderSide: BorderSide(
-      //       color: isDarkTheme ? Colors.grey : Colors.grey,
-      //     ),
-      //   ),
-      //   border: const OutlineInputBorder(
-      //     borderSide: BorderSide(
-      //       width: 2.0,
-      //       color: Colors.deepOrangeAccent,
-      //     ),
-      //   ),
-      //   focusedBorder: const OutlineInputBorder(
-      //     borderSide: BorderSide(
-      //       width: 2.0,
-      //       color: Colors.deepOrangeAccent,
-      //     ),
-      //   ),
-      // ),
+      textSelectionTheme: TextSelectionThemeData(
+        cursorColor:
+            isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor,
+        selectionHandleColor:
+            isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor,
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        labelStyle: TextStyle(
+          color: isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor,
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+              color:
+                  isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor),
+        ),
+        border: OutlineInputBorder(
+          borderSide: BorderSide(
+            width: 2.0,
+            color: isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor,
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+            width: 2.0,
+            color: isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor,
+          ),
+        ),
+      ),
 
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(

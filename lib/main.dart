@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mothercare/providers/breastcancerprovider.dart';
-import 'package:mothercare/screens/doctors/doctorslist.dart';
 import 'package:permission_handler/permission_handler.dart';
-
 import 'package:provider/provider.dart';
 import 'package:timezone/data/latest.dart' as tz;
-
 import 'const/consts.dart';
 import 'const/theme.dart';
 import 'firebase_options.dart';
+import 'providers/breastcancerprovider.dart';
 import 'providers/doctorprovider.dart';
 import 'providers/reminderprovider.dart';
 import 'services/notificationservice.dart';

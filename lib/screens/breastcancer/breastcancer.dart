@@ -35,6 +35,7 @@ class BreastCancerPage extends StatelessWidget {
             }
 
             return RefreshIndicator(
+              color: Theme.of(context).primaryColor,
               onRefresh: () => context.read<BreastCancerProvider>().refresh(),
               child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
