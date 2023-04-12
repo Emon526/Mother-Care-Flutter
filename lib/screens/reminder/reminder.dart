@@ -191,11 +191,6 @@ class _ReminderState extends State<Reminder> {
       barrierDismissible: false,
       builder: (BuildContext context) {
         return Dialog(
-          insetAnimationDuration: const Duration(
-            // milliseconds: 1000,
-            seconds: 10,
-          ),
-          insetAnimationCurve: Curves.easeInOut,
           insetPadding: const EdgeInsets.symmetric(
             horizontal: 20,
             vertical: 24,
