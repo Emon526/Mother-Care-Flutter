@@ -63,28 +63,28 @@ dev_dependencies:
   flutter_lints: ^2.0.1
   flutter_test:
     sdk: flutter
-# flutter_icons:
-#   image_path: "assets/logo.png"
-#   adaptive_icon_background: "#ff80ab"
-#   adaptive_icon_foreground: "assets/logo.png"
-#   min_sdk_android: 16 # android min sdk min:16, default 21
-#   android: "ic_launcher"
-#   image_path_android: "assets/logo.png"
-#   ios: true
-#   image_path_ios: "assets/logo.png"
-#   remove_alpha_ios: true
-#   web:
-#     generate: false
-#     image_path: "assets/logo.png"
-#     # background_color: "#hexcode"
-#     # theme_color: "#hexcode"
-#   windows:
-#     generate: false
-#     image_path: "assets/logo.png"
-#     # icon_size: 48 # min:48, max:256, default: 48
-#   macos:
-#     generate: false
-#     image_path: "assets/logo.png"
+flutter_icons:
+  image_path: "assets/logo.png"
+  adaptive_icon_background: "#ff80ab"
+  adaptive_icon_foreground: "assets/logo.png"
+  min_sdk_android: 16 # android min sdk min:16, default 21
+  android: "ic_launcher"
+  image_path_android: "assets/logo.png"
+  ios: true
+  image_path_ios: "assets/logo.png"
+  remove_alpha_ios: true
+  web:
+    generate: false
+    image_path: "assets/logo.png"
+    # background_color: "#hexcode"
+    # theme_color: "#hexcode"
+  windows:
+    generate: false
+    image_path: "assets/logo.png"
+    # icon_size: 48 # min:48, max:256, default: 48
+  macos:
+    generate: false
+    image_path: "assets/logo.png"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter packages.
