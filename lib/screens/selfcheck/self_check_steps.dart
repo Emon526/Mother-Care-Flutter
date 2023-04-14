@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cool_stepper/cool_stepper.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import '../../const/consts.dart';
+import '../../utils/utils.dart';
 import 'self_check_finish.dart';
 
 class SelfCheckSteps extends StatefulWidget {
@@ -215,58 +216,47 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
     BuildContext context,
   ) async {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      showDialog(
-        barrierDismissible: false,
-        context: context,
-        builder: (context) => Dialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Container(
-                  margin: const EdgeInsets.only(top: 5.0, bottom: 5.0),
-                  child: Text(
-                    'Helpful Hint : Shower',
-                    style: TextStyle(
-                      fontSize: 18.0,
-                      color: Theme.of(context).primaryColor,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                ClipRRect(
-                  borderRadius:
-                      BorderRadius.circular(Consts.DefaultBorderRadius),
-                  child: Image.asset(
-                    'assets/images/shower.jpg',
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                const Text(
-                  'You can do your self-check under the shower. Sometimes it’s easier when the breast is wet and soapy.',
+      Utils(context).showCustomDialog(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                margin: const EdgeInsets.only(top: 5.0, bottom: 5.0),
+                child: Text(
+                  'Helpful Hint : Shower',
                   style: TextStyle(
-                    fontWeight: FontWeight.normal,
-                    fontSize: 18,
+                    fontSize: 18.0,
+                    color: Theme.of(context).primaryColor,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(
-                  height: 10,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+                child: Image.asset(
+                  'assets/images/shower.jpg',
                 ),
-                ElevatedButton(
-                  onPressed: () => Navigator.pop(context),
-                  child: const Text('Ok'),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Text(
+                'You can do your self-check under the shower. Sometimes it’s easier when the breast is wet and soapy.',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 18,
                 ),
-              ],
-            ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+            ],
           ),
         ),
       );

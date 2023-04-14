@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
@@ -186,9 +187,10 @@ class _ReminderState extends State<Reminder> {
   }
 
   _showCalender() {
-    return showDialog<void>(
+    return showCupertinoModalPopup<void>(
       context: context,
       barrierDismissible: false,
+      barrierColor: Colors.black45,
       builder: (BuildContext context) {
         return Dialog(
           insetPadding: const EdgeInsets.symmetric(

@@ -8,7 +8,8 @@ import '../providers/themeprovider.dart';
 import '../screens/doctors/doctorslist.dart';
 import '../screens/memmographyscreening/memmography.dart';
 import '../screens/reminder/reminderlist.dart';
-import 'themetile.dart';
+import '../utils/utils.dart';
+import 'themeradiobuttonwidget.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({super.key});
@@ -76,12 +77,10 @@ class DrawerWidget extends StatelessWidget {
                   : context.watch<ThemeProvider>().themeMode == ThemeMode.light
                       ? Icons.light_mode_outlined
                       : Icons.dark_mode_outlined,
-              onTap: () => showDialog<void>(
-                context: context,
-                barrierDismissible: false,
-                builder: (BuildContext context) {
-                  return const ThemeTile();
-                },
+              onTap: () => Utils(context).showCustomDialog(
+                child: _themetileWidget(
+                  context: context,
+                ),
               ),
             ),
             // _buildListtile(
@@ -92,12 +91,18 @@ class DrawerWidget extends StatelessWidget {
             _buildListtile(
               iconData: LineIcons.code,
               tiletitle: 'Credits',
-              onTap: () => _credits(context),
+              // onTap: () => _credits(context),
+              onTap: () => Utils(context).showCustomDialog(
+                child: _creditWidget(context: context),
+              ),
             ),
             _buildListtile(
               iconData: LineIcons.infoCircle,
               tiletitle: 'About ${Consts.APP_NAME}',
-              onTap: () => _about(context),
+              // onTap: () => _about(context),
+              onTap: () => Utils(context).showCustomDialog(
+                child: _aboutWidget(context: context),
+              ),
             ),
           ],
         ),
@@ -154,146 +159,102 @@ class DrawerWidget extends StatelessWidget {
     );
   }
 
-  Future<void> _credits(
-    BuildContext context,
-  ) async {
-    return showDialog(
-      barrierDismissible: false,
-      context: context,
-      builder: (context) => Dialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+  Widget _creditWidget({
+    required BuildContext context,
+  }) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(
+          'This project has been submitted in partial fulfilment of the requirements for the Bachelor of Science in Computer Science and Engineering degree.',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Theme.of(context).primaryColor,
+            // fontWeight: FontWeight.bold,
+          ),
         ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            GestureDetector(
-              onTap: () => Navigator.pop(context),
-              child: Container(
-                margin: const EdgeInsets.all(5.0),
-                alignment: Alignment.topRight,
-                child: const Icon(
-                  Icons.close,
-                  color: Colors.grey,
-                  size: 20.0,
-                ),
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.all(20),
-              child: Text(
-                'This project has been submitted in partial fulfilment of the requirements for the Bachelor of Science in Computer Science and Engineering degree.',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  // fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            const Text(
-              'Submitted By',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            _submittedBy(
-              name: 'Asraful Islam',
-              id: '191-15-12515',
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            _submittedBy(
-              name: 'MD Shahajada Hasib',
-              id: '191-15-12812',
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              'And',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            _submittedBy(
-              name: 'Sabbir Hossain Riad',
-              id: '191-15-12135',
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-          ],
+        const SizedBox(
+          height: 20,
         ),
-      ),
+        const Text(
+          'Submitted By',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        _submittedBy(
+          name: 'Asraful Islam',
+          id: '191-15-12515',
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        _submittedBy(
+          name: 'MD Shahajada Hasib',
+          id: '191-15-12812',
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        const Text(
+          'And',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        _submittedBy(
+          name: 'Sabbir Hossain Riad',
+          id: '191-15-12135',
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+      ],
     );
   }
 
-  Future<void> _about(
-    BuildContext context,
-  ) async {
-    return showDialog(
-      barrierDismissible: false,
-      context: context,
-      builder: (context) => Dialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+  Widget _aboutWidget({required BuildContext context}) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(
+          Consts.APP_NAME,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Theme.of(context).primaryColor,
+            fontWeight: FontWeight.bold,
+          ),
         ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            GestureDetector(
-              onTap: () => Navigator.pop(context),
-              child: Container(
-                margin: const EdgeInsets.all(5.0),
-                alignment: Alignment.topRight,
-                child: const Icon(
-                  Icons.close,
-                  color: Colors.grey,
-                  size: 20.0,
-                ),
-              ),
-            ),
-            Text(
-              Consts.APP_NAME,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Theme.of(context).primaryColor,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Text(
-              // 'Version no ${}',
-              context.watch<NavBarProvider>().appVersion,
-              style: const TextStyle(
-                  // fontWeight: FontWeight.bold,
-                  ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              'You are using latest version of this application ',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  // fontWeight: FontWeight.bold,
-                  ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-          ],
+        const SizedBox(
+          height: 10,
         ),
-      ),
+        Text(
+          // 'Version no ${}',
+          context.read<NavBarProvider>().appVersion,
+          style: const TextStyle(
+              // fontWeight: FontWeight.bold,
+              ),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        const Text(
+          'You are using latest version of this application ',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              // fontWeight: FontWeight.bold,
+              ),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+      ],
     );
   }
 
@@ -325,6 +286,43 @@ class DrawerWidget extends StatelessWidget {
         Text(id),
         const Text('Department of CSE'),
         const Text('Daffodil International University'),
+      ],
+    );
+  }
+
+  _themetileWidget({required BuildContext context}) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(
+          'Select your preferred Theme',
+          style: TextStyle(
+            fontSize: 16.0,
+            color: Theme.of(context).primaryColor,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        ThemeRadioButtonWidget(
+          themetitle: 'System',
+          themeMode: ThemeMode.system,
+          ontap: () {
+            context.read<ThemeProvider>().themeMode = ThemeMode.system;
+          },
+        ),
+        ThemeRadioButtonWidget(
+          themetitle: 'Light',
+          themeMode: ThemeMode.light,
+          ontap: () {
+            context.read<ThemeProvider>().themeMode = ThemeMode.light;
+          },
+        ),
+        ThemeRadioButtonWidget(
+          themetitle: 'Dark',
+          themeMode: ThemeMode.dark,
+          ontap: () {
+            context.read<ThemeProvider>().themeMode = ThemeMode.dark;
+          },
+        ),
       ],
     );
   }

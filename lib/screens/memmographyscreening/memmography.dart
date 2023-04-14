@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 import '../../const/consts.dart';
 import '../../providers/modelprovider.dart';
 import '../../providers/predictionprovider.dart';
+import '../../utils/utils.dart';
 import 'result.dart';
 
 class MemmographyPrediction extends StatefulWidget {
@@ -151,7 +152,52 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
                     ),
                     pickedimage == null
                         ? GestureDetector(
-                            onTap: () {},
+                            onTap: () => Utils(context).showCustomDialog(
+                              child: Padding(
+                                padding: const EdgeInsets.all(16.0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Container(
+                                      margin: const EdgeInsets.only(
+                                          top: 5.0, bottom: 5.0),
+                                      child: Text(
+                                        'What Is a Mammogram?',
+                                        style: TextStyle(
+                                          fontSize: 18.0,
+                                          color: Theme.of(context).primaryColor,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(
+                                          Consts.DefaultBorderRadius),
+                                      child: Image.asset(
+                                        'assets/images/mammogram.jpg',
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    const Text(
+                                      'A mammogram is an X-ray picture of the breast. Doctors use a mammogram to look for early signs of breast cancer. Regular mammograms are the best tests doctors have to find breast cancer early, sometimes up to three years before it can be felt.',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.normal,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
                             child: RichText(
                               text: const TextSpan(
                                 text: 'What is ',
