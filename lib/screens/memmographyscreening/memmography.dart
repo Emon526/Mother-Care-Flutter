@@ -177,7 +177,7 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
                                       borderRadius: BorderRadius.circular(
                                           Consts.DefaultBorderRadius),
                                       child: Image.asset(
-                                        'assets/images/mammogram.jpg',
+                                        'assets/images/mammogram.jpeg',
                                       ),
                                     ),
                                     const SizedBox(
