@@ -16,11 +16,11 @@ class ExceptionHandlers {
         message: 'HTTP error occured.',
         url: 'assets/images/page_not_found.svg',
       );
-    } else if (error is FormatException) {
-      return ErrorModel(
-        message: 'Invalid data format.',
-        url: 'assets/images/page_not_found.svg',
-      );
+      // } else if (error is FormatException) {
+      //   return ErrorModel(
+      //     message: 'Invalid data format.',
+      //     url: 'assets/images/page_not_found.svg',
+      //   );
     } else if (error is TimeoutException) {
       return ErrorModel(
         message: 'Request timedout.',

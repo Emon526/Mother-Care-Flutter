@@ -164,73 +164,72 @@ class DrawerWidget extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                margin: const EdgeInsets.only(top: 5.0, bottom: 5.0),
-                child: Text(
-                  'This project has been submitted in partial fulfilment of the requirements for the Bachelor of Science in Computer Science and Engineering degree.',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Theme.of(context).primaryColor,
-                    // fontWeight: FontWeight.bold,
-                  ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            GestureDetector(
+              onTap: () => Navigator.pop(context),
+              child: Container(
+                margin: const EdgeInsets.all(5.0),
+                alignment: Alignment.topRight,
+                child: const Icon(
+                  Icons.close,
+                  color: Colors.grey,
+                  size: 20.0,
                 ),
               ),
-              const SizedBox(
-                height: 10,
-              ),
-              const Text(
-                'Submitted By',
+            ),
+            Container(
+              margin: const EdgeInsets.all(20),
+              child: Text(
+                'This project has been submitted in partial fulfilment of the requirements for the Bachelor of Science in Computer Science and Engineering degree.',
+                textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).primaryColor,
+                  // fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(
-                height: 10,
+            ),
+            const Text(
+              'Submitted By',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
               ),
-              _submittedBy(
-                name: 'Asraful Islam',
-                id: '191-15-12515',
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            _submittedBy(
+              name: 'Asraful Islam',
+              id: '191-15-12515',
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            _submittedBy(
+              name: 'MD Shahajada Hasib',
+              id: '191-15-12812',
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Text(
+              'And',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
               ),
-              const SizedBox(
-                height: 10,
-              ),
-              _submittedBy(
-                name: 'MD Shahajada Hasib',
-                id: '191-15-12812',
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const Text(
-                'And',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              _submittedBy(
-                name: 'Sabbir Hossain Riad',
-                id: '191-15-12135',
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              ElevatedButton(
-                onPressed: () => Navigator.pop(context),
-                child: const Text('Ok'),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-            ],
-          ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            _submittedBy(
+              name: 'Sabbir Hossain Riad',
+              id: '191-15-12135',
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+          ],
         ),
       ),
     );
@@ -246,51 +245,53 @@ class DrawerWidget extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                margin: const EdgeInsets.only(top: 5.0, bottom: 5.0),
-                child: Text(
-                  Consts.APP_NAME,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Theme.of(context).primaryColor,
-                    fontWeight: FontWeight.bold,
-                  ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            GestureDetector(
+              onTap: () => Navigator.pop(context),
+              child: Container(
+                margin: const EdgeInsets.all(5.0),
+                alignment: Alignment.topRight,
+                child: const Icon(
+                  Icons.close,
+                  color: Colors.grey,
+                  size: 20.0,
                 ),
               ),
-              const SizedBox(
-                height: 10,
+            ),
+            Text(
+              Consts.APP_NAME,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Theme.of(context).primaryColor,
+                fontWeight: FontWeight.bold,
               ),
-              Text(
-                // 'Version no ${}',
-                context.watch<NavBarProvider>().appVersion,
-                style: const TextStyle(
-                    // fontWeight: FontWeight.bold,
-                    ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const Text(
-                'You are using latest version of this application ',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    // fontWeight: FontWeight.bold,
-                    ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              ElevatedButton(
-                onPressed: () => Navigator.pop(context),
-                child: const Text('Ok'),
-              ),
-            ],
-          ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Text(
+              // 'Version no ${}',
+              context.watch<NavBarProvider>().appVersion,
+              style: const TextStyle(
+                  // fontWeight: FontWeight.bold,
+                  ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Text(
+              'You are using latest version of this application ',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  // fontWeight: FontWeight.bold,
+                  ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+          ],
         ),
       ),
     );

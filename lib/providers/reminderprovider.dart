@@ -83,7 +83,7 @@ class ReminderProvider extends ChangeNotifier {
       debugPrint(notification.payload.toString());
       return ReminderModel(
         reminderId: notification.id,
-        reminderTitle: notification.title ?? '',
+        reminderTitle: notification.body ?? '',
         reminderDateTime: DateTime.parse(notification.payload ?? ''),
       );
     }).toList();

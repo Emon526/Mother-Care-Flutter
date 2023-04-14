@@ -17,27 +17,32 @@ class ThemeRadioButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
-      onTap: () => ontap(),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Text(
-              themetitle,
-            ),
-            context.watch<ThemeProvider>().themeMode == themeMode
-                ? Icon(
-                    Icons.radio_button_checked,
-                    color: Theme.of(context).primaryColor,
-                  )
-                : Icon(
-                    Icons.radio_button_unchecked,
-                    color: Theme.of(context).colorScheme.secondary,
-                  ),
-          ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 8,
+      ),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+        onTap: () => ontap(),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Text(
+                themetitle,
+              ),
+              context.watch<ThemeProvider>().themeMode == themeMode
+                  ? Icon(
+                      Icons.radio_button_checked,
+                      color: Theme.of(context).primaryColor,
+                    )
+                  : Icon(
+                      Icons.radio_button_unchecked,
+                      color: Theme.of(context).colorScheme.secondary,
+                    ),
+            ],
+          ),
         ),
       ),
     );
