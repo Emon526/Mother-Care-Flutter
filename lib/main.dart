@@ -8,7 +8,9 @@ import 'const/theme.dart';
 import 'firebase_options.dart';
 import 'providers/breastcancerprovider.dart';
 import 'providers/doctorprovider.dart';
+import 'providers/pdfgenerateprovider.dart';
 import 'providers/reminderprovider.dart';
+import 'services/apiservice.dart';
 import 'services/notificationservice.dart';
 import 'widget/persistent_nav_bar.dart';
 import 'providers/modelprovider.dart';
@@ -29,6 +31,7 @@ void main() async {
       Permission.notification.request();
     }
   });
+  ApiService.apirequest();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await NotificationService().initNotification();
   runApp(const MyApp());
@@ -62,6 +65,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => BreastCancerProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (_) => PdfGenerateProvider(),
+        ),
       ],
       builder: (context, child) => Consumer<ThemeProvider>(
         builder: (context, value, child) => MaterialApp(
@@ -77,7 +83,7 @@ class MyApp extends StatelessWidget {
           ),
           themeMode: context.watch<ThemeProvider>().themeMode,
           home: const PersistentNavBar(),
-          // home: const DoctorsList(),
+          // home: const MemmographyPrediction(),
           //   initialRoute: RouteManager.initialRoute,
           //   onGenerateRoute: RouteManager.generateRoute,
         ),
