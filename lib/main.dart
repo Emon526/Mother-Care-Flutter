@@ -10,6 +10,7 @@ import 'providers/breastcancerprovider.dart';
 import 'providers/doctorprovider.dart';
 import 'providers/pdfgenerateprovider.dart';
 import 'providers/reminderprovider.dart';
+import 'screens/memmographyscreening/memmography.dart';
 import 'services/apiservice.dart';
 import 'services/notificationservice.dart';
 import 'widget/persistent_nav_bar.dart';

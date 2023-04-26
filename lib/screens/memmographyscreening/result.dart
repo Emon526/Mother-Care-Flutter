@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 import '../../const/consts.dart';
+import '../../providers/pdfgenerateprovider.dart';
 import '../../providers/predictionprovider.dart';
 
 class PredictionResult extends StatelessWidget {
@@ -197,11 +198,17 @@ class PredictionResult extends StatelessWidget {
                               ])
                         ]),
                     ElevatedButton.icon(
-                      onPressed: () {},
+                      onPressed: () => context
+                          .read<PdfGenerateProvider>()
+                          .generateInvoice(
+                            predictionconfidence:
+                                '${(value.output![0]["confidence"] * 100).toStringAsFixed(1)}',
+                            predictionresult: '${value.output![0]["label"]}',
+                          ),
                       icon: const Icon(
                         Icons.save_outlined,
                       ),
-                      label: const Text('Download Pdf'),
+                      label: const Text('Generate and Open Pdf'),
                     ),
                   ],
                 ),
