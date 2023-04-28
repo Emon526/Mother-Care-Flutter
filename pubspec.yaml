@@ -40,7 +40,7 @@ dependencies:
   firebase_storage: ^11.1.1
   flutter:
     sdk: flutter
-  flutter_local_notifications: ^13.0.0
+  flutter_local_notifications: ^14.0.0
   flutter_rating_bar: ^4.0.1
   flutter_svg: ^2.0.5
   flutter_tflite: ^1.0.1
