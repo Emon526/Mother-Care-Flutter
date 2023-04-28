@@ -153,10 +153,11 @@ class _ReminderState extends State<Reminder> {
     return showPicker(
       // accentColor: Colors.red,
       // barrierColor: Colors.black,
-      dialogInsetPadding: const EdgeInsets.symmetric(
-        horizontal: 20,
-        vertical: 24,
-      ),
+      // dialogInsetPadding: const EdgeInsets.symmetric(
+      //   horizontal: 20,
+      //   vertical: 24,
+      // ),
+
       height: 390,
       borderRadius: Consts.DefaultBorderRadius,
       okText: 'OK',
@@ -193,10 +194,6 @@ class _ReminderState extends State<Reminder> {
       barrierColor: Colors.black45,
       builder: (BuildContext context) {
         return Dialog(
-          insetPadding: const EdgeInsets.symmetric(
-            horizontal: 20,
-            vertical: 24,
-          ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
           ),
