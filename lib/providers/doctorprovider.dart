@@ -18,16 +18,26 @@ class DoctorProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  List<String> _doctorLocations = [];
+  List<String> get doctorLocations => _doctorLocations;
+
+  // DoctorProvider() {
+  //   fatchData();
+  // }
+
+  Future<void> fatchData() async {
+    try {
+      _doctorList = await doctorsList();
+      _doctorLocations = getAllDoctorLocations();
+    } catch (e) {
+      throw ExceptionHandlers.getExceptionString(e);
+    }
+    notifyListeners();
+  }
+
   Future<List<DoctorModel>> doctorsList() async {
     try {
-      _doctorList = [];
-      var response = await DoctorsApiService.doctorslist();
-      var decodeddoctorsList = jsonDecode(response.body)['doctors'];
-      for (var doctor in decodeddoctorsList) {
-        DoctorModel newDoctor = DoctorModel.fromMap(doctor);
-        _doctorList.add(newDoctor);
-      }
-
+      _doctorList = await DoctorsApiService.doctorslist();
       sortDoctors();
     } catch (e) {
       throw ExceptionHandlers.getExceptionString(e);
@@ -44,7 +54,7 @@ class DoctorProvider extends ChangeNotifier {
     });
   }
 
-  refresh() async {
+  Future<void> refresh() async {
     _doctorList = await doctorsList();
     notifyListeners();
   }
