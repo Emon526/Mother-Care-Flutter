@@ -9,7 +9,7 @@ import '../screens/doctors/doctorslist.dart';
 import '../screens/memmographyscreening/memmography.dart';
 import '../screens/reminder/reminderlist.dart';
 import '../utils/utils.dart';
-import 'themeradiobuttonwidget.dart';
+import 'selectionbuttonwidget.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({super.key});
@@ -295,39 +295,41 @@ class DrawerWidget extends StatelessWidget {
   }
 
   _themetileWidget({required BuildContext context}) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Text(
-          'Select your preferred Theme',
-          style: TextStyle(
-            fontSize: 16.0,
-            color: Theme.of(context).primaryColor,
-            fontWeight: FontWeight.bold,
+    return Consumer<ThemeProvider>(builder: (context, provider, child) {
+      return Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            'Select your preferred Theme',
+            style: TextStyle(
+              fontSize: 16.0,
+              color: Theme.of(context).primaryColor,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),
-        ThemeRadioButtonWidget(
-          themetitle: 'System',
-          themeMode: ThemeMode.system,
-          ontap: () {
-            context.read<ThemeProvider>().themeMode = ThemeMode.system;
-          },
-        ),
-        ThemeRadioButtonWidget(
-          themetitle: 'Light',
-          themeMode: ThemeMode.light,
-          ontap: () {
-            context.read<ThemeProvider>().themeMode = ThemeMode.light;
-          },
-        ),
-        ThemeRadioButtonWidget(
-          themetitle: 'Dark',
-          themeMode: ThemeMode.dark,
-          ontap: () {
-            context.read<ThemeProvider>().themeMode = ThemeMode.dark;
-          },
-        ),
-      ],
-    );
+          SelectionButtonWidget(
+            buttontitle: 'System',
+            iconCondition: provider.themeMode == ThemeMode.system,
+            ontap: () {
+              provider.themeMode = ThemeMode.system;
+            },
+          ),
+          SelectionButtonWidget(
+            iconCondition: provider.themeMode == ThemeMode.light,
+            buttontitle: 'Light',
+            ontap: () {
+              provider.themeMode = ThemeMode.light;
+            },
+          ),
+          SelectionButtonWidget(
+            iconCondition: provider.themeMode == ThemeMode.dark,
+            buttontitle: 'Dark',
+            ontap: () {
+              provider.themeMode = ThemeMode.dark;
+            },
+          ),
+        ],
+      );
+    });
   }
 }

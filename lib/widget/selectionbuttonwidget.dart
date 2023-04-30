@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../const/consts.dart';
-import '../providers/themeprovider.dart';
 
-class ThemeRadioButtonWidget extends StatelessWidget {
-  const ThemeRadioButtonWidget({
+class SelectionButtonWidget extends StatelessWidget {
+  const SelectionButtonWidget({
     super.key,
     required this.ontap,
-    required this.themetitle,
-    required this.themeMode,
+    required this.buttontitle,
+    required this.iconCondition,
   });
   final Function ontap;
-  final String themetitle;
-  final ThemeMode themeMode;
+  final String buttontitle;
+  final bool iconCondition;
 
   @override
   Widget build(BuildContext context) {
@@ -30,11 +28,11 @@ class ThemeRadioButtonWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text(
-                themetitle,
+                buttontitle,
               ),
-              context.watch<ThemeProvider>().themeMode == themeMode
+              iconCondition
                   ? Icon(
-                      Icons.radio_button_checked,
+                      Icons.check_circle,
                       color: Theme.of(context).primaryColor,
                     )
                   : Icon(
