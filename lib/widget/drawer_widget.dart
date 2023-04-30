@@ -302,7 +302,6 @@ class DrawerWidget extends StatelessWidget {
           Text(
             'Select Theme',
             style: TextStyle(
-              fontSize: 16.0,
               color: Theme.of(context).primaryColor,
               fontWeight: FontWeight.bold,
             ),
