@@ -37,7 +37,10 @@ class DoctorsList extends StatelessWidget {
                           ),
                         );
                       },
-                      icon: const Icon(Icons.filter_list),
+                      icon: const Icon(
+                        Icons.filter_list,
+                        semanticLabel: 'Filters',
+                      ),
                     )
                   : const SizedBox(),
             ],

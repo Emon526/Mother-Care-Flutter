@@ -21,9 +21,9 @@ class DoctorProvider extends ChangeNotifier {
   List<String> _doctorLocations = [];
   List<String> get doctorLocations => _doctorLocations;
 
-  // DoctorProvider() {
-  //   fatchData();
-  // }
+  DoctorProvider() {
+    fatchData();
+  }
 
   Future<void> fatchData() async {
     try {
