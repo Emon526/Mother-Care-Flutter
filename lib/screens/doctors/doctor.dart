@@ -77,6 +77,7 @@ class Doctor extends StatelessWidget {
                 ),
                 Text(
                   doctor.doctorname,
+                  textAlign: TextAlign.center,
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 24,
@@ -85,77 +86,88 @@ class Doctor extends StatelessWidget {
                 const SizedBox(
                   height: 5,
                 ),
-                Text(
-                  '${doctor.speciality} Specialist',
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    '${doctor.speciality} Specialist',
+                    textAlign: TextAlign.center,
+                  ),
                 ),
                 const SizedBox(
                   height: 5,
                 ),
-                Text(
-                  doctor.degree,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    doctor.degree,
+                    textAlign: TextAlign.center,
+                  ),
                 ),
                 const SizedBox(
                   height: 20,
                 ),
-                Flex(
-                  direction: Axis.horizontal,
-                  children: [
-                    Expanded(
-                      child: Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                color: Theme.of(context).primaryColor),
-                            borderRadius: BorderRadius.circular(
-                                Consts.DefaultBorderRadius)),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 10),
-                          child: Column(
-                            children: [
-                              const Text('Experience'),
-                              const SizedBox(
-                                height: 5,
-                              ),
-                              Text('${doctor.experience}+ Years'),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Expanded(
-                      child: Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                color: Theme.of(context).primaryColor),
-                            borderRadius: BorderRadius.circular(
-                                Consts.DefaultBorderRadius)),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 10),
-                          child: Column(
-                            children: [
-                              const Text('Rating'),
-                              const SizedBox(
-                                height: 5,
-                              ),
-                              RatingBarIndicator(
-                                itemSize: 15,
-                                rating: double.parse(doctor.rating),
-                                physics: const BouncingScrollPhysics(),
-                                itemBuilder: (context, _) => const Icon(
-                                  Icons.star,
-                                  color: Colors.amber,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Flex(
+                    direction: Axis.horizontal,
+                    children: [
+                      Expanded(
+                        child: Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Theme.of(context).primaryColor),
+                              borderRadius: BorderRadius.circular(
+                                  Consts.DefaultBorderRadius)),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 10),
+                            child: Column(
+                              children: [
+                                const Text('Experience'),
+                                const SizedBox(
+                                  height: 5,
                                 ),
-                              ),
-                            ],
+                                Text('${doctor.experience}+ Years'),
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Expanded(
+                        child: Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Theme.of(context).primaryColor),
+                              borderRadius: BorderRadius.circular(
+                                  Consts.DefaultBorderRadius)),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 10),
+                            child: Column(
+                              children: [
+                                const Text('Rating'),
+                                const SizedBox(
+                                  height: 5,
+                                ),
+                                RatingBarIndicator(
+                                  itemSize: 15,
+                                  rating: double.parse(doctor.rating),
+                                  physics: const BouncingScrollPhysics(),
+                                  itemBuilder: (context, _) => const Icon(
+                                    Icons.star,
+                                    color: Colors.amber,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 const SizedBox(
                   height: 10,
@@ -170,23 +182,26 @@ class Doctor extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                ReadMoreText(
-                  doctor.bioGraphy,
-                  trimLines: 5,
-                  colorClickableText: Colors.red,
-                  // trimMode: TrimMode.Line,
-                  trimMode: TrimMode.Length,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ReadMoreText(
+                    doctor.bioGraphy,
+                    trimLines: 5,
+                    colorClickableText: Colors.red,
+                    // trimMode: TrimMode.Line,
+                    trimMode: TrimMode.Length,
 
-                  trimCollapsedText: 'Read more',
-                  trimExpandedText: 'Show less',
-                  moreStyle: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).primaryColor),
-                  lessStyle: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).primaryColor),
+                    // trimCollapsedText: 'Read more',
+                    // trimExpandedText: ' Show less',
+                    moreStyle: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: Theme.of(context).primaryColor),
+                    lessStyle: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: Theme.of(context).primaryColor),
+                  ),
                 ),
                 const SizedBox(
                   height: 10,
