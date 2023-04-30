@@ -20,7 +20,7 @@ class Styles {
                 isDarkTheme ? Consts.darksecondaryColor : Consts.secondaryColor,
             brightness: isDarkTheme ? Brightness.dark : Brightness.light,
           ),
-      // scaffoldBackgroundColor: isDarkTheme ? Colors.black : Colors.white,
+      scaffoldBackgroundColor: isDarkTheme ? Colors.black : Colors.white,
       appBarTheme: AppBarTheme(
         titleTextStyle: TextStyle(
           color: isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor,
