@@ -43,7 +43,7 @@ class ReminderList extends StatelessWidget {
                 },
                 viewPadding: viewPadding,
                 size: size,
-                svgAsset: 'assets/images/emptyreminder.svg',
+                svgAsset: 'assets/images/schedule.svg',
                 message: 'No reminder Added Yet!',
               )
             : ListView.builder(
