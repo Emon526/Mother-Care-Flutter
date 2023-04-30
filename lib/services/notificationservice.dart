@@ -46,7 +46,7 @@ class NotificationService {
         tz.local,
       ),
       await notificationDetails(),
-      // androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
       payload: payload,
       uiLocalNotificationDateInterpretation:
           UILocalNotificationDateInterpretation.absoluteTime,

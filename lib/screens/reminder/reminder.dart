@@ -126,8 +126,7 @@ class _ReminderState extends State<Reminder> {
 
                         NotificationService().showScheduleNotification(
                           id: id,
-                          title: Consts.APP_NAME,
-                          // body: 'Reminder ID : $id',
+                          title: 'Reminder',
                           body: titleController.text.trim(),
                           scheduleDateTime: reminderDate,
                           payload: '$reminderDate',
