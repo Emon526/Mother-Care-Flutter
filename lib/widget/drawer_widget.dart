@@ -300,7 +300,7 @@ class DrawerWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            'Select your preferred Theme',
+            'Select Theme',
             style: TextStyle(
               fontSize: 16.0,
               color: Theme.of(context).primaryColor,
