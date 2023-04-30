@@ -220,42 +220,46 @@ class DrawerWidget extends StatelessWidget {
   }
 
   Widget _aboutWidget({required BuildContext context}) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Text(
-          Consts.APP_NAME,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Theme.of(context).primaryColor,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Text(
-          // 'Version no ${}',
-          context.read<NavBarProvider>().appVersion,
-          style: const TextStyle(
-              // fontWeight: FontWeight.bold,
+    return LayoutBuilder(builder: (context, boxConstraints) {
+      return SizedBox(
+        width: boxConstraints.maxWidth,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              Consts.APP_NAME,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Theme.of(context).primaryColor,
+                fontWeight: FontWeight.bold,
               ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Text(
+              context.read<NavBarProvider>().appVersion,
+              style: const TextStyle(
+                  // fontWeight: FontWeight.bold,
+                  ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Text(
+              'You are using latest version of this application ',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  // fontWeight: FontWeight.bold,
+                  ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+          ],
         ),
-        const SizedBox(
-          height: 10,
-        ),
-        const Text(
-          'You are using latest version of this application ',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-              // fontWeight: FontWeight.bold,
-              ),
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-      ],
-    );
+      );
+    });
   }
 
   _buildListtile({
