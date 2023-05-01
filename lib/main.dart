@@ -11,6 +11,7 @@ import 'providers/doctorprovider.dart';
 import 'providers/pdfgenerateprovider.dart';
 import 'providers/reminderprovider.dart';
 import 'screens/memmographyscreening/memmography.dart';
+import 'screens/onboarding/onboarding.dart';
 import 'services/apiservice.dart';
 import 'services/notificationservice.dart';
 import 'widget/persistent_nav_bar.dart';
@@ -21,6 +22,7 @@ import 'providers/themeprovider.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
+  //add splash time
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -83,7 +85,8 @@ class MyApp extends StatelessWidget {
             isDarkTheme: true,
           ),
           themeMode: context.watch<ThemeProvider>().themeMode,
-          home: const PersistentNavBar(),
+          // home: const PersistentNavBar(),
+          home: const OnBoardingScreen(),
           // home: const MemmographyPrediction(),
           //   initialRoute: RouteManager.initialRoute,
           //   onGenerateRoute: RouteManager.generateRoute,

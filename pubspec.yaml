@@ -44,9 +44,11 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   flutter_svg: ^2.0.5
   flutter_tflite: ^1.0.1
+  google_fonts: ^4.0.4
   http: ^0.13.5
   image_picker: ^0.8.7+4
   intl: ^0.18.1
+  introduction_screen: ^3.1.8
   line_icons: ^2.0.1
   package_info_plus: ^3.1.1
   path_provider: ^2.0.13

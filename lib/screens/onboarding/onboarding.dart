@@ -1,10 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:provider/provider.dart';
 
 import '../../const/consts.dart';
 import '../../providers/themeprovider.dart';
+import '../../utils/utils.dart';
 import '../../widget/selectionbuttonwidget.dart';
 import 'introduction.dart';
 
@@ -14,99 +15,101 @@ class OnBoardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      body: SafeArea(
-        child: LayoutBuilder(builder: (context, boxConstraints) {
-          return SafeArea(
-            child: Stack(
-              alignment: Alignment.bottomCenter,
-              children: [
-                Opacity(
-                  opacity: 0.2,
-                  child: SvgPicture.asset(
-                    'assets/images/family.svg',
-                    width: boxConstraints.maxWidth,
-                  ),
+    return WillPopScope(
+      onWillPop: () async => await Utils(context).onWillPop(),
+      child: Scaffold(
+        body: SafeArea(
+            child: SafeArea(
+          child: Stack(
+            alignment: Alignment.bottomCenter,
+            children: [
+              Opacity(
+                opacity: 0.2,
+                child: SvgPicture.asset(
+                  'assets/images/family.svg',
+                  width: size.width,
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    children: [
-                      _logo(
-                        context: context,
-                        size: size,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    _logo(
+                      context: context,
+                      size: size,
+                    ),
+                    SizedBox(
+                      height: size.height * 0.1,
+                    ),
+                    Text(
+                      'Select Language',
+                      style: TextStyle(
+                        color: Theme.of(context).primaryColor,
+                        fontWeight: FontWeight.bold,
                       ),
-                      SizedBox(
-                        height: size.height * 0.1,
-                      ),
-                      Text(
-                        'Select Language',
-                        style: TextStyle(
-                          color: Theme.of(context).primaryColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      _languagetileWidget(),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Card(
-                        child: InkWell(
-                          onTap: () {
-                            PersistentNavBarNavigator.pushNewScreen(
-                              context,
-                              screen: const IntroductionPage(),
-                              withNavBar:
-                                  false, // OPTIONAL VALUE. True by default.
-                              pageTransitionAnimation:
-                                  PageTransitionAnimation.cupertino,
-                            );
-                            // PersistentNavBarNavigator.pushDynamicScreen(context,
-                            //     screen: CupertinoPageRoute(
-                            //       builder: (context) => const PersistentNavBar(),
-                            //     ),
-                            //     withNavBar: true);
-                            // PersistentNavBarNavigator
-                            //     .pushNewScreenWithRouteSettings(
-                            //   context,
-                            //   screen: const PersistentNavBar(),
-                            //   settings: const RouteSettings(),
-                            // );
-                          },
-                          borderRadius:
-                              BorderRadius.circular(Consts.DefaultBorderRadius),
-                          child: const ListTile(
-                            title: Text(
-                              'Next',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    _languagetileWidget(),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Card(
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.of(context).pushAndRemoveUntil(
+                            CupertinoPageRoute(
+                                builder: (_) => const IntroductionPage()),
+                            (Route<dynamic> route) => false,
+                          );
+
+                          // PersistentNavBarNavigator.pushNewScreen(
+                          //   context,
+                          //   screen: const IntroductionPage(),
+                          //   withNavBar: false, // OPTIONAL VALUE. True by default.
+                          //   pageTransitionAnimation:
+                          //       PageTransitionAnimation.cupertino,
+                          // );
+
+                          // PersistentNavBarNavigator.pushDynamicScreen(
+                          //   context,
+                          //   screen: CupertinoPageRoute(
+                          //     builder: (context) => const IntroductionPage(),
+                          //   ),
+                          //   withNavBar: false,
+                          // );
+                        },
+                        borderRadius:
+                            BorderRadius.circular(Consts.DefaultBorderRadius),
+                        child: const ListTile(
+                          title: Text(
+                            'Next',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        height: 5,
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    const Text(
+                      'You can change the language later from the settings',
+                      style: TextStyle(
+                        fontSize: 12.0,
+                        color: Colors.black45,
+                        // fontWeight: FontWeight.bold,
                       ),
-                      const Text(
-                        'You can change the language later from the settings',
-                        style: TextStyle(
-                          fontSize: 12.0,
-                          color: Colors.black45,
-                          // fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          );
-        }),
+              ),
+            ],
+          ),
+        )),
       ),
     );
   }

@@ -7,8 +7,51 @@ class Utils {
   Utils(this.context);
   Size get getScreenSize => MediaQuery.of(context).size;
 
-  Future<void> showCustomDialog({required Widget child}) async {
-    await showCupertinoModalPopup(
+  onWillPop() async {
+    return showCustomDialog(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            'Are you sure?',
+            style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).primaryColor),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          const Text('Do you want to exit the application?'),
+          const SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: Text(
+                  'No',
+                  style: TextStyle(color: Theme.of(context).primaryColor),
+                ),
+              ),
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(true),
+                child: Text(
+                  'Yes',
+                  style: TextStyle(color: Theme.of(context).primaryColor),
+                ),
+              ),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+
+  Future showCustomDialog({required Widget child}) async {
+    return await showCupertinoModalPopup(
       barrierDismissible: false,
       context: context,
       builder: (context) => Dialog(
