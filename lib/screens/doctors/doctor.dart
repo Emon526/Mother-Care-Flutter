@@ -208,6 +208,22 @@ class Doctor extends StatelessWidget {
                 ),
                 Card(
                   child: InkWell(
+                    onTap: () {},
+                    borderRadius:
+                        BorderRadius.circular(Consts.DefaultBorderRadius),
+                    child: const ListTile(
+                      title: Text(
+                        'Book an Appointment',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Card(
+                  child: InkWell(
                     onTap: () => _makePhoneCall(doctor.appointmentNumber),
                     borderRadius:
                         BorderRadius.circular(Consts.DefaultBorderRadius),
