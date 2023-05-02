@@ -15,32 +15,27 @@ class SelectionButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 8,
-      ),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
-        onTap: () => ontap(),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Text(
-                buttontitle,
-              ),
-              iconCondition
-                  ? Icon(
-                      Icons.check_circle,
-                      color: Theme.of(context).primaryColor,
-                    )
-                  : Icon(
-                      Icons.radio_button_unchecked,
-                      color: Theme.of(context).colorScheme.secondary,
-                    ),
-            ],
-          ),
+    return InkWell(
+      borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+      onTap: () => ontap(),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Text(
+              buttontitle,
+            ),
+            iconCondition
+                ? Icon(
+                    Icons.check_circle,
+                    color: Theme.of(context).primaryColor,
+                  )
+                : Icon(
+                    Icons.radio_button_unchecked,
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+          ],
         ),
       ),
     );
