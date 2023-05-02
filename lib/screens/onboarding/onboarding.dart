@@ -57,13 +57,15 @@ class OnBoardingScreen extends StatelessWidget {
                     Card(
                       child: InkWell(
                         onTap: () {
-                          Navigator.of(context).pushAndRemoveUntil(
+                          // Navigator.of(context).pushAndRemoveUntil(
+                          //   CupertinoPageRoute(
+                          //       builder: (_) => const IntroductionPage()),
+                          //   (Route<dynamic> route) => false,
+                          // );
+                          Navigator.of(context).push(
                             CupertinoPageRoute(
                                 builder: (_) => const IntroductionPage()),
-                            (Route<dynamic> route) => false,
                           );
-                          context.read<LanguageProvider>().savelanguage(
-                              context.read<LanguageProvider>().languageCode);
                         },
                         borderRadius:
                             BorderRadius.circular(Consts.DefaultBorderRadius),
