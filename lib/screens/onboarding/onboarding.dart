@@ -62,6 +62,8 @@ class OnBoardingScreen extends StatelessWidget {
                                 builder: (_) => const IntroductionPage()),
                             (Route<dynamic> route) => false,
                           );
+                          context.read<LanguageProvider>().savelanguage(
+                              context.read<LanguageProvider>().languageCode);
                         },
                         borderRadius:
                             BorderRadius.circular(Consts.DefaultBorderRadius),
