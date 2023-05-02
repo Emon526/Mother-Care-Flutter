@@ -7,6 +7,9 @@ class Styles {
   static ThemeData themeData(
       {required bool isDarkTheme, required BuildContext context}) {
     return ThemeData(
+      drawerTheme: DrawerThemeData(
+        backgroundColor: isDarkTheme ? Colors.black : Colors.white,
+      ),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
         backgroundColor:
             isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor,
