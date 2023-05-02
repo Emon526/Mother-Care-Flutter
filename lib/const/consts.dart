@@ -6,7 +6,7 @@ class Consts {
   static const THEME_STATUS = "THEME_STATUS";
   static const BASE_URL = 'https://mother-care.onrender.com';
   static const APP_NAME = "Mother Care";
-  static const LOGO = 'assets/logo.png';
+  static const LOGO = 'assets/inapplogo.png';
   static const TITLE_1 = '';
   static const TITLE_2 = '';
   static const SUBTITLE_1 = '';

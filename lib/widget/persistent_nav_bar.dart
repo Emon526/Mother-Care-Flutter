@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mothercare/utils/utils.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:provider/provider.dart';
 import '../const/consts.dart';
@@ -8,14 +9,9 @@ import '../screens/breastcancer/breastcancer.dart';
 import '../screens/selfcheck/self_check_page.dart';
 import 'drawer_widget.dart';
 
-class PersistentNavBar extends StatefulWidget {
+class PersistentNavBar extends StatelessWidget {
   const PersistentNavBar({super.key});
 
-  @override
-  State<PersistentNavBar> createState() => _PersistentNavBarState();
-}
-
-class _PersistentNavBarState extends State<PersistentNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +30,7 @@ class _PersistentNavBarState extends State<PersistentNavBar> {
             BreastCancerPage(),
             SelfCheckPage(),
           ],
-          items: _navBarsItems(),
+          items: _navBarsItems(context),
           itemAnimationProperties: const ItemAnimationProperties(
             duration: Duration(
               milliseconds: 500,
@@ -47,7 +43,7 @@ class _PersistentNavBarState extends State<PersistentNavBar> {
     );
   }
 
-  List<PersistentBottomNavBarItem> _navBarsItems() {
+  List<PersistentBottomNavBarItem> _navBarsItems(BuildContext context) {
     return [
       PersistentBottomNavBarItem(
         icon: const Icon(Icons.auto_awesome_outlined),

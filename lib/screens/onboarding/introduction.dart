@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:introduction_screen/introduction_screen.dart';
@@ -17,7 +18,7 @@ class IntroductionPageState extends State<IntroductionPage> {
 
   void _onIntroEnd(context) {
     Navigator.of(context).pushAndRemoveUntil(
-      MaterialPageRoute(builder: (_) => const PersistentNavBar()),
+      CupertinoPageRoute(builder: (_) => const PersistentNavBar()),
       (Route<dynamic> route) => false,
     );
   }

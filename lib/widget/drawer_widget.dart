@@ -22,7 +22,10 @@ class DrawerWidget extends StatelessWidget {
       child: SafeArea(
         child: Column(
           children: [
-            _buildHeader(context: context),
+            _buildHeader(
+              context: context,
+              size: size,
+            ),
             const SizedBox(
               height: 10,
             ),
@@ -110,51 +113,32 @@ class DrawerWidget extends StatelessWidget {
     );
   }
 
-  _buildHeader({required BuildContext context}) {
+  _buildHeader({
+    required BuildContext context,
+    required Size size,
+  }) {
     return Stack(
-      alignment: Alignment.bottomLeft,
+      alignment: Alignment.bottomCenter,
       children: [
-        Container(
-          color: Theme.of(context).primaryColor,
+        SizedBox(
+          height: size.height * 0.3,
+          // color: Theme.of(context).primaryColor,
           child: Image.asset(
-            'assets/logo.png',
+            color: Theme.of(context).primaryColor,
+            Consts.LOGO,
           ),
         ),
-        // Padding(
-        //   padding: const EdgeInsets.all(8.0),
-        //   child: Column(
-        //     crossAxisAlignment: CrossAxisAlignment.start,
-        //     children: const [
-        //       Text(
-        //         'Mr. Asraful Islam',
-        //         style: TextStyle(
-        //           fontSize: 16,
-        //           color: Colors.white,
-        //         ),
-        //       ),
-        //       SizedBox(
-        //         height: 5,
-        //       ),
-        //       Text(
-        //         'Emonats526@gmai.com',
-        //         style: TextStyle(
-        //           fontSize: 14,
-        //           color: Colors.white,
-        //         ),
-        //       ),
-        //       SizedBox(
-        //         height: 5,
-        //       ),
-        //       Text(
-        //         'Dhaka, Bangladesh',
-        //         style: TextStyle(
-        //           fontSize: 14,
-        //           color: Colors.white,
-        //         ),
-        //       ),
-        //     ],
-        //   ),
-        // ),
+        Positioned(
+          // bottom: 20,
+          child: Text(
+            Consts.APP_NAME,
+            style: TextStyle(
+              fontSize: 24.0,
+              color: Theme.of(context).primaryColor,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
       ],
     );
   }

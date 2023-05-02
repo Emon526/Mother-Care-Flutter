@@ -19,7 +19,6 @@ class OnBoardingScreen extends StatelessWidget {
       onWillPop: () async => await Utils(context).onWillPop(),
       child: Scaffold(
         body: SafeArea(
-            child: SafeArea(
           child: Stack(
             alignment: Alignment.bottomCenter,
             children: [
@@ -63,23 +62,9 @@ class OnBoardingScreen extends StatelessWidget {
                                 builder: (_) => const IntroductionPage()),
                             (Route<dynamic> route) => false,
                           );
+
                           context.read<LanguageProvider>().savelanguage(
                               context.read<LanguageProvider>().languageCode);
-                          // PersistentNavBarNavigator.pushNewScreen(
-                          //   context,
-                          //   screen: const IntroductionPage(),
-                          //   withNavBar: false, // OPTIONAL VALUE. True by default.
-                          //   pageTransitionAnimation:
-                          //       PageTransitionAnimation.cupertino,
-                          // );
-
-                          // PersistentNavBarNavigator.pushDynamicScreen(
-                          //   context,
-                          //   screen: CupertinoPageRoute(
-                          //     builder: (context) => const IntroductionPage(),
-                          //   ),
-                          //   withNavBar: false,
-                          // );
                         },
                         borderRadius:
                             BorderRadius.circular(Consts.DefaultBorderRadius),
@@ -110,7 +95,7 @@ class OnBoardingScreen extends StatelessWidget {
               ),
             ],
           ),
-        )),
+        ),
       ),
     );
   }
@@ -126,8 +111,8 @@ class OnBoardingScreen extends StatelessWidget {
           height: size.height * 0.4,
           // color: Theme.of(context).primaryColor,
           child: Image.asset(
-            // color: Theme.of(context).primaryColor,
-            'assets/logo.png',
+            color: Theme.of(context).primaryColor,
+            Consts.LOGO,
           ),
         ),
         Positioned(

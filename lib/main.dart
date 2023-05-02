@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:timezone/data/latest.dart' as tz;
@@ -47,55 +48,72 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (_) => PredictionProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => ThemeProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => ModelProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => NavBarProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => ReminderProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => DoctorProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => BreastCancerProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => PdfGenerateProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => LanguageProvider(),
-        ),
-      ],
-      builder: (context, child) => Consumer<ThemeProvider>(
-        builder: (context, value, child) => MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: Consts.APP_NAME,
-          theme: Styles.themeData(
-            context: context,
-            isDarkTheme: false,
+        providers: [
+          ChangeNotifierProvider(
+            create: (_) => PredictionProvider(),
           ),
-          darkTheme: Styles.themeData(
-            context: context,
-            isDarkTheme: true,
+          ChangeNotifierProvider(
+            create: (_) => ThemeProvider(context),
           ),
-          themeMode: context.watch<ThemeProvider>().themeMode,
-          // home: const PersistentNavBar(),
-          home: const OnBoardingScreen(),
-          // home: const MemmographyPrediction(),
-          //   initialRoute: RouteManager.initialRoute,
-          //   onGenerateRoute: RouteManager.generateRoute,
-        ),
-      ),
-    );
+          ChangeNotifierProvider(
+            create: (_) => ModelProvider(),
+          ),
+          ChangeNotifierProvider(
+            create: (_) => NavBarProvider(),
+          ),
+          ChangeNotifierProvider(
+            create: (_) => ReminderProvider(),
+          ),
+          ChangeNotifierProvider(
+            create: (_) => DoctorProvider(),
+          ),
+          ChangeNotifierProvider(
+            create: (_) => BreastCancerProvider(),
+          ),
+          ChangeNotifierProvider(
+            create: (_) => PdfGenerateProvider(),
+          ),
+          ChangeNotifierProvider(
+            create: (_) => LanguageProvider(),
+          ),
+        ],
+        builder: (context, child) {
+          return Consumer<ThemeProvider>(builder: (context, value, child) {
+            FlutterStatusbarcolor.setStatusBarColor(
+              value.isDarkTheme
+                  ? Colors.black
+                  : Colors.white, // set status bar color based on the theme
+            );
+            FlutterStatusbarcolor.setStatusBarWhiteForeground(
+              value.isDarkTheme, // set status bar icons based on the theme
+            );
+            FlutterStatusbarcolor.setNavigationBarColor(
+              value.isDarkTheme
+                  ? Colors.black
+                  : Colors.white, // set status bar color based on the theme
+            );
+            FlutterStatusbarcolor.setNavigationBarWhiteForeground(
+              value.isDarkTheme, // set status bar icons based on the theme
+            );
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              title: Consts.APP_NAME,
+              theme: Styles.themeData(
+                context: context,
+                isDarkTheme: false,
+              ),
+              darkTheme: Styles.themeData(
+                context: context,
+                isDarkTheme: true,
+              ),
+              themeMode: context.watch<ThemeProvider>().themeMode,
+              // home: const PersistentNavBar(),
+              home: const OnBoardingScreen(),
+              // home: const MemmographyPrediction(),
+              //   initialRoute: RouteManager.initialRoute,
+              //   onGenerateRoute: RouteManager.generateRoute,
+            );
+          });
+        });
   }
 }
