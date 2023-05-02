@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 import '../../const/consts.dart';
-import '../../providers/themeprovider.dart';
+import '../../providers/languageprovider.dart';
 import '../../utils/utils.dart';
 import '../../widget/selectionbuttonwidget.dart';
 import 'introduction.dart';
@@ -63,7 +63,8 @@ class OnBoardingScreen extends StatelessWidget {
                                 builder: (_) => const IntroductionPage()),
                             (Route<dynamic> route) => false,
                           );
-
+                          context.read<LanguageProvider>().savelanguage(
+                              context.read<LanguageProvider>().languageCode);
                           // PersistentNavBarNavigator.pushNewScreen(
                           //   context,
                           //   screen: const IntroductionPage(),
@@ -121,7 +122,7 @@ class OnBoardingScreen extends StatelessWidget {
     return Stack(
       alignment: Alignment.bottomCenter,
       children: [
-        Container(
+        SizedBox(
           height: size.height * 0.4,
           // color: Theme.of(context).primaryColor,
           child: Image.asset(
@@ -145,7 +146,7 @@ class OnBoardingScreen extends StatelessWidget {
   }
 
   _languagetileWidget() {
-    return Consumer<ThemeProvider>(builder: (context, provider, child) {
+    return Consumer<LanguageProvider>(builder: (context, provider, child) {
       return Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
@@ -158,21 +159,20 @@ class OnBoardingScreen extends StatelessWidget {
           children: [
             SelectionButtonWidget(
               buttontitle: 'English',
-              // iconCondition: provider.themeMode == ThemeMode.system,
-              iconCondition: true,
+              iconCondition: provider.languageCode == 'en',
               ontap: () {
-                // provider.themeMode = ThemeMode.system;
+                provider.languageCode = 'en';
               },
             ),
             Divider(
               color: Theme.of(context).primaryColor,
+              height: 0,
             ),
             SelectionButtonWidget(
-              // iconCondition: provider.themeMode == ThemeMode.light,
-              iconCondition: false,
+              iconCondition: provider.languageCode == 'bn',
               buttontitle: 'বাংলা',
               ontap: () {
-                // provider.themeMode = ThemeMode.light;
+                provider.languageCode = 'bn';
               },
             ),
           ],

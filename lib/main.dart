@@ -8,6 +8,7 @@ import 'const/theme.dart';
 import 'firebase_options.dart';
 import 'providers/breastcancerprovider.dart';
 import 'providers/doctorprovider.dart';
+import 'providers/languageprovider.dart';
 import 'providers/pdfgenerateprovider.dart';
 import 'providers/reminderprovider.dart';
 import 'screens/memmographyscreening/memmography.dart';
@@ -70,6 +71,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => PdfGenerateProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => LanguageProvider(),
         ),
       ],
       builder: (context, child) => Consumer<ThemeProvider>(

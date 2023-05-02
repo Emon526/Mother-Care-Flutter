@@ -296,38 +296,65 @@ class DrawerWidget extends StatelessWidget {
 
   _themetileWidget({required BuildContext context}) {
     return Consumer<ThemeProvider>(builder: (context, provider, child) {
-      return Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            'Select Theme',
-            style: TextStyle(
-              color: Theme.of(context).primaryColor,
-              fontWeight: FontWeight.bold,
+      return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              'Select Theme',
+              style: TextStyle(
+                color: Theme.of(context).primaryColor,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          SelectionButtonWidget(
-            buttontitle: 'System',
-            iconCondition: provider.themeMode == ThemeMode.system,
-            ontap: () {
-              provider.themeMode = ThemeMode.system;
-            },
-          ),
-          SelectionButtonWidget(
-            iconCondition: provider.themeMode == ThemeMode.light,
-            buttontitle: 'Light',
-            ontap: () {
-              provider.themeMode = ThemeMode.light;
-            },
-          ),
-          SelectionButtonWidget(
-            iconCondition: provider.themeMode == ThemeMode.dark,
-            buttontitle: 'Dark',
-            ontap: () {
-              provider.themeMode = ThemeMode.dark;
-            },
-          ),
-        ],
+            const SizedBox(
+              height: 20,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+                border: Border.all(
+                  color: Theme.of(context).primaryColor,
+                ),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SelectionButtonWidget(
+                    buttontitle: 'System',
+                    iconCondition: provider.themeMode == ThemeMode.system,
+                    ontap: () {
+                      provider.themeMode = ThemeMode.system;
+                    },
+                  ),
+                  Divider(
+                    color: Theme.of(context).primaryColor,
+                    height: 0,
+                  ),
+                  SelectionButtonWidget(
+                    iconCondition: provider.themeMode == ThemeMode.light,
+                    buttontitle: 'Light',
+                    ontap: () {
+                      provider.themeMode = ThemeMode.light;
+                    },
+                  ),
+                  Divider(
+                    color: Theme.of(context).primaryColor,
+                    height: 0,
+                  ),
+                  SelectionButtonWidget(
+                    iconCondition: provider.themeMode == ThemeMode.dark,
+                    buttontitle: 'Dark',
+                    ontap: () {
+                      provider.themeMode = ThemeMode.dark;
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       );
     });
   }
