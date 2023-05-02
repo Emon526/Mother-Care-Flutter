@@ -4,12 +4,11 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:provider/provider.dart';
 import '../const/consts.dart';
 import '../providers/nav_bar_provider.dart';
-import '../providers/themeprovider.dart';
 import '../screens/doctors/doctorslist.dart';
 import '../screens/memmographyscreening/memmography.dart';
 import '../screens/reminder/reminderlist.dart';
+import '../screens/settings/settings.dart';
 import '../utils/utils.dart';
-import 'selectionbuttonwidget.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({super.key});
@@ -73,39 +72,16 @@ class DrawerWidget extends StatelessWidget {
               },
             ),
             _buildListtile(
-              tiletitle: 'Theme',
-              iconData: context.watch<ThemeProvider>().themeMode ==
-                      ThemeMode.system
-                  ? Icons.phonelink_setup_outlined
-                  : context.watch<ThemeProvider>().themeMode == ThemeMode.light
-                      ? Icons.light_mode_outlined
-                      : Icons.dark_mode_outlined,
-              onTap: () => Utils(context).showCustomDialog(
-                child: _themetileWidget(
-                  context: context,
-                ),
-              ),
-            ),
-            // _buildListtile(
-            //   iconData: LineIcons.envelope,
-            //   tiletitle: 'Contact Us',
-            //   onTap: () {},
-            // ),
-            _buildListtile(
-              iconData: LineIcons.code,
-              tiletitle: 'Credits',
-              // onTap: () => _credits(context),
-              onTap: () => Utils(context).showCustomDialog(
-                child: _creditWidget(context: context),
-              ),
-            ),
-            _buildListtile(
-              iconData: LineIcons.infoCircle,
-              tiletitle: 'About ${Consts.APP_NAME}',
-              // onTap: () => _about(context),
-              onTap: () => Utils(context).showCustomDialog(
-                child: _aboutWidget(context: context),
-              ),
+              tiletitle: 'Settings',
+              iconData: Icons.settings_outlined,
+              onTap: () {
+                PersistentNavBarNavigator.pushNewScreen(
+                  context,
+                  screen: const SettingScreen(),
+                  withNavBar: false, // OPTIONAL VALUE. True by default.
+                  pageTransitionAnimation: PageTransitionAnimation.cupertino,
+                );
+              },
             ),
           ],
         ),
@@ -143,109 +119,6 @@ class DrawerWidget extends StatelessWidget {
     );
   }
 
-  Widget _creditWidget({
-    required BuildContext context,
-  }) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Text(
-          'This project has been submitted in partial fulfilment of the requirements for the Bachelor of Science in Computer Science and Engineering degree.',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Theme.of(context).primaryColor,
-            // fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        const Text(
-          'Submitted By',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        _submittedBy(
-          name: 'Asraful Islam',
-          id: '191-15-12515',
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        _submittedBy(
-          name: 'MD Shahajada Hasib',
-          id: '191-15-12812',
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        const Text(
-          'And',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        _submittedBy(
-          name: 'Sabbir Hossain Riad',
-          id: '191-15-12135',
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-      ],
-    );
-  }
-
-  Widget _aboutWidget({required BuildContext context}) {
-    return LayoutBuilder(builder: (context, boxConstraints) {
-      return SizedBox(
-        width: boxConstraints.maxWidth,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              Consts.APP_NAME,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Theme.of(context).primaryColor,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Text(
-              context.read<NavBarProvider>().appVersion,
-              style: const TextStyle(
-                  // fontWeight: FontWeight.bold,
-                  ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              'You are using latest version of this application ',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  // fontWeight: FontWeight.bold,
-                  ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-          ],
-        ),
-      );
-    });
-  }
-
   _buildListtile({
     required IconData iconData,
     required String tiletitle,
@@ -262,84 +135,5 @@ class DrawerWidget extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  _submittedBy({
-    required String name,
-    required String id,
-  }) {
-    return Column(
-      children: [
-        Text(name),
-        Text(id),
-        const Text('Department of CSE'),
-        const Text('Daffodil International University'),
-      ],
-    );
-  }
-
-  _themetileWidget({required BuildContext context}) {
-    return Consumer<ThemeProvider>(builder: (context, provider, child) {
-      return Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              'Select Theme',
-              style: TextStyle(
-                color: Theme.of(context).primaryColor,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
-                border: Border.all(
-                  color: Theme.of(context).primaryColor,
-                ),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SelectionButtonWidget(
-                    buttontitle: 'System',
-                    iconCondition: provider.themeMode == ThemeMode.system,
-                    ontap: () {
-                      provider.themeMode = ThemeMode.system;
-                    },
-                  ),
-                  Divider(
-                    color: Theme.of(context).primaryColor,
-                    height: 0,
-                  ),
-                  SelectionButtonWidget(
-                    iconCondition: provider.themeMode == ThemeMode.light,
-                    buttontitle: 'Light',
-                    ontap: () {
-                      provider.themeMode = ThemeMode.light;
-                    },
-                  ),
-                  Divider(
-                    color: Theme.of(context).primaryColor,
-                    height: 0,
-                  ),
-                  SelectionButtonWidget(
-                    iconCondition: provider.themeMode == ThemeMode.dark,
-                    buttontitle: 'Dark',
-                    ontap: () {
-                      provider.themeMode = ThemeMode.dark;
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    });
   }
 }
