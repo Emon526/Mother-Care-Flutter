@@ -199,12 +199,12 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
                               ),
                             ),
                             child: RichText(
-                              text: const TextSpan(
+                              text: TextSpan(
                                 text: 'What is ',
                                 style: TextStyle(
-                                  color: Colors.black,
+                                  color: Theme.of(context).primaryColor,
                                 ),
-                                children: [
+                                children: const [
                                   TextSpan(
                                       text: 'Mammogram?',
                                       style: TextStyle(

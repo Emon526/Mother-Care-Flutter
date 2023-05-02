@@ -24,6 +24,7 @@ class PersistentNavBar extends StatelessWidget {
       body: SafeArea(
         child: PersistentTabView(
           context,
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           controller: context.watch<NavBarProvider>().controller,
           screens: const [
             Awareness(),

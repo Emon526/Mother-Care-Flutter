@@ -38,7 +38,7 @@ class IntroductionPageState extends State<IntroductionPage> {
       titleTextStyle: TextStyle(fontSize: 28.0, fontWeight: FontWeight.w700),
       bodyTextStyle: bodyStyle,
       bodyPadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
-      pageColor: Colors.white,
+      // pageColor: Colors.white,
       imagePadding: EdgeInsets.zero,
       imageAlignment: Alignment.center,
       bodyAlignment: Alignment.bottomCenter,

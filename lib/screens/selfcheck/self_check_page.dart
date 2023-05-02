@@ -133,16 +133,7 @@ class _SelfCheckPageState extends State<SelfCheckPage> {
                   pageTransitionAnimation: PageTransitionAnimation.cupertino,
                 );
               },
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: const [
-                  Text('CHECK YOURSELF STEP BY STEP'),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  Icon(Icons.arrow_forward_ios_outlined),
-                ],
-              ),
+              child: const Text('CHECK YOURSELF STEP BY STEP'),
             ),
           ],
         ),

@@ -86,16 +86,7 @@ class Awareness extends StatelessWidget {
                 onPressed: () {
                   context.read<NavBarProvider>().setControllerIndex = 1;
                 },
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: const [
-                    Text('Learn more'),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    Icon(Icons.arrow_forward_ios_outlined),
-                  ],
-                ),
+                child: const Text('Learn more'),
               ),
               SizedBox(
                 // height: 20,

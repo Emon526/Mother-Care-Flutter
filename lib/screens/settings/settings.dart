@@ -3,6 +3,7 @@ import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
 
 import '../../const/consts.dart';
+import '../../providers/languageprovider.dart';
 import '../../providers/nav_bar_provider.dart';
 import '../../providers/themeprovider.dart';
 import '../../utils/utils.dart';
@@ -38,16 +39,9 @@ class SettingScreen extends StatelessWidget {
             ),
             _buildListtile(
               tiletitle: 'Language',
-              iconData: context.watch<ThemeProvider>().themeMode ==
-                      ThemeMode.system
-                  ? Icons.phonelink_setup_outlined
-                  : context.watch<ThemeProvider>().themeMode == ThemeMode.light
-                      ? Icons.light_mode_outlined
-                      : Icons.dark_mode_outlined,
+              iconData: Icons.language_outlined,
               onTap: () => Utils(context).showCustomDialog(
-                child: _themetileWidget(
-                  context: context,
-                ),
+                child: _languagetileWidget(),
               ),
             ),
             _buildListtile(
@@ -108,15 +102,18 @@ class SettingScreen extends StatelessWidget {
             color: Theme.of(context).primaryColor,
           ),
         ),
+        // const SizedBox(
+        //   height: 10,
+        // ),
+        // const Text(
+        //   'You are using latest version of this application ',
+        //   textAlign: TextAlign.center,
+        //   style: TextStyle(
+        //       // fontWeight: FontWeight.bold,
+        //       ),
+        // ),
         const SizedBox(
-          height: 10,
-        ),
-        const Text(
-          'You are using latest version of this application ',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-              // fontWeight: FontWeight.bold,
-              ),
+          height: 20,
         ),
       ],
     );
@@ -268,6 +265,60 @@ class SettingScreen extends StatelessWidget {
                     buttontitle: 'Dark',
                     ontap: () {
                       provider.themeMode = ThemeMode.dark;
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
+    });
+  }
+
+  _languagetileWidget() {
+    return Consumer<LanguageProvider>(builder: (context, provider, child) {
+      return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              'Select Language',
+              style: TextStyle(
+                color: Theme.of(context).primaryColor,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+                border: Border.all(
+                  color: Theme.of(context).primaryColor,
+                ),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SelectionButtonWidget(
+                    buttontitle: 'English',
+                    iconCondition: provider.languageCode == 'en',
+                    ontap: () {
+                      provider.languageCode = 'en';
+                    },
+                  ),
+                  Divider(
+                    color: Theme.of(context).primaryColor,
+                    height: 0,
+                  ),
+                  SelectionButtonWidget(
+                    iconCondition: provider.languageCode == 'bn',
+                    buttontitle: 'বাংলা',
+                    ontap: () {
+                      provider.languageCode = 'bn';
                     },
                   ),
                 ],
