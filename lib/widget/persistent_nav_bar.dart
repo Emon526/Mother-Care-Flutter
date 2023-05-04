@@ -14,31 +14,43 @@ class PersistentNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          Consts.APP_NAME,
-        ),
-      ),
-      drawer: const DrawerWidget(),
-      body: SafeArea(
-        child: PersistentTabView(
-          context,
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          controller: context.watch<NavBarProvider>().controller,
-          screens: const [
-            Awareness(),
-            BreastCancerPage(),
-            SelfCheckPage(),
-          ],
-          items: _navBarsItems(context),
-          itemAnimationProperties: const ItemAnimationProperties(
-            duration: Duration(
-              milliseconds: 500,
-            ),
-            curve: Curves.easeIn,
+    return WillPopScope(
+      onWillPop: () async {
+        final controller = context.read<NavBarProvider>().controller;
+        if (controller.index != 0) {
+          controller.jumpToTab(0); // Jump to the first tab if not already there
+          return false; // Do not pop the current route
+        } else {
+          return await Utils(context)
+              .onWillPop(); // Allow popping the current route
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            Consts.APP_NAME,
           ),
-          navBarStyle: NavBarStyle.style1,
+        ),
+        drawer: const DrawerWidget(),
+        body: SafeArea(
+          child: PersistentTabView(
+            context,
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+            controller: context.watch<NavBarProvider>().controller,
+            screens: const [
+              Awareness(),
+              BreastCancerPage(),
+              SelfCheckPage(),
+            ],
+            items: _navBarsItems(context),
+            itemAnimationProperties: const ItemAnimationProperties(
+              duration: Duration(
+                milliseconds: 500,
+              ),
+              curve: Curves.easeIn,
+            ),
+            navBarStyle: NavBarStyle.style1,
+          ),
         ),
       ),
     );

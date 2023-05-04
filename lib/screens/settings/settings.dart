@@ -239,6 +239,13 @@ class SettingScreen extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   SelectionButtonWidget(
+                    buttontitle: 'Default',
+                    iconCondition: provider.themeMode == ThemeMode.light,
+                    ontap: () {
+                      provider.themeMode = ThemeMode.light;
+                    },
+                  ),
+                  SelectionButtonWidget(
                     buttontitle: 'System',
                     iconCondition: provider.themeMode == ThemeMode.system,
                     ontap: () {

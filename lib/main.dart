@@ -108,7 +108,10 @@ class MyApp extends StatelessWidget {
               ),
               themeMode: context.watch<ThemeProvider>().themeMode,
               // home: const PersistentNavBar(),
-              home: const OnBoardingScreen(),
+              home: context.watch<LanguageProvider>().isBoardingCompleate
+                  ? const PersistentNavBar()
+                  : const OnBoardingScreen(),
+              // home: const OnBoardingScreen(),
               // home: const MemmographyPrediction(),
               //   initialRoute: RouteManager.initialRoute,
               //   onGenerateRoute: RouteManager.generateRoute,

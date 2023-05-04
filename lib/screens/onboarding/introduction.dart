@@ -141,5 +141,8 @@ class IntroductionPageState extends State<IntroductionPage> {
       CupertinoPageRoute(builder: (_) => const PersistentNavBar()),
       (Route<dynamic> route) => false,
     );
+
+    context.read<LanguageProvider>().isBoardingCompleate = true;
+    context.read<LanguageProvider>().boardingCompleated();
   }
 }
