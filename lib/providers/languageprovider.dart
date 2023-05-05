@@ -12,10 +12,7 @@ class LanguageProvider extends ChangeNotifier {
 
   set isBoardingCompleate(bool value) {
     _isBoardingCompleate = value;
-    log('save Boarding Compleated shared pref value');
-    //save Boarding Compleated shared pref value
-
-// Save an double value to 'decimal' key.
+    boardingCompleated();
     notifyListeners();
   }
 
@@ -24,7 +21,7 @@ class LanguageProvider extends ChangeNotifier {
 
   set languageCode(String languageCode) {
     _languageCode = languageCode;
-    log('Language chnaged translate words save language code in shared pref');
+    log('Language chnaged translate words');
     notifyListeners();
   }
 
@@ -32,8 +29,13 @@ class LanguageProvider extends ChangeNotifier {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
 
     await prefs.setBool('isBoardingCompleate', isBoardingCompleate);
-    await prefs.setString('languageCode', languageCode);
+    savelanguage(languageCode: _languageCode);
     notifyListeners();
+  }
+
+  void savelanguage({required String languageCode}) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('languageCode', languageCode);
   }
 
   getBoarding() async {
