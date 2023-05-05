@@ -154,9 +154,9 @@ class PdfGenerateProvider extends ChangeNotifier {
     //   ),
     // );
 
-    final PdfFont contentFont =
-        PdfStandardFont(PdfFontFamily.helvetica, 9, style: PdfFontStyle.bold);
-    final Size contentSize = contentFont.measureString(title);
+    // final PdfFont contentFont =
+    //     PdfStandardFont(PdfFontFamily.helvetica, 9, style: PdfFontStyle.bold);
+    // final Size contentSize = contentFont.measureString(title);
 
     page.graphics.drawString(
       title,

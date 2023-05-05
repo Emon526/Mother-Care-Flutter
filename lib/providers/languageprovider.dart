@@ -22,12 +22,12 @@ class LanguageProvider extends ChangeNotifier {
   set languageCode(String languageCode) {
     _languageCode = languageCode;
     log('Language chnaged translate words');
+    savelanguage(languageCode: languageCode);
     notifyListeners();
   }
 
   boardingCompleated() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-
     await prefs.setBool('isBoardingCompleate', isBoardingCompleate);
     savelanguage(languageCode: _languageCode);
     notifyListeners();
@@ -42,19 +42,16 @@ class LanguageProvider extends ChangeNotifier {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     _isBoardingCompleate =
         prefs.getBool('isBoardingCompleate') ?? _isBoardingCompleate;
-    log(_isBoardingCompleate.toString());
   }
 
   getLanguage() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     _languageCode = prefs.getString('languageCode') ?? _languageCode;
-    log(_languageCode.toString());
   }
 
   void fatchLanguageData() async {
     await getBoarding();
     await getLanguage();
-
     notifyListeners();
   }
 }

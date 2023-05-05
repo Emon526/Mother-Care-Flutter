@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
-import 'package:provider/provider.dart';
 import '../const/consts.dart';
-import '../providers/nav_bar_provider.dart';
 import '../screens/doctors/doctorslist.dart';
 import '../screens/memmographyscreening/memmography.dart';
 import '../screens/reminder/reminderlist.dart';
 import '../screens/settings/settings.dart';
-import '../utils/utils.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({super.key});
