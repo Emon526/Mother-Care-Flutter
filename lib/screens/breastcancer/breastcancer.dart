@@ -8,6 +8,7 @@ import '../../providers/breastcancerprovider.dart';
 import '../../utils/exception_hander.dart';
 import '../../widget/emptywidget.dart';
 import '../../widget/errorwidget.dart';
+import '../../widget/shimmerwidget.dart';
 
 class BreastCancerPage extends StatelessWidget {
   const BreastCancerPage({super.key});
@@ -68,8 +69,23 @@ class BreastCancerPage extends StatelessWidget {
               viewPadding: viewPadding,
             );
           }
-          return const Center(
-            child: CircularProgressIndicator(),
+
+          return Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: ListView.builder(
+                physics: const BouncingScrollPhysics(),
+                shrinkWrap: true,
+                itemBuilder: (context, index) => ShimmerWidget(
+                      child: Card(
+                        child: Stack(
+                          children: [
+                            ExpansionTile(
+                              title: Text('Item $index'),
+                            ),
+                          ],
+                        ),
+                      ),
+                    )),
           );
         },
       ),

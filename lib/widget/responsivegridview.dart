@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ResponsiveGridView extends StatelessWidget {
   final Widget Function(BuildContext, int) itemBuilder;
-  final int itemCount;
+  final int? itemCount;
   final int crossAxisCount;
   final double aspectRatio;
   final double mainAxisSpacing;
@@ -12,7 +12,7 @@ class ResponsiveGridView extends StatelessWidget {
   const ResponsiveGridView(
       {required this.crossAxisCount,
       required this.itemBuilder,
-      required this.itemCount,
+      this.itemCount,
       this.aspectRatio = 1,
       this.mainAxisSpacing = 8,
       this.crossAxisSpacing = 8,

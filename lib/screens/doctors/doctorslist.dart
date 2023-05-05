@@ -136,9 +136,7 @@ class DoctorsList extends StatelessWidget {
                         viewPadding: viewPadding,
                       );
                     }
-                    // return const Center(
-                    //   child: CircularProgressIndicator(),
-                    // );
+
                     return const DoctorsListShimmer();
                   },
                 ),

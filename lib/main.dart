@@ -12,7 +12,6 @@ import 'providers/doctorprovider.dart';
 import 'providers/languageprovider.dart';
 import 'providers/pdfgenerateprovider.dart';
 import 'providers/reminderprovider.dart';
-import 'screens/memmographyscreening/memmography.dart';
 import 'screens/onboarding/onboarding.dart';
 import 'services/apiservice.dart';
 import 'services/notificationservice.dart';
