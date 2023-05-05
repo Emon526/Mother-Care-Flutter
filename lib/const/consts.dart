@@ -19,8 +19,11 @@ class Consts {
   static const Color secondaryColor = Color(0xffffdff0);
   static const Color textColor = Color(0xff000000);
 
-  static const Color darkprimaryColor = Color(0xffb35a89);
-  static const Color darksecondaryColor = Color(0xffffc0e2);
+  // static const Color darkprimaryColor = Color(0xffb35a89);
+  // static const Color darksecondaryColor = Color(0xffffc0e2);
+  // static const Color darkTextColor = Color(0xffffffff);
+  static const Color darkprimaryColor = Color(0xffff80ab);
+  static const Color darksecondaryColor = Color(0xffffdff0);
   static const Color darkTextColor = Color(0xffffffff);
 
   static const double DefaultBorderRadius = 5;
