@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:provider/provider.dart';
@@ -33,14 +34,14 @@ class IntroductionPageState extends State<IntroductionPage> {
     return SafeArea(
       child: IntroductionScreen(
         key: introKey,
-        allowImplicitScrolling: true,
-        autoScrollDuration: 3000,
+        // allowImplicitScrolling: true,
+        // autoScrollDuration: 3000,
         globalHeader: Align(
           alignment: Alignment.topRight,
           child: TextButton(
             onPressed: () => _onIntroEnd(context),
             child: Text(
-              'Skip',
+              AppLocalizations.of(context)!.skipbutton,
               style: TextStyle(
                   fontWeight: FontWeight.w600,
                   color: Theme.of(context).primaryColor),
@@ -50,35 +51,29 @@ class IntroductionPageState extends State<IntroductionPage> {
 
         pages: [
           PageViewModel(
-            title: 'Get information',
-            body:
-                "Get information about breast cancer, it's causes, symptoms and how to prevent it.",
+            title: AppLocalizations.of(context)!.introTitle1,
+            body: AppLocalizations.of(context)!.introBody1,
             decoration: pageDecoration.copyWith(
               imageAlignment: Alignment.topCenter,
             ),
-
-            // Check yourself to prevent breast cancer. Self-checking is the first step to preventing breast cancer.
             image: _buildImage('assets/images/information.svg'),
             reverse: true,
           ),
           PageViewModel(
-            title: "Check yourself",
-            body:
-                "Check yourself to prevent breast cancer. Self-checking is the first step to preventing breast cancer.",
+            title: AppLocalizations.of(context)!.introTitle2,
+            body: AppLocalizations.of(context)!.introBody2,
             image: _buildImage('assets/images/checkyourself.svg'),
             decoration: pageDecoration,
           ),
           PageViewModel(
-            title: "Menstrual selfcheck",
-            body:
-                'Get reminders for your menstrual self-check.You can also check yourself manually.',
+            title: AppLocalizations.of(context)!.introTitle3,
+            body: AppLocalizations.of(context)!.introBody3,
             image: _buildImage('assets/images/notifications.svg'),
             decoration: pageDecoration,
           ),
           PageViewModel(
-            title: "Get Appointments",
-            body:
-                'Get appointments with the best doctors in the country for your checkups.',
+            title: AppLocalizations.of(context)!.introTitle4,
+            body: AppLocalizations.of(context)!.introBody4,
             decoration: pageDecoration.copyWith(
               imageAlignment: Alignment.topCenter,
             ),
@@ -86,9 +81,8 @@ class IntroductionPageState extends State<IntroductionPage> {
             reverse: true,
           ),
           PageViewModel(
-            title: "Mammography Analysis",
-            body:
-                'Use Artificial intelligence to analyse your mammography and check for any abnormalities.',
+            title: AppLocalizations.of(context)!.introTitle5,
+            body: AppLocalizations.of(context)!.introBody5,
             image: _buildImage('assets/images/artificial_intelligence.svg'),
             decoration: pageDecoration,
           ),
@@ -97,12 +91,12 @@ class IntroductionPageState extends State<IntroductionPage> {
         showBackButton: true,
         // showSkipButton: true,
         back: Icon(Icons.arrow_back, color: Theme.of(context).primaryColor),
-        skip: Text('Skip',
-            style: TextStyle(
-                fontWeight: FontWeight.w600,
-                color: Theme.of(context).primaryColor)),
+        // skip: Text(AppLocalizations.of(context)!.skipbutton,
+        //     style: TextStyle(
+        //         fontWeight: FontWeight.w600,
+        //         color: Theme.of(context).primaryColor)),
         next: Icon(Icons.arrow_forward, color: Theme.of(context).primaryColor),
-        done: Text('Done',
+        done: Text(AppLocalizations.of(context)!.donebutton,
             style: TextStyle(
                 fontWeight: FontWeight.w600,
                 color: Theme.of(context).primaryColor)),

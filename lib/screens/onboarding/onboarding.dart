@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 import '../../const/consts.dart';
@@ -41,7 +42,7 @@ class OnBoardingScreen extends StatelessWidget {
                       height: size.height * 0.1,
                     ),
                     Text(
-                      'Select Language',
+                      AppLocalizations.of(context)!.selectLanguage,
                       style: TextStyle(
                         color: Theme.of(context).primaryColor,
                         fontWeight: FontWeight.bold,
@@ -69,11 +70,11 @@ class OnBoardingScreen extends StatelessWidget {
                         },
                         borderRadius:
                             BorderRadius.circular(Consts.DefaultBorderRadius),
-                        child: const ListTile(
+                        child: ListTile(
                           title: Text(
-                            'Next',
+                            AppLocalizations.of(context)!.nextbutton,
                             textAlign: TextAlign.center,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -83,9 +84,9 @@ class OnBoardingScreen extends StatelessWidget {
                     const SizedBox(
                       height: 5,
                     ),
-                    const Text(
-                      'You can change the language later from the settings',
-                      style: TextStyle(
+                    Text(
+                      AppLocalizations.of(context)!.languageNote,
+                      style: const TextStyle(
                         fontSize: 12.0,
                         color: Colors.black45,
                         // fontWeight: FontWeight.bold,
