@@ -60,11 +60,71 @@ class S {
     );
   }
 
+  /// `Done`
+  String get donebutton {
+    return Intl.message(
+      'Done',
+      name: 'donebutton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Skip`
+  String get skipbutton {
+    return Intl.message(
+      'Skip',
+      name: 'skipbutton',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Theme`
   String get theme {
     return Intl.message(
       'Theme',
       name: 'theme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `And`
+  String get and {
+    return Intl.message(
+      'And',
+      name: 'and',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `System`
+  String get systemTheme {
+    return Intl.message(
+      'System',
+      name: 'systemTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Light`
+  String get lightTheme {
+    return Intl.message(
+      'Light',
+      name: 'lightTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dark`
+  String get darkTheme {
+    return Intl.message(
+      'Dark',
+      name: 'darkTheme',
       desc: '',
       args: [],
     );
@@ -90,6 +150,76 @@ class S {
     );
   }
 
+  /// `This app is developed by the students of Daffodil International University. The developers are Asraful Islam, MD Shahajada Hasib and Sabbir Hossain Riad. The app is developed under the supervision of Dr. Md. Shamsul Arefin, Associate Professor, Department of CSE, Daffodil International University.`
+  String get creditBody {
+    return Intl.message(
+      'This app is developed by the students of Daffodil International University. The developers are Asraful Islam, MD Shahajada Hasib and Sabbir Hossain Riad. The app is developed under the supervision of Dr. Md. Shamsul Arefin, Associate Professor, Department of CSE, Daffodil International University.',
+      name: 'creditBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Developed by`
+  String get creditdeveloper {
+    return Intl.message(
+      'Developed by',
+      name: 'creditdeveloper',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Department of CSE`
+  String get creditdeveloperdepartment {
+    return Intl.message(
+      'Department of CSE',
+      name: 'creditdeveloperdepartment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Asraful Islam`
+  String get creditdevelopername1 {
+    return Intl.message(
+      'Asraful Islam',
+      name: 'creditdevelopername1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `MD Shahajada Hasib`
+  String get creditdevelopername2 {
+    return Intl.message(
+      'MD Shahajada Hasib',
+      name: 'creditdevelopername2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sabbir Hossain Riad`
+  String get creditdevelopername3 {
+    return Intl.message(
+      'Sabbir Hossain Riad',
+      name: 'creditdevelopername3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Daffodil International University`
+  String get creditdeveloperuniversity {
+    return Intl.message(
+      'Daffodil International University',
+      name: 'creditdeveloperuniversity',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Select Language`
   String get selectLanguage {
     return Intl.message(
@@ -110,6 +240,36 @@ class S {
     );
   }
 
+  /// `Doctors`
+  String get doctors {
+    return Intl.message(
+      'Doctors',
+      name: 'doctors',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mammography Screening`
+  String get mammographyscreening {
+    return Intl.message(
+      'Mammography Screening',
+      name: 'mammographyscreening',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reminders`
+  String get reminders {
+    return Intl.message(
+      'Reminders',
+      name: 'reminders',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Select Theme`
   String get selectTheme {
     return Intl.message(
@@ -125,6 +285,106 @@ class S {
     return Intl.message(
       'You can change the language later from the settings',
       name: 'languageNote',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Get information`
+  String get introTitle1 {
+    return Intl.message(
+      'Get information',
+      name: 'introTitle1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check yourself`
+  String get introTitle2 {
+    return Intl.message(
+      'Check yourself',
+      name: 'introTitle2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Menstrual self check`
+  String get introTitle3 {
+    return Intl.message(
+      'Menstrual self check',
+      name: 'introTitle3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Get Appointments`
+  String get introTitle4 {
+    return Intl.message(
+      'Get Appointments',
+      name: 'introTitle4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mammography Analysis`
+  String get introTitle5 {
+    return Intl.message(
+      'Mammography Analysis',
+      name: 'introTitle5',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Get information about breast cancer, it's causes, symptoms and how to prevent it.`
+  String get introBody1 {
+    return Intl.message(
+      'Get information about breast cancer, it\'s causes, symptoms and how to prevent it.',
+      name: 'introBody1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check yourself to prevent breast cancer. Self-checking is the first step to preventing breast cancer.`
+  String get introBody2 {
+    return Intl.message(
+      'Check yourself to prevent breast cancer. Self-checking is the first step to preventing breast cancer.',
+      name: 'introBody2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Get reminders for your menstrual self-check.You can also check yourself manually.`
+  String get introBody3 {
+    return Intl.message(
+      'Get reminders for your menstrual self-check.You can also check yourself manually.',
+      name: 'introBody3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Get appointments with the best doctors in the country for your checkups.`
+  String get introBody4 {
+    return Intl.message(
+      'Get appointments with the best doctors in the country for your checkups.',
+      name: 'introBody4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Use Artificial intelligence to analyse your mammography and check for any abnormalities.`
+  String get introBody5 {
+    return Intl.message(
+      'Use Artificial intelligence to analyse your mammography and check for any abnormalities.',
+      name: 'introBody5',
       desc: '',
       args: [],
     );
