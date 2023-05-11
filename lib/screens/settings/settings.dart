@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 import '../../const/consts.dart';
@@ -17,14 +18,16 @@ class SettingScreen extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Settings'),
+        title: Text(
+          AppLocalizations.of(context)!.settings,
+        ),
         // centerTitle: true,
       ),
       body: SafeArea(
         child: Column(
           children: [
             _buildListtile(
-              tiletitle: 'Theme',
+              tiletitle: AppLocalizations.of(context)!.theme,
               iconData: context.watch<ThemeProvider>().themeMode ==
                       ThemeMode.system
                   ? Icons.phonelink_setup_outlined
@@ -38,7 +41,7 @@ class SettingScreen extends StatelessWidget {
               ),
             ),
             _buildListtile(
-              tiletitle: 'Language',
+              tiletitle: AppLocalizations.of(context)!.language,
               iconData: Icons.language_outlined,
               onTap: () => Utils(context).showCustomDialog(
                 child: _languagetileWidget(),
@@ -46,7 +49,7 @@ class SettingScreen extends StatelessWidget {
             ),
             _buildListtile(
               iconData: LineIcons.code,
-              tiletitle: 'Credits',
+              tiletitle: AppLocalizations.of(context)!.credits,
               // onTap: () => _credits(context),
               onTap: () => Utils(context).showCustomDialog(
                 child: _creditWidget(context: context),
@@ -126,7 +129,7 @@ class SettingScreen extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          'This project has been submitted in partial fulfilment of the requirements for the Bachelor of Science in Computer Science and Engineering degree.',
+          AppLocalizations.of(context)!.creditBody,
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Theme.of(context).primaryColor,
@@ -136,62 +139,61 @@ class SettingScreen extends StatelessWidget {
         const SizedBox(
           height: 20,
         ),
-        const Text(
-          'Submitted By',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        _submittedBy(
-          name: 'Asraful Islam',
-          id: '191-15-12515',
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        _submittedBy(
-          name: 'MD Shahajada Hasib',
-          id: '191-15-12812',
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        const Text(
-          'And',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        _submittedBy(
-          name: 'Sabbir Hossain Riad',
-          id: '191-15-12135',
-        ),
-        const SizedBox(
-          height: 20,
-        ),
+        // Text(
+        //   AppLocalizations.of(context)!.creditdeveloper,
+        //   style: const TextStyle(
+        //     fontWeight: FontWeight.bold,
+        //   ),
+        // ),
+        // const SizedBox(
+        //   height: 10,
+        // ),
+        // _submittedBy(
+        //   context: context,
+        //   name: AppLocalizations.of(context)!.creditdevelopername1,
+        // ),
+        // const SizedBox(
+        //   height: 10,
+        // ),
+        // _submittedBy(
+        //   context: context,
+        //   name: AppLocalizations.of(context)!.creditdevelopername2,
+        // ),
+        // const SizedBox(
+        //   height: 10,
+        // ),
+        // Text(
+        //   AppLocalizations.of(context)!.and,
+        //   style: const TextStyle(
+        //     fontWeight: FontWeight.bold,
+        //   ),
+        // ),
+        // const SizedBox(
+        //   height: 10,
+        // ),
+        // _submittedBy(
+        //   context: context,
+        //   name: AppLocalizations.of(context)!.creditdevelopername3,
+        // ),
+        // const SizedBox(
+        //   height: 20,
+        // ),
       ],
     );
   }
 
-  _submittedBy({
-    required String name,
-    required String id,
-  }) {
-    return Column(
-      children: [
-        Text(name),
-        Text(id),
-        const Text('Department of CSE'),
-        const Text('Daffodil International University'),
-      ],
-    );
-  }
+  // _submittedBy({
+  //   required String name,
+  //   required BuildContext context,
+  // }) {
+  //   return Column(
+  //     children: [
+  //       Text(name),
+  //       Text(AppLocalizations.of(context)!.creditdeveloperdepartment),
+  //       Text(AppLocalizations.of(context)!.creditdeveloperuniversity),
+  //     ],
+  //   );
+  // }
 
   _buildListtile({
     required IconData iconData,
@@ -219,7 +221,7 @@ class SettingScreen extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'Select Theme',
+              AppLocalizations.of(context)!.selectTheme,
               style: TextStyle(
                 color: Theme.of(context).primaryColor,
                 fontWeight: FontWeight.bold,
@@ -239,7 +241,7 @@ class SettingScreen extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   SelectionButtonWidget(
-                    buttontitle: 'System',
+                    buttontitle: AppLocalizations.of(context)!.systemTheme,
                     iconCondition: provider.themeMode == ThemeMode.system,
                     ontap: () {
                       provider.themeMode = ThemeMode.system;
@@ -251,7 +253,7 @@ class SettingScreen extends StatelessWidget {
                   ),
                   SelectionButtonWidget(
                     iconCondition: provider.themeMode == ThemeMode.light,
-                    buttontitle: 'Light',
+                    buttontitle: AppLocalizations.of(context)!.lightTheme,
                     ontap: () {
                       provider.themeMode = ThemeMode.light;
                     },
@@ -262,7 +264,7 @@ class SettingScreen extends StatelessWidget {
                   ),
                   SelectionButtonWidget(
                     iconCondition: provider.themeMode == ThemeMode.dark,
-                    buttontitle: 'Dark',
+                    buttontitle: AppLocalizations.of(context)!.darkTheme,
                     ontap: () {
                       provider.themeMode = ThemeMode.dark;
                     },
@@ -284,7 +286,7 @@ class SettingScreen extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'Select Language',
+              AppLocalizations.of(context)!.selectLanguage,
               style: TextStyle(
                 color: Theme.of(context).primaryColor,
                 fontWeight: FontWeight.bold,
