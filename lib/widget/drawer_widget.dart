@@ -1,3 +1,4 @@
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
@@ -27,7 +28,7 @@ class DrawerWidget extends StatelessWidget {
             ),
             _buildListtile(
               iconData: LineIcons.stethoscope,
-              tiletitle: 'Doctors',
+              tiletitle: AppLocalizations.of(context)!.doctors,
               onTap: () {
                 PersistentNavBarNavigator.pushNewScreen(
                   context,
@@ -46,7 +47,7 @@ class DrawerWidget extends StatelessWidget {
             // ),
             _buildListtile(
               iconData: Icons.insights_outlined,
-              tiletitle: 'Memmography Screening',
+              tiletitle: AppLocalizations.of(context)!.mammographyscreening,
               onTap: () {
                 PersistentNavBarNavigator.pushNewScreen(
                   context,
@@ -58,7 +59,7 @@ class DrawerWidget extends StatelessWidget {
             ),
             _buildListtile(
               iconData: LineIcons.calendarAlt,
-              tiletitle: 'Reminder',
+              tiletitle: AppLocalizations.of(context)!.reminders,
               onTap: () {
                 PersistentNavBarNavigator.pushNewScreen(
                   context,
@@ -69,7 +70,7 @@ class DrawerWidget extends StatelessWidget {
               },
             ),
             _buildListtile(
-              tiletitle: 'Settings',
+              tiletitle: AppLocalizations.of(context)!.settings,
               iconData: Icons.settings_outlined,
               onTap: () {
                 PersistentNavBarNavigator.pushNewScreen(
