@@ -80,6 +80,26 @@ class S {
     );
   }
 
+  /// `Learn more`
+  String get learnmorebutton {
+    return Intl.message(
+      'Learn more',
+      name: 'learnmorebutton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How to self-check`
+  String get howtoselfcheckbutton {
+    return Intl.message(
+      'How to self-check',
+      name: 'howtoselfcheckbutton',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Theme`
   String get theme {
     return Intl.message(
@@ -385,6 +405,116 @@ class S {
     return Intl.message(
       'Use Artificial intelligence to analyse your mammography and check for any abnormalities.',
       name: 'introBody5',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Early Detection Saves Lives`
+  String get awarenessTitle1 {
+    return Intl.message(
+      'Early Detection Saves Lives',
+      name: 'awarenessTitle1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `WHY IT MATTERS`
+  String get awarenessTitle2 {
+    return Intl.message(
+      'WHY IT MATTERS',
+      name: 'awarenessTitle2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The earlier breast cancer is is treated, the greater the chance of long-term survival. Regular self-checks can help you detect problems earlier and get treatment faster.`
+  String get awarenessBody1 {
+    return Intl.message(
+      'The earlier breast cancer is is treated, the greater the chance of long-term survival. Regular self-checks can help you detect problems earlier and get treatment faster.',
+      name: 'awarenessBody1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Why? Because the earlier signs of breast cancer are detected and treated, the better the chances of recovery.\n\nRegular check-ups with your gynaecologist or trusted health professional can help to detect breast cancer at an early stage. Your doctor may also recommend a mammogram.\n\nBut you can do more to protect yourself by checking your own breasts regularly!\n\nRegular self-checks are the best way to get to know what is normal for you, and will help you notice changes more quickly. The faster you notice, the sooner you'll be able to react and get treatment if needed.\n\nAnd if there's one thing we know about breast cancer, it's that the earlier it's treated, the greater the likelihood of survival.`
+  String get awarenessBody2 {
+    return Intl.message(
+      'Why? Because the earlier signs of breast cancer are detected and treated, the better the chances of recovery.\n\nRegular check-ups with your gynaecologist or trusted health professional can help to detect breast cancer at an early stage. Your doctor may also recommend a mammogram.\n\nBut you can do more to protect yourself by checking your own breasts regularly!\n\nRegular self-checks are the best way to get to know what is normal for you, and will help you notice changes more quickly. The faster you notice, the sooner you\'ll be able to react and get treatment if needed.\n\nAnd if there\'s one thing we know about breast cancer, it\'s that the earlier it\'s treated, the greater the likelihood of survival.',
+      name: 'awarenessBody2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Checking your breasts for changes each month is free, easy and might save your life.`
+  String get awarenessNote2 {
+    return Intl.message(
+      'Checking your breasts for changes each month is free, easy and might save your life.',
+      name: 'awarenessNote2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check your breasts`
+  String get awarenessHeader1Title {
+    return Intl.message(
+      'Check your breasts',
+      name: 'awarenessHeader1Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save Your Lives`
+  String get awarenessHeader1Subtitle {
+    return Intl.message(
+      'Save Your Lives',
+      name: 'awarenessHeader1Subtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check your breasts`
+  String get awarenessHeader2Title {
+    return Intl.message(
+      'Check your breasts',
+      name: 'awarenessHeader2Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save Your Lives`
+  String get awarenessHeader2Subtitle {
+    return Intl.message(
+      'Save Your Lives',
+      name: 'awarenessHeader2Subtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Get the free`
+  String get awarenessHeader3Title {
+    return Intl.message(
+      'Get the free',
+      name: 'awarenessHeader3Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SELF CHECK GUIDE`
+  String get awarenessHeader3Subtitle {
+    return Intl.message(
+      'SELF CHECK GUIDE',
+      name: 'awarenessHeader3Subtitle',
       desc: '',
       args: [],
     );

@@ -23,6 +23,28 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "and": MessageLookupByLibrary.simpleMessage("এবং"),
+        "awarenessBody1": MessageLookupByLibrary.simpleMessage(
+            "স্তন ক্যান্সারের যত আগে চিকিৎসা করা হয়, দীর্ঘমেয়াদী বেঁচে থাকার সম্ভাবনা তত বেশি। নিয়মিত স্ব-পরীক্ষা আপনাকে আগে সমস্যা সনাক্ত করতে এবং দ্রুত চিকিত্সা পেতে সাহায্য করতে পারে।"),
+        "awarenessBody2": MessageLookupByLibrary.simpleMessage(
+            "কেন? কারণ স্তন ক্যান্সারের আগের লক্ষণগুলো শনাক্ত করা এবং চিকিত্সা করা হলে, পুনরুদ্ধারের সম্ভাবনা তত বেশি।\n\nআপনার গাইনোকোলজিস্ট বা বিশ্বস্ত স্বাস্থ্য পেশাদারের সাথে নিয়মিত চেক-আপ প্রাথমিক পর্যায়ে স্তন ক্যান্সার সনাক্ত করতে সাহায্য করতে পারে। আপনার ডাক্তার একটি ম্যামোগ্রামের পরামর্শও দিতে পারেন।\n\nকিন্তু আপনি নিয়মিত আপনার নিজের স্তন পরীক্ষা করে নিজেকে রক্ষা করার জন্য আরও অনেক কিছু করতে পারেন!\n\nনিয়মিত স্ব-পরীক্ষা হল আপনার জন্য স্বাভাবিক কী তা জানার সর্বোত্তম উপায় এবং সাহায্য করবে আপনি আরো দ্রুত পরিবর্তন লক্ষ্য করুন। আপনি যত দ্রুত লক্ষ্য করবেন, তত তাড়াতাড়ি আপনি প্রতিক্রিয়া জানাতে পারবেন এবং প্রয়োজনে চিকিত্সা পেতে সক্ষম হবেন।\n\nএবং যদি স্তন ক্যান্সার সম্পর্কে আমরা একটি জিনিস জানি, তা হল এটি যত তাড়াতাড়ি চিকিত্সা করা হবে, বেঁচে থাকার সম্ভাবনা তত বেশি।"),
+        "awarenessHeader1Subtitle":
+            MessageLookupByLibrary.simpleMessage("আপনার জীবন বাঁচান"),
+        "awarenessHeader1Title":
+            MessageLookupByLibrary.simpleMessage("আপনার স্তন পরীক্ষা করুন"),
+        "awarenessHeader2Subtitle":
+            MessageLookupByLibrary.simpleMessage("আপনার জীবন বাঁচান"),
+        "awarenessHeader2Title":
+            MessageLookupByLibrary.simpleMessage("আপনার স্তন পরীক্ষা করুন"),
+        "awarenessHeader3Subtitle":
+            MessageLookupByLibrary.simpleMessage("স্ব-চেক গাইড"),
+        "awarenessHeader3Title":
+            MessageLookupByLibrary.simpleMessage("বিনামূল্যে পান"),
+        "awarenessNote2": MessageLookupByLibrary.simpleMessage(
+            "প্রতি মাসে পরিবর্তনের জন্য আপনার স্তন পরীক্ষা করা বিনামূল্যে, সহজ এবং আপনার জীবন বাঁচাতে পারে।"),
+        "awarenessTitle1": MessageLookupByLibrary.simpleMessage(
+            "প্রাথমিক সনাক্তকরণ জীবন বাঁচায়"),
+        "awarenessTitle2":
+            MessageLookupByLibrary.simpleMessage("কেন এটি গুরুত্বপূর্ণ"),
         "creditBody": MessageLookupByLibrary.simpleMessage(
             "এই অ্যাপটি ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটির শিক্ষার্থীরা তৈরি করেছে। ডেভেলপাররা হলেন আসরাফুল ইসলাম, এমডি শাহাজাদা হাসিব ও সাব্বির হোসেন রিয়াদ। অ্যাপটি ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটির সিএসই বিভাগের সহযোগী অধ্যাপক ড. মোঃ শামসুল আরেফিনের তত্ত্বাবধানে তৈরি করা হয়েছে।"),
         "creditdeveloper": MessageLookupByLibrary.simpleMessage("নির্মাণে"),
@@ -40,6 +62,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "darkTheme": MessageLookupByLibrary.simpleMessage("অন্ধকার"),
         "doctors": MessageLookupByLibrary.simpleMessage("ডাক্তাররা"),
         "donebutton": MessageLookupByLibrary.simpleMessage("সম্পন্ন"),
+        "howtoselfcheckbutton":
+            MessageLookupByLibrary.simpleMessage("কীভাবে স্ব-পরীক্ষা করবেন"),
         "introBody1": MessageLookupByLibrary.simpleMessage(
             "স্তন ক্যান্সার সম্পর্কে তথ্য পান, এর কারণ, লক্ষণ এবং কীভাবে প্রতিরোধ করা যায়।"),
         "introBody2": MessageLookupByLibrary.simpleMessage(
@@ -61,6 +85,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "language": MessageLookupByLibrary.simpleMessage("ভাষা"),
         "languageNote": MessageLookupByLibrary.simpleMessage(
             "আপনি সেটিংস থেকে পরে ভাষা পরিবর্তন করতে পারেন"),
+        "learnmorebutton": MessageLookupByLibrary.simpleMessage("আরও জানুন"),
         "lightTheme": MessageLookupByLibrary.simpleMessage("আলো"),
         "mammographyscreening":
             MessageLookupByLibrary.simpleMessage("ম্যামোগ্রাফি স্ক্রীনিং"),

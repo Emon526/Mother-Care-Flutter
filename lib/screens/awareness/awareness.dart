@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:provider/provider.dart';
 
@@ -13,18 +14,20 @@ class Awareness extends StatelessWidget {
     List<Widget> items = [
       _buildHeader(
           context: context,
-          headerTitle: "Check your breasts",
-          headerSubtitle: "Save Your Lives",
+          headerTitle: AppLocalizations.of(context)!.awarenessHeader1Title,
+          headerSubtitle:
+              AppLocalizations.of(context)!.awarenessHeader1Subtitle,
           imagePath: 'assets/images/body.png'),
       _buildHeader(
           context: context,
-          headerTitle: "Check your breasts",
-          headerSubtitle: "Save Your Lives",
+          headerTitle: AppLocalizations.of(context)!.awarenessHeader2Title,
+          headerSubtitle:
+              AppLocalizations.of(context)!.awarenessHeader2Subtitle,
           imagePath: 'assets/images/bca_darkskintype.jpg'),
       _buildHeader(
         context: context,
-        headerTitle: "Get the free",
-        headerSubtitle: "SELF CHECK GUIDE",
+        headerTitle: AppLocalizations.of(context)!.awarenessHeader3Title,
+        headerSubtitle: AppLocalizations.of(context)!.awarenessHeader3Subtitle,
         imagePath: 'assets/images/shutterstock_1797240619.jpg',
       ),
     ];
@@ -60,7 +63,7 @@ class Awareness extends StatelessWidget {
               ),
               Center(
                 child: Text(
-                  "Early Detection Saves Lives",
+                  AppLocalizations.of(context)!.awarenessTitle1,
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 22,
@@ -71,9 +74,9 @@ class Awareness extends StatelessWidget {
                 // height: 10,
                 height: size.height * 0.015,
               ),
-              const Text(
-                "The earlier breast cancer is is treated, the greater the chance of long-term survival. Regular self-checks can help you detect problems earlier and get treatment faster.",
-                style: TextStyle(
+              Text(
+                AppLocalizations.of(context)!.awarenessBody1,
+                style: const TextStyle(
                   fontWeight: FontWeight.normal,
                   fontSize: 18,
                 ),
@@ -86,7 +89,9 @@ class Awareness extends StatelessWidget {
                 onPressed: () {
                   context.read<NavBarProvider>().setControllerIndex = 1;
                 },
-                child: const Text('Learn more'),
+                child: Text(
+                  AppLocalizations.of(context)!.learnmorebutton,
+                ),
               ),
               SizedBox(
                 // height: 20,
@@ -94,7 +99,7 @@ class Awareness extends StatelessWidget {
               ),
               Center(
                 child: Text(
-                  "WHY IT MATTERS",
+                  AppLocalizations.of(context)!.awarenessTitle2,
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 22,
@@ -105,9 +110,9 @@ class Awareness extends StatelessWidget {
                 // height: 10,
                 height: size.height * 0.015,
               ),
-              const Text(
-                "Checking your breasts for changes each month is free, easy and might save your life.",
-                style: TextStyle(
+              Text(
+                AppLocalizations.of(context)!.awarenessNote2,
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
                 ),
@@ -116,9 +121,9 @@ class Awareness extends StatelessWidget {
                 // height: 10,
                 height: size.height * 0.015,
               ),
-              const Text(
-                "Why? Because the earlier signs of breast cancer are detected and treated, the better the chances of recovery.\n\nRegular check-ups with your gynaecologist or trusted health professional can help to detect breast cancer at an early stage. Your doctor may also recommend a mammogram.\n\nBut you can do more to protect yourself by checking your own breasts regularly!\n\nRegular self-checks are the best way to get to know what is normal for you, and will help you notice changes more quickly. The faster you notice, the sooner you'll be able to react and get treatment if needed.\n\nAnd if there's one thing we know about breast cancer, it's that the earlier it's treated, the greater the likelihood of survival.",
-                style: TextStyle(
+              Text(
+                AppLocalizations.of(context)!.awarenessBody2,
+                style: const TextStyle(
                   fontWeight: FontWeight.normal,
                   fontSize: 18,
                 ),
@@ -131,7 +136,9 @@ class Awareness extends StatelessWidget {
                 onPressed: () {
                   context.read<NavBarProvider>().setControllerIndex = 2;
                 },
-                child: const Text('How to self-check'),
+                child: Text(
+                  AppLocalizations.of(context)!.howtoselfcheckbutton,
+                ),
               ),
             ],
           ),

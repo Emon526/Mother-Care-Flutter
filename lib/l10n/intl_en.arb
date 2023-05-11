@@ -2,6 +2,8 @@
 "nextbutton":"Next",
 "donebutton":"Done",
 "skipbutton":"Skip",
+"learnmorebutton":"Learn more",
+"howtoselfcheckbutton":"How to self-check",
 "theme":"Theme",
 "and":"And",
 "systemTheme":"System",
@@ -32,5 +34,16 @@
 "introBody2":"Check yourself to prevent breast cancer. Self-checking is the first step to preventing breast cancer.",
 "introBody3":"Get reminders for your menstrual self-check.You can also check yourself manually.",
 "introBody4":"Get appointments with the best doctors in the country for your checkups.",
-"introBody5":"Use Artificial intelligence to analyse your mammography and check for any abnormalities."
+"introBody5":"Use Artificial intelligence to analyse your mammography and check for any abnormalities.",
+"awarenessTitle1":"Early Detection Saves Lives",
+"awarenessTitle2":"WHY IT MATTERS",
+"awarenessBody1":"The earlier breast cancer is is treated, the greater the chance of long-term survival. Regular self-checks can help you detect problems earlier and get treatment faster.",
+"awarenessBody2":"Why? Because the earlier signs of breast cancer are detected and treated, the better the chances of recovery.\n\nRegular check-ups with your gynaecologist or trusted health professional can help to detect breast cancer at an early stage. Your doctor may also recommend a mammogram.\n\nBut you can do more to protect yourself by checking your own breasts regularly!\n\nRegular self-checks are the best way to get to know what is normal for you, and will help you notice changes more quickly. The faster you notice, the sooner you'll be able to react and get treatment if needed.\n\nAnd if there's one thing we know about breast cancer, it's that the earlier it's treated, the greater the likelihood of survival.",
+"awarenessNote2":"Checking your breasts for changes each month is free, easy and might save your life.",
+"awarenessHeader1Title": "Check your breasts",
+"awarenessHeader1Subtitle":"Save Your Lives",
+"awarenessHeader2Title":"Check your breasts",
+"awarenessHeader2Subtitle": "Save Your Lives",
+"awarenessHeader3Title": "Get the free",
+"awarenessHeader3Subtitle":"SELF CHECK GUIDE"
 }
