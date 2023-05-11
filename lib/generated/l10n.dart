@@ -50,6 +50,16 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `Mother Care`
+  String get appname {
+    return Intl.message(
+      'Mother Care',
+      name: 'appname',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Next`
   String get nextbutton {
     return Intl.message(
@@ -265,6 +275,36 @@ class S {
     return Intl.message(
       'Doctors',
       name: 'doctors',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Awareness`
+  String get awareness {
+    return Intl.message(
+      'Awareness',
+      name: 'awareness',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Breast Cancer`
+  String get breastcancer {
+    return Intl.message(
+      'Breast Cancer',
+      name: 'breastcancer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Self Check`
+  String get selfcheck {
+    return Intl.message(
+      'Self Check',
+      name: 'selfcheck',
       desc: '',
       args: [],
     );

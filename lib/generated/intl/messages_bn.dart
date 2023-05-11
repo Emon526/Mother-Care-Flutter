@@ -23,6 +23,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "and": MessageLookupByLibrary.simpleMessage("এবং"),
+        "appname": MessageLookupByLibrary.simpleMessage("মাদার কেয়ার"),
+        "awareness": MessageLookupByLibrary.simpleMessage("সচেতনতা"),
         "awarenessBody1": MessageLookupByLibrary.simpleMessage(
             "স্তন ক্যান্সারের যত আগে চিকিৎসা করা হয়, দীর্ঘমেয়াদী বেঁচে থাকার সম্ভাবনা তত বেশি। নিয়মিত স্ব-পরীক্ষা আপনাকে আগে সমস্যা সনাক্ত করতে এবং দ্রুত চিকিত্সা পেতে সাহায্য করতে পারে।"),
         "awarenessBody2": MessageLookupByLibrary.simpleMessage(
@@ -45,6 +47,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "প্রাথমিক সনাক্তকরণ জীবন বাঁচায়"),
         "awarenessTitle2":
             MessageLookupByLibrary.simpleMessage("কেন এটি গুরুত্বপূর্ণ"),
+        "breastcancer": MessageLookupByLibrary.simpleMessage("স্তন ক্যান্সার"),
         "creditBody": MessageLookupByLibrary.simpleMessage(
             "এই অ্যাপটি ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটির শিক্ষার্থীরা তৈরি করেছে। ডেভেলপাররা হলেন আসরাফুল ইসলাম, এমডি শাহাজাদা হাসিব ও সাব্বির হোসেন রিয়াদ। অ্যাপটি ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটির সিএসই বিভাগের সহযোগী অধ্যাপক ড. মোঃ শামসুল আরেফিনের তত্ত্বাবধানে তৈরি করা হয়েছে।"),
         "creditdeveloper": MessageLookupByLibrary.simpleMessage("নির্মাণে"),
@@ -94,6 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "selectLanguage":
             MessageLookupByLibrary.simpleMessage("ভাষা নির্বাচন কর"),
         "selectTheme": MessageLookupByLibrary.simpleMessage("থিম নির্বাচন কর"),
+        "selfcheck": MessageLookupByLibrary.simpleMessage("সেলফ চেক"),
         "settings": MessageLookupByLibrary.simpleMessage("সেটিংস"),
         "skipbutton": MessageLookupByLibrary.simpleMessage("এড়িয়ে যান"),
         "systemTheme": MessageLookupByLibrary.simpleMessage("পদ্ধতি"),

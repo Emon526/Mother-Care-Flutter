@@ -1,4 +1,5 @@
 {
+"appname":"মাদার কেয়ার",
 "nextbutton":"পরবর্তী",
 "donebutton":"সম্পন্ন",
 "skipbutton":"এড়িয়ে যান",
@@ -21,6 +22,9 @@
 "selectLanguage":"ভাষা নির্বাচন কর",
 "settings":"সেটিংস",
 "doctors":"ডাক্তাররা",
+"awareness":"সচেতনতা",
+"breastcancer":"স্তন ক্যান্সার",
+"selfcheck":"সেলফ চেক",
 "mammographyscreening":"ম্যামোগ্রাফি স্ক্রীনিং",
 "reminders":"অনুস্মারক",
 "selectTheme":"থিম নির্বাচন কর",

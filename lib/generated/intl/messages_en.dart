@@ -23,6 +23,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "and": MessageLookupByLibrary.simpleMessage("And"),
+        "appname": MessageLookupByLibrary.simpleMessage("Mother Care"),
+        "awareness": MessageLookupByLibrary.simpleMessage("Awareness"),
         "awarenessBody1": MessageLookupByLibrary.simpleMessage(
             "The earlier breast cancer is is treated, the greater the chance of long-term survival. Regular self-checks can help you detect problems earlier and get treatment faster."),
         "awarenessBody2": MessageLookupByLibrary.simpleMessage(
@@ -45,6 +47,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Early Detection Saves Lives"),
         "awarenessTitle2":
             MessageLookupByLibrary.simpleMessage("WHY IT MATTERS"),
+        "breastcancer": MessageLookupByLibrary.simpleMessage("Breast Cancer"),
         "creditBody": MessageLookupByLibrary.simpleMessage(
             "This app is developed by the students of Daffodil International University. The developers are Asraful Islam, MD Shahajada Hasib and Sabbir Hossain Riad. The app is developed under the supervision of Dr. Md. Shamsul Arefin, Associate Professor, Department of CSE, Daffodil International University."),
         "creditdeveloper": MessageLookupByLibrary.simpleMessage("Developed by"),
@@ -93,6 +96,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "selectLanguage":
             MessageLookupByLibrary.simpleMessage("Select Language"),
         "selectTheme": MessageLookupByLibrary.simpleMessage("Select Theme"),
+        "selfcheck": MessageLookupByLibrary.simpleMessage("Self Check"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "skipbutton": MessageLookupByLibrary.simpleMessage("Skip"),
         "systemTheme": MessageLookupByLibrary.simpleMessage("System"),

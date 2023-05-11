@@ -1,4 +1,5 @@
 {
+"appname":"Mother Care",
 "nextbutton":"Next",
 "donebutton":"Done",
 "skipbutton":"Skip",
@@ -21,6 +22,9 @@
 "selectLanguage":"Select Language",
 "settings":"Settings",
 "doctors":"Doctors",
+"awareness":"Awareness",
+"breastcancer":"Breast Cancer",
+"selfcheck":"Self Check",
 "mammographyscreening":"Mammography Screening",
 "reminders":"Reminders",
 "selectTheme":"Select Theme",
