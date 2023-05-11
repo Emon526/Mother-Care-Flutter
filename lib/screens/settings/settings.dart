@@ -88,7 +88,7 @@ class SettingScreen extends StatelessWidget {
             Positioned(
               // bottom: 20,
               child: Text(
-                Consts.APP_NAME,
+                AppLocalizations.of(context)!.appname,
                 style: TextStyle(
                   fontSize: 24.0,
                   color: Theme.of(context).primaryColor,
