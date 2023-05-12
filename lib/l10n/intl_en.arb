@@ -8,6 +8,8 @@
 "learnmorebutton":"Learn more",
 "howtoselfcheckbutton":"How to self-check",
 "checkyourselfbutton":"CHECK YOURSELF STEP BY STEP",
+"setreminderbutton":"Set a Reminder",
+"consultdoctorbutton":"Consult Doctor",
 "theme":"Theme",
 "and":"And",
 "systemTheme":"System",
@@ -77,5 +79,7 @@
 "selfCheckStep6Title":"Nipple",
 "selfCheckStep6Body":"Squeeze the nipple. Is there any unusual discharge?",
 "selfCheckStep7Title":"Lie down",
-"selfCheckStep7Body":"Lie down so the tissue spreads out evenly. Repeat the examination of your breasts."
+"selfCheckStep7Body":"Lie down so the tissue spreads out evenly. Repeat the examination of your breasts.",
+"selfCheckFinishTitle":"DID YOU NOTICE ANYTHING UNUSUAL?",
+"selfCheckFinishBody":"Keep calm - most changes are not dangerous.\n\nCheck again after your next menstrual cycle. If it's still there, consult your doctor or health professional."
 }

@@ -140,6 +140,26 @@ class S {
     );
   }
 
+  /// `Set a Reminder`
+  String get setreminderbutton {
+    return Intl.message(
+      'Set a Reminder',
+      name: 'setreminderbutton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Consult Doctor`
+  String get consultdoctorbutton {
+    return Intl.message(
+      'Consult Doctor',
+      name: 'consultdoctorbutton',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Theme`
   String get theme {
     return Intl.message(
@@ -835,6 +855,26 @@ class S {
     return Intl.message(
       'Lie down so the tissue spreads out evenly. Repeat the examination of your breasts.',
       name: 'selfCheckStep7Body',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `DID YOU NOTICE ANYTHING UNUSUAL?`
+  String get selfCheckFinishTitle {
+    return Intl.message(
+      'DID YOU NOTICE ANYTHING UNUSUAL?',
+      name: 'selfCheckFinishTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keep calm - most changes are not dangerous.\n\nCheck again after your next menstrual cycle. If it's still there, consult your doctor or health professional.`
+  String get selfCheckFinishBody {
+    return Intl.message(
+      'Keep calm - most changes are not dangerous.\n\nCheck again after your next menstrual cycle. If it\'s still there, consult your doctor or health professional.',
+      name: 'selfCheckFinishBody',
       desc: '',
       args: [],
     );

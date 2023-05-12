@@ -18,7 +18,7 @@ class SelfCheckFinish extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Text(
-            'DID YOU NOTICE ANYTHING UNUSUAL?',
+            AppLocalizations.of(context)!.selfCheckFinishTitle,
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 22.0,
@@ -26,12 +26,12 @@ class SelfCheckFinish extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.all(20.0),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
             child: Text(
-              'Keep calm - most changes are not dangerous.\n\nCheck again after your next menstrual cycle. If it\'s still there, consult your doctor or health professional.',
+              AppLocalizations.of(context)!.selfCheckFinishBody,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),
@@ -47,28 +47,15 @@ class SelfCheckFinish extends StatelessWidget {
                     withNavBar: false, // OPTIONAL VALUE. True by default.
                     pageTransitionAnimation: PageTransitionAnimation.cupertino,
                   );
-                  // PersistentNavBarNavigator.pushNewScreenWithRouteSettings(
-                  //   context,
-                  //   settings: const RouteSettings(name: RouteManager.reminder),
-                  //   screen: const Reminder(),
-                  //   withNavBar: false,
-                  //   pageTransitionAnimation: PageTransitionAnimation.cupertino,
-                  // );
-
-                  // PersistentNavBarNavigator.pushDynamicScreen(
-                  //   context,
-                  //   screen: MaterialPageRoute(builder: builder),
-                  //   withNavBar: true,
-                  // );
                 },
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
-                  children: const [
-                    Text('Set a Reminder'),
-                    SizedBox(
+                  children: [
+                    Text(AppLocalizations.of(context)!.setreminderbutton),
+                    const SizedBox(
                       width: 5,
                     ),
-                    Icon(
+                    const Icon(
                       LineIcons.calendarAlt,
                     ),
                   ],
@@ -85,12 +72,12 @@ class SelfCheckFinish extends StatelessWidget {
                 },
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
-                  children: const [
-                    Text('Consult Doctor'),
-                    SizedBox(
+                  children: [
+                    Text(AppLocalizations.of(context)!.consultdoctorbutton),
+                    const SizedBox(
                       width: 5,
                     ),
-                    Icon(
+                    const Icon(
                       LineIcons.stethoscope,
                     ),
                   ],

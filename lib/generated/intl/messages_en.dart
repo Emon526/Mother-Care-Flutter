@@ -50,6 +50,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "breastcancer": MessageLookupByLibrary.simpleMessage("Breast Cancer"),
         "checkyourselfbutton":
             MessageLookupByLibrary.simpleMessage("CHECK YOURSELF STEP BY STEP"),
+        "consultdoctorbutton":
+            MessageLookupByLibrary.simpleMessage("Consult Doctor"),
         "creditBody": MessageLookupByLibrary.simpleMessage(
             "This app is developed by the students of Daffodil International University. The developers are Asraful Islam, MD Shahajada Hasib and Sabbir Hossain Riad. The app is developed under the supervision of Dr. Md. Shamsul Arefin, Associate Professor, Department of CSE, Daffodil International University."),
         "creditdeveloper": MessageLookupByLibrary.simpleMessage("Developed by"),
@@ -100,6 +102,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "selectLanguage":
             MessageLookupByLibrary.simpleMessage("Select Language"),
         "selectTheme": MessageLookupByLibrary.simpleMessage("Select Theme"),
+        "selfCheckFinishBody": MessageLookupByLibrary.simpleMessage(
+            "Keep calm - most changes are not dangerous.\n\nCheck again after your next menstrual cycle. If it\'s still there, consult your doctor or health professional."),
+        "selfCheckFinishTitle": MessageLookupByLibrary.simpleMessage(
+            "DID YOU NOTICE ANYTHING UNUSUAL?"),
         "selfCheckHintBody": MessageLookupByLibrary.simpleMessage(
             "You can do your self-check under the shower. Sometimes it’s easier when the breast is wet and soapy."),
         "selfCheckHintTitle":
@@ -144,6 +150,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Lie down so the tissue spreads out evenly. Repeat the examination of your breasts."),
         "selfCheckStep7Title": MessageLookupByLibrary.simpleMessage("Lie down"),
         "selfcheck": MessageLookupByLibrary.simpleMessage("Self Check"),
+        "setreminderbutton":
+            MessageLookupByLibrary.simpleMessage("Set a Reminder"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "skipbutton": MessageLookupByLibrary.simpleMessage("Skip"),
         "systemTheme": MessageLookupByLibrary.simpleMessage("System"),

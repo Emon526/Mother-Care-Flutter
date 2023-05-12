@@ -50,6 +50,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "breastcancer": MessageLookupByLibrary.simpleMessage("স্তন ক্যান্সার"),
         "checkyourselfbutton":
             MessageLookupByLibrary.simpleMessage("ধাপে ধাপে নিজেকে চেক করুন"),
+        "consultdoctorbutton":
+            MessageLookupByLibrary.simpleMessage("ডাক্তারের সাথে পরামর্শ করুন"),
         "creditBody": MessageLookupByLibrary.simpleMessage(
             "এই অ্যাপটি ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটির শিক্ষার্থীরা তৈরি করেছে। ডেভেলপাররা হলেন আসরাফুল ইসলাম, এমডি শাহাজাদা হাসিব ও সাব্বির হোসেন রিয়াদ। অ্যাপটি ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটির সিএসই বিভাগের সহযোগী অধ্যাপক ড. মোঃ শামসুল আরেফিনের তত্ত্বাবধানে তৈরি করা হয়েছে।"),
         "creditdeveloper": MessageLookupByLibrary.simpleMessage("নির্মাণে"),
@@ -101,6 +103,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "selectLanguage":
             MessageLookupByLibrary.simpleMessage("ভাষা নির্বাচন কর"),
         "selectTheme": MessageLookupByLibrary.simpleMessage("থিম নির্বাচন কর"),
+        "selfCheckFinishBody": MessageLookupByLibrary.simpleMessage(
+            "শান্ত থাকুন - বেশিরভাগ পরিবর্তন বিপজ্জনক নয়।\n\nআপনার পরবর্তী মাসিক চক্রের পরে আবার পরীক্ষা করুন। এটি এখনও সেখানে থাকলে, আপনার ডাক্তার বা স্বাস্থ্য পেশাদারের সাথে পরামর্শ করুন।"),
+        "selfCheckFinishTitle": MessageLookupByLibrary.simpleMessage(
+            "আপনি কি অস্বাভাবিক কিছু লক্ষ্য করেছেন?"),
         "selfCheckHintBody": MessageLookupByLibrary.simpleMessage(
             "আপনি ঝরনা অধীনে আপনার স্ব-পরীক্ষা করতে পারেন. কখনও কখনও এটি সহজ হয় যখন স্তন ভেজা এবং সাবান হয়।"),
         "selfCheckHintTitle":
@@ -149,6 +155,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "selfCheckStep7Title":
             MessageLookupByLibrary.simpleMessage("শুয়ে পড়ো"),
         "selfcheck": MessageLookupByLibrary.simpleMessage("সেলফ চেক"),
+        "setreminderbutton":
+            MessageLookupByLibrary.simpleMessage("একটি অনুস্মারক সেট করুন"),
         "settings": MessageLookupByLibrary.simpleMessage("সেটিংস"),
         "skipbutton": MessageLookupByLibrary.simpleMessage("এড়িয়ে যান"),
         "systemTheme": MessageLookupByLibrary.simpleMessage("পদ্ধতি"),
