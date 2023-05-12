@@ -48,6 +48,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "awarenessTitle2":
             MessageLookupByLibrary.simpleMessage("WHY IT MATTERS"),
         "breastcancer": MessageLookupByLibrary.simpleMessage("Breast Cancer"),
+        "checkyourselfbutton":
+            MessageLookupByLibrary.simpleMessage("CHECK YOURSELF STEP BY STEP"),
         "creditBody": MessageLookupByLibrary.simpleMessage(
             "This app is developed by the students of Daffodil International University. The developers are Asraful Islam, MD Shahajada Hasib and Sabbir Hossain Riad. The app is developed under the supervision of Dr. Md. Shamsul Arefin, Associate Professor, Department of CSE, Daffodil International University."),
         "creditdeveloper": MessageLookupByLibrary.simpleMessage("Developed by"),
@@ -65,6 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "darkTheme": MessageLookupByLibrary.simpleMessage("Dark"),
         "doctors": MessageLookupByLibrary.simpleMessage("Doctors"),
         "donebutton": MessageLookupByLibrary.simpleMessage("Done"),
+        "finishbutton": MessageLookupByLibrary.simpleMessage("Finish"),
         "howtoselfcheckbutton":
             MessageLookupByLibrary.simpleMessage("How to self-check"),
         "introBody1": MessageLookupByLibrary.simpleMessage(
@@ -92,10 +95,54 @@ class MessageLookup extends MessageLookupByLibrary {
         "mammographyscreening":
             MessageLookupByLibrary.simpleMessage("Mammography Screening"),
         "nextbutton": MessageLookupByLibrary.simpleMessage("Next"),
+        "prevbutton": MessageLookupByLibrary.simpleMessage("Prev"),
         "reminders": MessageLookupByLibrary.simpleMessage("Reminders"),
         "selectLanguage":
             MessageLookupByLibrary.simpleMessage("Select Language"),
         "selectTheme": MessageLookupByLibrary.simpleMessage("Select Theme"),
+        "selfCheckHintBody": MessageLookupByLibrary.simpleMessage(
+            "You can do your self-check under the shower. Sometimes it’s easier when the breast is wet and soapy."),
+        "selfCheckHintTitle":
+            MessageLookupByLibrary.simpleMessage("Helpful Hint : Shower"),
+        "selfCheckInstruction1Subtitle": MessageLookupByLibrary.simpleMessage(
+            "Lumps, hardened knots or thickenings in the breast tissue can be a sign of breast cancer. They can occur right under the skin, in the middle of the breast or in the deep tissue near the bones."),
+        "selfCheckInstruction1Title":
+            MessageLookupByLibrary.simpleMessage("Lumps, knots, thickening"),
+        "selfCheckInstruction2Subtitle": MessageLookupByLibrary.simpleMessage(
+            "Unusual changes in size, contour or shape should be checked. The same is true for distortions or swellings. Keep in mind that your left and right breast might look different. Know what is normal for you."),
+        "selfCheckInstruction2Title":
+            MessageLookupByLibrary.simpleMessage("Changes in size or shape"),
+        "selfCheckInstruction3Subtitle": MessageLookupByLibrary.simpleMessage(
+            "There should be no strange wrinkling or bulging of the skin. Get checked if there is any persistent redness, soreness or rash, especially if only on one side."),
+        "selfCheckInstruction3Title":
+            MessageLookupByLibrary.simpleMessage("Skin changes"),
+        "selfCheckInstruction4Subtitle": MessageLookupByLibrary.simpleMessage(
+            "The nipple should look normal to you, and should be free from irritation. Check for unusual discharge of fluid or blood."),
+        "selfCheckInstruction4Title":
+            MessageLookupByLibrary.simpleMessage("Nipple discharge"),
+        "selfCheckInstructionTitle":
+            MessageLookupByLibrary.simpleMessage("WHAT TO LOOK FOR"),
+        "selfCheckStep1Body": MessageLookupByLibrary.simpleMessage(
+            "Start in an upright position, hands on your hips. Look at your breasts with the help of a mirror, your mobile phone, or a friend."),
+        "selfCheckStep1Title": MessageLookupByLibrary.simpleMessage("Begin"),
+        "selfCheckStep2Body": MessageLookupByLibrary.simpleMessage(
+            "Do you see any changes in size, shape or colour. Swelling? Puckering of the skin? Raise your arms and check again."),
+        "selfCheckStep2Title": MessageLookupByLibrary.simpleMessage("Look"),
+        "selfCheckStep3Body": MessageLookupByLibrary.simpleMessage(
+            "Use the pads of your fingers and feel your breast. Follow a pattern. Feel for lumps, hardened knots and thickenings."),
+        "selfCheckStep3Title": MessageLookupByLibrary.simpleMessage("Feel"),
+        "selfCheckStep4Body": MessageLookupByLibrary.simpleMessage(
+            "Keep your fingers together and flat. Move in small circles. Repeat using light, medium and then firm pressure. With firm pressure you should feel your ribcage."),
+        "selfCheckStep4Title": MessageLookupByLibrary.simpleMessage("Circles"),
+        "selfCheckStep5Body": MessageLookupByLibrary.simpleMessage(
+            "Cover all the way up to your armpit. The left hand feels the right side and the right hand feels the left side."),
+        "selfCheckStep5Title": MessageLookupByLibrary.simpleMessage("Armpit"),
+        "selfCheckStep6Body": MessageLookupByLibrary.simpleMessage(
+            "Squeeze the nipple. Is there any unusual discharge?"),
+        "selfCheckStep6Title": MessageLookupByLibrary.simpleMessage("Nipple"),
+        "selfCheckStep7Body": MessageLookupByLibrary.simpleMessage(
+            "Lie down so the tissue spreads out evenly. Repeat the examination of your breasts."),
+        "selfCheckStep7Title": MessageLookupByLibrary.simpleMessage("Lie down"),
         "selfcheck": MessageLookupByLibrary.simpleMessage("Self Check"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "skipbutton": MessageLookupByLibrary.simpleMessage("Skip"),

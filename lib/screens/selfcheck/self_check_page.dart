@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import '../../const/consts.dart';
 import 'self_check_steps.dart';
@@ -21,30 +22,26 @@ class _SelfCheckPageState extends State<SelfCheckPage> {
       _buildDataCard(
         size: size,
         imagepath: 'assets/images/change_1.jpeg',
-        title: "Lumps, knots, thickening",
-        subtitle:
-            "Lumps, hardened knots or thickenings in the breast tissue can be a sign of breast cancer. They can occur right under the skin, in the middle of the breast or in the deep tissue near the bones.",
+        title: AppLocalizations.of(context)!.selfCheckInstruction1Title,
+        subtitle: AppLocalizations.of(context)!.selfCheckInstruction1Subtitle,
       ),
       _buildDataCard(
         size: size,
         imagepath: 'assets/images/change_2.jpeg',
-        title: "Changes in size or shape",
-        subtitle:
-            "Unusual changes in size, contour or shape should be checked. The same is true for distortions or swellings. Keep in mind that your left and right breast might look different. Know what is normal for you.",
+        title: AppLocalizations.of(context)!.selfCheckInstruction2Title,
+        subtitle: AppLocalizations.of(context)!.selfCheckInstruction2Subtitle,
       ),
       _buildDataCard(
         size: size,
         imagepath: 'assets/images/change_3.jpeg',
-        title: "Skin changes",
-        subtitle:
-            "There should be no strange wrinkling or bulging of the skin. Get checked if there is any persistent redness, soreness or rash, especially if only on one side.",
+        title: AppLocalizations.of(context)!.selfCheckInstruction3Title,
+        subtitle: AppLocalizations.of(context)!.selfCheckInstruction3Subtitle,
       ),
       _buildDataCard(
         size: size,
         imagepath: 'assets/images/change_4.jpeg',
-        title: "Nipple discharge",
-        subtitle:
-            "The nipple should look normal to you, and should be free from irritation. Check for unusual discharge of fluid or blood.",
+        title: AppLocalizations.of(context)!.selfCheckInstruction4Title,
+        subtitle: AppLocalizations.of(context)!.selfCheckInstruction4Subtitle,
       ),
     ];
 
@@ -54,7 +51,7 @@ class _SelfCheckPageState extends State<SelfCheckPage> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(
-              "WHAT TO LOOK FOR",
+              AppLocalizations.of(context)!.selfCheckInstructionTitle,
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 22,
@@ -133,7 +130,7 @@ class _SelfCheckPageState extends State<SelfCheckPage> {
                   pageTransitionAnimation: PageTransitionAnimation.cupertino,
                 );
               },
-              child: const Text('CHECK YOURSELF STEP BY STEP'),
+              child: Text(AppLocalizations.of(context)!.checkyourselfbutton),
             ),
           ],
         ),

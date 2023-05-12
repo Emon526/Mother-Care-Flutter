@@ -33,14 +33,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.1"
-  another_flushbar:
-    dependency: transitive
-    description:
-      name: another_flushbar
-      sha256: fa09f8a4ca582c417669b7b1d0e85ce65bd074d80bb0dcbb1302ad1b22bdc3ef
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.12.29"
   archive:
     dependency: transitive
     description:
@@ -145,14 +137,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.1"
-  cool_stepper:
-    dependency: "direct main"
-    description:
-      name: cool_stepper
-      sha256: "464eebc8648cc56131402defeca08635ef91acde496b9d80fc441c30079b3b95"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.2.1"
   cross_file:
     dependency: transitive
     description:
@@ -209,6 +193,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.2"
+  easy_stepper:
+    dependency: "direct main"
+    description:
+      name: easy_stepper
+      sha256: "77f3ab4ee3c867b5a2236bf712abb08fed2b1c533cf24cf3fcd46c2821072ffd"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.2+1"
   fake_async:
     dependency: transitive
     description:
@@ -589,6 +581,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
+  lottie:
+    dependency: transitive
+    description:
+      name: lottie
+      sha256: "23522951540d20a57a60202ed7022e6376bed206a4eee1c347a91f58bd57eb9f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.2"
   matcher:
     dependency: transitive
     description:

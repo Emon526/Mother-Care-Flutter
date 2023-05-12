@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -13,6 +14,7 @@ import 'providers/doctorprovider.dart';
 import 'providers/languageprovider.dart';
 import 'providers/pdfgenerateprovider.dart';
 import 'providers/reminderprovider.dart';
+import 'providers/selfcheckprovider.dart';
 import 'screens/onboarding/onboarding.dart';
 import 'services/apiservice.dart';
 import 'services/notificationservice.dart';
@@ -21,7 +23,6 @@ import 'providers/modelprovider.dart';
 import 'providers/nav_bar_provider.dart';
 import 'providers/predictionprovider.dart';
 import 'providers/themeprovider.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   //add splash time
@@ -75,6 +76,9 @@ class MyApp extends StatelessWidget {
           ),
           ChangeNotifierProvider(
             create: (_) => LanguageProvider(),
+          ),
+          ChangeNotifierProvider(
+            create: (_) => SelfCheckProvider(),
           ),
         ],
         builder: (context, child) {

@@ -1,7 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:cool_stepper/cool_stepper.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:easy_stepper/easy_stepper.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:provider/provider.dart';
 import '../../const/consts.dart';
+import '../../providers/selfcheckprovider.dart';
 import '../../utils/utils.dart';
 import 'self_check_finish.dart';
 
@@ -11,6 +14,8 @@ class SelfCheckSteps extends StatefulWidget {
   @override
   State<SelfCheckSteps> createState() => _SelfCheckStepsState();
 }
+
+CarouselController stepcontroller = CarouselController();
 
 class _SelfCheckStepsState extends State<SelfCheckSteps> {
   @override
@@ -22,192 +27,274 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final steps = [
-      CoolStep(
-        isHeaderEnabled: false,
-        title: 'Step 1',
-        subtitle: 'Begin',
-        content: _buildStepCard(
-          context: context,
-          size: size,
-          stepimagepath: 'assets/images/self-check_step_1.jpg',
-          steptitle: "Begin",
-          stepsubtitle:
-              "Start in an upright position, hands on your hips. Look at your breasts with the help of a mirror, your mobile phone, or a friend.",
-        ),
-        validation: () {
-          return null;
-        },
-      ),
-      CoolStep(
-        isHeaderEnabled: false,
-        title: 'Step 2',
-        subtitle: 'Look',
-        content: _buildStepCard(
-          context: context,
-          size: size,
-          stepimagepath: 'assets/images/self-check_step_2.jpg',
-          steptitle: "Look",
-          stepsubtitle:
-              "Do you see any changes in size, shape or colour. Swelling? Puckering of the skin? Raise your arms and check again.",
-        ),
-        validation: () {
-          return null;
-        },
-      ),
-      CoolStep(
-        isHeaderEnabled: false,
-        title: 'Step 3',
-        subtitle: 'Feel',
-        content: _buildStepCard(
-          context: context,
-          size: size,
-          stepimagepath: 'assets/images/self-check_step_3.jpg',
-          steptitle: "Feel",
-          stepsubtitle:
-              "Use the pads of your fingers and feel your breast. Follow a pattern. Feel for lumps, hardened knots and thickenings.",
-        ),
-        validation: () {
-          return null;
-        },
-      ),
-      CoolStep(
-        isHeaderEnabled: false,
-        title: 'Step 4',
-        subtitle: 'Circles',
-        content: _buildStepCard(
-          context: context,
-          size: size,
-          stepimagepath: 'assets/images/self-check_step_4.jpg',
-          steptitle: "Circles",
-          stepsubtitle:
-              "Keep your fingers together and flat. Move in small circles. Repeat using light, medium and then firm pressure. With firm pressure you should feel your ribcage.",
-        ),
-        validation: () {
-          return null;
-        },
-      ),
-      CoolStep(
-        isHeaderEnabled: false,
-        title: 'Step 5',
-        subtitle: 'Armpit',
-        content: _buildStepCard(
-          context: context,
-          size: size,
-          stepimagepath: 'assets/images/self-check_step_5.jpg',
-          steptitle: "Armpit",
-          stepsubtitle:
-              "Cover all the way up to your armpit. The left hand feels the right side and the right hand feels the left side.",
-        ),
-        validation: () {
-          return null;
-        },
-      ),
-      CoolStep(
-        isHeaderEnabled: false,
-        title: 'Step 6',
-        subtitle: 'Nipple',
-        content: _buildStepCard(
-          context: context,
-          size: size,
-          stepimagepath: 'assets/images/self-check_step_6.jpg',
-          steptitle: "Nipple",
-          stepsubtitle: "Squeeze the nipple. Is there any unusual discharge?",
-        ),
-        validation: () {
-          return null;
-        },
-      ),
-      CoolStep(
-        isHeaderEnabled: false,
-        title: 'Step 7',
-        subtitle: 'Lie down',
-        content: _buildStepCard(
-          context: context,
-          size: size,
-          stepimagepath: 'assets/images/self-check_step_7.jpg',
-          steptitle: "Lie down",
-          stepsubtitle:
-              "Lie down so the tissue spreads out evenly. Repeat the examination of your breasts.",
-        ),
-        validation: () {
-          return null;
-        },
-      ),
-    ];
+
     return Scaffold(
-      body: CoolStepper(
-        showErrorSnackbar: false,
-        onCompleted: () {
-          PersistentNavBarNavigator.pushNewScreen(
-            context,
-            screen: const SelfCheckFinish(),
-            withNavBar: true, // OPTIONAL VALUE. True by default.
-            pageTransitionAnimation: PageTransitionAnimation.cupertino,
-          );
-        },
-        steps: steps,
-        config: const CoolStepperConfig(
-          backText: 'PREV',
+      body: _easyStepper(
+        easysteppersteps: easysteppersteps(
+          context: context,
+          size: size,
         ),
       ),
     );
   }
 
-  _buildStepCard({
-    required Size size,
-    required String stepimagepath,
-    required String steptitle,
-    required String stepsubtitle,
-    required BuildContext context,
-  }) {
+  _easyStepper({required List<Widget> easysteppersteps}) {
     return Column(
       children: [
-        Container(
-          decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.secondary,
-              borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius)),
-          padding: const EdgeInsets.symmetric(
-            horizontal: 10,
-            vertical: 20,
-          ),
-          width: size.width,
-          child: Text(
-            steptitle,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
+        EasyStepper(
+          // enableStepTapping: false,
+          showLoadingAnimation: false,
+          // disableScroll: true,
+          activeStep: context.watch<SelfCheckProvider>().current,
+          // lineLength: 50,
+          // maxReachedStep: dotCount - 1,
+          stepShape: StepShape.rRectangle,
+          stepBorderRadius: Consts.DefaultBorderRadius,
+          borderThickness: 2,
+          // padding: 20,f
+          // stepRadius: 28,
+          // finishedStepTextColor: Colors.deepOrange,
+          finishedStepBackgroundColor: Theme.of(context).colorScheme.secondary,
+          finishedStepBorderColor: Theme.of(context).colorScheme.secondary,
+          defaultLineColor: Theme.of(context).primaryColor,
+          // activeStepIconColor: Colors.deepOrange,
+          activeStepBorderColor: Theme.of(context).primaryColor,
+          activeStepBackgroundColor: Theme.of(context).primaryColor,
+          activeStepTextColor: Theme.of(context).primaryColor,
+          // activeLineColor:
+
+          onStepReached: (index) {
+            context.read<SelfCheckProvider>().current = index;
+            _stepWidgetChange(index: index);
+          },
+          steps: [
+            EasyStep(
+              customStep: ClipRRect(
+                borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+                child: Opacity(
+                  opacity:
+                      context.watch<SelfCheckProvider>().current == 0 ? 1 : 0.3,
+                  child: Image.asset(
+                    'assets/images/self-check_step_1.jpg',
+                  ),
+                ),
+              ),
+              customTitle: Opacity(
+                opacity:
+                    context.watch<SelfCheckProvider>().current == 0 ? 1 : 0.3,
+                child: Text(
+                  AppLocalizations.of(context)!.selfCheckStep1Title,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+              ),
             ),
+            EasyStep(
+              customStep: ClipRRect(
+                borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+                child: Opacity(
+                  opacity:
+                      context.watch<SelfCheckProvider>().current == 1 ? 1 : 0.3,
+                  child: Image.asset(
+                    'assets/images/self-check_step_2.jpg',
+                  ),
+                ),
+              ),
+              customTitle: Opacity(
+                opacity:
+                    context.watch<SelfCheckProvider>().current == 1 ? 1 : 0.3,
+                child: Text(
+                  AppLocalizations.of(context)!.selfCheckStep2Title,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+              ),
+            ),
+            EasyStep(
+              customStep: ClipRRect(
+                borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+                child: Opacity(
+                  opacity:
+                      context.watch<SelfCheckProvider>().current == 2 ? 1 : 0.3,
+                  child: Image.asset(
+                    'assets/images/self-check_step_3.jpg',
+                  ),
+                ),
+              ),
+              customTitle: Opacity(
+                opacity:
+                    context.watch<SelfCheckProvider>().current == 2 ? 1 : 0.3,
+                child: Text(
+                  AppLocalizations.of(context)!.selfCheckStep3Title,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+              ),
+            ),
+            EasyStep(
+              customStep: ClipRRect(
+                borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+                child: Opacity(
+                  opacity:
+                      context.watch<SelfCheckProvider>().current == 3 ? 1 : 0.3,
+                  child: Image.asset(
+                    'assets/images/self-check_step_4.jpg',
+                  ),
+                ),
+              ),
+              customTitle: Opacity(
+                opacity:
+                    context.watch<SelfCheckProvider>().current == 3 ? 1 : 0.3,
+                child: Text(
+                  AppLocalizations.of(context)!.selfCheckStep4Title,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+              ),
+            ),
+            EasyStep(
+              customStep: ClipRRect(
+                borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+                child: Opacity(
+                  opacity:
+                      context.watch<SelfCheckProvider>().current == 4 ? 1 : 0.3,
+                  child: Image.asset(
+                    'assets/images/self-check_step_5.jpg',
+                  ),
+                ),
+              ),
+              customTitle: Opacity(
+                opacity:
+                    context.watch<SelfCheckProvider>().current == 4 ? 1 : 0.3,
+                child: Text(
+                  AppLocalizations.of(context)!.selfCheckStep5Title,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+              ),
+            ),
+            EasyStep(
+              customStep: ClipRRect(
+                borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+                child: Opacity(
+                  opacity:
+                      context.watch<SelfCheckProvider>().current == 5 ? 1 : 0.3,
+                  child: Image.asset(
+                    'assets/images/self-check_step_6.jpg',
+                  ),
+                ),
+              ),
+              customTitle: Opacity(
+                opacity:
+                    context.watch<SelfCheckProvider>().current == 5 ? 1 : 0.3,
+                child: Text(
+                  AppLocalizations.of(context)!.selfCheckStep6Title,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+              ),
+            ),
+            EasyStep(
+              customStep: ClipRRect(
+                borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+                child: Opacity(
+                  opacity:
+                      context.watch<SelfCheckProvider>().current == 6 ? 1 : 0.3,
+                  child: Image.asset(
+                    'assets/images/self-check_step_7.jpg',
+                  ),
+                ),
+              ),
+              customTitle: Opacity(
+                opacity:
+                    context.watch<SelfCheckProvider>().current == 6 ? 1 : 0.3,
+                child: Text(
+                  AppLocalizations.of(context)!.selfCheckStep7Title,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+        CarouselSlider(
+          disableGesture: true,
+          carouselController: stepcontroller,
+          items: easysteppersteps,
+          options: CarouselOptions(
+            initialPage: context.watch<SelfCheckProvider>().current,
+            scrollPhysics: const NeverScrollableScrollPhysics(),
+            enableInfiniteScroll: false,
+            viewportFraction: 0.9,
+            aspectRatio: 1,
+            enlargeCenterPage: true,
+            scrollDirection: Axis.horizontal,
           ),
         ),
+        // easysteppersteps[context.read<SelfCheckProvider>().current],
+        const Spacer(),
         Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 10,
-            vertical: 50,
-          ),
-          child: Column(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
-                child: Image.asset(
-                  stepimagepath,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Text(
-                stepsubtitle,
-                style: const TextStyle(
-                  fontWeight: FontWeight.normal,
-                  fontSize: 18,
-                ),
+              context.read<SelfCheckProvider>().current == 0
+                  ? const SizedBox()
+                  : ElevatedButton(
+                      child: Text(AppLocalizations.of(context)!.prevbutton),
+                      onPressed: () {
+                        // activeStep MUST BE GREATER THAN 0 TO PREVENT OVERFLOW.
+                        if (context.read<SelfCheckProvider>().current > 0) {
+                          context.read<SelfCheckProvider>().current--;
+
+                          _stepWidgetChange(
+                              index: context.read<SelfCheckProvider>().current);
+                        }
+                      },
+                    ),
+              ElevatedButton(
+                child: Text(context.watch<SelfCheckProvider>().current ==
+                        context.watch<SelfCheckProvider>().totalSteps - 1
+                    ? AppLocalizations.of(context)!.finishbutton
+                    : AppLocalizations.of(context)!.nextbutton),
+                onPressed: () {
+                  /// ACTIVE STEP MUST BE CHECKED FOR (dotCount - 1) AND NOT FOR dotCount To PREVENT Overflow ERROR.
+                  if (context.read<SelfCheckProvider>().current <
+                      context.read<SelfCheckProvider>().totalSteps - 1) {
+                    context.read<SelfCheckProvider>().current++;
+                    _stepWidgetChange(
+                        index: context.read<SelfCheckProvider>().current);
+                  }
+
+                  if (context.read<SelfCheckProvider>().current ==
+                      context.read<SelfCheckProvider>().totalSteps - 1) {
+                    PersistentNavBarNavigator.pushNewScreen(
+                      context,
+                      screen: const SelfCheckFinish(),
+                      withNavBar: true, // OPTIONAL VALUE. True by default.
+                      pageTransitionAnimation:
+                          PageTransitionAnimation.cupertino,
+                    );
+                  }
+                },
               ),
             ],
           ),
-        )
+        ),
       ],
     );
   }
@@ -225,7 +312,7 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
               Container(
                 margin: const EdgeInsets.only(top: 5.0, bottom: 5.0),
                 child: Text(
-                  'Helpful Hint : Shower',
+                  AppLocalizations.of(context)!.selfCheckHintTitle,
                   style: TextStyle(
                     fontSize: 18.0,
                     color: Theme.of(context).primaryColor,
@@ -245,10 +332,10 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
               const SizedBox(
                 height: 10,
               ),
-              const Text(
-                'You can do your self-check under the shower. Sometimes it’s easier when the breast is wet and soapy.',
+              Text(
+                AppLocalizations.of(context)!.selfCheckHintBody,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.normal,
                   fontSize: 18,
                 ),
@@ -262,4 +349,103 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
       );
     });
   }
+}
+
+_buildStepCard({
+  required Size size,
+  required String stepimagepath,
+  required String steptitle,
+  required String stepsubtitle,
+  required BuildContext context,
+}) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(
+      horizontal: 10,
+      // vertical: 50,
+    ),
+    child: Column(
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+          child: Image.asset(
+            stepimagepath,
+            fit: BoxFit.cover,
+          ),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        Flexible(
+          child: Text(
+            stepsubtitle,
+            style: const TextStyle(
+              fontWeight: FontWeight.normal,
+              fontSize: 18,
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+List<Widget> easysteppersteps(
+        {required BuildContext context, required Size size}) =>
+    [
+      _buildStepCard(
+        context: context,
+        size: size,
+        stepimagepath: 'assets/images/self-check_step_1.jpg',
+        steptitle: AppLocalizations.of(context)!.selfCheckStep1Title,
+        stepsubtitle: AppLocalizations.of(context)!.selfCheckStep1Body,
+      ),
+      _buildStepCard(
+        context: context,
+        size: size,
+        stepimagepath: 'assets/images/self-check_step_2.jpg',
+        steptitle: AppLocalizations.of(context)!.selfCheckStep2Title,
+        stepsubtitle: AppLocalizations.of(context)!.selfCheckStep2Body,
+      ),
+      _buildStepCard(
+        context: context,
+        size: size,
+        stepimagepath: 'assets/images/self-check_step_3.jpg',
+        steptitle: AppLocalizations.of(context)!.selfCheckStep3Title,
+        stepsubtitle: AppLocalizations.of(context)!.selfCheckStep3Body,
+      ),
+      _buildStepCard(
+        context: context,
+        size: size,
+        stepimagepath: 'assets/images/self-check_step_4.jpg',
+        steptitle: AppLocalizations.of(context)!.selfCheckStep4Title,
+        stepsubtitle: AppLocalizations.of(context)!.selfCheckStep4Body,
+      ),
+      _buildStepCard(
+        context: context,
+        size: size,
+        stepimagepath: 'assets/images/self-check_step_5.jpg',
+        steptitle: AppLocalizations.of(context)!.selfCheckStep5Title,
+        stepsubtitle: AppLocalizations.of(context)!.selfCheckStep5Body,
+      ),
+      _buildStepCard(
+        context: context,
+        size: size,
+        stepimagepath: 'assets/images/self-check_step_6.jpg',
+        steptitle: AppLocalizations.of(context)!.selfCheckStep6Title,
+        stepsubtitle: AppLocalizations.of(context)!.selfCheckStep6Body,
+      ),
+      _buildStepCard(
+        context: context,
+        size: size,
+        stepimagepath: 'assets/images/self-check_step_7.jpg',
+        steptitle: AppLocalizations.of(context)!.selfCheckStep7Title,
+        stepsubtitle: AppLocalizations.of(context)!.selfCheckStep7Body,
+      ),
+    ];
+_stepWidgetChange({required int index}) {
+  return stepcontroller.animateToPage(
+    index,
+    duration: const Duration(milliseconds: 1000),
+    curve: Curves.linear,
+  );
 }

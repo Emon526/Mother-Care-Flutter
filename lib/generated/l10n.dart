@@ -90,6 +90,26 @@ class S {
     );
   }
 
+  /// `Prev`
+  String get prevbutton {
+    return Intl.message(
+      'Prev',
+      name: 'prevbutton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Finish`
+  String get finishbutton {
+    return Intl.message(
+      'Finish',
+      name: 'finishbutton',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Learn more`
   String get learnmorebutton {
     return Intl.message(
@@ -105,6 +125,16 @@ class S {
     return Intl.message(
       'How to self-check',
       name: 'howtoselfcheckbutton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CHECK YOURSELF STEP BY STEP`
+  String get checkyourselfbutton {
+    return Intl.message(
+      'CHECK YOURSELF STEP BY STEP',
+      name: 'checkyourselfbutton',
       desc: '',
       args: [],
     );
@@ -555,6 +585,256 @@ class S {
     return Intl.message(
       'SELF CHECK GUIDE',
       name: 'awarenessHeader3Subtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `WHAT TO LOOK FOR`
+  String get selfCheckInstructionTitle {
+    return Intl.message(
+      'WHAT TO LOOK FOR',
+      name: 'selfCheckInstructionTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lumps, knots, thickening`
+  String get selfCheckInstruction1Title {
+    return Intl.message(
+      'Lumps, knots, thickening',
+      name: 'selfCheckInstruction1Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lumps, hardened knots or thickenings in the breast tissue can be a sign of breast cancer. They can occur right under the skin, in the middle of the breast or in the deep tissue near the bones.`
+  String get selfCheckInstruction1Subtitle {
+    return Intl.message(
+      'Lumps, hardened knots or thickenings in the breast tissue can be a sign of breast cancer. They can occur right under the skin, in the middle of the breast or in the deep tissue near the bones.',
+      name: 'selfCheckInstruction1Subtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Changes in size or shape`
+  String get selfCheckInstruction2Title {
+    return Intl.message(
+      'Changes in size or shape',
+      name: 'selfCheckInstruction2Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unusual changes in size, contour or shape should be checked. The same is true for distortions or swellings. Keep in mind that your left and right breast might look different. Know what is normal for you.`
+  String get selfCheckInstruction2Subtitle {
+    return Intl.message(
+      'Unusual changes in size, contour or shape should be checked. The same is true for distortions or swellings. Keep in mind that your left and right breast might look different. Know what is normal for you.',
+      name: 'selfCheckInstruction2Subtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Skin changes`
+  String get selfCheckInstruction3Title {
+    return Intl.message(
+      'Skin changes',
+      name: 'selfCheckInstruction3Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `There should be no strange wrinkling or bulging of the skin. Get checked if there is any persistent redness, soreness or rash, especially if only on one side.`
+  String get selfCheckInstruction3Subtitle {
+    return Intl.message(
+      'There should be no strange wrinkling or bulging of the skin. Get checked if there is any persistent redness, soreness or rash, especially if only on one side.',
+      name: 'selfCheckInstruction3Subtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nipple discharge`
+  String get selfCheckInstruction4Title {
+    return Intl.message(
+      'Nipple discharge',
+      name: 'selfCheckInstruction4Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The nipple should look normal to you, and should be free from irritation. Check for unusual discharge of fluid or blood.`
+  String get selfCheckInstruction4Subtitle {
+    return Intl.message(
+      'The nipple should look normal to you, and should be free from irritation. Check for unusual discharge of fluid or blood.',
+      name: 'selfCheckInstruction4Subtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Helpful Hint : Shower`
+  String get selfCheckHintTitle {
+    return Intl.message(
+      'Helpful Hint : Shower',
+      name: 'selfCheckHintTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You can do your self-check under the shower. Sometimes it’s easier when the breast is wet and soapy.`
+  String get selfCheckHintBody {
+    return Intl.message(
+      'You can do your self-check under the shower. Sometimes it’s easier when the breast is wet and soapy.',
+      name: 'selfCheckHintBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Begin`
+  String get selfCheckStep1Title {
+    return Intl.message(
+      'Begin',
+      name: 'selfCheckStep1Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start in an upright position, hands on your hips. Look at your breasts with the help of a mirror, your mobile phone, or a friend.`
+  String get selfCheckStep1Body {
+    return Intl.message(
+      'Start in an upright position, hands on your hips. Look at your breasts with the help of a mirror, your mobile phone, or a friend.',
+      name: 'selfCheckStep1Body',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Look`
+  String get selfCheckStep2Title {
+    return Intl.message(
+      'Look',
+      name: 'selfCheckStep2Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you see any changes in size, shape or colour. Swelling? Puckering of the skin? Raise your arms and check again.`
+  String get selfCheckStep2Body {
+    return Intl.message(
+      'Do you see any changes in size, shape or colour. Swelling? Puckering of the skin? Raise your arms and check again.',
+      name: 'selfCheckStep2Body',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Feel`
+  String get selfCheckStep3Title {
+    return Intl.message(
+      'Feel',
+      name: 'selfCheckStep3Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Use the pads of your fingers and feel your breast. Follow a pattern. Feel for lumps, hardened knots and thickenings.`
+  String get selfCheckStep3Body {
+    return Intl.message(
+      'Use the pads of your fingers and feel your breast. Follow a pattern. Feel for lumps, hardened knots and thickenings.',
+      name: 'selfCheckStep3Body',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Circles`
+  String get selfCheckStep4Title {
+    return Intl.message(
+      'Circles',
+      name: 'selfCheckStep4Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keep your fingers together and flat. Move in small circles. Repeat using light, medium and then firm pressure. With firm pressure you should feel your ribcage.`
+  String get selfCheckStep4Body {
+    return Intl.message(
+      'Keep your fingers together and flat. Move in small circles. Repeat using light, medium and then firm pressure. With firm pressure you should feel your ribcage.',
+      name: 'selfCheckStep4Body',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Armpit`
+  String get selfCheckStep5Title {
+    return Intl.message(
+      'Armpit',
+      name: 'selfCheckStep5Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cover all the way up to your armpit. The left hand feels the right side and the right hand feels the left side.`
+  String get selfCheckStep5Body {
+    return Intl.message(
+      'Cover all the way up to your armpit. The left hand feels the right side and the right hand feels the left side.',
+      name: 'selfCheckStep5Body',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nipple`
+  String get selfCheckStep6Title {
+    return Intl.message(
+      'Nipple',
+      name: 'selfCheckStep6Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Squeeze the nipple. Is there any unusual discharge?`
+  String get selfCheckStep6Body {
+    return Intl.message(
+      'Squeeze the nipple. Is there any unusual discharge?',
+      name: 'selfCheckStep6Body',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lie down`
+  String get selfCheckStep7Title {
+    return Intl.message(
+      'Lie down',
+      name: 'selfCheckStep7Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lie down so the tissue spreads out evenly. Repeat the examination of your breasts.`
+  String get selfCheckStep7Body {
+    return Intl.message(
+      'Lie down so the tissue spreads out evenly. Repeat the examination of your breasts.',
+      name: 'selfCheckStep7Body',
       desc: '',
       args: [],
     );

@@ -32,15 +32,17 @@ dependencies:
   better_open_file: ^3.6.4
   carousel_slider: ^4.2.1
   chips_choice: ^3.0.0
-  cool_stepper: ^1.2.1
   cupertino_icons: ^1.0.5
   day_night_time_picker: ^1.2.0+2
+  easy_stepper: ^0.5.2+1
   firebase_core: ^2.11.0
   firebase_ml_model_downloader: ^0.2.2
   firebase_storage: ^11.1.2
   flutter:
     sdk: flutter
   flutter_local_notifications: ^14.0.0+1
+  flutter_localizations:
+    sdk: flutter
   flutter_rating_bar: ^4.0.1
   flutter_statusbarcolor_ns: ^0.5.0
   flutter_svg: ^2.0.5
@@ -66,8 +68,6 @@ dependencies:
   tflite_flutter: ^0.9.5
   timezone: ^0.9.2
   url_launcher: ^6.1.11
-  flutter_localizations:
-        sdk: flutter
 
 dev_dependencies:
   flutter_launcher_icons: ^0.11.0

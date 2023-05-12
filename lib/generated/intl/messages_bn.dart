@@ -48,6 +48,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "awarenessTitle2":
             MessageLookupByLibrary.simpleMessage("কেন এটি গুরুত্বপূর্ণ"),
         "breastcancer": MessageLookupByLibrary.simpleMessage("স্তন ক্যান্সার"),
+        "checkyourselfbutton":
+            MessageLookupByLibrary.simpleMessage("ধাপে ধাপে নিজেকে চেক করুন"),
         "creditBody": MessageLookupByLibrary.simpleMessage(
             "এই অ্যাপটি ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটির শিক্ষার্থীরা তৈরি করেছে। ডেভেলপাররা হলেন আসরাফুল ইসলাম, এমডি শাহাজাদা হাসিব ও সাব্বির হোসেন রিয়াদ। অ্যাপটি ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটির সিএসই বিভাগের সহযোগী অধ্যাপক ড. মোঃ শামসুল আরেফিনের তত্ত্বাবধানে তৈরি করা হয়েছে।"),
         "creditdeveloper": MessageLookupByLibrary.simpleMessage("নির্মাণে"),
@@ -65,6 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "darkTheme": MessageLookupByLibrary.simpleMessage("অন্ধকার"),
         "doctors": MessageLookupByLibrary.simpleMessage("ডাক্তাররা"),
         "donebutton": MessageLookupByLibrary.simpleMessage("সম্পন্ন"),
+        "finishbutton": MessageLookupByLibrary.simpleMessage("শেষ করুন"),
         "howtoselfcheckbutton":
             MessageLookupByLibrary.simpleMessage("কীভাবে স্ব-পরীক্ষা করবেন"),
         "introBody1": MessageLookupByLibrary.simpleMessage(
@@ -93,10 +96,58 @@ class MessageLookup extends MessageLookupByLibrary {
         "mammographyscreening":
             MessageLookupByLibrary.simpleMessage("ম্যামোগ্রাফি স্ক্রীনিং"),
         "nextbutton": MessageLookupByLibrary.simpleMessage("পরবর্তী"),
+        "prevbutton": MessageLookupByLibrary.simpleMessage("পূর্ববর্তী"),
         "reminders": MessageLookupByLibrary.simpleMessage("অনুস্মারক"),
         "selectLanguage":
             MessageLookupByLibrary.simpleMessage("ভাষা নির্বাচন কর"),
         "selectTheme": MessageLookupByLibrary.simpleMessage("থিম নির্বাচন কর"),
+        "selfCheckHintBody": MessageLookupByLibrary.simpleMessage(
+            "আপনি ঝরনা অধীনে আপনার স্ব-পরীক্ষা করতে পারেন. কখনও কখনও এটি সহজ হয় যখন স্তন ভেজা এবং সাবান হয়।"),
+        "selfCheckHintTitle":
+            MessageLookupByLibrary.simpleMessage("সহায়ক ইঙ্গিত: ঝরনা"),
+        "selfCheckInstruction1Subtitle": MessageLookupByLibrary.simpleMessage(
+            "স্তনের টিস্যুতে পিণ্ড, শক্ত গিঁট বা ঘন হওয়া স্তন ক্যান্সারের লক্ষণ হতে পারে। এগুলি ত্বকের ঠিক নীচে, স্তনের মাঝখানে বা হাড়ের কাছাকাছি গভীর টিস্যুতে ঘটতে পারে।"),
+        "selfCheckInstruction1Title":
+            MessageLookupByLibrary.simpleMessage("পিণ্ড, গিঁট, ঘন হওয়া"),
+        "selfCheckInstruction2Subtitle": MessageLookupByLibrary.simpleMessage(
+            "আকার, কনট্যুর বা আকৃতিতে অস্বাভাবিক পরিবর্তনগুলি পরীক্ষা করা উচিত। একই বিকৃতি বা ফোলা জন্য সত্য. মনে রাখবেন আপনার বাম এবং ডান স্তন আলাদা দেখতে পারে। আপনার জন্য স্বাভাবিক কি জানেন।"),
+        "selfCheckInstruction2Title":
+            MessageLookupByLibrary.simpleMessage("আকার বা আকৃতির পরিবর্তন"),
+        "selfCheckInstruction3Subtitle": MessageLookupByLibrary.simpleMessage(
+            "ত্বকে কোন অদ্ভুত কুঁচকে যাওয়া বা ফুলে যাওয়া উচিত নয়। কোনো ক্রমাগত লালভাব, ব্যথা বা ফুসকুড়ি আছে কিনা পরীক্ষা করুন, বিশেষ করে যদি শুধুমাত্র এক দিকে।"),
+        "selfCheckInstruction3Title":
+            MessageLookupByLibrary.simpleMessage("ত্বকের পরিবর্তন"),
+        "selfCheckInstruction4Subtitle": MessageLookupByLibrary.simpleMessage(
+            "স্তনবৃন্তটি আপনার কাছে স্বাভাবিক দেখা উচিত এবং জ্বালামুক্ত হওয়া উচিত। তরল বা রক্তের অস্বাভাবিক স্রাবের জন্য পরীক্ষা করুন।"),
+        "selfCheckInstruction4Title":
+            MessageLookupByLibrary.simpleMessage("স্তনবৃন্ত স্রাব"),
+        "selfCheckInstructionTitle":
+            MessageLookupByLibrary.simpleMessage("কি জন্য পর্যবেক্ষণ"),
+        "selfCheckStep1Body": MessageLookupByLibrary.simpleMessage(
+            "একটি সোজা অবস্থানে শুরু করুন, আপনার নিতম্বে হাত দিন। একটি আয়না, আপনার মোবাইল ফোন বা বন্ধুর সাহায্যে আপনার স্তন দেখুন।"),
+        "selfCheckStep1Title":
+            MessageLookupByLibrary.simpleMessage("শুরু করুন"),
+        "selfCheckStep2Body": MessageLookupByLibrary.simpleMessage(
+            "আপনি কি আকার, আকৃতি বা রঙে কোন পরিবর্তন দেখতে পাচ্ছেন। ফোলাভাব? ত্বকের খোঁচা? আপনার বাহু তুলে আবার পরীক্ষা করুন।"),
+        "selfCheckStep2Title": MessageLookupByLibrary.simpleMessage("দেখুন"),
+        "selfCheckStep3Body": MessageLookupByLibrary.simpleMessage(
+            "আপনার আঙ্গুলের প্যাড ব্যবহার করুন এবং আপনার স্তন অনুভব করুন। একটি প্যাটার্ন অনুসরণ করুন। গলদ, শক্ত গিঁট এবং ঘন হওয়ার জন্য অনুভব করুন।"),
+        "selfCheckStep3Title":
+            MessageLookupByLibrary.simpleMessage("অনুভব করা"),
+        "selfCheckStep4Body": MessageLookupByLibrary.simpleMessage(
+            "আপনার আঙ্গুলগুলি একসাথে এবং সমতল রাখুন। ছোট বৃত্তে সরান। হালকা, মাঝারি এবং তারপর দৃঢ় চাপ ব্যবহার করে পুনরাবৃত্তি করুন। দৃঢ় চাপের সাথে আপনার পাঁজরের খাঁচা অনুভব করা উচিত।"),
+        "selfCheckStep4Title": MessageLookupByLibrary.simpleMessage("বৃত্ত"),
+        "selfCheckStep5Body": MessageLookupByLibrary.simpleMessage(
+            "আপনার বগল পর্যন্ত সমস্ত পথ ঢেকে রাখুন। বাম হাতটি ডান দিকে অনুভব করে এবং ডান হাতটি বাম দিকে অনুভব করে।"),
+        "selfCheckStep5Title": MessageLookupByLibrary.simpleMessage("বগল"),
+        "selfCheckStep6Body": MessageLookupByLibrary.simpleMessage(
+            "স্তনবৃন্ত চেপে ধর। কোন অস্বাভাবিক স্রাব আছে?"),
+        "selfCheckStep6Title":
+            MessageLookupByLibrary.simpleMessage("স্তনবৃন্ত"),
+        "selfCheckStep7Body": MessageLookupByLibrary.simpleMessage(
+            "শুয়ে পড়ুন যাতে টিস্যু সমানভাবে ছড়িয়ে পড়ে। আপনার স্তনের পরীক্ষা পুনরাবৃত্তি করুন।"),
+        "selfCheckStep7Title":
+            MessageLookupByLibrary.simpleMessage("শুয়ে পড়ো"),
         "selfcheck": MessageLookupByLibrary.simpleMessage("সেলফ চেক"),
         "settings": MessageLookupByLibrary.simpleMessage("সেটিংস"),
         "skipbutton": MessageLookupByLibrary.simpleMessage("এড়িয়ে যান"),
