@@ -184,7 +184,7 @@ class DoctorsList extends StatelessWidget {
                 key: formKey,
                 child: Column(
                   children: [
-                    Container(
+                    SizedBox(
                       // color: Colors.green,
                       // alignment: Alignment.centerLeft,
                       child: FormField<List<String>>(
