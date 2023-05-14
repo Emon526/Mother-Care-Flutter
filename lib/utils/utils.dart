@@ -1,6 +1,10 @@
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 import '../const/consts.dart';
+import '../providers/languageprovider.dart';
 
 class Utils {
   BuildContext context;
@@ -13,7 +17,7 @@ class Utils {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            'Are you sure?',
+            AppLocalizations.of(context)!.exitTitle,
             style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -22,7 +26,9 @@ class Utils {
           const SizedBox(
             height: 20,
           ),
-          const Text('Do you want to exit the application?'),
+          Text(
+            AppLocalizations.of(context)!.exitBody,
+          ),
           const SizedBox(
             height: 20,
           ),
@@ -32,14 +38,14 @@ class Utils {
               TextButton(
                 onPressed: () => Navigator.of(context).pop(false),
                 child: Text(
-                  'No',
+                  AppLocalizations.of(context)!.nobutton,
                   style: TextStyle(color: Theme.of(context).primaryColor),
                 ),
               ),
               TextButton(
                 onPressed: () => Navigator.of(context).pop(true),
                 child: Text(
-                  'Yes',
+                  AppLocalizations.of(context)!.yesbutton,
                   style: TextStyle(color: Theme.of(context).primaryColor),
                 ),
               ),
@@ -84,5 +90,31 @@ class Utils {
         ),
       ),
     );
+  }
+
+  formatDate({required DateTime dateTime}) {
+    DateFormat dateFormat = DateFormat(
+        'EEE, dd MMMM yyyy', context.read<LanguageProvider>().languageCode);
+    String formattedDate = dateFormat.format(dateTime);
+    return formattedDate;
+  }
+
+  formatNumber({
+    required int number,
+  }) {
+    var f = NumberFormat('###', context.read<LanguageProvider>().languageCode);
+    return f.format(number);
+  }
+
+  formatTime({required DateTime dateTime}) {
+    DateFormat dateFormat =
+        DateFormat('h:mma', context.read<LanguageProvider>().languageCode);
+    String formattedDate = dateFormat.format(dateTime);
+
+    if (context.read<LanguageProvider>().languageCode == 'bn') {
+      formattedDate = formattedDate.replaceAll('AM', 'এ.এম.');
+      formattedDate = formattedDate.replaceAll('PM', 'পি.এম.');
+    }
+    return formattedDate;
   }
 }

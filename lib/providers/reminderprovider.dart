@@ -1,7 +1,9 @@
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:flutter/material.dart';
 import '../models/remindermodel.dart';
 import '../services/notificationservice.dart';
+import '../utils/utils.dart';
 
 class ReminderProvider extends ChangeNotifier {
   ReminderProvider() {
@@ -43,7 +45,10 @@ class ReminderProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  String getDuration(DateTime reminderDate) {
+  String getDuration(
+      {required DateTime reminderDate,
+      required String local,
+      required BuildContext context}) {
     List<String> durationParts =
         reminderDate.difference(DateTime.now()).toString().split(':');
 
@@ -62,16 +67,36 @@ class ReminderProvider extends ChangeNotifier {
     int minutesRemainder = duration.inMinutes % 60;
     int secondsRemainder = duration.inSeconds % 60;
 
-    String formattedDuration =
-        '${checkEmpty(days, 'days')}${checkEmpty(hoursRemainder, 'hours')}${checkEmpty(minutesRemainder, 'minutes')}${checkEmpty(secondsRemainder, 'seconds')}';
+    String formattedDuration = '${checkEmpty(
+      duration: days,
+      days: AppLocalizations.of(context)!.days,
+      context: context,
+    )}${checkEmpty(
+      duration: hoursRemainder,
+      days: AppLocalizations.of(context)!.hours,
+      context: context,
+    )}${checkEmpty(
+      duration: minutesRemainder,
+      days: AppLocalizations.of(context)!.minutes,
+      context: context,
+    )}${checkEmpty(
+      duration: secondsRemainder,
+      days: AppLocalizations.of(context)!.seconds,
+      context: context,
+    )}';
+
     return formattedDuration;
   }
 
-  String checkEmpty(int duration, String days) {
+  String checkEmpty({
+    required int duration,
+    required String days,
+    required BuildContext context,
+  }) {
     if (duration == 0) {
       return '';
     } else {
-      return '$duration $days ';
+      return "${Utils(context).formatNumber(number: duration)} $days ";
     }
   }
 
@@ -87,7 +112,6 @@ class ReminderProvider extends ChangeNotifier {
         reminderDateTime: DateTime.parse(notification.payload ?? ''),
       );
     }).toList();
-    debugPrint(reminders.length.toString());
     notifyListeners();
   }
 }

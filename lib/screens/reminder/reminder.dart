@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:intl/intl.dart';
@@ -7,8 +8,10 @@ import 'package:day_night_time_picker/day_night_time_picker.dart';
 
 import '../../const/consts.dart';
 import '../../models/remindermodel.dart';
+import '../../providers/languageprovider.dart';
 import '../../providers/reminderprovider.dart';
 import '../../services/notificationservice.dart';
+import '../../utils/utils.dart';
 import '../../widget/responsivesnackbar.dart';
 
 class Reminder extends StatefulWidget {
@@ -27,8 +30,8 @@ class _ReminderState extends State<Reminder> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text(
-            'Add Reminder',
+          title: Text(
+            AppLocalizations.of(context)!.addReminder,
           ),
         ),
         body: SingleChildScrollView(
@@ -44,14 +47,15 @@ class _ReminderState extends State<Reminder> {
                     controller: titleController,
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Please Enter Title';
+                        return AppLocalizations.of(context)!
+                            .addRemindertitleError;
                       }
                       return null;
                     },
-                    decoration: const InputDecoration(
-                      labelText: 'Title',
-                      hintText: 'Menstrual Self Check',
-                      border: OutlineInputBorder(),
+                    decoration: InputDecoration(
+                      labelText: AppLocalizations.of(context)!.addReminderTitle,
+                      hintText: AppLocalizations.of(context)!.addReminderHint,
+                      border: const OutlineInputBorder(),
                     ),
                   ),
                   const SizedBox(
@@ -68,14 +72,17 @@ class _ReminderState extends State<Reminder> {
                           controller: dateController,
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return 'Pick a Date';
+                              return AppLocalizations.of(context)!
+                                  .addReminderDateError;
                             }
                             return null;
                           },
-                          decoration: const InputDecoration(
-                            labelText: 'Date',
-                            hintText: 'Date',
-                            border: OutlineInputBorder(),
+                          decoration: InputDecoration(
+                            labelText:
+                                AppLocalizations.of(context)!.addReminderDate,
+                            hintText:
+                                AppLocalizations.of(context)!.addReminderDate,
+                            border: const OutlineInputBorder(),
                           ),
                         ),
                       ),
@@ -91,14 +98,17 @@ class _ReminderState extends State<Reminder> {
                           controller: timeController,
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return 'Pick a Time';
+                              return AppLocalizations.of(context)!
+                                  .addReminderTimeError;
                             }
                             return null;
                           },
-                          decoration: const InputDecoration(
-                            labelText: 'Time',
-                            hintText: 'Time',
-                            border: OutlineInputBorder(),
+                          decoration: InputDecoration(
+                            labelText:
+                                AppLocalizations.of(context)!.addReminderTime,
+                            hintText:
+                                AppLocalizations.of(context)!.addReminderTime,
+                            border: const OutlineInputBorder(),
                           ),
                         ),
                       ),
@@ -112,10 +122,8 @@ class _ReminderState extends State<Reminder> {
                       if (_reminderformKey.currentState!.validate()) {
                         int id =
                             context.read<ReminderProvider>().reminders.length;
-                        DateTime reminderDate =
-                            DateFormat('E, dd MMMM yyyy h:mma').parse(
-                          '${dateController.text} ${timeController.text}',
-                        );
+                        DateTime reminderDate = _getReminderDate();
+
                         context.read<ReminderProvider>().addReminder(
                               reminder: ReminderModel(
                                 reminderId: id,
@@ -126,7 +134,7 @@ class _ReminderState extends State<Reminder> {
 
                         NotificationService().showScheduleNotification(
                           id: id,
-                          title: 'Reminder',
+                          title: AppLocalizations.of(context)!.reminders,
                           body: titleController.text.trim(),
                           scheduleDateTime: reminderDate,
                           payload: '$reminderDate',
@@ -134,12 +142,21 @@ class _ReminderState extends State<Reminder> {
 
                         ResponsiveSnackbar.show(
                           context,
-                          'You will be reminded in ${context.read<ReminderProvider>().getDuration(reminderDate)}',
+                          AppLocalizations.of(context)!.addReminderSnakeBar(
+                            context.read<ReminderProvider>().getDuration(
+                                context: context,
+                                reminderDate: reminderDate,
+                                local: context
+                                    .read<LanguageProvider>()
+                                    .languageCode),
+                          ),
                         );
                         Navigator.pop(context);
                       }
                     },
-                    child: const Text('Add Reminder'),
+                    child: Text(
+                      AppLocalizations.of(context)!.addReminder,
+                    ),
                   ),
                 ],
               ),
@@ -152,36 +169,34 @@ class _ReminderState extends State<Reminder> {
     return showPicker(
       // accentColor: Colors.red,
       // barrierColor: Colors.black,
-      // dialogInsetPadding: const EdgeInsets.symmetric(
-      //   horizontal: 20,
-      //   vertical: 24,
-      // ),
-
+      dialogInsetPadding: EdgeInsets.symmetric(
+        horizontal: MediaQuery.of(context).size.width * 0.05,
+      ),
       height: 390,
       borderRadius: Consts.DefaultBorderRadius,
-      okText: 'OK',
-      cancelText: 'CANCEL',
+      okText: AppLocalizations.of(context)!.okbutton,
+      cancelText: AppLocalizations.of(context)!.cancelbutton,
       iosStylePicker: true,
       context: context,
       barrierDismissible: false,
       okStyle: const TextStyle(
         color: Colors.white,
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.bold,
       ),
       cancelStyle: const TextStyle(
         color: Colors.white,
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.bold,
       ),
       value: context.read<ReminderProvider>().time,
       onChange: (newTime) {
         context.read<ReminderProvider>().time = newTime;
       },
       minuteInterval: TimePickerInterval.ONE,
-      // Optional onChange to receive value as DateTime
+
       onChangeDateTime: (DateTime dateTime) {
-        // print(dateTime);
-        // debugPrint("[debug datetime]:  $dateTime");
-        timeController.text = DateFormat("h:mma").format(dateTime);
+        timeController.text = Utils(context).formatTime(
+          dateTime: dateTime,
+        );
       },
     );
   }
@@ -195,6 +210,9 @@ class _ReminderState extends State<Reminder> {
         return Dialog(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+          ),
+          insetPadding: EdgeInsets.symmetric(
+            horizontal: MediaQuery.of(context).size.width * 0.05,
           ),
           backgroundColor: Theme.of(context).primaryColor,
           child: ClipRRect(
@@ -211,8 +229,11 @@ class _ReminderState extends State<Reminder> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          DateFormat('yyyy').format(
-                              context.watch<ReminderProvider>().seletedDate),
+                          DateFormat('yyyy',
+                                  context.read<LanguageProvider>().languageCode)
+                              .format(context
+                                  .watch<ReminderProvider>()
+                                  .seletedDate),
                           style: const TextStyle(
                             fontSize: 14,
                             color: Colors.white,
@@ -222,8 +243,11 @@ class _ReminderState extends State<Reminder> {
                           height: 5,
                         ),
                         Text(
-                          DateFormat('EEE, MMM dd').format(
-                              context.watch<ReminderProvider>().seletedDate),
+                          DateFormat('EEE, MMM dd',
+                                  context.read<LanguageProvider>().languageCode)
+                              .format(context
+                                  .watch<ReminderProvider>()
+                                  .seletedDate),
                           style: const TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 30,
@@ -237,13 +261,18 @@ class _ReminderState extends State<Reminder> {
                     height: 10,
                   ),
                   SfDateRangePicker(
+                    cancelText: AppLocalizations.of(context)!.cancelbutton,
+                    confirmText: AppLocalizations.of(context)!.okbutton,
                     onSelectionChanged: (args) {
                       context.read<ReminderProvider>().seletedDate =
                           DateTime.parse(args.value.toString());
                     },
                     onSubmit: (date) {
-                      dateController.text = DateFormat('EEE, dd MMMM yyyy')
-                          .format(DateTime.parse(date.toString()));
+                      dateController.text = Utils(context).formatDate(
+                        dateTime: DateTime.parse(
+                          date.toString(),
+                        ),
+                      );
                       Navigator.pop(context);
                     },
                     onCancel: () {
@@ -293,5 +322,16 @@ class _ReminderState extends State<Reminder> {
         );
       },
     );
+  }
+
+  DateTime _getReminderDate() {
+    String date = dateController.text;
+    String time = timeController.text
+        .replaceAll('এ.এম.', 'AM')
+        .replaceAll('পি.এম.', 'PM');
+    DateFormat dateformat = DateFormat(
+        'E, dd MMMM yyyy h:mma', context.read<LanguageProvider>().languageCode);
+    DateTime reminderDate = dateformat.parse('$date $time');
+    return reminderDate;
   }
 }

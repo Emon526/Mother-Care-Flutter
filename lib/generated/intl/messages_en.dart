@@ -20,8 +20,23 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static String m0(duration) => "You will be reminded ${duration} later";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "addReminder": MessageLookupByLibrary.simpleMessage("Add Reminder"),
+        "addReminderDate": MessageLookupByLibrary.simpleMessage("Date"),
+        "addReminderDateError":
+            MessageLookupByLibrary.simpleMessage("Please Pick a Date"),
+        "addReminderHint":
+            MessageLookupByLibrary.simpleMessage("Menstrual Self Check"),
+        "addReminderSnakeBar": m0,
+        "addReminderTime": MessageLookupByLibrary.simpleMessage("Time"),
+        "addReminderTimeError":
+            MessageLookupByLibrary.simpleMessage("Please Pick a Time"),
+        "addReminderTitle": MessageLookupByLibrary.simpleMessage("Title"),
+        "addRemindertitleError":
+            MessageLookupByLibrary.simpleMessage("Please Enter Title"),
         "and": MessageLookupByLibrary.simpleMessage("And"),
         "appname": MessageLookupByLibrary.simpleMessage("Mother Care"),
         "awareness": MessageLookupByLibrary.simpleMessage("Awareness"),
@@ -48,6 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "awarenessTitle2":
             MessageLookupByLibrary.simpleMessage("WHY IT MATTERS"),
         "breastcancer": MessageLookupByLibrary.simpleMessage("Breast Cancer"),
+        "cancelbutton": MessageLookupByLibrary.simpleMessage("CANCEL"),
         "checkyourselfbutton":
             MessageLookupByLibrary.simpleMessage("CHECK YOURSELF STEP BY STEP"),
         "consultdoctorbutton":
@@ -67,9 +83,16 @@ class MessageLookup extends MessageLookupByLibrary {
             "Daffodil International University"),
         "credits": MessageLookupByLibrary.simpleMessage("Credits"),
         "darkTheme": MessageLookupByLibrary.simpleMessage("Dark"),
+        "days": MessageLookupByLibrary.simpleMessage("days"),
         "doctors": MessageLookupByLibrary.simpleMessage("Doctors"),
         "donebutton": MessageLookupByLibrary.simpleMessage("Done"),
+        "emptyReminder":
+            MessageLookupByLibrary.simpleMessage("No reminder Added Yet!"),
+        "exitBody": MessageLookupByLibrary.simpleMessage(
+            "Do you want to exit the app?"),
+        "exitTitle": MessageLookupByLibrary.simpleMessage("Are you sure?"),
         "finishbutton": MessageLookupByLibrary.simpleMessage("Finish"),
+        "hours": MessageLookupByLibrary.simpleMessage("hours"),
         "howtoselfcheckbutton":
             MessageLookupByLibrary.simpleMessage("How to self-check"),
         "introBody1": MessageLookupByLibrary.simpleMessage(
@@ -96,9 +119,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "lightTheme": MessageLookupByLibrary.simpleMessage("Light"),
         "mammographyscreening":
             MessageLookupByLibrary.simpleMessage("Mammography Screening"),
+        "minutes": MessageLookupByLibrary.simpleMessage("minutes"),
         "nextbutton": MessageLookupByLibrary.simpleMessage("Next"),
+        "nobutton": MessageLookupByLibrary.simpleMessage("NO"),
+        "okbutton": MessageLookupByLibrary.simpleMessage("OK"),
         "prevbutton": MessageLookupByLibrary.simpleMessage("Prev"),
         "reminders": MessageLookupByLibrary.simpleMessage("Reminders"),
+        "seconds": MessageLookupByLibrary.simpleMessage("seconds"),
         "selectLanguage":
             MessageLookupByLibrary.simpleMessage("Select Language"),
         "selectTheme": MessageLookupByLibrary.simpleMessage("Select Theme"),
@@ -155,6 +182,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "skipbutton": MessageLookupByLibrary.simpleMessage("Skip"),
         "systemTheme": MessageLookupByLibrary.simpleMessage("System"),
-        "theme": MessageLookupByLibrary.simpleMessage("Theme")
+        "theme": MessageLookupByLibrary.simpleMessage("Theme"),
+        "yesbutton": MessageLookupByLibrary.simpleMessage("YES")
       };
 }

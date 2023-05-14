@@ -20,8 +20,24 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'bn';
 
+  static String m0(duration) => "আপনাকে ${duration} পরে মনে করিয়ে দেওয়া হবে";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "addReminder":
+            MessageLookupByLibrary.simpleMessage("অনুস্মারক যোগ করুন"),
+        "addReminderDate": MessageLookupByLibrary.simpleMessage("তারিখ"),
+        "addReminderDateError":
+            MessageLookupByLibrary.simpleMessage("একটি তারিখ চয়ন করুন"),
+        "addReminderHint":
+            MessageLookupByLibrary.simpleMessage("মাসিকের স্ব-পরীক্ষা"),
+        "addReminderSnakeBar": m0,
+        "addReminderTime": MessageLookupByLibrary.simpleMessage("সময়"),
+        "addReminderTimeError":
+            MessageLookupByLibrary.simpleMessage("একটি সময় চয়ন করুন"),
+        "addReminderTitle": MessageLookupByLibrary.simpleMessage("শিরোনাম"),
+        "addRemindertitleError":
+            MessageLookupByLibrary.simpleMessage("অনুগ্রহ করে শিরোনাম লিখুন"),
         "and": MessageLookupByLibrary.simpleMessage("এবং"),
         "appname": MessageLookupByLibrary.simpleMessage("মাদার কেয়ার"),
         "awareness": MessageLookupByLibrary.simpleMessage("সচেতনতা"),
@@ -48,6 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "awarenessTitle2":
             MessageLookupByLibrary.simpleMessage("কেন এটি গুরুত্বপূর্ণ"),
         "breastcancer": MessageLookupByLibrary.simpleMessage("স্তন ক্যান্সার"),
+        "cancelbutton": MessageLookupByLibrary.simpleMessage("বাতিল করুন"),
         "checkyourselfbutton":
             MessageLookupByLibrary.simpleMessage("ধাপে ধাপে নিজেকে চেক করুন"),
         "consultdoctorbutton":
@@ -67,9 +84,16 @@ class MessageLookup extends MessageLookupByLibrary {
             "ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটি"),
         "credits": MessageLookupByLibrary.simpleMessage("ক্রেডিট"),
         "darkTheme": MessageLookupByLibrary.simpleMessage("অন্ধকার"),
+        "days": MessageLookupByLibrary.simpleMessage("দিন"),
         "doctors": MessageLookupByLibrary.simpleMessage("ডাক্তাররা"),
         "donebutton": MessageLookupByLibrary.simpleMessage("সম্পন্ন"),
+        "emptyReminder": MessageLookupByLibrary.simpleMessage(
+            "কোনো অনুস্মারক এখনো যোগ করা হয়নি!"),
+        "exitBody": MessageLookupByLibrary.simpleMessage(
+            "আপনি কি অ্যাপ থেকে প্রস্থান করতে চান?"),
+        "exitTitle": MessageLookupByLibrary.simpleMessage("তুমি কি নিশ্চিত?"),
         "finishbutton": MessageLookupByLibrary.simpleMessage("শেষ করুন"),
+        "hours": MessageLookupByLibrary.simpleMessage("ঘন্টা"),
         "howtoselfcheckbutton":
             MessageLookupByLibrary.simpleMessage("কীভাবে স্ব-পরীক্ষা করবেন"),
         "introBody1": MessageLookupByLibrary.simpleMessage(
@@ -97,9 +121,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "lightTheme": MessageLookupByLibrary.simpleMessage("আলো"),
         "mammographyscreening":
             MessageLookupByLibrary.simpleMessage("ম্যামোগ্রাফি স্ক্রীনিং"),
+        "minutes": MessageLookupByLibrary.simpleMessage("মিনিট"),
         "nextbutton": MessageLookupByLibrary.simpleMessage("পরবর্তী"),
+        "nobutton": MessageLookupByLibrary.simpleMessage("না"),
+        "okbutton": MessageLookupByLibrary.simpleMessage("ঠিক আছে"),
         "prevbutton": MessageLookupByLibrary.simpleMessage("পূর্ববর্তী"),
         "reminders": MessageLookupByLibrary.simpleMessage("অনুস্মারক"),
+        "seconds": MessageLookupByLibrary.simpleMessage("সেকেন্ড"),
         "selectLanguage":
             MessageLookupByLibrary.simpleMessage("ভাষা নির্বাচন কর"),
         "selectTheme": MessageLookupByLibrary.simpleMessage("থিম নির্বাচন কর"),
@@ -160,6 +188,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "settings": MessageLookupByLibrary.simpleMessage("সেটিংস"),
         "skipbutton": MessageLookupByLibrary.simpleMessage("এড়িয়ে যান"),
         "systemTheme": MessageLookupByLibrary.simpleMessage("পদ্ধতি"),
-        "theme": MessageLookupByLibrary.simpleMessage("থিম")
+        "theme": MessageLookupByLibrary.simpleMessage("থিম"),
+        "yesbutton": MessageLookupByLibrary.simpleMessage("হ্যাঁ")
       };
 }

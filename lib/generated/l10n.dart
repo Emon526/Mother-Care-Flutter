@@ -160,6 +160,46 @@ class S {
     );
   }
 
+  /// `OK`
+  String get okbutton {
+    return Intl.message(
+      'OK',
+      name: 'okbutton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CANCEL`
+  String get cancelbutton {
+    return Intl.message(
+      'CANCEL',
+      name: 'cancelbutton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `YES`
+  String get yesbutton {
+    return Intl.message(
+      'YES',
+      name: 'yesbutton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `NO`
+  String get nobutton {
+    return Intl.message(
+      'NO',
+      name: 'nobutton',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Theme`
   String get theme {
     return Intl.message(
@@ -395,6 +435,26 @@ class S {
     return Intl.message(
       'You can change the language later from the settings',
       name: 'languageNote',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure?`
+  String get exitTitle {
+    return Intl.message(
+      'Are you sure?',
+      name: 'exitTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you want to exit the app?`
+  String get exitBody {
+    return Intl.message(
+      'Do you want to exit the app?',
+      name: 'exitBody',
       desc: '',
       args: [],
     );
@@ -875,6 +935,146 @@ class S {
     return Intl.message(
       'Keep calm - most changes are not dangerous.\n\nCheck again after your next menstrual cycle. If it\'s still there, consult your doctor or health professional.',
       name: 'selfCheckFinishBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No reminder Added Yet!`
+  String get emptyReminder {
+    return Intl.message(
+      'No reminder Added Yet!',
+      name: 'emptyReminder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Reminder`
+  String get addReminder {
+    return Intl.message(
+      'Add Reminder',
+      name: 'addReminder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Menstrual Self Check`
+  String get addReminderHint {
+    return Intl.message(
+      'Menstrual Self Check',
+      name: 'addReminderHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Title`
+  String get addReminderTitle {
+    return Intl.message(
+      'Title',
+      name: 'addReminderTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date`
+  String get addReminderDate {
+    return Intl.message(
+      'Date',
+      name: 'addReminderDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Time`
+  String get addReminderTime {
+    return Intl.message(
+      'Time',
+      name: 'addReminderTime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Enter Title`
+  String get addRemindertitleError {
+    return Intl.message(
+      'Please Enter Title',
+      name: 'addRemindertitleError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Pick a Date`
+  String get addReminderDateError {
+    return Intl.message(
+      'Please Pick a Date',
+      name: 'addReminderDateError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Pick a Time`
+  String get addReminderTimeError {
+    return Intl.message(
+      'Please Pick a Time',
+      name: 'addReminderTimeError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You will be reminded {duration} later`
+  String addReminderSnakeBar(Object duration) {
+    return Intl.message(
+      'You will be reminded $duration later',
+      name: 'addReminderSnakeBar',
+      desc: '',
+      args: [duration],
+    );
+  }
+
+  /// `days`
+  String get days {
+    return Intl.message(
+      'days',
+      name: 'days',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `hours`
+  String get hours {
+    return Intl.message(
+      'hours',
+      name: 'hours',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `minutes`
+  String get minutes {
+    return Intl.message(
+      'minutes',
+      name: 'minutes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `seconds`
+  String get seconds {
+    return Intl.message(
+      'seconds',
+      name: 'seconds',
       desc: '',
       args: [],
     );

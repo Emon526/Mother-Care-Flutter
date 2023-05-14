@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/reminderprovider.dart';
 import '../../services/notificationservice.dart';
+import '../../utils/utils.dart';
 import '../../widget/emptywidget.dart';
 import 'reminder.dart';
 
@@ -29,8 +30,8 @@ class ReminderList extends StatelessWidget {
         child: const Icon(Icons.add),
       ),
       appBar: AppBar(
-        title: const Text(
-          'Reminder',
+        title: Text(
+          AppLocalizations.of(context)!.reminders,
         ),
       ),
       body: RefreshIndicator(
@@ -44,7 +45,7 @@ class ReminderList extends StatelessWidget {
                 viewPadding: viewPadding,
                 size: size,
                 svgAsset: 'assets/images/schedule.svg',
-                message: 'No reminder Added Yet!',
+                message: AppLocalizations.of(context)!.emptyReminder,
               )
             : ListView.builder(
                 itemCount: context.watch<ReminderProvider>().reminders.length,
@@ -109,8 +110,9 @@ class ReminderList extends StatelessWidget {
                                         width: 5,
                                       ),
                                       Text(
-                                        DateFormat('EEE, dd MMMM yyyy')
-                                            .format(reminder.reminderDateTime),
+                                        Utils(context).formatDate(
+                                          dateTime: reminder.reminderDateTime,
+                                        ),
                                         style: const TextStyle(
                                           color: Colors.white,
                                         ),
@@ -128,8 +130,9 @@ class ReminderList extends StatelessWidget {
                                       width: 5,
                                     ),
                                     Text(
-                                      DateFormat('h:mma')
-                                          .format(reminder.reminderDateTime),
+                                      Utils(context).formatTime(
+                                        dateTime: reminder.reminderDateTime,
+                                      ),
                                       style: const TextStyle(
                                         color: Colors.white,
                                       ),
