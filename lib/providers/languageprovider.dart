@@ -21,7 +21,6 @@ class LanguageProvider extends ChangeNotifier {
 
   set languageCode(String languageCode) {
     _languageCode = languageCode;
-    log('Language chnaged translate words');
     savelanguage(languageCode: languageCode);
     notifyListeners();
   }
