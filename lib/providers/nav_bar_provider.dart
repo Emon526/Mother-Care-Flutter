@@ -28,7 +28,6 @@ class NavBarProvider with ChangeNotifier {
   }
 
   String appVersionInfo({required String locale}) {
-    log(_appVersion);
     var parts = _appVersion.split('.');
     var translatedParts = parts
         .map((part) => NumberFormat('###', locale).format(int.parse(part)));
