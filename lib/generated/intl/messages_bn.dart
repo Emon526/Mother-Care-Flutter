@@ -189,6 +189,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "skipbutton": MessageLookupByLibrary.simpleMessage("এড়িয়ে যান"),
         "systemTheme": MessageLookupByLibrary.simpleMessage("পদ্ধতি"),
         "theme": MessageLookupByLibrary.simpleMessage("থিম"),
+        "version": MessageLookupByLibrary.simpleMessage("সংস্করণ"),
         "yesbutton": MessageLookupByLibrary.simpleMessage("হ্যাঁ")
       };
 }

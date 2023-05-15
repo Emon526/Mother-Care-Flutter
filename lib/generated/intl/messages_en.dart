@@ -183,6 +183,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "skipbutton": MessageLookupByLibrary.simpleMessage("Skip"),
         "systemTheme": MessageLookupByLibrary.simpleMessage("System"),
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
+        "version": MessageLookupByLibrary.simpleMessage("Version"),
         "yesbutton": MessageLookupByLibrary.simpleMessage("YES")
       };
 }

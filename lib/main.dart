@@ -51,34 +51,34 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
         providers: [
           ChangeNotifierProvider(
-            create: (_) => PredictionProvider(),
-          ),
-          ChangeNotifierProvider(
             create: (_) => ThemeProvider(context),
-          ),
-          ChangeNotifierProvider(
-            create: (_) => ModelProvider(),
-          ),
-          ChangeNotifierProvider(
-            create: (_) => NavBarProvider(),
-          ),
-          ChangeNotifierProvider(
-            create: (_) => ReminderProvider(),
-          ),
-          ChangeNotifierProvider(
-            create: (_) => DoctorProvider(),
-          ),
-          ChangeNotifierProvider(
-            create: (_) => BreastCancerProvider(),
-          ),
-          ChangeNotifierProvider(
-            create: (_) => PdfGenerateProvider(),
           ),
           ChangeNotifierProvider(
             create: (_) => LanguageProvider(),
           ),
           ChangeNotifierProvider(
+            create: (_) => NavBarProvider(),
+          ),
+          ChangeNotifierProvider(
+            create: (_) => BreastCancerProvider(),
+          ),
+          ChangeNotifierProvider(
             create: (_) => SelfCheckProvider(),
+          ),
+          ChangeNotifierProvider(
+            create: (_) => DoctorProvider(),
+          ),
+          ChangeNotifierProvider(
+            create: (_) => ModelProvider(),
+          ),
+          ChangeNotifierProvider(
+            create: (_) => PredictionProvider(),
+          ),
+          ChangeNotifierProvider(
+            create: (_) => ReminderProvider(),
+          ),
+          ChangeNotifierProvider(
+            create: (_) => PdfGenerateProvider(),
           ),
         ],
         builder: (context, child) {

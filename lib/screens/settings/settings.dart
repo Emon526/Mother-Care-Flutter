@@ -99,7 +99,9 @@ class SettingScreen extends StatelessWidget {
           ],
         ),
         Text(
-          context.read<NavBarProvider>().appVersion,
+          '${AppLocalizations.of(context)!.version} : ${context.watch<NavBarProvider>().appVersionInfo(
+                locale: context.watch<LanguageProvider>().languageCode,
+              )}',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Theme.of(context).primaryColor,
