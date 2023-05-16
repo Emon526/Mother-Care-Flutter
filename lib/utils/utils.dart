@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -142,7 +140,7 @@ class Utils {
       // desc: 'Cancerers',
     );
 
-    print(
+    debugPrint(
         '${context.read<LanguageProvider>().languageCode}: $bengaliTranslation');
     return bengaliTranslation;
   }
