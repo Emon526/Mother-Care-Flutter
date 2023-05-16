@@ -1089,6 +1089,116 @@ class S {
       args: [],
     );
   }
+
+  /// `What Is a Mammogram?`
+  String get mammogramHintTitle {
+    return Intl.message(
+      'What Is a Mammogram?',
+      name: 'mammogramHintTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `A mammogram is an X-ray picture of the breast. Doctors use a mammogram to look for early signs of breast cancer. Regular mammograms are the best tests doctors have to find breast cancer early, sometimes up to three years before it can be felt.`
+  String get mammogramHintBody {
+    return Intl.message(
+      'A mammogram is an X-ray picture of the breast. Doctors use a mammogram to look for early signs of breast cancer. Regular mammograms are the best tests doctors have to find breast cancer early, sometimes up to three years before it can be felt.',
+      name: 'mammogramHintBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mammogram`
+  String get mammogram {
+    return Intl.message(
+      'Mammogram',
+      name: 'mammogram',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `What is `
+  String get whatis {
+    return Intl.message(
+      'What is ',
+      name: 'whatis',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Waiting for Image`
+  String get waitingforimage {
+    return Intl.message(
+      'Waiting for Image',
+      name: 'waitingforimage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upload Image`
+  String get uploadimage {
+    return Intl.message(
+      'Upload Image',
+      name: 'uploadimage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chnage Image`
+  String get changeimage {
+    return Intl.message(
+      'Chnage Image',
+      name: 'changeimage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The Patient should be photographed by a `
+  String get mammographyNote {
+    return Intl.message(
+      'The Patient should be photographed by a ',
+      name: 'mammographyNote',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Get Prediction Result`
+  String get getpredictionresultbutton {
+    return Intl.message(
+      'Get Prediction Result',
+      name: 'getpredictionresultbutton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Prediction Result`
+  String get predictionresult {
+    return Intl.message(
+      'Prediction Result',
+      name: 'predictionresult',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Generate and Open Pdf`
+  String get generatePdfButton {
+    return Intl.message(
+      'Generate and Open Pdf',
+      name: 'generatePdfButton',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

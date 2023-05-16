@@ -65,6 +65,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("কেন এটি গুরুত্বপূর্ণ"),
         "breastcancer": MessageLookupByLibrary.simpleMessage("স্তন ক্যান্সার"),
         "cancelbutton": MessageLookupByLibrary.simpleMessage("বাতিল করুন"),
+        "changeimage":
+            MessageLookupByLibrary.simpleMessage("ছবি পরিবর্তন করুন"),
         "checkyourselfbutton":
             MessageLookupByLibrary.simpleMessage("ধাপে ধাপে নিজেকে চেক করুন"),
         "consultdoctorbutton":
@@ -93,6 +95,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "আপনি কি অ্যাপ থেকে প্রস্থান করতে চান?"),
         "exitTitle": MessageLookupByLibrary.simpleMessage("তুমি কি নিশ্চিত?"),
         "finishbutton": MessageLookupByLibrary.simpleMessage("শেষ করুন"),
+        "generatePdfButton":
+            MessageLookupByLibrary.simpleMessage("পিডিএফ তৈরি করুন এবং খুলুন"),
+        "getpredictionresultbutton":
+            MessageLookupByLibrary.simpleMessage("ভবিষ্যদ্বাণী ফলাফল পান"),
         "hours": MessageLookupByLibrary.simpleMessage("ঘন্টা"),
         "howtoselfcheckbutton":
             MessageLookupByLibrary.simpleMessage("কীভাবে স্ব-পরীক্ষা করবেন"),
@@ -119,12 +125,21 @@ class MessageLookup extends MessageLookupByLibrary {
             "আপনি সেটিংস থেকে পরে ভাষা পরিবর্তন করতে পারেন"),
         "learnmorebutton": MessageLookupByLibrary.simpleMessage("আরও জানুন"),
         "lightTheme": MessageLookupByLibrary.simpleMessage("আলো"),
+        "mammogram": MessageLookupByLibrary.simpleMessage("ম্যামোগ্রাম"),
+        "mammogramHintBody": MessageLookupByLibrary.simpleMessage(
+            "একটি ম্যামোগ্রাম হল স্তনের একটি এক্স-রে ছবি। স্তন ক্যান্সারের প্রাথমিক লক্ষণগুলি দেখতে ডাক্তাররা একটি ম্যামোগ্রাম ব্যবহার করেন। নিয়মিত ম্যামোগ্রাম হল সর্বোত্তম পরীক্ষা যা ডাক্তারদের স্তন ক্যান্সারের প্রথম দিকে খুঁজে বের করতে হয়, কখনও কখনও এটি অনুভব করার তিন বছর আগে পর্যন্ত।"),
+        "mammogramHintTitle":
+            MessageLookupByLibrary.simpleMessage("একটি ম্যামোগ্রাম কি?"),
+        "mammographyNote":
+            MessageLookupByLibrary.simpleMessage("রোগীর ছবি তুলতে হবে ক "),
         "mammographyscreening":
             MessageLookupByLibrary.simpleMessage("ম্যামোগ্রাফি স্ক্রীনিং"),
         "minutes": MessageLookupByLibrary.simpleMessage("মিনিট"),
         "nextbutton": MessageLookupByLibrary.simpleMessage("পরবর্তী"),
         "nobutton": MessageLookupByLibrary.simpleMessage("না"),
         "okbutton": MessageLookupByLibrary.simpleMessage("ঠিক আছে"),
+        "predictionresult":
+            MessageLookupByLibrary.simpleMessage("ভবিষ্যদ্বাণী ফলাফল"),
         "prevbutton": MessageLookupByLibrary.simpleMessage("পূর্ববর্তী"),
         "reminders": MessageLookupByLibrary.simpleMessage("অনুস্মারক"),
         "seconds": MessageLookupByLibrary.simpleMessage("সেকেন্ড"),
@@ -189,7 +204,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "skipbutton": MessageLookupByLibrary.simpleMessage("এড়িয়ে যান"),
         "systemTheme": MessageLookupByLibrary.simpleMessage("পদ্ধতি"),
         "theme": MessageLookupByLibrary.simpleMessage("থিম"),
+        "uploadimage": MessageLookupByLibrary.simpleMessage("চিত্র আপলোড"),
         "version": MessageLookupByLibrary.simpleMessage("সংস্করণ"),
+        "waitingforimage":
+            MessageLookupByLibrary.simpleMessage("ছবির জন্য অপেক্ষা করছি"),
+        "whatis": MessageLookupByLibrary.simpleMessage("কি "),
         "yesbutton": MessageLookupByLibrary.simpleMessage("হ্যাঁ")
       };
 }

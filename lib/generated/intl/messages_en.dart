@@ -64,6 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("WHY IT MATTERS"),
         "breastcancer": MessageLookupByLibrary.simpleMessage("Breast Cancer"),
         "cancelbutton": MessageLookupByLibrary.simpleMessage("CANCEL"),
+        "changeimage": MessageLookupByLibrary.simpleMessage("Chnage Image"),
         "checkyourselfbutton":
             MessageLookupByLibrary.simpleMessage("CHECK YOURSELF STEP BY STEP"),
         "consultdoctorbutton":
@@ -92,6 +93,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Do you want to exit the app?"),
         "exitTitle": MessageLookupByLibrary.simpleMessage("Are you sure?"),
         "finishbutton": MessageLookupByLibrary.simpleMessage("Finish"),
+        "generatePdfButton":
+            MessageLookupByLibrary.simpleMessage("Generate and Open Pdf"),
+        "getpredictionresultbutton":
+            MessageLookupByLibrary.simpleMessage("Get Prediction Result"),
         "hours": MessageLookupByLibrary.simpleMessage("hours"),
         "howtoselfcheckbutton":
             MessageLookupByLibrary.simpleMessage("How to self-check"),
@@ -117,12 +122,21 @@ class MessageLookup extends MessageLookupByLibrary {
             "You can change the language later from the settings"),
         "learnmorebutton": MessageLookupByLibrary.simpleMessage("Learn more"),
         "lightTheme": MessageLookupByLibrary.simpleMessage("Light"),
+        "mammogram": MessageLookupByLibrary.simpleMessage("Mammogram"),
+        "mammogramHintBody": MessageLookupByLibrary.simpleMessage(
+            "A mammogram is an X-ray picture of the breast. Doctors use a mammogram to look for early signs of breast cancer. Regular mammograms are the best tests doctors have to find breast cancer early, sometimes up to three years before it can be felt."),
+        "mammogramHintTitle":
+            MessageLookupByLibrary.simpleMessage("What Is a Mammogram?"),
+        "mammographyNote": MessageLookupByLibrary.simpleMessage(
+            "The Patient should be photographed by a "),
         "mammographyscreening":
             MessageLookupByLibrary.simpleMessage("Mammography Screening"),
         "minutes": MessageLookupByLibrary.simpleMessage("minutes"),
         "nextbutton": MessageLookupByLibrary.simpleMessage("Next"),
         "nobutton": MessageLookupByLibrary.simpleMessage("NO"),
         "okbutton": MessageLookupByLibrary.simpleMessage("OK"),
+        "predictionresult":
+            MessageLookupByLibrary.simpleMessage("Prediction Result"),
         "prevbutton": MessageLookupByLibrary.simpleMessage("Prev"),
         "reminders": MessageLookupByLibrary.simpleMessage("Reminders"),
         "seconds": MessageLookupByLibrary.simpleMessage("seconds"),
@@ -183,7 +197,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "skipbutton": MessageLookupByLibrary.simpleMessage("Skip"),
         "systemTheme": MessageLookupByLibrary.simpleMessage("System"),
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
+        "uploadimage": MessageLookupByLibrary.simpleMessage("Upload Image"),
         "version": MessageLookupByLibrary.simpleMessage("Version"),
+        "waitingforimage":
+            MessageLookupByLibrary.simpleMessage("Waiting for Image"),
+        "whatis": MessageLookupByLibrary.simpleMessage("What is "),
         "yesbutton": MessageLookupByLibrary.simpleMessage("YES")
       };
 }
