@@ -102,5 +102,17 @@
 "hours":"hours",
 "minutes":"minutes",
 "seconds":"seconds",
-"version":"Version"
+"version":"Version",
+"mammogramHintTitle":"What Is a Mammogram?",
+"mammogramHintBody":"A mammogram is an X-ray picture of the breast. Doctors use a mammogram to look for early signs of breast cancer. Regular mammograms are the best tests doctors have to find breast cancer early, sometimes up to three years before it can be felt.",
+"mammogram":"Mammogram",
+"whatis":"What is ",
+"waitingforimage":"Waiting for Image",
+"uploadimage":"Upload Image",
+"changeimage":"Chnage Image",
+"mammographyNote":"The Patient should be photographed by a ",
+"getpredictionresultbutton":"Get Prediction Result",
+"predictionresult":"Prediction Result",
+"generatePdfButton":"Generate and Open Pdf"
+
 }
