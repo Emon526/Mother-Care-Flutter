@@ -165,6 +165,8 @@ class _ReminderState extends State<Reminder> {
         ));
   }
 
+//TODO: fix background color for day-night-time-picker in dark mode
+  //TODO: fix day-night-time-picker localization for am,pm,hour,min and digits
   _showClock() {
     return showPicker(
       // accentColor: Colors.red,
@@ -176,6 +178,8 @@ class _ReminderState extends State<Reminder> {
       borderRadius: Consts.DefaultBorderRadius,
       okText: AppLocalizations.of(context)!.okbutton,
       cancelText: AppLocalizations.of(context)!.cancelbutton,
+      // hourLabel: 'hour',
+      // minuteLabel: 'min',
       iosStylePicker: true,
       context: context,
       barrierDismissible: false,
@@ -201,6 +205,7 @@ class _ReminderState extends State<Reminder> {
     );
   }
 
+  // TODO: fix  localization for digits like dates and years
   _showCalender() {
     return showCupertinoModalPopup<void>(
       context: context,
