@@ -2,7 +2,7 @@
 
 import 'dart:io';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:provider/provider.dart';
@@ -23,6 +23,11 @@ class MemmographyPrediction extends StatefulWidget {
 class _MemmographyPredictionState extends State<MemmographyPrediction> {
   ImagePicker picker = ImagePicker();
   File? pickedimage;
+  @override
+  void initState() {
+    super.initState();
+    _showMammogramInfoDialog(context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +51,7 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Memmography Screening'),
+        title: Text(AppLocalizations.of(context)!.mammographyscreening),
         // centerTitle: true,
       ),
       body: context.watch<ModelProvider>().isDownloading
@@ -88,11 +93,11 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text('The Patient should be photographed by a'),
+                      children: [
+                        Text(AppLocalizations.of(context)!.mammographyNote),
                         Text(
-                          'Mammogram',
-                          style: TextStyle(
+                          AppLocalizations.of(context)!.mammogram,
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -125,14 +130,15 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  'Waiting for Image',
+                                  AppLocalizations.of(context)!.waitingforimage,
                                   style: TextStyle(
                                     color: Theme.of(context).primaryColor,
                                     fontSize: 18.0,
                                   ),
                                 ),
                                 ElevatedButton.icon(
-                                  label: const Text('Upload Image'),
+                                  label: Text(AppLocalizations.of(context)!
+                                      .uploadimage),
                                   onPressed: pickImage,
                                   icon: const Icon(Icons.photo_camera_outlined),
                                 ),
@@ -162,7 +168,8 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
                                       margin: const EdgeInsets.only(
                                           top: 5.0, bottom: 5.0),
                                       child: Text(
-                                        'What Is a Mammogram?',
+                                        AppLocalizations.of(context)!
+                                            .mammogramHintTitle,
                                         style: TextStyle(
                                           fontSize: 18.0,
                                           color: Theme.of(context).primaryColor,
@@ -183,10 +190,11 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
                                     const SizedBox(
                                       height: 10,
                                     ),
-                                    const Text(
-                                      'A mammogram is an X-ray picture of the breast. Doctors use a mammogram to look for early signs of breast cancer. Regular mammograms are the best tests doctors have to find breast cancer early, sometimes up to three years before it can be felt.',
+                                    Text(
+                                      AppLocalizations.of(context)!
+                                          .mammogramHintBody,
                                       textAlign: TextAlign.center,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontWeight: FontWeight.normal,
                                         fontSize: 18,
                                       ),
@@ -200,14 +208,15 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
                             ),
                             child: RichText(
                               text: TextSpan(
-                                text: 'What is ',
+                                text: AppLocalizations.of(context)!.whatis,
                                 style: TextStyle(
                                   color: Theme.of(context).primaryColor,
                                 ),
-                                children: const [
+                                children: [
                                   TextSpan(
-                                      text: 'Mammogram?',
-                                      style: TextStyle(
+                                      text:
+                                          '${AppLocalizations.of(context)!.mammogram}?',
+                                      style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                       )),
                                 ],
@@ -217,7 +226,9 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
                         : Column(
                             children: [
                               ElevatedButton.icon(
-                                label: const Text('Change Image'),
+                                label: Text(
+                                  AppLocalizations.of(context)!.changeimage,
+                                ),
                                 onPressed: pickImage,
                                 icon: const Icon(Icons.photo_camera_outlined),
                               ),
@@ -240,7 +251,8 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
                                 icon: const Icon(
                                   Icons.description_outlined,
                                 ),
-                                label: const Text('Get Prediction Result'),
+                                label: Text(AppLocalizations.of(context)!
+                                    .getpredictionresultbutton),
                               ),
                             ],
                           ),
@@ -249,5 +261,56 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
               ],
             ),
     );
+  }
+
+  Future<void> _showMammogramInfoDialog(
+    BuildContext context,
+  ) async {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Utils(context).showCustomDialog(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                margin: const EdgeInsets.only(top: 5.0, bottom: 5.0),
+                child: Text(
+                  AppLocalizations.of(context)!.mammogramHintTitle,
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    color: Theme.of(context).primaryColor,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+                child: Image.asset(
+                  'assets/images/mammogram.jpeg',
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Text(
+                AppLocalizations.of(context)!.mammogramHintBody,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 18,
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+            ],
+          ),
+        ),
+      );
+    });
   }
 }
