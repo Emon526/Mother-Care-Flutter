@@ -1,6 +1,5 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LanguageProvider extends ChangeNotifier {
@@ -21,6 +20,7 @@ class LanguageProvider extends ChangeNotifier {
 
   set languageCode(String languageCode) {
     _languageCode = languageCode;
+    Intl.defaultLocale = languageCode;
     savelanguage(languageCode: languageCode);
     notifyListeners();
   }
