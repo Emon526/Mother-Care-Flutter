@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -106,7 +108,7 @@ class Utils {
     return f.format(number);
   }
 
-  formatTime({required DateTime dateTime}) {
+  String formatTime({required DateTime dateTime}) {
     DateFormat dateFormat =
         DateFormat('h:mma', context.read<LanguageProvider>().languageCode);
     String formattedDate = dateFormat.format(dateTime);
@@ -116,5 +118,31 @@ class Utils {
       formattedDate = formattedDate.replaceAll('PM', 'পি.এম.');
     }
     return formattedDate;
+  }
+
+  String formatPersentage({required double number}) {
+    // var f = NumberFormat.decimalPattern(
+    //         context.read<LanguageProvider>().languageCode)
+    //     .format(number);
+    // final format =
+    //     NumberFormat('##.##', context.read<LanguageProvider>().languageCode);
+    var f =
+        NumberFormat('###.##', context.read<LanguageProvider>().languageCode);
+    return f.format(number);
+  }
+
+  String translateText({required String string}) {
+    // log(string);
+    var input = string;
+    final bengaliTranslation = Intl.message(
+      input,
+      locale: context.read<LanguageProvider>().languageCode,
+      // args: [],
+      // desc: 'Cancerers',
+    );
+
+    print(
+        '${context.read<LanguageProvider>().languageCode}: $bengaliTranslation');
+    return bengaliTranslation;
   }
 }

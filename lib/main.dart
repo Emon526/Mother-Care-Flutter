@@ -117,6 +117,7 @@ class MyApp extends StatelessWidget {
               // home: const PersistentNavBar(),
               home: context.watch<LanguageProvider>().isBoardingCompleate
                   ? const PersistentNavBar()
+                  //  ? const MemmographyPrediction()
                   : const OnBoardingScreen(),
               // home: const OnBoardingScreen(),
               // home: const MemmographyPrediction(),
