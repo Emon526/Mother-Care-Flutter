@@ -131,6 +131,7 @@ class Utils {
     return f.format(number);
   }
 
+//TODO: Translate prediction output Text is not working
   String translateText({required String string}) {
     // log(string);
     var input = string;

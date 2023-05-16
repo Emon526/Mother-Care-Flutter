@@ -47,7 +47,9 @@ class Styles {
       // iconTheme: IconThemeData(
       //   color: isDarkTheme ? Colors.white : Colors.black,
       // ),
-
+      cardTheme: CardTheme(
+        color: isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor,
+      ),
       progressIndicatorTheme: ProgressIndicatorThemeData(
         color: isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor,
       ),
