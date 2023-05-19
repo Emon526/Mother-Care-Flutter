@@ -50,7 +50,7 @@ dependencies:
   google_fonts: ^4.0.4
   http: ^0.13.6
   image_picker: ^0.8.7+4
-  intl: ^0.17.0
+  intl: ^0.18.0
   intl_utils: ^2.8.2
   introduction_screen: ^3.1.8
   line_icons: ^2.0.1

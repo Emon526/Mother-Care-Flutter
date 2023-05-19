@@ -47,6 +47,7 @@ class LanguageProvider extends ChangeNotifier {
   getLanguage() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     _languageCode = prefs.getString('languageCode') ?? _languageCode;
+    Intl.defaultLocale = _languageCode;
   }
 
   void fatchLanguageData() async {
