@@ -110,11 +110,51 @@ class S {
     );
   }
 
+  /// `Apply`
+  String get applybutton {
+    return Intl.message(
+      'Apply',
+      name: 'applybutton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reset`
+  String get resetbutton {
+    return Intl.message(
+      'Reset',
+      name: 'resetbutton',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Learn more`
   String get learnmorebutton {
     return Intl.message(
       'Learn more',
       name: 'learnmorebutton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `read more`
+  String get readmore {
+    return Intl.message(
+      'read more',
+      name: 'readmore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `show less`
+  String get readless {
+    return Intl.message(
+      'show less',
+      name: 'readless',
       desc: '',
       args: [],
     );
@@ -155,6 +195,26 @@ class S {
     return Intl.message(
       'Consult Doctor',
       name: 'consultdoctorbutton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Book an Appointment`
+  String get bookappointmentbutton {
+    return Intl.message(
+      'Book an Appointment',
+      name: 'bookappointmentbutton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Call for Appointment`
+  String get callforappointmentbutton {
+    return Intl.message(
+      'Call for Appointment',
+      name: 'callforappointmentbutton',
       desc: '',
       args: [],
     );
@@ -1195,6 +1255,86 @@ class S {
     return Intl.message(
       'Generate and Open Pdf',
       name: 'generatePdfButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please select some locations`
+  String get filterDoctorListError {
+    return Intl.message(
+      'Please select some locations',
+      name: 'filterDoctorListError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Filter Doctor List`
+  String get filterDoctorList {
+    return Intl.message(
+      'Filter Doctor List',
+      name: 'filterDoctorList',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Locations`
+  String get locations {
+    return Intl.message(
+      'Locations',
+      name: 'locations',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Experience`
+  String get experience {
+    return Intl.message(
+      'Experience',
+      name: 'experience',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `years`
+  String get years {
+    return Intl.message(
+      'years',
+      name: 'years',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rating`
+  String get rating {
+    return Intl.message(
+      'Rating',
+      name: 'rating',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Biography`
+  String get biography {
+    return Intl.message(
+      'Biography',
+      name: 'biography',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Specialist`
+  String get specialist {
+    return Intl.message(
+      'Specialist',
+      name: 'specialist',
       desc: '',
       args: [],
     );

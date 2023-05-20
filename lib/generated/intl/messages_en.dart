@@ -38,6 +38,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "addRemindertitleError":
             MessageLookupByLibrary.simpleMessage("Please Enter Title"),
         "and": MessageLookupByLibrary.simpleMessage("And"),
+        "applybutton": MessageLookupByLibrary.simpleMessage("Apply"),
         "appname": MessageLookupByLibrary.simpleMessage("Mother Care"),
         "awareness": MessageLookupByLibrary.simpleMessage("Awareness"),
         "awarenessBody1": MessageLookupByLibrary.simpleMessage(
@@ -62,7 +63,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Early Detection Saves Lives"),
         "awarenessTitle2":
             MessageLookupByLibrary.simpleMessage("WHY IT MATTERS"),
+        "biography": MessageLookupByLibrary.simpleMessage("Biography"),
+        "bookappointmentbutton":
+            MessageLookupByLibrary.simpleMessage("Book an Appointment"),
         "breastcancer": MessageLookupByLibrary.simpleMessage("Breast Cancer"),
+        "callforappointmentbutton":
+            MessageLookupByLibrary.simpleMessage("Call for Appointment"),
         "cancelbutton": MessageLookupByLibrary.simpleMessage("CANCEL"),
         "changeimage": MessageLookupByLibrary.simpleMessage("Chnage Image"),
         "checkyourselfbutton":
@@ -92,6 +98,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "exitBody": MessageLookupByLibrary.simpleMessage(
             "Do you want to exit the app?"),
         "exitTitle": MessageLookupByLibrary.simpleMessage("Are you sure?"),
+        "experience": MessageLookupByLibrary.simpleMessage("Experience"),
+        "filterDoctorList":
+            MessageLookupByLibrary.simpleMessage("Filter Doctor List"),
+        "filterDoctorListError": MessageLookupByLibrary.simpleMessage(
+            "Please select some locations"),
         "finishbutton": MessageLookupByLibrary.simpleMessage("Finish"),
         "generatePdfButton":
             MessageLookupByLibrary.simpleMessage("Generate and Open Pdf"),
@@ -122,6 +133,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "You can change the language later from the settings"),
         "learnmorebutton": MessageLookupByLibrary.simpleMessage("Learn more"),
         "lightTheme": MessageLookupByLibrary.simpleMessage("Light"),
+        "locations": MessageLookupByLibrary.simpleMessage("Locations"),
         "mammogram": MessageLookupByLibrary.simpleMessage("Mammogram"),
         "mammogramHintBody": MessageLookupByLibrary.simpleMessage(
             "A mammogram is an X-ray picture of the breast. Doctors use a mammogram to look for early signs of breast cancer. Regular mammograms are the best tests doctors have to find breast cancer early, sometimes up to three years before it can be felt."),
@@ -138,7 +150,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "predictionresult":
             MessageLookupByLibrary.simpleMessage("Prediction Result"),
         "prevbutton": MessageLookupByLibrary.simpleMessage("Prev"),
+        "rating": MessageLookupByLibrary.simpleMessage("Rating"),
+        "readless": MessageLookupByLibrary.simpleMessage("show less"),
+        "readmore": MessageLookupByLibrary.simpleMessage("read more"),
         "reminders": MessageLookupByLibrary.simpleMessage("Reminders"),
+        "resetbutton": MessageLookupByLibrary.simpleMessage("Reset"),
         "seconds": MessageLookupByLibrary.simpleMessage("seconds"),
         "selectLanguage":
             MessageLookupByLibrary.simpleMessage("Select Language"),
@@ -195,6 +211,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Set a Reminder"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "skipbutton": MessageLookupByLibrary.simpleMessage("Skip"),
+        "specialist": MessageLookupByLibrary.simpleMessage("Specialist"),
         "systemTheme": MessageLookupByLibrary.simpleMessage("System"),
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
         "uploadimage": MessageLookupByLibrary.simpleMessage("Upload Image"),
@@ -202,6 +219,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "waitingforimage":
             MessageLookupByLibrary.simpleMessage("Waiting for Image"),
         "whatis": MessageLookupByLibrary.simpleMessage("What is "),
+        "years": MessageLookupByLibrary.simpleMessage("years"),
         "yesbutton": MessageLookupByLibrary.simpleMessage("YES")
       };
 }

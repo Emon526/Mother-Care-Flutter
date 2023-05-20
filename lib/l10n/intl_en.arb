@@ -5,11 +5,17 @@
 "skipbutton":"Skip",
 "prevbutton":"Prev",
 "finishbutton":"Finish",
+"applybutton":"Apply",
+"resetbutton":"Reset",
 "learnmorebutton":"Learn more",
+"readmore":"read more",
+"readless":"show less",
 "howtoselfcheckbutton":"How to self-check",
 "checkyourselfbutton":"CHECK YOURSELF STEP BY STEP",
 "setreminderbutton":"Set a Reminder",
 "consultdoctorbutton":"Consult Doctor",
+"bookappointmentbutton":"Book an Appointment",
+"callforappointmentbutton":"Call for Appointment",
 "okbutton":"OK",
 "cancelbutton":"CANCEL",
 "yesbutton":"YES",
@@ -113,6 +119,13 @@
 "mammographyNote":"The Patient should be photographed by a ",
 "getpredictionresultbutton":"Get Prediction Result",
 "predictionresult":"Prediction Result",
-"generatePdfButton":"Generate and Open Pdf"
-
+"generatePdfButton":"Generate and Open Pdf",
+"filterDoctorListError":"Please select some locations",
+"filterDoctorList":"Filter Doctor List",
+"locations":"Locations",
+"experience":"Experience",
+"years":"years",
+"rating":"Rating",
+"biography":"Biography",
+"specialist":"Specialist"
 }

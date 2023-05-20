@@ -39,6 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "addRemindertitleError":
             MessageLookupByLibrary.simpleMessage("অনুগ্রহ করে শিরোনাম লিখুন"),
         "and": MessageLookupByLibrary.simpleMessage("এবং"),
+        "applybutton": MessageLookupByLibrary.simpleMessage("আবেদন"),
         "appname": MessageLookupByLibrary.simpleMessage("মাদার কেয়ার"),
         "awareness": MessageLookupByLibrary.simpleMessage("সচেতনতা"),
         "awarenessBody1": MessageLookupByLibrary.simpleMessage(
@@ -63,7 +64,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "প্রাথমিক সনাক্তকরণ জীবন বাঁচায়"),
         "awarenessTitle2":
             MessageLookupByLibrary.simpleMessage("কেন এটি গুরুত্বপূর্ণ"),
+        "biography": MessageLookupByLibrary.simpleMessage("জীবনী"),
+        "bookappointmentbutton":
+            MessageLookupByLibrary.simpleMessage("সাক্ষাৎকার লিপিবদ্ধ করুন"),
         "breastcancer": MessageLookupByLibrary.simpleMessage("স্তন ক্যান্সার"),
+        "callforappointmentbutton": MessageLookupByLibrary.simpleMessage(
+            "অ্যাপয়েন্টমেন্টের জন্য কল করুন"),
         "cancelbutton": MessageLookupByLibrary.simpleMessage("বাতিল করুন"),
         "changeimage":
             MessageLookupByLibrary.simpleMessage("ছবি পরিবর্তন করুন"),
@@ -94,6 +100,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "exitBody": MessageLookupByLibrary.simpleMessage(
             "আপনি কি অ্যাপ থেকে প্রস্থান করতে চান?"),
         "exitTitle": MessageLookupByLibrary.simpleMessage("তুমি কি নিশ্চিত?"),
+        "experience": MessageLookupByLibrary.simpleMessage("অভিজ্ঞতা"),
+        "filterDoctorList":
+            MessageLookupByLibrary.simpleMessage("ফিল্টার ডাক্তার তালিকা"),
+        "filterDoctorListError":
+            MessageLookupByLibrary.simpleMessage("কিছু অবস্থান নির্বাচন করুন"),
         "finishbutton": MessageLookupByLibrary.simpleMessage("শেষ করুন"),
         "generatePdfButton":
             MessageLookupByLibrary.simpleMessage("পিডিএফ তৈরি করুন এবং খুলুন"),
@@ -125,6 +136,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "আপনি সেটিংস থেকে পরে ভাষা পরিবর্তন করতে পারেন"),
         "learnmorebutton": MessageLookupByLibrary.simpleMessage("আরও জানুন"),
         "lightTheme": MessageLookupByLibrary.simpleMessage("আলো"),
+        "locations": MessageLookupByLibrary.simpleMessage("অবস্থানসমূহ"),
         "mammogram": MessageLookupByLibrary.simpleMessage("ম্যামোগ্রাম"),
         "mammogramHintBody": MessageLookupByLibrary.simpleMessage(
             "একটি ম্যামোগ্রাম হল স্তনের একটি এক্স-রে ছবি। স্তন ক্যান্সারের প্রাথমিক লক্ষণগুলি দেখতে ডাক্তাররা একটি ম্যামোগ্রাম ব্যবহার করেন। নিয়মিত ম্যামোগ্রাম হল সর্বোত্তম পরীক্ষা যা ডাক্তারদের স্তন ক্যান্সারের প্রথম দিকে খুঁজে বের করতে হয়, কখনও কখনও এটি অনুভব করার তিন বছর আগে পর্যন্ত।"),
@@ -141,7 +153,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "predictionresult":
             MessageLookupByLibrary.simpleMessage("ভবিষ্যদ্বাণী ফলাফল"),
         "prevbutton": MessageLookupByLibrary.simpleMessage("পূর্ববর্তী"),
+        "rating": MessageLookupByLibrary.simpleMessage("রেটিং"),
+        "readless": MessageLookupByLibrary.simpleMessage(" কম দেখান"),
+        "readmore": MessageLookupByLibrary.simpleMessage("আরও পড়ুন"),
         "reminders": MessageLookupByLibrary.simpleMessage("অনুস্মারক"),
+        "resetbutton": MessageLookupByLibrary.simpleMessage("রিসেট"),
         "seconds": MessageLookupByLibrary.simpleMessage("সেকেন্ড"),
         "selectLanguage":
             MessageLookupByLibrary.simpleMessage("ভাষা নির্বাচন কর"),
@@ -202,6 +218,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("একটি অনুস্মারক সেট করুন"),
         "settings": MessageLookupByLibrary.simpleMessage("সেটিংস"),
         "skipbutton": MessageLookupByLibrary.simpleMessage("এড়িয়ে যান"),
+        "specialist": MessageLookupByLibrary.simpleMessage("বিশেষজ্ঞ"),
         "systemTheme": MessageLookupByLibrary.simpleMessage("পদ্ধতি"),
         "theme": MessageLookupByLibrary.simpleMessage("থিম"),
         "uploadimage": MessageLookupByLibrary.simpleMessage("চিত্র আপলোড"),
@@ -209,6 +226,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "waitingforimage":
             MessageLookupByLibrary.simpleMessage("ছবির জন্য অপেক্ষা করছি"),
         "whatis": MessageLookupByLibrary.simpleMessage("কি "),
+        "years": MessageLookupByLibrary.simpleMessage("বছর"),
         "yesbutton": MessageLookupByLibrary.simpleMessage("হ্যাঁ")
       };
 }
