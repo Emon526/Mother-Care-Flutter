@@ -55,10 +55,10 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
         // centerTitle: true,
       ),
       body: context.watch<ModelProvider>().isDownloading
-          ? Center(
+          ? const Center(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
-                children: const [
+                children: [
                   CircularProgressIndicator(),
                   SizedBox(
                     height: 10,
