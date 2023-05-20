@@ -8,6 +8,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../const/consts.dart';
 import '../../models/doctormodel.dart';
 import '../../providers/doctorprovider.dart';
+import '../../providers/languageprovider.dart';
 import '../../utils/utils.dart';
 
 class Doctor extends StatelessWidget {
@@ -19,10 +20,11 @@ class Doctor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final locale = context.watch<LanguageProvider>().languageCode;
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          doctor.doctorname,
+          doctor.doctorname[locale],
         ),
       ),
       body: LayoutBuilder(
@@ -78,7 +80,7 @@ class Doctor extends StatelessWidget {
                   height: 20,
                 ),
                 Text(
-                  doctor.doctorname,
+                  doctor.doctorname[locale],
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
@@ -91,7 +93,8 @@ class Doctor extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    '${doctor.speciality} Specialist',
+                    // '${doctor.speciality[locale]} ${AppLocalizations.of(context)!.specialist}',
+                    '${doctor.speciality[locale]}',
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -101,7 +104,7 @@ class Doctor extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    doctor.degree,
+                    doctor.degree[locale],
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -188,14 +191,14 @@ class Doctor extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ReadMoreText(
-                    doctor.bioGraphy,
+                    doctor.bioGraphy[locale],
                     trimLines: 5,
                     colorClickableText: Colors.red,
                     // trimMode: TrimMode.Line,
                     trimMode: TrimMode.Length,
 
-                    // trimCollapsedText: 'Read more',
-                    // trimExpandedText: ' Show less',
+                    trimCollapsedText: AppLocalizations.of(context)!.readmore,
+                    trimExpandedText: AppLocalizations.of(context)!.readless,
                     moreStyle: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,

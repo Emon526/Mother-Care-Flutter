@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-
 import '../../const/consts.dart';
 import '../../models/doctormodel.dart';
 import '../../providers/doctorprovider.dart';
+import '../../providers/languageprovider.dart';
 
 class DoctorCardWidget extends StatelessWidget {
   final Function onTap;
@@ -17,6 +17,7 @@ class DoctorCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final locale = context.watch<LanguageProvider>().languageCode;
     return InkWell(
       borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
       onTap: () {
@@ -58,10 +59,10 @@ class DoctorCardWidget extends StatelessWidget {
                             return Image.memory(
                               snapshot.data!,
                               errorBuilder: (context, error, stackTrace) =>
-                                  Column(
+                                  const Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
-                                children: const [
+                                children: [
                                   Icon(Icons.error_outline),
                                   Text('Unable to Load Image'),
                                 ],
@@ -70,10 +71,10 @@ class DoctorCardWidget extends StatelessWidget {
                           }
 
                           if (snapshot.hasError) {
-                            return Column(
+                            return const Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
-                              children: const [
+                              children: [
                                 Icon(Icons.error_outline),
                                 Text('Unable to Load Image'),
                               ],
@@ -92,7 +93,7 @@ class DoctorCardWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        doctorModel.doctorname,
+                        doctorModel.doctorname[locale],
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
@@ -102,14 +103,14 @@ class DoctorCardWidget extends StatelessWidget {
                         height: 5,
                       ),
                       Text(
-                        doctorModel.speciality,
+                        doctorModel.speciality[locale],
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(
                         height: 5,
                       ),
                       Text(
-                        doctorModel.workplace,
+                        doctorModel.workplace[locale],
                         textAlign: TextAlign.center,
                       ),
                     ],

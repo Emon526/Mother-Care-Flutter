@@ -1,14 +1,16 @@
+import 'dart:convert';
+
 class DoctorModel {
-  String doctorname;
-  String speciality;
-  String degree;
-  String workplace;
+  dynamic doctorname;
+  dynamic speciality;
+  dynamic degree;
+  dynamic workplace;
   int experience;
   double rating;
-  String bioGraphy;
+  dynamic bioGraphy;
   String appointmentNumber;
   String doctorimagePath;
-  String location;
+  dynamic location;
 
   DoctorModel({
     required this.doctorname,
@@ -24,26 +26,23 @@ class DoctorModel {
   });
 
   factory DoctorModel.fromMap(Map<String, dynamic> map) {
+    final decodeddoctorname = json.decode(map['doctorname']);
+    final decodedspeciality = json.decode(map['speciality']);
+    final decodeddegree = json.decode(map['degree']);
+    final decodedworkplace = json.decode(map['workplace']);
+    final decodedbiography = json.decode(map['biography']);
+    final decodedlocation = json.decode(map['location']);
     return DoctorModel(
-      doctorname: map['doctorname'],
-      speciality: map['speciality'],
-      degree: map['degree'],
-      workplace: map['workplace'],
+      doctorname: decodeddoctorname,
+      speciality: decodedspeciality,
+      degree: decodeddegree,
+      workplace: decodedworkplace,
       experience: int.parse(map['experience']),
       rating: double.parse(map['rating']),
-      bioGraphy: map['biography'],
+      bioGraphy: decodedbiography,
       doctorimagePath: map['image'],
       appointmentNumber: map['appointmentNumber'],
-      location: map['location'],
+      location: decodedlocation,
     );
   }
-  // Map<String, dynamic> toMap() {
-  //   return {
-  //     'id': id,
-  //     'userid': userid,
-  //     'title': title,
-  //     'content': content,
-  //     'dateAdded': dateAdded!.toIso8601String()
-  //   };
-  // }
 }

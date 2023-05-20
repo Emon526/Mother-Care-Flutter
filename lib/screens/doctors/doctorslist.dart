@@ -248,29 +248,39 @@ class DoctorsList extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        ElevatedButton(
-                          onPressed: () {
-                            if (formKey.currentState!.validate()) {
-                              formKey.currentState!.save();
-                              Navigator.pop(context);
-                            }
-                          },
-                          child:
-                              Text(AppLocalizations.of(context)!.applybutton),
+                        Flexible(
+                          child: ElevatedButton(
+                            onPressed: () {
+                              if (formKey.currentState!.validate()) {
+                                formKey.currentState!.save();
+                                Navigator.pop(context);
+                              }
+                            },
+                            child: Text(
+                              AppLocalizations.of(context)!.applybutton,
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
                         ),
-                        ElevatedButton(
-                          onPressed: () {
-                            context.read<DoctorProvider>().filterChoice = [];
-                            context
-                                .read<DoctorProvider>()
-                                .filterdoctorList
-                                .clear();
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Flexible(
+                          child: ElevatedButton(
+                            onPressed: () {
+                              context.read<DoctorProvider>().filterChoice = [];
+                              context
+                                  .read<DoctorProvider>()
+                                  .filterdoctorList
+                                  .clear();
 
-                            formKey.currentState!.reset();
-                            Navigator.pop(context);
-                          },
-                          child:
-                              Text(AppLocalizations.of(context)!.resetbutton),
+                              formKey.currentState!.reset();
+                              Navigator.pop(context);
+                            },
+                            child: Text(
+                                AppLocalizations.of(context)!.resetbutton,
+                                textAlign: TextAlign.center),
+                          ),
                         ),
                       ],
                     ),
