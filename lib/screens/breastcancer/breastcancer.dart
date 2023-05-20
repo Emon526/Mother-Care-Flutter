@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -5,6 +6,7 @@ import 'package:provider/provider.dart';
 import '../../const/consts.dart';
 import '../../models/articlemodel.dart';
 import '../../providers/breastcancerprovider.dart';
+import '../../providers/languageprovider.dart';
 import '../../utils/exception_hander.dart';
 import '../../widget/emptywidget.dart';
 import '../../widget/errorwidget.dart';
@@ -48,8 +50,11 @@ class BreastCancerPage extends StatelessWidget {
                     itemCount: articles.length,
                     itemBuilder: (context, index) {
                       var articlesdata = articles[index];
+                      log(articlesdata.articleTitle['bn']!,
+                          name: 'Article Title');
                       return responsiveArticleTile(
                         article: articlesdata,
+                        locale: context.watch<LanguageProvider>().languageCode,
                       );
                     },
                   ),
@@ -92,14 +97,15 @@ class BreastCancerPage extends StatelessWidget {
     );
   }
 
-  Widget responsiveArticleTile({required ArticleModel article}) {
+  Widget responsiveArticleTile(
+      {required ArticleModel article, required String locale}) {
     return Card(
       child: ExpansionTile(
         trailing: const SizedBox(),
         textColor: Colors.white,
         collapsedTextColor: Colors.white,
         title: Text(
-          article.articleTitle,
+          article.articleTitle[locale]!,
           style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 20,
@@ -127,7 +133,7 @@ class BreastCancerPage extends StatelessWidget {
                           //     fontSize: 18,
                           //   ),
                           // ),
-                          boldMarkedLine(article.articleDescription),
+                          boldMarkedLine(article.articleDescription[locale]),
                           const SizedBox(height: 16),
                           article.articleImage != null
                               ? ClipRRect(
@@ -149,13 +155,13 @@ class BreastCancerPage extends StatelessWidget {
                                       }
 
                                       if (snapshot.hasError) {
-                                        return SizedBox(
+                                        return const SizedBox(
                                           child: Column(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.center,
-                                            children: const [
+                                            children: [
                                               Icon(Icons.error_outline),
                                               Text('Unable to Load Image'),
                                             ],

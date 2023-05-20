@@ -1,7 +1,9 @@
+import 'dart:convert';
+
 class ArticleModel {
   int articleId;
-  String articleTitle;
-  String articleDescription;
+  dynamic articleTitle;
+  dynamic articleDescription;
   String? articleImage;
 
   ArticleModel({
@@ -12,10 +14,12 @@ class ArticleModel {
   });
 
   factory ArticleModel.fromMap(Map<String, dynamic> map) {
+    final decodedTitle = json.decode(map['articleTitle']);
+    final decodedDescription = json.decode(map['articleDescription']);
     return ArticleModel(
       articleId: int.parse(map['articleId']),
-      articleTitle: map['articleTitle'],
-      articleDescription: map['articleDescription'],
+      articleTitle: decodedTitle,
+      articleDescription: decodedDescription,
       articleImage: map['articleImage'],
     );
   }
