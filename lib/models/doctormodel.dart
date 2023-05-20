@@ -3,8 +3,8 @@ class DoctorModel {
   String speciality;
   String degree;
   String workplace;
-  String experience;
-  String rating;
+  int experience;
+  double rating;
   String bioGraphy;
   String appointmentNumber;
   String doctorimagePath;
@@ -29,8 +29,8 @@ class DoctorModel {
       speciality: map['speciality'],
       degree: map['degree'],
       workplace: map['workplace'],
-      experience: map['experience'],
-      rating: map['rating'],
+      experience: int.parse(map['experience']),
+      rating: double.parse(map['rating']),
       bioGraphy: map['biography'],
       doctorimagePath: map['image'],
       appointmentNumber: map['appointmentNumber'],
