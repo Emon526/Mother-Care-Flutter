@@ -1,5 +1,3 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -239,6 +237,7 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
                                       .prediction(
                                         image: pickedimage!,
                                       );
+                                  // ignore: use_build_context_synchronously
                                   await PersistentNavBarNavigator.pushNewScreen(
                                     context,
                                     screen: const PredictionResult(),
