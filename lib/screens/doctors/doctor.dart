@@ -1,12 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:readmore/readmore.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../const/consts.dart';
 import '../../models/doctormodel.dart';
 import '../../providers/doctorprovider.dart';
+import '../../utils/utils.dart';
 
 class Doctor extends StatelessWidget {
   final DoctorModel doctor;
@@ -53,11 +55,11 @@ class Doctor extends StatelessWidget {
                         }
 
                         if (snapshot.hasError) {
-                          return SizedBox(
+                          return const SizedBox(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
-                              children: const [
+                              children: [
                                 Icon(Icons.error_outline),
                                 Text('Unable to Load Image'),
                               ],
@@ -123,11 +125,12 @@ class Doctor extends StatelessWidget {
                                 horizontal: 20, vertical: 10),
                             child: Column(
                               children: [
-                                const Text('Experience'),
+                                Text(AppLocalizations.of(context)!.experience),
                                 const SizedBox(
                                   height: 5,
                                 ),
-                                Text('${doctor.experience}+ Years'),
+                                Text(
+                                    '${Utils(context).formatNumber(number: doctor.experience)}+ ${AppLocalizations.of(context)!.years}'),
                               ],
                             ),
                           ),
@@ -148,13 +151,13 @@ class Doctor extends StatelessWidget {
                                 horizontal: 20, vertical: 10),
                             child: Column(
                               children: [
-                                const Text('Rating'),
+                                Text(AppLocalizations.of(context)!.rating),
                                 const SizedBox(
                                   height: 5,
                                 ),
                                 RatingBarIndicator(
                                   itemSize: 15,
-                                  rating: double.parse(doctor.rating),
+                                  rating: doctor.rating,
                                   physics: const BouncingScrollPhysics(),
                                   itemBuilder: (context, _) => const Icon(
                                     Icons.star,
@@ -172,9 +175,9 @@ class Doctor extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                const Text(
-                  'Biography',
-                  style: TextStyle(
+                Text(
+                  AppLocalizations.of(context)!.biography,
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
                   ),
@@ -211,11 +214,11 @@ class Doctor extends StatelessWidget {
                     onTap: () {},
                     borderRadius:
                         BorderRadius.circular(Consts.DefaultBorderRadius),
-                    child: const ListTile(
+                    child: ListTile(
                       title: Text(
-                        'Book an Appointment',
+                        AppLocalizations.of(context)!.bookappointmentbutton,
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -227,11 +230,11 @@ class Doctor extends StatelessWidget {
                     onTap: () => _makePhoneCall(doctor.appointmentNumber),
                     borderRadius:
                         BorderRadius.circular(Consts.DefaultBorderRadius),
-                    child: const ListTile(
+                    child: ListTile(
                       title: Text(
-                        'Call for Appointment',
+                        AppLocalizations.of(context)!.callforappointmentbutton,
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),

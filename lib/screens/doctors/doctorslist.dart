@@ -1,5 +1,6 @@
 import 'package:chips_choice/chips_choice.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:provider/provider.dart';
 import '../../models/doctormodel.dart';
@@ -24,8 +25,8 @@ class DoctorsList extends StatelessWidget {
       builder: (context, doctorProvider, child) {
         return Scaffold(
           appBar: AppBar(
-            title: const Text(
-              "Doctors",
+            title: Text(
+              AppLocalizations.of(context)!.doctors,
             ),
             actions: [
               doctorProvider.doctorLocations.isNotEmpty
@@ -39,7 +40,6 @@ class DoctorsList extends StatelessWidget {
                       },
                       icon: const Icon(
                         Icons.filter_list,
-                        semanticLabel: 'Filters',
                       ),
                     )
                   : const SizedBox(),
@@ -153,9 +153,9 @@ class DoctorsList extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
       children: [
-        const Text(
-          'Filter Doctor List',
-          style: TextStyle(
+        Text(
+          AppLocalizations.of(context)!.filterDoctorList,
+          style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
@@ -169,13 +169,13 @@ class DoctorsList extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              const Padding(
-                padding: EdgeInsets.symmetric(
+              Padding(
+                padding: const EdgeInsets.symmetric(
                   horizontal: 16,
                 ),
                 child: Text(
-                  'Locations',
-                  style: TextStyle(
+                  AppLocalizations.of(context)!.locations,
+                  style: const TextStyle(
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -196,7 +196,8 @@ class DoctorsList extends StatelessWidget {
                             .filterChoice = val ?? [],
                         validator: (value) {
                           if (value?.isEmpty ?? value == null) {
-                            return 'Please select some locations';
+                            return AppLocalizations.of(context)!
+                                .filterDoctorListError;
                           }
                           // if (value!.length > 5) {
                           //   return "Can't select more than 5 categories";
@@ -254,7 +255,8 @@ class DoctorsList extends StatelessWidget {
                               Navigator.pop(context);
                             }
                           },
-                          child: const Text('Apply'),
+                          child:
+                              Text(AppLocalizations.of(context)!.applybutton),
                         ),
                         ElevatedButton(
                           onPressed: () {
@@ -267,7 +269,8 @@ class DoctorsList extends StatelessWidget {
                             formKey.currentState!.reset();
                             Navigator.pop(context);
                           },
-                          child: const Text('Reset'),
+                          child:
+                              Text(AppLocalizations.of(context)!.resetbutton),
                         ),
                       ],
                     ),
