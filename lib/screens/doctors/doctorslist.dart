@@ -5,6 +5,7 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:provider/provider.dart';
 import '../../models/doctormodel.dart';
 import '../../providers/doctorprovider.dart';
+import '../../providers/languageprovider.dart';
 import '../../utils/exception_hander.dart';
 import '../../utils/utils.dart';
 import '../../widget/emptywidget.dart';
@@ -23,18 +24,28 @@ class DoctorsList extends StatelessWidget {
     final viewPadding = MediaQuery.of(context).viewPadding;
     return Consumer<DoctorProvider>(
       builder: (context, doctorProvider, child) {
+        var doctorLocations = getAllDoctorLocations(
+          doctorlist: doctorProvider.doctorlist,
+          locale: context.watch<LanguageProvider>().languageCode,
+        );
+        List<DoctorModel> filterdoctorList = getFilteredDoctor(
+          doctorlist: doctorProvider.doctorlist,
+          locale: context.watch<LanguageProvider>().languageCode,
+          searchQuery: context.read<DoctorProvider>().filterChoice,
+        );
         return Scaffold(
           appBar: AppBar(
             title: Text(
               AppLocalizations.of(context)!.doctors,
             ),
             actions: [
-              doctorProvider.doctorLocations.isNotEmpty
+              doctorLocations.isNotEmpty
                   ? IconButton(
                       onPressed: () {
                         Utils(context).showCustomDialog(
                           child: _doctorFilterWidget(
                             context: context,
+                            doctorLocations: doctorLocations,
                           ),
                         );
                       },
@@ -45,16 +56,16 @@ class DoctorsList extends StatelessWidget {
                   : const SizedBox(),
             ],
           ),
-          body: doctorProvider.filterdoctorList.isNotEmpty
+          body: filterdoctorList.isNotEmpty
               ? SingleChildScrollView(
                   physics: const AlwaysScrollableScrollPhysics(),
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: ResponsiveGridView(
                       crossAxisCount: 2,
-                      itemCount: doctorProvider.filterdoctorList.length,
+                      itemCount: filterdoctorList.length,
                       itemBuilder: (context, index) {
-                        var doctordata = doctorProvider.filterdoctorList[index];
+                        var doctordata = filterdoctorList[index];
                         return DoctorCardWidget(
                           doctorModel: doctordata,
                           onTap: () {
@@ -145,8 +156,31 @@ class DoctorsList extends StatelessWidget {
     );
   }
 
+  List<DoctorModel> getFilteredDoctor({
+    required List<String> searchQuery,
+    required List<DoctorModel> doctorlist,
+    required String locale,
+  }) {
+    return doctorlist.where((doctor) {
+      final doctorLocation = doctor.location[locale].toString().toLowerCase();
+      return searchQuery
+          .any((query) => doctorLocation.contains(query.toLowerCase()));
+    }).toList();
+  }
+
+  List<String> getAllDoctorLocations(
+      {required List<DoctorModel> doctorlist, required String locale}) {
+    Set<String> uniqueLocations = <String>{};
+    for (DoctorModel doctor in doctorlist) {
+      uniqueLocations.add(doctor.location[locale]);
+    }
+    List<String> doctorLocations = uniqueLocations.toList()..sort();
+    return doctorLocations;
+  }
+
   _doctorFilterWidget({
     required BuildContext context,
+    required List<String> doctorLocations,
   }) {
     final formKey = GlobalKey<FormState>();
     return Column(
@@ -212,9 +246,7 @@ class DoctorsList extends StatelessWidget {
                                 value: state.value ?? [],
                                 onChanged: (val) => state.didChange(val),
                                 choiceItems: C2Choice.listFrom<String, String>(
-                                  source: context
-                                      .watch<DoctorProvider>()
-                                      .doctorLocations,
+                                  source: doctorLocations,
                                   value: (index, value) => value.toLowerCase(),
                                   label: (index, value) => value,
                                   tooltip: (index, value) => value,
@@ -269,10 +301,11 @@ class DoctorsList extends StatelessWidget {
                           child: ElevatedButton(
                             onPressed: () {
                               context.read<DoctorProvider>().filterChoice = [];
-                              context
-                                  .read<DoctorProvider>()
-                                  .filterdoctorList
-                                  .clear();
+                              // context
+                              //     .read<DoctorProvider>()
+                              //     .filterdoctorList
+                              //     .clear();
+                              //     filterdoctorList.
 
                               formKey.currentState!.reset();
                               Navigator.pop(context);

@@ -8,18 +8,15 @@ import '../utils/exception_hander.dart';
 class DoctorProvider extends ChangeNotifier {
   List<DoctorModel> _doctorList = [];
   List<DoctorModel> get doctorlist => _doctorList;
-  List<DoctorModel> _filterdoctorList = [];
-  List<DoctorModel> get filterdoctorList => _filterdoctorList;
+  // List<DoctorModel> _filterdoctorList = [];
+  // List<DoctorModel> get filterdoctorList => _filterdoctorList;
   List<String> _filterChoice = [];
   List<String> get filterChoice => _filterChoice;
   set filterChoice(List<String> filters) {
     _filterChoice = filters;
-    _filterdoctorList = getFilteredDoctor(searchQuery: filters);
+    // _filterdoctorList = getFilteredDoctor(searchQuery: filters);
     notifyListeners();
   }
-
-  List<String> _doctorLocations = [];
-  List<String> get doctorLocations => _doctorLocations;
 
   DoctorProvider() {
     fatchData();
@@ -28,7 +25,6 @@ class DoctorProvider extends ChangeNotifier {
   Future<void> fatchData() async {
     try {
       _doctorList = await doctorsList();
-      _doctorLocations = getAllDoctorLocations();
     } catch (e) {
       throw ExceptionHandlers.getExceptionString(e);
     }
@@ -59,22 +55,20 @@ class DoctorProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  List<DoctorModel> getFilteredDoctor({required List<String> searchQuery}) {
-    return _doctorList.where((doctor) {
-      final doctorLocation = doctor.location.toLowerCase();
-      return searchQuery
-          .any((query) => doctorLocation.contains(query.toLowerCase()));
-    }).toList();
-  }
-
-  List<String> getAllDoctorLocations() {
-    Set<String> uniqueLocations = <String>{};
-    for (DoctorModel doctor in _doctorList) {
-      uniqueLocations.add(doctor.location);
-    }
-    List<String> formattedLocations = uniqueLocations.toList()..sort();
-    return formattedLocations;
-  }
+  // List<DoctorModel> getFilteredDoctor({required List<String> searchQuery}) {
+  //   return _doctorList.where((doctor) {
+  //     final doctorLocation = doctor.location.toLowerCase();
+  //     return searchQuery
+  //         .any((query) => doctorLocation.contains(query.toLowerCase()));
+  //   }).toList();
+  // }
+  // List<DoctorModel> getFilteredDoctor({required List<String> searchQuery}) {
+  //   return _doctorList.where((doctor) {
+  //     final doctorLocation = doctor.location['bn'].toString().toLowerCase();
+  //     return searchQuery
+  //         .any((query) => doctorLocation.contains(query.toLowerCase()));
+  //   }).toList();
+  // }
 
   Future<Uint8List?> getDoctorImage(String imagebyte) async {
     // debugPrint(imagebyte);
