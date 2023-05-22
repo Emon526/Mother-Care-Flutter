@@ -57,13 +57,16 @@ class PredictionResult extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Utils(context).boldsentenceword(
-                            text: AppLocalizations.of(context)!.mammographyNote(
-                              AppLocalizations.of(context)!.mammogram,
+                          Expanded(
+                            child: Utils(context).boldsentenceword(
+                              text:
+                                  AppLocalizations.of(context)!.mammographyNote(
+                                AppLocalizations.of(context)!.mammogram,
+                              ),
+                              boldTextList: [
+                                AppLocalizations.of(context)!.mammogram
+                              ],
                             ),
-                            boldTextList: [
-                              AppLocalizations.of(context)!.mammogram
-                            ],
                           )
                         ],
                       ),

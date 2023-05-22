@@ -138,6 +138,7 @@ class SettingScreen extends StatelessWidget {
             AppLocalizations.of(context)!.creditdevelopername3,
             AppLocalizations.of(context)!.supervisorname,
           ],
+          textAlign: TextAlign.center,
         ),
         const SizedBox(
           height: 20,

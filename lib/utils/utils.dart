@@ -148,6 +148,7 @@ class Utils {
   RichText boldsentenceword({
     required String text,
     required List<String> boldTextList,
+    TextAlign? textAlign,
   }) {
     List<InlineSpan> spans = [];
 
@@ -205,7 +206,7 @@ class Utils {
     }
 
     return RichText(
-      textAlign: TextAlign.center,
+      textAlign: textAlign ?? TextAlign.start,
       text: TextSpan(
         children: spans,
         style: TextStyle(

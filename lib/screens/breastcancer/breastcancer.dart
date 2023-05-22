@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -50,8 +49,6 @@ class BreastCancerPage extends StatelessWidget {
                     itemCount: articles.length,
                     itemBuilder: (context, index) {
                       var articlesdata = articles[index];
-                      log(articlesdata.articleTitle['bn']!,
-                          name: 'Article Title');
                       return responsiveArticleTile(
                         article: articlesdata,
                         locale: context.watch<LanguageProvider>().languageCode,
