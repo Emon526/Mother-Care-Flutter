@@ -70,6 +70,8 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Row(
+                  // crossAxisAlignment: CrossAxisAlignment.start,
+                  // mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -89,13 +91,11 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
                         ),
                       ),
                     ),
-                    Expanded(
-                      child: Utils(context).boldsentenceword(
-                        text: AppLocalizations.of(context)!.mammographyNote(
-                          AppLocalizations.of(context)!.mammogram,
-                        ),
-                        boldText: AppLocalizations.of(context)!.mammogram,
+                    Utils(context).boldsentenceword(
+                      text: AppLocalizations.of(context)!.mammographyNote(
+                        AppLocalizations.of(context)!.mammogram,
                       ),
+                      boldTextList: [AppLocalizations.of(context)!.mammogram],
                     )
                   ],
                 ),
@@ -203,7 +203,9 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
                             child: Utils(context).boldsentenceword(
                               text: AppLocalizations.of(context)!.whatis(
                                   AppLocalizations.of(context)!.mammogram),
-                              boldText: AppLocalizations.of(context)!.mammogram,
+                              boldTextList: [
+                                AppLocalizations.of(context)!.mammogram
+                              ],
                             ),
                           )
                         : Column(

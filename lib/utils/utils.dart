@@ -144,4 +144,74 @@ class Utils {
         '${context.read<LanguageProvider>().languageCode}: $bengaliTranslation');
     return bengaliTranslation;
   }
+
+  RichText boldsentenceword({
+    required String text,
+    required List<String> boldTextList,
+  }) {
+    List<InlineSpan> spans = [];
+
+    // Iterate through the text and check for matches with the bold text list
+    int startIndex = 0;
+    int endIndex = 0;
+
+    while (startIndex < text.length) {
+      bool foundMatch = false;
+
+      // Check for matches with each item in the bold text list
+      for (String boldText in boldTextList) {
+        endIndex = startIndex + boldText.length;
+
+        if (endIndex <= text.length &&
+            text.substring(startIndex, endIndex) == boldText) {
+          // Add the regular text part before the bold text
+          if (startIndex > 0 && startIndex > endIndex) {
+            spans.add(TextSpan(
+              text: text.substring(0, startIndex),
+              style: TextStyle(
+                color: Theme.of(context).primaryColor,
+              ),
+            ));
+          }
+
+          // Add the bold text part
+          spans.add(TextSpan(
+            text: text.substring(startIndex, endIndex),
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              // color: Colors.red,
+            ),
+          ));
+
+          startIndex = endIndex;
+          foundMatch = true;
+          break;
+        }
+      }
+
+      if (!foundMatch) {
+        endIndex = startIndex + 1;
+
+        // Add the regular text part
+        spans.add(TextSpan(
+          text: text.substring(startIndex, endIndex),
+          style: TextStyle(
+            color: Theme.of(context).primaryColor,
+          ),
+        ));
+
+        startIndex = endIndex;
+      }
+    }
+
+    return RichText(
+      textAlign: TextAlign.center,
+      text: TextSpan(
+        children: spans,
+        style: TextStyle(
+          color: Theme.of(context).primaryColor,
+        ),
+      ),
+    );
+  }
 }

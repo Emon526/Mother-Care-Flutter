@@ -22,6 +22,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(duration) => "You will be reminded ${duration} later";
 
+  static String m1(mammogram) =>
+      "The Patient should be photographed by a ${mammogram}";
+
+  static String m2(mammogram) => "What is ${mammogram} ?";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "addReminder": MessageLookupByLibrary.simpleMessage("Add Reminder"),
@@ -70,13 +75,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "callforappointmentbutton":
             MessageLookupByLibrary.simpleMessage("Call for Appointment"),
         "cancelbutton": MessageLookupByLibrary.simpleMessage("CANCEL"),
-        "changeimage": MessageLookupByLibrary.simpleMessage("Chnage Image"),
+        "changeimage": MessageLookupByLibrary.simpleMessage("Change Image"),
         "checkyourselfbutton":
             MessageLookupByLibrary.simpleMessage("CHECK YOURSELF STEP BY STEP"),
         "consultdoctorbutton":
             MessageLookupByLibrary.simpleMessage("Consult Doctor"),
         "creditBody": MessageLookupByLibrary.simpleMessage(
-            "This app is developed by the students of Daffodil International University. The developers are Asraful Islam, MD Shahajada Hasib and Sabbir Hossain Riad. The app is developed under the supervision of Dr. Md. Shamsul Arefin, Associate Professor, Department of CSE, Daffodil International University."),
+            "This app is developed by the students of Daffodil International University. The developers are Asraful Islam, MD Shahajada Hasib and MD Sabbir Hossain Riad. The app is developed under the supervision of Sharmin Akter, Sr. Lecturer, Department of CSE, Daffodil International University."),
         "creditdeveloper": MessageLookupByLibrary.simpleMessage("Developed by"),
         "creditdeveloperdepartment":
             MessageLookupByLibrary.simpleMessage("Department of CSE"),
@@ -85,7 +90,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "creditdevelopername2":
             MessageLookupByLibrary.simpleMessage("MD Shahajada Hasib"),
         "creditdevelopername3":
-            MessageLookupByLibrary.simpleMessage("Sabbir Hossain Riad"),
+            MessageLookupByLibrary.simpleMessage("MD Sabbir Hossain Riad"),
         "creditdeveloperuniversity": MessageLookupByLibrary.simpleMessage(
             "Daffodil International University"),
         "credits": MessageLookupByLibrary.simpleMessage("Credits"),
@@ -139,8 +144,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "A mammogram is an X-ray picture of the breast. Doctors use a mammogram to look for early signs of breast cancer. Regular mammograms are the best tests doctors have to find breast cancer early, sometimes up to three years before it can be felt."),
         "mammogramHintTitle":
             MessageLookupByLibrary.simpleMessage("What Is a Mammogram?"),
-        "mammographyNote": MessageLookupByLibrary.simpleMessage(
-            "The Patient should be photographed by a "),
+        "mammographyNote": m1,
         "mammographyscreening":
             MessageLookupByLibrary.simpleMessage("Mammography Screening"),
         "minutes": MessageLookupByLibrary.simpleMessage("minutes"),
@@ -212,13 +216,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "skipbutton": MessageLookupByLibrary.simpleMessage("Skip"),
         "specialist": MessageLookupByLibrary.simpleMessage("Specialist"),
+        "supervisorname": MessageLookupByLibrary.simpleMessage("Sharmin Akter"),
         "systemTheme": MessageLookupByLibrary.simpleMessage("System"),
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
         "uploadimage": MessageLookupByLibrary.simpleMessage("Upload Image"),
         "version": MessageLookupByLibrary.simpleMessage("Version"),
         "waitingforimage":
             MessageLookupByLibrary.simpleMessage("Waiting for Image"),
-        "whatis": MessageLookupByLibrary.simpleMessage("What is "),
+        "whatis": m2,
         "years": MessageLookupByLibrary.simpleMessage("years"),
         "yesbutton": MessageLookupByLibrary.simpleMessage("YES")
       };

@@ -130,13 +130,14 @@ class SettingScreen extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text(
-          AppLocalizations.of(context)!.creditBody,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Theme.of(context).primaryColor,
-            // fontWeight: FontWeight.bold,
-          ),
+        Utils(context).boldsentenceword(
+          text: AppLocalizations.of(context)!.creditBody,
+          boldTextList: [
+            AppLocalizations.of(context)!.creditdevelopername1,
+            AppLocalizations.of(context)!.creditdevelopername2,
+            AppLocalizations.of(context)!.creditdevelopername3,
+            AppLocalizations.of(context)!.supervisorname,
+          ],
         ),
         const SizedBox(
           height: 20,

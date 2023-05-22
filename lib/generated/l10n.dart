@@ -330,10 +330,10 @@ class S {
     );
   }
 
-  /// `This app is developed by the students of Daffodil International University. The developers are Asraful Islam, MD Shahajada Hasib and Sabbir Hossain Riad. The app is developed under the supervision of Dr. Md. Shamsul Arefin, Associate Professor, Department of CSE, Daffodil International University.`
+  /// `This app is developed by the students of Daffodil International University. The developers are Asraful Islam, MD Shahajada Hasib and MD Sabbir Hossain Riad. The app is developed under the supervision of Sharmin Akter, Sr. Lecturer, Department of CSE, Daffodil International University.`
   String get creditBody {
     return Intl.message(
-      'This app is developed by the students of Daffodil International University. The developers are Asraful Islam, MD Shahajada Hasib and Sabbir Hossain Riad. The app is developed under the supervision of Dr. Md. Shamsul Arefin, Associate Professor, Department of CSE, Daffodil International University.',
+      'This app is developed by the students of Daffodil International University. The developers are Asraful Islam, MD Shahajada Hasib and MD Sabbir Hossain Riad. The app is developed under the supervision of Sharmin Akter, Sr. Lecturer, Department of CSE, Daffodil International University.',
       name: 'creditBody',
       desc: '',
       args: [],
@@ -380,11 +380,21 @@ class S {
     );
   }
 
-  /// `Sabbir Hossain Riad`
+  /// `MD Sabbir Hossain Riad`
   String get creditdevelopername3 {
     return Intl.message(
-      'Sabbir Hossain Riad',
+      'MD Sabbir Hossain Riad',
       name: 'creditdevelopername3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sharmin Akter`
+  String get supervisorname {
+    return Intl.message(
+      'Sharmin Akter',
+      name: 'supervisorname',
       desc: '',
       args: [],
     );
@@ -1180,13 +1190,13 @@ class S {
     );
   }
 
-  /// `What is `
-  String get whatis {
+  /// `What is {mammogram} ?`
+  String whatis(Object mammogram) {
     return Intl.message(
-      'What is ',
+      'What is $mammogram ?',
       name: 'whatis',
       desc: '',
-      args: [],
+      args: [mammogram],
     );
   }
 
@@ -1210,23 +1220,23 @@ class S {
     );
   }
 
-  /// `Chnage Image`
+  /// `Change Image`
   String get changeimage {
     return Intl.message(
-      'Chnage Image',
+      'Change Image',
       name: 'changeimage',
       desc: '',
       args: [],
     );
   }
 
-  /// `The Patient should be photographed by a `
-  String get mammographyNote {
+  /// `The Patient should be photographed by a {mammogram}`
+  String mammographyNote(Object mammogram) {
     return Intl.message(
-      'The Patient should be photographed by a ',
+      'The Patient should be photographed by a $mammogram',
       name: 'mammographyNote',
       desc: '',
-      args: [],
+      args: [mammogram],
     );
   }
 

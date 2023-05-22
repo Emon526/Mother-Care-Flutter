@@ -22,24 +22,28 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(duration) => "আপনাকে ${duration} পরে মনে করিয়ে দেওয়া হবে";
 
+  static String m1(mammogram) => "একটি ${mammogram} দ্বারা রোগীর ছবি তোলা উচিত";
+
+  static String m2(mammogram) => "${mammogram} কি ?";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "addReminder":
             MessageLookupByLibrary.simpleMessage("অনুস্মারক যোগ করুন"),
         "addReminderDate": MessageLookupByLibrary.simpleMessage("তারিখ"),
         "addReminderDateError":
-            MessageLookupByLibrary.simpleMessage("একটি তারিখ চয়ন করুন"),
+            MessageLookupByLibrary.simpleMessage("একটি তারিখ পছন্দ করুন"),
         "addReminderHint":
             MessageLookupByLibrary.simpleMessage("মাসিকের স্ব-পরীক্ষা"),
         "addReminderSnakeBar": m0,
         "addReminderTime": MessageLookupByLibrary.simpleMessage("সময়"),
         "addReminderTimeError":
-            MessageLookupByLibrary.simpleMessage("একটি সময় চয়ন করুন"),
+            MessageLookupByLibrary.simpleMessage("একটি সময় পছন্দ করুন"),
         "addReminderTitle": MessageLookupByLibrary.simpleMessage("শিরোনাম"),
         "addRemindertitleError":
             MessageLookupByLibrary.simpleMessage("অনুগ্রহ করে শিরোনাম লিখুন"),
         "and": MessageLookupByLibrary.simpleMessage("এবং"),
-        "applybutton": MessageLookupByLibrary.simpleMessage("আবেদন"),
+        "applybutton": MessageLookupByLibrary.simpleMessage("আবেদন করুন"),
         "appname": MessageLookupByLibrary.simpleMessage("মাদার কেয়ার"),
         "awareness": MessageLookupByLibrary.simpleMessage("সচেতনতা"),
         "awarenessBody1": MessageLookupByLibrary.simpleMessage(
@@ -66,7 +70,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("কেন এটি গুরুত্বপূর্ণ"),
         "biography": MessageLookupByLibrary.simpleMessage("জীবনী"),
         "bookappointmentbutton":
-            MessageLookupByLibrary.simpleMessage("সাক্ষাৎকার লিপিবদ্ধ করুন"),
+            MessageLookupByLibrary.simpleMessage("অ্যাপয়েন্টমেন্ট বুক করুন"),
         "breastcancer": MessageLookupByLibrary.simpleMessage("স্তন ক্যান্সার"),
         "callforappointmentbutton": MessageLookupByLibrary.simpleMessage(
             "অ্যাপয়েন্টমেন্টের জন্য কল করুন"),
@@ -78,22 +82,22 @@ class MessageLookup extends MessageLookupByLibrary {
         "consultdoctorbutton":
             MessageLookupByLibrary.simpleMessage("ডাক্তারের সাথে পরামর্শ করুন"),
         "creditBody": MessageLookupByLibrary.simpleMessage(
-            "এই অ্যাপটি ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটির শিক্ষার্থীরা তৈরি করেছে। ডেভেলপাররা হলেন আসরাফুল ইসলাম, এমডি শাহাজাদা হাসিব ও সাব্বির হোসেন রিয়াদ। অ্যাপটি ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটির সিএসই বিভাগের সহযোগী অধ্যাপক ড. মোঃ শামসুল আরেফিনের তত্ত্বাবধানে তৈরি করা হয়েছে।"),
+            "এই অ্যাপটি ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটির শিক্ষার্থীরা তৈরি করেছে। ডেভেলপাররা হলেন আশ্রাফুল ইসলাম, মোঃ শাহজাদা হাছিব ও মোঃ সাব্বির হোসাইন রিয়াদ। অ্যাপটি ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটির সিএসই বিভাগের সিনিয়র লেকচারার শারমিন আক্তারের তত্ত্বাবধানে তৈরি করা হয়েছে।"),
         "creditdeveloper": MessageLookupByLibrary.simpleMessage("নির্মাণে"),
         "creditdeveloperdepartment":
             MessageLookupByLibrary.simpleMessage("সিএসই বিভাগ"),
         "creditdevelopername1":
-            MessageLookupByLibrary.simpleMessage("আশরাফুল ইসলাম"),
+            MessageLookupByLibrary.simpleMessage("আশ্রাফুল ইসলাম"),
         "creditdevelopername2":
-            MessageLookupByLibrary.simpleMessage("শাহজাদা হাছিব"),
+            MessageLookupByLibrary.simpleMessage("মোঃ শাহজাদা হাছিব"),
         "creditdevelopername3":
-            MessageLookupByLibrary.simpleMessage("সাবির হোসেন রিয়াদ"),
+            MessageLookupByLibrary.simpleMessage("মোঃ সাব্বির হোসাইন রিয়াদ"),
         "creditdeveloperuniversity": MessageLookupByLibrary.simpleMessage(
             "ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটি"),
-        "credits": MessageLookupByLibrary.simpleMessage("ক্রেডিট"),
-        "darkTheme": MessageLookupByLibrary.simpleMessage("অন্ধকার"),
+        "credits": MessageLookupByLibrary.simpleMessage("কৃতিত্ব"),
+        "darkTheme": MessageLookupByLibrary.simpleMessage("অন্ধকার থিম"),
         "days": MessageLookupByLibrary.simpleMessage("দিন"),
-        "doctors": MessageLookupByLibrary.simpleMessage("ডাক্তাররা"),
+        "doctors": MessageLookupByLibrary.simpleMessage("চিকিত্সকরা"),
         "donebutton": MessageLookupByLibrary.simpleMessage("সম্পন্ন"),
         "emptyReminder": MessageLookupByLibrary.simpleMessage(
             "কোনো অনুস্মারক এখনো যোগ করা হয়নি!"),
@@ -102,9 +106,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "exitTitle": MessageLookupByLibrary.simpleMessage("তুমি কি নিশ্চিত?"),
         "experience": MessageLookupByLibrary.simpleMessage("অভিজ্ঞতা"),
         "filterDoctorList":
-            MessageLookupByLibrary.simpleMessage("ফিল্টার ডাক্তার তালিকা"),
+            MessageLookupByLibrary.simpleMessage("ডাক্তার তালিকা ফিল্টার করুন"),
         "filterDoctorListError":
-            MessageLookupByLibrary.simpleMessage("কিছু অবস্থান নির্বাচন করুন"),
+            MessageLookupByLibrary.simpleMessage("কিছু স্থান নির্বাচন করুন"),
         "finishbutton": MessageLookupByLibrary.simpleMessage("শেষ করুন"),
         "generatePdfButton":
             MessageLookupByLibrary.simpleMessage("পিডিএফ তৈরি করুন এবং খুলুন"),
@@ -112,7 +116,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("ভবিষ্যদ্বাণী ফলাফল পান"),
         "hours": MessageLookupByLibrary.simpleMessage("ঘন্টা"),
         "howtoselfcheckbutton":
-            MessageLookupByLibrary.simpleMessage("কীভাবে স্ব-পরীক্ষা করবেন"),
+            MessageLookupByLibrary.simpleMessage("কীভাবে নিজেকে যাচাই  করবেন"),
         "introBody1": MessageLookupByLibrary.simpleMessage(
             "স্তন ক্যান্সার সম্পর্কে তথ্য পান, এর কারণ, লক্ষণ এবং কীভাবে প্রতিরোধ করা যায়।"),
         "introBody2": MessageLookupByLibrary.simpleMessage(
@@ -123,8 +127,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "আপনার চেকআপের জন্য দেশের সেরা ডাক্তারদের সাথে অ্যাপয়েন্টমেন্ট পান।"),
         "introBody5": MessageLookupByLibrary.simpleMessage(
             "আপনার ম্যামোগ্রাফি বিশ্লেষণ করতে এবং কোনো অস্বাভাবিকতা পরীক্ষা করতে কৃত্রিম বুদ্ধিমত্তা ব্যবহার করুন।"),
-        "introTitle1": MessageLookupByLibrary.simpleMessage("তথ্য নাও"),
-        "introTitle2": MessageLookupByLibrary.simpleMessage("নিজেকে পরীক্ষা"),
+        "introTitle1": MessageLookupByLibrary.simpleMessage("তথ্য নেন"),
+        "introTitle2":
+            MessageLookupByLibrary.simpleMessage("নিজেকে পরীক্ষা করুন"),
         "introTitle3":
             MessageLookupByLibrary.simpleMessage("মাসিক স্ব-পরীক্ষা"),
         "introTitle4":
@@ -135,15 +140,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "languageNote": MessageLookupByLibrary.simpleMessage(
             "আপনি সেটিংস থেকে পরে ভাষা পরিবর্তন করতে পারেন"),
         "learnmorebutton": MessageLookupByLibrary.simpleMessage("আরও জানুন"),
-        "lightTheme": MessageLookupByLibrary.simpleMessage("আলো"),
-        "locations": MessageLookupByLibrary.simpleMessage("অবস্থানসমূহ"),
+        "lightTheme": MessageLookupByLibrary.simpleMessage("হালকা থিম "),
+        "locations": MessageLookupByLibrary.simpleMessage("স্থানসমূহ"),
         "mammogram": MessageLookupByLibrary.simpleMessage("ম্যামোগ্রাম"),
         "mammogramHintBody": MessageLookupByLibrary.simpleMessage(
             "একটি ম্যামোগ্রাম হল স্তনের একটি এক্স-রে ছবি। স্তন ক্যান্সারের প্রাথমিক লক্ষণগুলি দেখতে ডাক্তাররা একটি ম্যামোগ্রাম ব্যবহার করেন। নিয়মিত ম্যামোগ্রাম হল সর্বোত্তম পরীক্ষা যা ডাক্তারদের স্তন ক্যান্সারের প্রথম দিকে খুঁজে বের করতে হয়, কখনও কখনও এটি অনুভব করার তিন বছর আগে পর্যন্ত।"),
         "mammogramHintTitle":
             MessageLookupByLibrary.simpleMessage("একটি ম্যামোগ্রাম কি?"),
-        "mammographyNote":
-            MessageLookupByLibrary.simpleMessage("রোগীর ছবি তুলতে হবে ক "),
+        "mammographyNote": m1,
         "mammographyscreening":
             MessageLookupByLibrary.simpleMessage("ম্যামোগ্রাফি স্ক্রীনিং"),
         "minutes": MessageLookupByLibrary.simpleMessage("মিনিট"),
@@ -157,11 +161,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "readless": MessageLookupByLibrary.simpleMessage(" কম দেখান"),
         "readmore": MessageLookupByLibrary.simpleMessage("আরও পড়ুন"),
         "reminders": MessageLookupByLibrary.simpleMessage("অনুস্মারক"),
-        "resetbutton": MessageLookupByLibrary.simpleMessage("রিসেট"),
+        "resetbutton": MessageLookupByLibrary.simpleMessage("পূনরায় করুন"),
         "seconds": MessageLookupByLibrary.simpleMessage("সেকেন্ড"),
         "selectLanguage":
-            MessageLookupByLibrary.simpleMessage("ভাষা নির্বাচন কর"),
-        "selectTheme": MessageLookupByLibrary.simpleMessage("থিম নির্বাচন কর"),
+            MessageLookupByLibrary.simpleMessage("ভাষা নির্বাচন করুন"),
+        "selectTheme":
+            MessageLookupByLibrary.simpleMessage("থিম নির্বাচন করুন"),
         "selfCheckFinishBody": MessageLookupByLibrary.simpleMessage(
             "শান্ত থাকুন - বেশিরভাগ পরিবর্তন বিপজ্জনক নয়।\n\nআপনার পরবর্তী মাসিক চক্রের পরে আবার পরীক্ষা করুন। এটি এখনও সেখানে থাকলে, আপনার ডাক্তার বা স্বাস্থ্য পেশাদারের সাথে পরামর্শ করুন।"),
         "selfCheckFinishTitle": MessageLookupByLibrary.simpleMessage(
@@ -169,7 +174,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "selfCheckHintBody": MessageLookupByLibrary.simpleMessage(
             "আপনি ঝরনা অধীনে আপনার স্ব-পরীক্ষা করতে পারেন. কখনও কখনও এটি সহজ হয় যখন স্তন ভেজা এবং সাবান হয়।"),
         "selfCheckHintTitle":
-            MessageLookupByLibrary.simpleMessage("সহায়ক ইঙ্গিত: ঝরনা"),
+            MessageLookupByLibrary.simpleMessage("সহায়ক ইঙ্গিত: গোসল "),
         "selfCheckInstruction1Subtitle": MessageLookupByLibrary.simpleMessage(
             "স্তনের টিস্যুতে পিণ্ড, শক্ত গিঁট বা ঘন হওয়া স্তন ক্যান্সারের লক্ষণ হতে পারে। এগুলি ত্বকের ঠিক নীচে, স্তনের মাঝখানে বা হাড়ের কাছাকাছি গভীর টিস্যুতে ঘটতে পারে।"),
         "selfCheckInstruction1Title":
@@ -206,26 +211,29 @@ class MessageLookup extends MessageLookupByLibrary {
             "আপনার বগল পর্যন্ত সমস্ত পথ ঢেকে রাখুন। বাম হাতটি ডান দিকে অনুভব করে এবং ডান হাতটি বাম দিকে অনুভব করে।"),
         "selfCheckStep5Title": MessageLookupByLibrary.simpleMessage("বগল"),
         "selfCheckStep6Body": MessageLookupByLibrary.simpleMessage(
-            "স্তনবৃন্ত চেপে ধর। কোন অস্বাভাবিক স্রাব আছে?"),
+            "স্তনবৃন্ত চেপে ধরেন । কোন অস্বাভাবিক স্রাব আছে?"),
         "selfCheckStep6Title":
             MessageLookupByLibrary.simpleMessage("স্তনবৃন্ত"),
         "selfCheckStep7Body": MessageLookupByLibrary.simpleMessage(
             "শুয়ে পড়ুন যাতে টিস্যু সমানভাবে ছড়িয়ে পড়ে। আপনার স্তনের পরীক্ষা পুনরাবৃত্তি করুন।"),
         "selfCheckStep7Title":
-            MessageLookupByLibrary.simpleMessage("শুয়ে পড়ো"),
-        "selfcheck": MessageLookupByLibrary.simpleMessage("সেলফ চেক"),
+            MessageLookupByLibrary.simpleMessage("শুয়ে পড়ুন "),
+        "selfcheck":
+            MessageLookupByLibrary.simpleMessage("নিজেরাই পরীক্ষা করুন । "),
         "setreminderbutton":
             MessageLookupByLibrary.simpleMessage("একটি অনুস্মারক সেট করুন"),
         "settings": MessageLookupByLibrary.simpleMessage("সেটিংস"),
         "skipbutton": MessageLookupByLibrary.simpleMessage("এড়িয়ে যান"),
         "specialist": MessageLookupByLibrary.simpleMessage("বিশেষজ্ঞ"),
-        "systemTheme": MessageLookupByLibrary.simpleMessage("পদ্ধতি"),
+        "supervisorname":
+            MessageLookupByLibrary.simpleMessage("শারমিন আক্তারের"),
+        "systemTheme": MessageLookupByLibrary.simpleMessage("থিম সিস্টেম"),
         "theme": MessageLookupByLibrary.simpleMessage("থিম"),
         "uploadimage": MessageLookupByLibrary.simpleMessage("চিত্র আপলোড"),
         "version": MessageLookupByLibrary.simpleMessage("সংস্করণ"),
         "waitingforimage":
-            MessageLookupByLibrary.simpleMessage("ছবির জন্য অপেক্ষা করছি"),
-        "whatis": MessageLookupByLibrary.simpleMessage("কি "),
+            MessageLookupByLibrary.simpleMessage("ছবির জন্য অপেক্ষা করুন "),
+        "whatis": m2,
         "years": MessageLookupByLibrary.simpleMessage("বছর"),
         "yesbutton": MessageLookupByLibrary.simpleMessage("হ্যাঁ")
       };
