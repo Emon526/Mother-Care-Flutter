@@ -58,7 +58,7 @@ class Utils {
 
   Future showCustomDialog({required Widget child}) async {
     return await showCupertinoModalPopup(
-      barrierDismissible: false,
+      barrierDismissible: true,
       context: context,
       builder: (context) => Dialog(
         shape: RoundedRectangleBorder(
