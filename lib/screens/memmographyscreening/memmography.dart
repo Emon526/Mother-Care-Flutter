@@ -89,17 +89,13 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
                         ),
                       ),
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(AppLocalizations.of(context)!.mammographyNote),
-                        Text(
+                    Expanded(
+                      child: Utils(context).boldsentenceword(
+                        text: AppLocalizations.of(context)!.mammographyNote(
                           AppLocalizations.of(context)!.mammogram,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
                         ),
-                      ],
+                        boldText: AppLocalizations.of(context)!.mammogram,
+                      ),
                     )
                   ],
                 ),
@@ -204,21 +200,10 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
                                 ),
                               ),
                             ),
-                            child: RichText(
-                              text: TextSpan(
-                                text: AppLocalizations.of(context)!.whatis,
-                                style: TextStyle(
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                                children: [
-                                  TextSpan(
-                                      text:
-                                          '${AppLocalizations.of(context)!.mammogram}?',
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                      )),
-                                ],
-                              ),
+                            child: Utils(context).boldsentenceword(
+                              text: AppLocalizations.of(context)!.whatis(
+                                  AppLocalizations.of(context)!.mammogram),
+                              boldText: AppLocalizations.of(context)!.mammogram,
                             ),
                           )
                         : Column(

@@ -57,18 +57,14 @@ class PredictionResult extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(AppLocalizations.of(context)!
-                                  .mammographyNote),
-                              Text(
+                          Expanded(
+                            child: Utils(context).boldsentenceword(
+                              text:
+                                  AppLocalizations.of(context)!.mammographyNote(
                                 AppLocalizations.of(context)!.mammogram,
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
                               ),
-                            ],
+                              boldText: AppLocalizations.of(context)!.mammogram,
+                            ),
                           )
                         ],
                       ),

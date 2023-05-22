@@ -159,7 +159,7 @@ class Doctor extends StatelessWidget {
                                   height: 5,
                                 ),
                                 RatingBarIndicator(
-                                  itemSize: 15,
+                                  itemSize: 20,
                                   rating: doctor.rating,
                                   physics: const BouncingScrollPhysics(),
                                   itemBuilder: (context, _) => const Icon(
@@ -212,22 +212,23 @@ class Doctor extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                Card(
-                  child: InkWell(
-                    onTap: () {},
-                    borderRadius:
-                        BorderRadius.circular(Consts.DefaultBorderRadius),
-                    child: ListTile(
-                      title: Text(
-                        AppLocalizations.of(context)!.bookappointmentbutton,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                //TODO: Add Book Appointment Button
+                // Card(
+                //   child: InkWell(
+                //     onTap: () {},
+                //     borderRadius:
+                //         BorderRadius.circular(Consts.DefaultBorderRadius),
+                //     child: ListTile(
+                //       title: Text(
+                //         AppLocalizations.of(context)!.bookappointmentbutton,
+                //         textAlign: TextAlign.center,
+                //         style: const TextStyle(
+                //           fontWeight: FontWeight.bold,
+                //         ),
+                //       ),
+                //     ),
+                //   ),
+                // ),
                 Card(
                   child: InkWell(
                     onTap: () => _makePhoneCall(doctor.appointmentNumber),
