@@ -84,12 +84,15 @@ class OnBoardingScreen extends StatelessWidget {
                     const SizedBox(
                       height: 5,
                     ),
-                    Text(
-                      AppLocalizations.of(context)!.languageNote,
-                      style: const TextStyle(
-                        fontSize: 12.0,
-                        color: Colors.black45,
-                        // fontWeight: FontWeight.bold,
+                    Opacity(
+                      opacity: 0.5,
+                      child: Text(
+                        AppLocalizations.of(context)!.languageNote,
+                        style: const TextStyle(
+                          fontSize: 12.0,
+                          // color: Colors.black45,
+                          // fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ],
