@@ -50,10 +50,10 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Mother Care`
+  /// ` Mother Care`
   String get appname {
     return Intl.message(
-      'Mother Care',
+      ' Mother Care',
       name: 'appname',
       desc: '',
       args: [],
@@ -430,10 +430,10 @@ class S {
     );
   }
 
-  /// `Doctors`
+  /// `Doctor`
   String get doctors {
     return Intl.message(
-      'Doctors',
+      'Doctor',
       name: 'doctors',
       desc: '',
       args: [],
@@ -470,10 +470,10 @@ class S {
     );
   }
 
-  /// `Mammography Screening`
+  /// `Mammography Analysis`
   String get mammographyscreening {
     return Intl.message(
-      'Mammography Screening',
+      'Mammography Analysis',
       name: 'mammographyscreening',
       desc: '',
       args: [],
@@ -650,10 +650,10 @@ class S {
     );
   }
 
-  /// `The earlier breast cancer is is treated, the greater the chance of long-term survival. Regular self-checks can help you detect problems earlier and get treatment faster.`
+  /// `The earlier breast cancer is treated, the greater the chance of long-term survival. Regular self-checks can help you detect problems earlier and get treatment faster.`
   String get awarenessBody1 {
     return Intl.message(
-      'The earlier breast cancer is is treated, the greater the chance of long-term survival. Regular self-checks can help you detect problems earlier and get treatment faster.',
+      'The earlier breast cancer is treated, the greater the chance of long-term survival. Regular self-checks can help you detect problems earlier and get treatment faster.',
       name: 'awarenessBody1',
       desc: '',
       args: [],
@@ -1200,10 +1200,10 @@ class S {
     );
   }
 
-  /// `Waiting for Image`
+  /// `Click to Upload Image`
   String get waitingforimage {
     return Intl.message(
-      'Waiting for Image',
+      'Click to Upload Image',
       name: 'waitingforimage',
       desc: '',
       args: [],
@@ -1240,30 +1240,30 @@ class S {
     );
   }
 
-  /// `Get Prediction Result`
+  /// `Get Analysis Result`
   String get getpredictionresultbutton {
     return Intl.message(
-      'Get Prediction Result',
+      'Get Analysis Result',
       name: 'getpredictionresultbutton',
       desc: '',
       args: [],
     );
   }
 
-  /// `Prediction Result`
+  /// `Analysis Result`
   String get predictionresult {
     return Intl.message(
-      'Prediction Result',
+      'Analysis Result',
       name: 'predictionresult',
       desc: '',
       args: [],
     );
   }
 
-  /// `Generate and Open Pdf`
+  /// `Generate Pdf`
   String get generatePdfButton {
     return Intl.message(
-      'Generate and Open Pdf',
+      'Generate Pdf',
       name: 'generatePdfButton',
       desc: '',
       args: [],

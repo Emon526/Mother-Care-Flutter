@@ -29,12 +29,12 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "addReminder":
-            MessageLookupByLibrary.simpleMessage("অনুস্মারক যোগ করুন"),
+            MessageLookupByLibrary.simpleMessage("রিমাইন্ডার যোগ করুন"),
         "addReminderDate": MessageLookupByLibrary.simpleMessage("তারিখ"),
         "addReminderDateError":
             MessageLookupByLibrary.simpleMessage("একটি তারিখ পছন্দ করুন"),
         "addReminderHint":
-            MessageLookupByLibrary.simpleMessage("মাসিকের স্ব-পরীক্ষা"),
+            MessageLookupByLibrary.simpleMessage("মাসিক নিজেকে-পরীক্ষা"),
         "addReminderSnakeBar": m0,
         "addReminderTime": MessageLookupByLibrary.simpleMessage("সময়"),
         "addReminderTimeError":
@@ -47,9 +47,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "appname": MessageLookupByLibrary.simpleMessage("মাদার কেয়ার"),
         "awareness": MessageLookupByLibrary.simpleMessage("সচেতনতা"),
         "awarenessBody1": MessageLookupByLibrary.simpleMessage(
-            "স্তন ক্যান্সারের যত আগে চিকিৎসা করা হয়, দীর্ঘমেয়াদী বেঁচে থাকার সম্ভাবনা তত বেশি। নিয়মিত স্ব-পরীক্ষা আপনাকে আগে সমস্যা সনাক্ত করতে এবং দ্রুত চিকিত্সা পেতে সাহায্য করতে পারে।"),
+            "যত তাড়াতাড়ি স্তন ক্যান্সারের চিকিৎসা করা যায়, দীর্ঘমেয়াদী বেঁচে থাকার সম্ভাবনা তত বাড়ে। নিয়মিত নিজেকে-পরীক্ষা আপনাকে আগে সমস্যা সনাক্ত করতে এবং দ্রুত চিকিত্সা পেতে সাহায্য করতে পারে।"),
         "awarenessBody2": MessageLookupByLibrary.simpleMessage(
-            "কেন? কারণ স্তন ক্যান্সারের আগের লক্ষণগুলো শনাক্ত করা এবং চিকিত্সা করা হলে, পুনরুদ্ধারের সম্ভাবনা তত বেশি।\n\nআপনার গাইনোকোলজিস্ট বা বিশ্বস্ত স্বাস্থ্য পেশাদারের সাথে নিয়মিত চেক-আপ প্রাথমিক পর্যায়ে স্তন ক্যান্সার সনাক্ত করতে সাহায্য করতে পারে। আপনার ডাক্তার একটি ম্যামোগ্রামের পরামর্শও দিতে পারেন।\n\nকিন্তু আপনি নিয়মিত আপনার নিজের স্তন পরীক্ষা করে নিজেকে রক্ষা করার জন্য আরও অনেক কিছু করতে পারেন!\n\nনিয়মিত স্ব-পরীক্ষা হল আপনার জন্য স্বাভাবিক কী তা জানার সর্বোত্তম উপায় এবং সাহায্য করবে আপনি আরো দ্রুত পরিবর্তন লক্ষ্য করুন। আপনি যত দ্রুত লক্ষ্য করবেন, তত তাড়াতাড়ি আপনি প্রতিক্রিয়া জানাতে পারবেন এবং প্রয়োজনে চিকিত্সা পেতে সক্ষম হবেন।\n\nএবং যদি স্তন ক্যান্সার সম্পর্কে আমরা একটি জিনিস জানি, তা হল এটি যত তাড়াতাড়ি চিকিত্সা করা হবে, বেঁচে থাকার সম্ভাবনা তত বেশি।"),
+            "কেন? কারণ স্তন ক্যান্সারের আগের লক্ষণগুলো শনাক্ত করা এবং চিকিত্সা করা হলে, পুনরুদ্ধারের সম্ভাবনা তত বেশি।\n\nআপনার গাইনোকোলজিস্ট বা বিশ্বস্ত স্বাস্থ্য পেশাদারের সাথে নিয়মিত চেক-আপ প্রাথমিক পর্যায়ে স্তন ক্যান্সার সনাক্ত করতে সাহায্য করতে পারে। আপনার চিকিৎসক একটি ম্যামোগ্রামের পরামর্শও দিতে পারেন।\n\nকিন্তু আপনি নিয়মিত আপনার নিজের স্তন পরীক্ষা করে নিজেকে রক্ষা করার জন্য আরও অনেক কিছু করতে পারেন!\n\nনিয়মিত নিজেকে-পরীক্ষা হল আপনার জন্য স্বাভাবিক কী তা জানার সর্বোত্তম উপায় এবং সাহায্য করবে আপনি আরো দ্রুত পরিবর্তন লক্ষ্য করুন। আপনি যত দ্রুত লক্ষ্য করবেন, তত তাড়াতাড়ি আপনি প্রতিক্রিয়া জানাতে পারবেন এবং প্রয়োজনে চিকিত্সা পেতে সক্ষম হবেন।\n\nএবং যদি স্তন ক্যান্সার সম্পর্কে আমরা একটি জিনিস জানি, তা হল এটি যত তাড়াতাড়ি চিকিত্সা করা হবে, বেঁচে থাকার সম্ভাবনা তত বেশি।"),
         "awarenessHeader1Subtitle":
             MessageLookupByLibrary.simpleMessage("আপনার জীবন বাঁচান"),
         "awarenessHeader1Title":
@@ -59,9 +59,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "awarenessHeader2Title":
             MessageLookupByLibrary.simpleMessage("আপনার স্তন পরীক্ষা করুন"),
         "awarenessHeader3Subtitle":
-            MessageLookupByLibrary.simpleMessage("স্ব-চেক গাইড"),
+            MessageLookupByLibrary.simpleMessage("নিজেকে পরীক্ষার নির্দেশনা"),
         "awarenessHeader3Title":
-            MessageLookupByLibrary.simpleMessage("বিনামূল্যে পান"),
+            MessageLookupByLibrary.simpleMessage("বিনামূল্যে পাবেন"),
         "awarenessNote2": MessageLookupByLibrary.simpleMessage(
             "প্রতি মাসে পরিবর্তনের জন্য আপনার স্তন পরীক্ষা করা বিনামূল্যে, সহজ এবং আপনার জীবন বাঁচাতে পারে।"),
         "awarenessTitle1": MessageLookupByLibrary.simpleMessage(
@@ -80,7 +80,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "checkyourselfbutton":
             MessageLookupByLibrary.simpleMessage("ধাপে ধাপে নিজেকে চেক করুন"),
         "consultdoctorbutton":
-            MessageLookupByLibrary.simpleMessage("ডাক্তারের সাথে পরামর্শ করুন"),
+            MessageLookupByLibrary.simpleMessage("চিকিৎসকের সাথে পরামর্শ করুন"),
         "creditBody": MessageLookupByLibrary.simpleMessage(
             "এই অ্যাপটি ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটির শিক্ষার্থীরা তৈরি করেছে। ডেভেলপাররা হলেন আশ্রাফুল ইসলাম, মোঃ শাহজাদা হাছিব ও মোঃ সাব্বির হোসাইন রিয়াদ। অ্যাপটি ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটির সিএসই বিভাগের সিনিয়র লেকচারার শারমিন আক্তারের তত্ত্বাবধানে তৈরি করা হয়েছে।"),
         "creditdeveloper": MessageLookupByLibrary.simpleMessage("নির্মাণে"),
@@ -95,72 +95,72 @@ class MessageLookup extends MessageLookupByLibrary {
         "creditdeveloperuniversity": MessageLookupByLibrary.simpleMessage(
             "ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটি"),
         "credits": MessageLookupByLibrary.simpleMessage("কৃতিত্ব"),
-        "darkTheme": MessageLookupByLibrary.simpleMessage("অন্ধকার থিম"),
+        "darkTheme": MessageLookupByLibrary.simpleMessage("ডার্ক থিম"),
         "days": MessageLookupByLibrary.simpleMessage("দিন"),
-        "doctors": MessageLookupByLibrary.simpleMessage("চিকিত্সকরা"),
+        "doctors": MessageLookupByLibrary.simpleMessage("চিকিৎসক"),
         "donebutton": MessageLookupByLibrary.simpleMessage("সম্পন্ন"),
         "emptyReminder": MessageLookupByLibrary.simpleMessage(
-            "কোনো অনুস্মারক এখনো যোগ করা হয়নি!"),
+            "কোনো রিমাইন্ডার এখনো যোগ করা হয়নি!"),
         "exitBody": MessageLookupByLibrary.simpleMessage(
             "আপনি কি অ্যাপ থেকে প্রস্থান করতে চান?"),
-        "exitTitle": MessageLookupByLibrary.simpleMessage("তুমি কি নিশ্চিত?"),
+        "exitTitle": MessageLookupByLibrary.simpleMessage("আপনি কি নিশ্চিত?"),
         "experience": MessageLookupByLibrary.simpleMessage("অভিজ্ঞতা"),
         "filterDoctorList":
-            MessageLookupByLibrary.simpleMessage("ডাক্তার তালিকা ফিল্টার করুন"),
+            MessageLookupByLibrary.simpleMessage("চিকিৎসক তালিকা ফিল্টার করুন"),
         "filterDoctorListError":
             MessageLookupByLibrary.simpleMessage("কিছু স্থান নির্বাচন করুন"),
         "finishbutton": MessageLookupByLibrary.simpleMessage("শেষ করুন"),
         "generatePdfButton":
-            MessageLookupByLibrary.simpleMessage("পিডিএফ তৈরি করুন এবং খুলুন"),
+            MessageLookupByLibrary.simpleMessage("পিডিএফ তৈরি করুন"),
         "getpredictionresultbutton":
-            MessageLookupByLibrary.simpleMessage("ভবিষ্যদ্বাণী ফলাফল পান"),
+            MessageLookupByLibrary.simpleMessage("বিশ্লেষণ ফলাফল"),
         "hours": MessageLookupByLibrary.simpleMessage("ঘন্টা"),
         "howtoselfcheckbutton":
-            MessageLookupByLibrary.simpleMessage("কীভাবে নিজেকে যাচাই  করবেন"),
+            MessageLookupByLibrary.simpleMessage("কীভাবে নিজেকে যাচাই করবেন"),
         "introBody1": MessageLookupByLibrary.simpleMessage(
-            "স্তন ক্যান্সার সম্পর্কে তথ্য পান, এর কারণ, লক্ষণ এবং কীভাবে প্রতিরোধ করা যায়।"),
+            "স্তন ক্যান্সারের কারণ,লক্ষণ এবং প্রতিরোধ সম্পর্কিত তথ্য নিন।"),
         "introBody2": MessageLookupByLibrary.simpleMessage(
-            "স্তন ক্যান্সার প্রতিরোধে নিজেকে পরীক্ষা করুন। স্তন ক্যান্সার প্রতিরোধের প্রথম ধাপ হল স্ব-পরীক্ষা।"),
+            "স্তন ক্যান্সার প্রতিরোধে নিজেকে পরীক্ষা করুন। স্তন ক্যান্সার প্রতিরোধের প্রথম ধাপ হল নিজেকে-পরীক্ষা।"),
         "introBody3": MessageLookupByLibrary.simpleMessage(
-            "আপনার মাসিক স্ব-পরীক্ষার জন্য অনুস্মারক পান। আপনি নিজে নিজেও পরীক্ষা করতে পারেন।"),
+            "আপনার মাসিক নিজেকে-পরীক্ষার জন্য রিমাইন্ডার পাবেন। আপনি নিজেকে নিজে পরীক্ষা করতে পারবেন।"),
         "introBody4": MessageLookupByLibrary.simpleMessage(
-            "আপনার চেকআপের জন্য দেশের সেরা ডাক্তারদের সাথে অ্যাপয়েন্টমেন্ট পান।"),
+            "আপনার চেকআপের জন্য দেশের সেরা চিকিৎসকদের সাথে অ্যাপয়েন্টমেন্ট নিন।"),
         "introBody5": MessageLookupByLibrary.simpleMessage(
-            "আপনার ম্যামোগ্রাফি বিশ্লেষণ করতে এবং কোনো অস্বাভাবিকতা পরীক্ষা করতে কৃত্রিম বুদ্ধিমত্তা ব্যবহার করুন।"),
-        "introTitle1": MessageLookupByLibrary.simpleMessage("তথ্য নেন"),
+            "কৃত্রিম বুদ্ধিমত্তা ব্যবহার করে ম্যামোগ্রাফি বিশ্লেষণ এবং যেকোনো অস্বাভাবিকতা পরীক্ষা করুন।"),
+        "introTitle1": MessageLookupByLibrary.simpleMessage("তথ্য নিন"),
         "introTitle2":
             MessageLookupByLibrary.simpleMessage("নিজেকে পরীক্ষা করুন"),
         "introTitle3":
-            MessageLookupByLibrary.simpleMessage("মাসিক স্ব-পরীক্ষা"),
+            MessageLookupByLibrary.simpleMessage("মাসিক নিজেকে-পরীক্ষা"),
         "introTitle4":
-            MessageLookupByLibrary.simpleMessage("অ্যাপয়েন্টমেন্ট পান"),
+            MessageLookupByLibrary.simpleMessage("অ্যাপয়েন্টমেন্ট নিন"),
         "introTitle5":
             MessageLookupByLibrary.simpleMessage("ম্যামোগ্রাফি বিশ্লেষণ"),
         "language": MessageLookupByLibrary.simpleMessage("ভাষা"),
         "languageNote": MessageLookupByLibrary.simpleMessage(
-            "আপনি সেটিংস থেকে পরে ভাষা পরিবর্তন করতে পারেন"),
+            "আপনি পরবর্তীতে সেটিংস থেকে ভাষা পরিবর্তন করতে পারবেন"),
         "learnmorebutton": MessageLookupByLibrary.simpleMessage("আরও জানুন"),
-        "lightTheme": MessageLookupByLibrary.simpleMessage("হালকা থিম "),
+        "lightTheme": MessageLookupByLibrary.simpleMessage("লাইট থিম"),
         "locations": MessageLookupByLibrary.simpleMessage("স্থানসমূহ"),
         "mammogram": MessageLookupByLibrary.simpleMessage("ম্যামোগ্রাম"),
         "mammogramHintBody": MessageLookupByLibrary.simpleMessage(
-            "একটি ম্যামোগ্রাম হল স্তনের একটি এক্স-রে ছবি। স্তন ক্যান্সারের প্রাথমিক লক্ষণগুলি দেখতে ডাক্তাররা একটি ম্যামোগ্রাম ব্যবহার করেন। নিয়মিত ম্যামোগ্রাম হল সর্বোত্তম পরীক্ষা যা ডাক্তারদের স্তন ক্যান্সারের প্রথম দিকে খুঁজে বের করতে হয়, কখনও কখনও এটি অনুভব করার তিন বছর আগে পর্যন্ত।"),
+            "একটি ম্যামোগ্রাম হল স্তনের একটি এক্স-রে ছবি। স্তন ক্যান্সারের প্রাথমিক লক্ষণগুলি দেখতে চিকিৎসকরা একটি ম্যামোগ্রাম ব্যবহার করেন। নিয়মিত ম্যামোগ্রাম হল সর্বোত্তম পরীক্ষা যা চিকিৎসকদের স্তন ক্যান্সারের প্রথম দিকে খুঁজে বের করতে হয়, কখনও কখনও এটি অনুভব করার তিন বছর আগে পর্যন্ত।"),
         "mammogramHintTitle":
             MessageLookupByLibrary.simpleMessage("একটি ম্যামোগ্রাম কি?"),
         "mammographyNote": m1,
         "mammographyscreening":
-            MessageLookupByLibrary.simpleMessage("ম্যামোগ্রাফি স্ক্রীনিং"),
+            MessageLookupByLibrary.simpleMessage("ম্যামোগ্রাফি বিশ্লেষণ"),
         "minutes": MessageLookupByLibrary.simpleMessage("মিনিট"),
         "nextbutton": MessageLookupByLibrary.simpleMessage("পরবর্তী"),
         "nobutton": MessageLookupByLibrary.simpleMessage("না"),
         "okbutton": MessageLookupByLibrary.simpleMessage("ঠিক আছে"),
         "predictionresult":
-            MessageLookupByLibrary.simpleMessage("ভবিষ্যদ্বাণী ফলাফল"),
+            MessageLookupByLibrary.simpleMessage("বিশ্লেষণ ফলাফল"),
         "prevbutton": MessageLookupByLibrary.simpleMessage("পূর্ববর্তী"),
         "rating": MessageLookupByLibrary.simpleMessage("রেটিং"),
         "readless": MessageLookupByLibrary.simpleMessage(" কম দেখান"),
         "readmore": MessageLookupByLibrary.simpleMessage("আরও পড়ুন"),
-        "reminders": MessageLookupByLibrary.simpleMessage("অনুস্মারক"),
+        "reminders": MessageLookupByLibrary.simpleMessage("রিমাইন্ডার"),
         "resetbutton": MessageLookupByLibrary.simpleMessage("পূনরায় করুন"),
         "seconds": MessageLookupByLibrary.simpleMessage("সেকেন্ড"),
         "selectLanguage":
@@ -168,11 +168,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "selectTheme":
             MessageLookupByLibrary.simpleMessage("থিম নির্বাচন করুন"),
         "selfCheckFinishBody": MessageLookupByLibrary.simpleMessage(
-            "শান্ত থাকুন - বেশিরভাগ পরিবর্তন বিপজ্জনক নয়।\n\nআপনার পরবর্তী মাসিক চক্রের পরে আবার পরীক্ষা করুন। এটি এখনও সেখানে থাকলে, আপনার ডাক্তার বা স্বাস্থ্য পেশাদারের সাথে পরামর্শ করুন।"),
+            "শান্ত থাকুন - বেশিরভাগ পরিবর্তন বিপজ্জনক নয়।\n\nপরবর্তী মাসে আবার পরীক্ষা করুন। যদি এটি তখনও সেখানে থাকে , আপনার চিকিৎসক বা স্বাস্থ্য পেশাদারের সাথে পরামর্শ করুন।"),
         "selfCheckFinishTitle": MessageLookupByLibrary.simpleMessage(
             "আপনি কি অস্বাভাবিক কিছু লক্ষ্য করেছেন?"),
         "selfCheckHintBody": MessageLookupByLibrary.simpleMessage(
-            "আপনি ঝরনা অধীনে আপনার স্ব-পরীক্ষা করতে পারেন. কখনও কখনও এটি সহজ হয় যখন স্তন ভেজা এবং সাবান হয়।"),
+            "আপনি ঝরনার নিচে নিজেকে-পরীক্ষা করতে পারেন. কখনও কখনও যখন স্তন ভেজা এবং পিচ্ছিল হয় এটি সহজ হয়।"),
         "selfCheckHintTitle":
             MessageLookupByLibrary.simpleMessage("সহায়ক ইঙ্গিত: গোসল "),
         "selfCheckInstruction1Subtitle": MessageLookupByLibrary.simpleMessage(
@@ -180,7 +180,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "selfCheckInstruction1Title":
             MessageLookupByLibrary.simpleMessage("পিণ্ড, গিঁট, ঘন হওয়া"),
         "selfCheckInstruction2Subtitle": MessageLookupByLibrary.simpleMessage(
-            "আকার, কনট্যুর বা আকৃতিতে অস্বাভাবিক পরিবর্তনগুলি পরীক্ষা করা উচিত। একই বিকৃতি বা ফোলা জন্য সত্য. মনে রাখবেন আপনার বাম এবং ডান স্তন আলাদা দেখতে পারে। আপনার জন্য স্বাভাবিক কি জানেন।"),
+            "আকার, কনট্যুর বা আকৃতিতে অস্বাভাবিক পরিবর্তনগুলি পরীক্ষা করা উচিত। একই বিকৃতি বা ফোলা জন্য সত্য. মনে রাখবেন আপনার বাম এবং ডান স্তন আলাদা দেখা যেতে পারে। আপনি জানেন আপনার জন্য কোনটা স্বাভাবিক।"),
         "selfCheckInstruction2Title":
             MessageLookupByLibrary.simpleMessage("আকার বা আকৃতির পরিবর্তন"),
         "selfCheckInstruction3Subtitle": MessageLookupByLibrary.simpleMessage(
@@ -192,23 +192,23 @@ class MessageLookup extends MessageLookupByLibrary {
         "selfCheckInstruction4Title":
             MessageLookupByLibrary.simpleMessage("স্তনবৃন্ত স্রাব"),
         "selfCheckInstructionTitle":
-            MessageLookupByLibrary.simpleMessage("কি জন্য পর্যবেক্ষণ"),
+            MessageLookupByLibrary.simpleMessage("কি পর্যবেক্ষণ করবেন"),
         "selfCheckStep1Body": MessageLookupByLibrary.simpleMessage(
-            "একটি সোজা অবস্থানে শুরু করুন, আপনার নিতম্বে হাত দিন। একটি আয়না, আপনার মোবাইল ফোন বা বন্ধুর সাহায্যে আপনার স্তন দেখুন।"),
+            "একটি সোজা অবস্থানে শুরু করুন, আপনার কোমরে হাত দিন। একটি আয়না, আপনার মোবাইল ফোন বা বন্ধুর সাহায্যে আপনার স্তন দেখুন।"),
         "selfCheckStep1Title":
             MessageLookupByLibrary.simpleMessage("শুরু করুন"),
         "selfCheckStep2Body": MessageLookupByLibrary.simpleMessage(
             "আপনি কি আকার, আকৃতি বা রঙে কোন পরিবর্তন দেখতে পাচ্ছেন। ফোলাভাব? ত্বকের খোঁচা? আপনার বাহু তুলে আবার পরীক্ষা করুন।"),
         "selfCheckStep2Title": MessageLookupByLibrary.simpleMessage("দেখুন"),
         "selfCheckStep3Body": MessageLookupByLibrary.simpleMessage(
-            "আপনার আঙ্গুলের প্যাড ব্যবহার করুন এবং আপনার স্তন অনুভব করুন। একটি প্যাটার্ন অনুসরণ করুন। গলদ, শক্ত গিঁট এবং ঘন হওয়ার জন্য অনুভব করুন।"),
+            "আপনার আঙ্গুলের অগ্রভাগ ব্যবহার করুন এবং আপনার স্তন অনুভব করুন। একটি প্যাটার্ন অনুসরণ করুন।ফোলা মাংস পিণ্ড,শক্ত গিঁট এবং ঘন কিছুর জন্য অনুভব করুন।"),
         "selfCheckStep3Title":
             MessageLookupByLibrary.simpleMessage("অনুভব করা"),
         "selfCheckStep4Body": MessageLookupByLibrary.simpleMessage(
-            "আপনার আঙ্গুলগুলি একসাথে এবং সমতল রাখুন। ছোট বৃত্তে সরান। হালকা, মাঝারি এবং তারপর দৃঢ় চাপ ব্যবহার করে পুনরাবৃত্তি করুন। দৃঢ় চাপের সাথে আপনার পাঁজরের খাঁচা অনুভব করা উচিত।"),
+            "আপনার আঙ্গুলগুলি একসাথে এবং সমতল রাখুন। ছোট ছোট বৃত্তে ঘুরান। হালকা, মাঝারি এবং তারপর দৃঢ় চাপ ব্যবহার করে পুনরাবৃত্তি করুন। দৃঢ় চাপের সাথে আপনার পাঁজরের খাঁচা অনুভব করা উচিত।"),
         "selfCheckStep4Title": MessageLookupByLibrary.simpleMessage("বৃত্ত"),
         "selfCheckStep5Body": MessageLookupByLibrary.simpleMessage(
-            "আপনার বগল পর্যন্ত সমস্ত পথ ঢেকে রাখুন। বাম হাতটি ডান দিকে অনুভব করে এবং ডান হাতটি বাম দিকে অনুভব করে।"),
+            "আপনার বগল পর্যন্ত সমস্ত পথ ঢেকে রাখুন। বাম হাত ডান দিক অনুভব করবে এবং ডান হাত বাম দিকে অনুভব করবে।"),
         "selfCheckStep5Title": MessageLookupByLibrary.simpleMessage("বগল"),
         "selfCheckStep6Body": MessageLookupByLibrary.simpleMessage(
             "স্তনবৃন্ত চেপে ধরেন । কোন অস্বাভাবিক স্রাব আছে?"),
@@ -221,18 +221,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "selfcheck":
             MessageLookupByLibrary.simpleMessage("নিজেরাই পরীক্ষা করুন । "),
         "setreminderbutton":
-            MessageLookupByLibrary.simpleMessage("একটি অনুস্মারক সেট করুন"),
+            MessageLookupByLibrary.simpleMessage("একটি রিমাইন্ডার সেট করুন"),
         "settings": MessageLookupByLibrary.simpleMessage("সেটিংস"),
         "skipbutton": MessageLookupByLibrary.simpleMessage("এড়িয়ে যান"),
         "specialist": MessageLookupByLibrary.simpleMessage("বিশেষজ্ঞ"),
         "supervisorname":
             MessageLookupByLibrary.simpleMessage("শারমিন আক্তারের"),
-        "systemTheme": MessageLookupByLibrary.simpleMessage("থিম সিস্টেম"),
+        "systemTheme": MessageLookupByLibrary.simpleMessage("সিস্টেম থিম"),
         "theme": MessageLookupByLibrary.simpleMessage("থিম"),
         "uploadimage": MessageLookupByLibrary.simpleMessage("চিত্র আপলোড"),
         "version": MessageLookupByLibrary.simpleMessage("সংস্করণ"),
         "waitingforimage":
-            MessageLookupByLibrary.simpleMessage("ছবির জন্য অপেক্ষা করুন "),
+            MessageLookupByLibrary.simpleMessage("ছবি আপলোডের জন্য ক্লিক করুন"),
         "whatis": m2,
         "years": MessageLookupByLibrary.simpleMessage("বছর"),
         "yesbutton": MessageLookupByLibrary.simpleMessage("হ্যাঁ")

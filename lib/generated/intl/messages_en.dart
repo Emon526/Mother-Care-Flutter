@@ -44,10 +44,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please Enter Title"),
         "and": MessageLookupByLibrary.simpleMessage("And"),
         "applybutton": MessageLookupByLibrary.simpleMessage("Apply"),
-        "appname": MessageLookupByLibrary.simpleMessage("Mother Care"),
+        "appname": MessageLookupByLibrary.simpleMessage(" Mother Care"),
         "awareness": MessageLookupByLibrary.simpleMessage("Awareness"),
         "awarenessBody1": MessageLookupByLibrary.simpleMessage(
-            "The earlier breast cancer is is treated, the greater the chance of long-term survival. Regular self-checks can help you detect problems earlier and get treatment faster."),
+            "The earlier breast cancer is treated, the greater the chance of long-term survival. Regular self-checks can help you detect problems earlier and get treatment faster."),
         "awarenessBody2": MessageLookupByLibrary.simpleMessage(
             "Why? Because the earlier signs of breast cancer are detected and treated, the better the chances of recovery.\n\nRegular check-ups with your gynaecologist or trusted health professional can help to detect breast cancer at an early stage. Your doctor may also recommend a mammogram.\n\nBut you can do more to protect yourself by checking your own breasts regularly!\n\nRegular self-checks are the best way to get to know what is normal for you, and will help you notice changes more quickly. The faster you notice, the sooner you\'ll be able to react and get treatment if needed.\n\nAnd if there\'s one thing we know about breast cancer, it\'s that the earlier it\'s treated, the greater the likelihood of survival."),
         "awarenessHeader1Subtitle":
@@ -96,7 +96,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "credits": MessageLookupByLibrary.simpleMessage("Credits"),
         "darkTheme": MessageLookupByLibrary.simpleMessage("Dark"),
         "days": MessageLookupByLibrary.simpleMessage("days"),
-        "doctors": MessageLookupByLibrary.simpleMessage("Doctors"),
+        "doctors": MessageLookupByLibrary.simpleMessage("Doctor"),
         "donebutton": MessageLookupByLibrary.simpleMessage("Done"),
         "emptyReminder":
             MessageLookupByLibrary.simpleMessage("No reminder Added Yet!"),
@@ -110,9 +110,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please select some locations"),
         "finishbutton": MessageLookupByLibrary.simpleMessage("Finish"),
         "generatePdfButton":
-            MessageLookupByLibrary.simpleMessage("Generate and Open Pdf"),
+            MessageLookupByLibrary.simpleMessage("Generate Pdf"),
         "getpredictionresultbutton":
-            MessageLookupByLibrary.simpleMessage("Get Prediction Result"),
+            MessageLookupByLibrary.simpleMessage("Get Analysis Result"),
         "hours": MessageLookupByLibrary.simpleMessage("hours"),
         "howtoselfcheckbutton":
             MessageLookupByLibrary.simpleMessage("How to self-check"),
@@ -146,13 +146,13 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("What Is a Mammogram?"),
         "mammographyNote": m1,
         "mammographyscreening":
-            MessageLookupByLibrary.simpleMessage("Mammography Screening"),
+            MessageLookupByLibrary.simpleMessage("Mammography Analysis"),
         "minutes": MessageLookupByLibrary.simpleMessage("minutes"),
         "nextbutton": MessageLookupByLibrary.simpleMessage("Next"),
         "nobutton": MessageLookupByLibrary.simpleMessage("NO"),
         "okbutton": MessageLookupByLibrary.simpleMessage("OK"),
         "predictionresult":
-            MessageLookupByLibrary.simpleMessage("Prediction Result"),
+            MessageLookupByLibrary.simpleMessage("Analysis Result"),
         "prevbutton": MessageLookupByLibrary.simpleMessage("Prev"),
         "rating": MessageLookupByLibrary.simpleMessage("Rating"),
         "readless": MessageLookupByLibrary.simpleMessage("show less"),
@@ -222,7 +222,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "uploadimage": MessageLookupByLibrary.simpleMessage("Upload Image"),
         "version": MessageLookupByLibrary.simpleMessage("Version"),
         "waitingforimage":
-            MessageLookupByLibrary.simpleMessage("Waiting for Image"),
+            MessageLookupByLibrary.simpleMessage("Click to Upload Image"),
         "whatis": m2,
         "years": MessageLookupByLibrary.simpleMessage("years"),
         "yesbutton": MessageLookupByLibrary.simpleMessage("YES")
