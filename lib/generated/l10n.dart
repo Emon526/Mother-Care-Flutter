@@ -1349,6 +1349,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Unable to load image`
+  String get unabletoloadImage {
+    return Intl.message(
+      'Unable to load image',
+      name: 'unabletoloadImage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Doctor Found!`
+  String get nodoctorfound {
+    return Intl.message(
+      'No Doctor Found!',
+      name: 'nodoctorfound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Article Found!`
+  String get noarticlefound {
+    return Intl.message(
+      'No Article Found!',
+      name: 'noarticlefound',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

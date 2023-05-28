@@ -40,7 +40,7 @@
 "doctors":"চিকিৎসক",
 "awareness":"সচেতনতা",
 "breastcancer":"স্তন ক্যান্সার",
-"selfcheck":"নিজেরাই পরীক্ষা করুন । ",
+"selfcheck":"নিজের পরীক্ষা",
 "mammographyscreening":"ম্যামোগ্রাফি বিশ্লেষণ",
 "reminders":"রিমাইন্ডার",
 "selectTheme":"থিম নির্বাচন করুন",
@@ -128,5 +128,8 @@
 "years":"বছর",
 "rating":"রেটিং",
 "biography":"জীবনী",
-"specialist":"বিশেষজ্ঞ"
+"specialist":"বিশেষজ্ঞ",
+"unabletoloadImage":"ছবি লোড করা সম্বব হচ্ছে না",
+"nodoctorfound":"কোন চিকিৎসক খুঁজে পাওয়া যায়নি!",
+"noarticlefound":"কোন অনুচ্ছেদ খুঁজে পাওয়া যায়নি!"
 }

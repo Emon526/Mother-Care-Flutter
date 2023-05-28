@@ -152,7 +152,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("ম্যামোগ্রাফি বিশ্লেষণ"),
         "minutes": MessageLookupByLibrary.simpleMessage("মিনিট"),
         "nextbutton": MessageLookupByLibrary.simpleMessage("পরবর্তী"),
+        "noarticlefound": MessageLookupByLibrary.simpleMessage(
+            "কোন অনুচ্ছেদ খুঁজে পাওয়া যায়নি!"),
         "nobutton": MessageLookupByLibrary.simpleMessage("না"),
+        "nodoctorfound": MessageLookupByLibrary.simpleMessage(
+            "কোন চিকিৎসক খুঁজে পাওয়া যায়নি!"),
         "okbutton": MessageLookupByLibrary.simpleMessage("ঠিক আছে"),
         "predictionresult":
             MessageLookupByLibrary.simpleMessage("বিশ্লেষণ ফলাফল"),
@@ -218,8 +222,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "শুয়ে পড়ুন যাতে টিস্যু সমানভাবে ছড়িয়ে পড়ে। আপনার স্তনের পরীক্ষা পুনরাবৃত্তি করুন।"),
         "selfCheckStep7Title":
             MessageLookupByLibrary.simpleMessage("শুয়ে পড়ুন "),
-        "selfcheck":
-            MessageLookupByLibrary.simpleMessage("নিজেরাই পরীক্ষা করুন । "),
+        "selfcheck": MessageLookupByLibrary.simpleMessage("নিজের পরীক্ষা"),
         "setreminderbutton":
             MessageLookupByLibrary.simpleMessage("একটি রিমাইন্ডার সেট করুন"),
         "settings": MessageLookupByLibrary.simpleMessage("সেটিংস"),
@@ -229,6 +232,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("শারমিন আক্তারের"),
         "systemTheme": MessageLookupByLibrary.simpleMessage("সিস্টেম থিম"),
         "theme": MessageLookupByLibrary.simpleMessage("থিম"),
+        "unabletoloadImage":
+            MessageLookupByLibrary.simpleMessage("ছবি লোড করা সম্বব হচ্ছে না"),
         "uploadimage": MessageLookupByLibrary.simpleMessage("চিত্র আপলোড"),
         "version": MessageLookupByLibrary.simpleMessage("সংস্করণ"),
         "waitingforimage":

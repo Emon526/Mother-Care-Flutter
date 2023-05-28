@@ -149,7 +149,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Mammography Analysis"),
         "minutes": MessageLookupByLibrary.simpleMessage("minutes"),
         "nextbutton": MessageLookupByLibrary.simpleMessage("Next"),
+        "noarticlefound":
+            MessageLookupByLibrary.simpleMessage("No Article Found!"),
         "nobutton": MessageLookupByLibrary.simpleMessage("NO"),
+        "nodoctorfound":
+            MessageLookupByLibrary.simpleMessage("No Doctor Found!"),
         "okbutton": MessageLookupByLibrary.simpleMessage("OK"),
         "predictionresult":
             MessageLookupByLibrary.simpleMessage("Analysis Result"),
@@ -219,6 +223,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "supervisorname": MessageLookupByLibrary.simpleMessage("Sharmin Akter"),
         "systemTheme": MessageLookupByLibrary.simpleMessage("System"),
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
+        "unabletoloadImage":
+            MessageLookupByLibrary.simpleMessage("Unable to load image"),
         "uploadimage": MessageLookupByLibrary.simpleMessage("Upload Image"),
         "version": MessageLookupByLibrary.simpleMessage("Version"),
         "waitingforimage":

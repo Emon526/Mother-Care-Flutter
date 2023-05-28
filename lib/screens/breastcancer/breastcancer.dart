@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../const/consts.dart';
 import '../../models/articlemodel.dart';
 import '../../providers/breastcancerprovider.dart';
@@ -31,8 +31,8 @@ class BreastCancerPage extends StatelessWidget {
                 onRefresh: () => context.read<BreastCancerProvider>().refresh(),
                 viewPadding: viewPadding,
                 size: size,
-                svgAsset: 'assets/images/doctor.svg',
-                message: 'No Article Found!',
+                svgAsset: 'assets/images/empty.svg',
+                message: AppLocalizations.of(context)!.noarticlefound,
               );
             }
 
@@ -152,15 +152,18 @@ class BreastCancerPage extends StatelessWidget {
                                       }
 
                                       if (snapshot.hasError) {
-                                        return const SizedBox(
+                                        return SizedBox(
                                           child: Column(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.center,
                                             children: [
-                                              Icon(Icons.error_outline),
-                                              Text('Unable to Load Image'),
+                                              const Icon(Icons.error_outline),
+                                              Text(
+                                                AppLocalizations.of(context)!
+                                                    .unabletoloadImage,
+                                              ),
                                             ],
                                           ),
                                         );

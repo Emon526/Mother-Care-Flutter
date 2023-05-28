@@ -128,5 +128,9 @@
 "years":"years",
 "rating":"Rating",
 "biography":"Biography",
-"specialist":"Specialist"
+"specialist":"Specialist",
+"unabletoloadImage":"Unable to load image",
+"nodoctorfound":"No Doctor Found!",
+"noarticlefound":"No Article Found!"
+
 }

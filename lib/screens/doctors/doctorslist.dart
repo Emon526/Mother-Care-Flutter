@@ -98,7 +98,7 @@ class DoctorsList extends StatelessWidget {
                           viewPadding: viewPadding,
                           size: size,
                           svgAsset: 'assets/images/doctor.svg',
-                          message: 'No Doctor Found!',
+                          message: AppLocalizations.of(context)!.nodoctorfound,
                         );
                       }
 
