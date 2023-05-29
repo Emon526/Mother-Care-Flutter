@@ -54,7 +54,7 @@ dependencies:
   intl_utils: ^2.8.2
   introduction_screen: ^3.1.8
   line_icons: ^2.0.1
-  package_info_plus: ^4.0.1
+  package_info_plus: ^4.0.2
   path_provider: ^2.0.15
   permission_handler: ^10.2.0
   persistent_bottom_nav_bar: ^5.0.2
