@@ -267,32 +267,28 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
                         }
                       },
                     ),
-              ElevatedButton(
-                child: Text(context.watch<SelfCheckProvider>().current ==
-                        context.watch<SelfCheckProvider>().totalSteps - 1
-                    ? AppLocalizations.of(context)!.finishbutton
-                    : AppLocalizations.of(context)!.nextbutton),
-                onPressed: () {
-                  /// ACTIVE STEP MUST BE CHECKED FOR (dotCount - 1) AND NOT FOR dotCount To PREVENT Overflow ERROR.
-                  if (context.read<SelfCheckProvider>().current <
-                      context.read<SelfCheckProvider>().totalSteps - 1) {
-                    context.read<SelfCheckProvider>().current++;
-                    _stepWidgetChange(
-                        index: context.read<SelfCheckProvider>().current);
-                  }
-
-                  if (context.read<SelfCheckProvider>().current ==
-                      context.read<SelfCheckProvider>().totalSteps - 1) {
-                    PersistentNavBarNavigator.pushNewScreen(
-                      context,
-                      screen: const SelfCheckFinish(),
-                      withNavBar: true, // OPTIONAL VALUE. True by default.
-                      pageTransitionAnimation:
-                          PageTransitionAnimation.cupertino,
-                    );
-                  }
-                },
-              ),
+              context.watch<SelfCheckProvider>().current ==
+                      context.watch<SelfCheckProvider>().totalSteps - 1
+                  ? ElevatedButton(
+                      onPressed: () {
+                        PersistentNavBarNavigator.pushNewScreen(
+                          context,
+                          screen: const SelfCheckFinish(),
+                          withNavBar: true, // OPTIONAL VALUE. True by default.
+                          pageTransitionAnimation:
+                              PageTransitionAnimation.cupertino,
+                        );
+                        context.read<SelfCheckProvider>().current == 0;
+                      },
+                      child: Text(AppLocalizations.of(context)!.finishbutton))
+                  : ElevatedButton(
+                      child: Text(AppLocalizations.of(context)!.nextbutton),
+                      onPressed: () {
+                        context.read<SelfCheckProvider>().current++;
+                        _stepWidgetChange(
+                            index: context.read<SelfCheckProvider>().current);
+                      },
+                    ),
             ],
           ),
         ),
