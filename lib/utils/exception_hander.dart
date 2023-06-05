@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class ExceptionHandlers {
+  //TODO: Add error image
   static ErrorModel getExceptionString(error) {
     if (error is SocketException) {
       return ErrorModel(

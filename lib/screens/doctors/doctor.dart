@@ -37,8 +37,8 @@ class Doctor extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  width: constraints.maxWidth,
-                  height: constraints.maxWidth,
+                  width: constraints.maxWidth - 100,
+                  height: constraints.maxWidth - 100,
                   child: ClipRRect(
                     borderRadius:
                         BorderRadius.circular(Consts.DefaultBorderRadius),
@@ -77,7 +77,7 @@ class Doctor extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 Text(
                   doctor.doctorname[locale],
@@ -87,9 +87,9 @@ class Doctor extends StatelessWidget {
                     fontSize: 24,
                   ),
                 ),
-                const SizedBox(
-                  height: 5,
-                ),
+                // const SizedBox(
+                //   height: 5,
+                // ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
@@ -98,9 +98,9 @@ class Doctor extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                 ),
-                const SizedBox(
-                  height: 5,
-                ),
+                // const SizedBox(
+                //   height: 5,
+                // ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
@@ -108,9 +108,9 @@ class Doctor extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
+                // const SizedBox(
+                //   height: 20,
+                // ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Flex(
@@ -175,9 +175,9 @@ class Doctor extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
+                // const SizedBox(
+                //   height: 10,
+                // ),
                 Text(
                   AppLocalizations.of(context)!.biography,
                   style: const TextStyle(
@@ -185,9 +185,9 @@ class Doctor extends StatelessWidget {
                     fontSize: 18,
                   ),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
+                // const SizedBox(
+                //   height: 10,
+                // ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ReadMoreText(
@@ -209,9 +209,9 @@ class Doctor extends StatelessWidget {
                         color: Theme.of(context).primaryColor),
                   ),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
+                // const SizedBox(
+                //   height: 10,
+                // ),
                 //TODO: Add Book Appointment Button
                 // Card(
                 //   child: InkWell(

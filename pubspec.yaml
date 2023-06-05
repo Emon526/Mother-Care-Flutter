@@ -47,11 +47,9 @@ dependencies:
   flutter_statusbarcolor_ns: ^0.5.0
   flutter_svg: ^2.0.6
   flutter_tflite: ^1.0.1
-  google_fonts: ^4.0.4
   http: ^0.13.6
   image_picker: ^0.8.7+5
   intl: ^0.18.0
-  intl_utils: ^2.8.2
   introduction_screen: ^3.1.8
   line_icons: ^2.0.1
   package_info_plus: ^4.0.2
