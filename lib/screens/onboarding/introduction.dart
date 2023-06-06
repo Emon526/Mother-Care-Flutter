@@ -6,7 +6,7 @@ import 'package:introduction_screen/introduction_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/languageprovider.dart';
-import '../../widget/persistent_nav_bar.dart';
+import '../auth/auth.dart';
 
 class IntroductionPage extends StatefulWidget {
   const IntroductionPage({Key? key}) : super(key: key);
@@ -132,7 +132,7 @@ class IntroductionPageState extends State<IntroductionPage> {
 
   void _onIntroEnd(BuildContext context) {
     Navigator.of(context).pushAndRemoveUntil(
-      CupertinoPageRoute(builder: (_) => const PersistentNavBar()),
+      CupertinoPageRoute(builder: (_) => const Auth()),
       (Route<dynamic> route) => false,
     );
 
