@@ -120,7 +120,40 @@ class Styles {
           ),
         ),
       ),
+      checkboxTheme: CheckboxThemeData(
+        // overlayColor: MaterialStateProperty.resolveWith<Color?>(
+        //     (Set<MaterialState> states) {
+        //   if (states.contains(MaterialState.disabled)) {
+        //     return null;
+        //   }
+        //   if (states.contains(MaterialState.selected)) {
+        //     return isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor;
+        //   }
 
+        //   return null;
+        // }),
+        fillColor: MaterialStateProperty.resolveWith<Color?>(
+            (Set<MaterialState> states) {
+          if (states.contains(MaterialState.disabled)) {
+            return isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor;
+          }
+          if (states.contains(MaterialState.selected)) {
+            return isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor;
+          }
+
+          return null;
+        }),
+        // checkColor: MaterialStateProperty.resolveWith<Color?>(
+        //     (Set<MaterialState> states) {
+        //   if (states.contains(MaterialState.disabled)) {
+        //     return null;
+        //   }
+        //   if (states.contains(MaterialState.selected)) {
+        //     return Colors.deepOrangeAccent;
+        //   }
+        //   return null;
+        // }),
+      ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           disabledBackgroundColor: isDarkTheme ? Colors.grey : Colors.grey,
@@ -128,11 +161,12 @@ class Styles {
               isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor,
         ),
       ),
-      // textButtonTheme: TextButtonThemeData(
-      //   style: TextButton.styleFrom(
-      //     foregroundColor: Colors.deepOrangeAccent,
-      //   ),
-      // ),
+      textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+          foregroundColor:
+              isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor,
+        ),
+      ),
       listTileTheme: ListTileThemeData(
         textColor: isDarkTheme ? Colors.white : Colors.white,
         iconColor: isDarkTheme ? Colors.white : Colors.white,
