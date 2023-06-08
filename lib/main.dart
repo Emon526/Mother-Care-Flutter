@@ -9,16 +9,17 @@ import 'package:timezone/data/latest.dart' as tz;
 import 'const/consts.dart';
 import 'const/theme.dart';
 import 'firebase_options.dart';
+import 'providers/authprovider.dart';
 import 'providers/breastcancerprovider.dart';
 import 'providers/doctorprovider.dart';
 import 'providers/languageprovider.dart';
 import 'providers/pdfgenerateprovider.dart';
 import 'providers/reminderprovider.dart';
 import 'providers/selfcheckprovider.dart';
+import 'screens/auth/auth.dart';
 import 'screens/onboarding/onboarding.dart';
 import 'services/apiservice.dart';
 import 'services/notificationservice.dart';
-import 'widget/persistent_nav_bar.dart';
 import 'providers/modelprovider.dart';
 import 'providers/nav_bar_provider.dart';
 import 'providers/predictionprovider.dart';
@@ -55,6 +56,9 @@ class MyApp extends StatelessWidget {
           ),
           ChangeNotifierProvider(
             create: (_) => LanguageProvider(),
+          ),
+          ChangeNotifierProvider(
+            create: (_) => AuthProvider(),
           ),
           ChangeNotifierProvider(
             create: (_) => NavBarProvider(),
@@ -116,11 +120,8 @@ class MyApp extends StatelessWidget {
               themeMode: context.watch<ThemeProvider>().themeMode,
               // home: const PersistentNavBar(),
               home: context.watch<LanguageProvider>().isBoardingCompleate
-                  ? const PersistentNavBar()
-                  //  ? const MemmographyPrediction()
+                  ? const Auth()
                   : const OnBoardingScreen(),
-              // home: const OnBoardingScreen(),
-              // home: const MemmographyPrediction(),
               //   initialRoute: RouteManager.initialRoute,
               //   onGenerateRoute: RouteManager.generateRoute,
             );

@@ -1,14 +1,19 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 import '../../const/consts.dart';
+import '../../providers/authprovider.dart';
 import '../../providers/languageprovider.dart';
 import '../../providers/nav_bar_provider.dart';
 import '../../providers/themeprovider.dart';
 import '../../utils/utils.dart';
+import '../../widget/responsivesnackbar.dart';
 import '../../widget/selectionbuttonwidget.dart';
+import '../auth/login.dart';
 
 class SettingScreen extends StatelessWidget {
   const SettingScreen({super.key});
@@ -53,6 +58,13 @@ class SettingScreen extends StatelessWidget {
               // onTap: () => _credits(context),
               onTap: () => Utils(context).showCustomDialog(
                 child: _creditWidget(context: context),
+              ),
+            ),
+            _buildListtile(
+              iconData: Icons.delete_outline,
+              tiletitle: AppLocalizations.of(context)!.deleteaccount,
+              onTap: () => Utils(context).showCustomDialog(
+                child: _deleteAccount(context: context),
               ),
             ),
             // _buildListtile(
@@ -121,6 +133,63 @@ class SettingScreen extends StatelessWidget {
           height: 20,
         ),
       ],
+    );
+  }
+
+  Widget _deleteAccount({required BuildContext context}) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            AppLocalizations.of(context)!.deleteaccount,
+            style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).primaryColor),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Text(
+            AppLocalizations.of(context)!.deleteaccounttext,
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: Text(
+                  AppLocalizations.of(context)!.nobutton,
+                  style: TextStyle(color: Theme.of(context).primaryColor),
+                ),
+              ),
+              TextButton(
+                onPressed: () async {
+                  try {
+                    context.read<AuthProvider>().delete();
+
+                    Navigator.of(context).pushAndRemoveUntil(
+                      CupertinoPageRoute(builder: (_) => const LoginScreen()),
+                      (Route<dynamic> route) => false,
+                    );
+                  } on FirebaseAuthException catch (e) {
+                    ResponsiveSnackbar.show(context, e.message!);
+                  }
+                },
+                child: Text(
+                  AppLocalizations.of(context)!.yesbutton,
+                  style: TextStyle(color: Theme.of(context).primaryColor),
+                ),
+              ),
+            ],
+          )
+        ],
+      ),
     );
   }
 

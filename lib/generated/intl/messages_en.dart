@@ -78,6 +78,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "changeimage": MessageLookupByLibrary.simpleMessage("Change Image"),
         "checkyourselfbutton":
             MessageLookupByLibrary.simpleMessage("CHECK YOURSELF STEP BY STEP"),
+        "confirmpassword":
+            MessageLookupByLibrary.simpleMessage("Confirm Password"),
         "consultdoctorbutton":
             MessageLookupByLibrary.simpleMessage("Consult Doctor"),
         "creditBody": MessageLookupByLibrary.simpleMessage(
@@ -96,8 +98,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "credits": MessageLookupByLibrary.simpleMessage("Credits"),
         "darkTheme": MessageLookupByLibrary.simpleMessage("Dark"),
         "days": MessageLookupByLibrary.simpleMessage("days"),
+        "deleteaccount": MessageLookupByLibrary.simpleMessage("Delete Account"),
+        "deleteaccounttext": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to delete your account?"),
+        "dob": MessageLookupByLibrary.simpleMessage("Date of Birth"),
         "doctors": MessageLookupByLibrary.simpleMessage("Doctor"),
         "donebutton": MessageLookupByLibrary.simpleMessage("Done"),
+        "donothaveaccount":
+            MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
+        "email": MessageLookupByLibrary.simpleMessage("Email"),
         "emptyReminder":
             MessageLookupByLibrary.simpleMessage("No reminder Added Yet!"),
         "exitBody": MessageLookupByLibrary.simpleMessage(
@@ -109,10 +118,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "filterDoctorListError": MessageLookupByLibrary.simpleMessage(
             "Please select some locations"),
         "finishbutton": MessageLookupByLibrary.simpleMessage("Finish"),
+        "firstname": MessageLookupByLibrary.simpleMessage("First Name"),
+        "forgotpassword":
+            MessageLookupByLibrary.simpleMessage("Forgot Password"),
         "generatePdfButton":
             MessageLookupByLibrary.simpleMessage("Generate Pdf"),
         "getpredictionresultbutton":
             MessageLookupByLibrary.simpleMessage("Get Analysis Result"),
+        "haveaccount":
+            MessageLookupByLibrary.simpleMessage("Already have an account?"),
         "hours": MessageLookupByLibrary.simpleMessage("hours"),
         "howtoselfcheckbutton":
             MessageLookupByLibrary.simpleMessage("How to self-check"),
@@ -136,9 +150,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "languageNote": MessageLookupByLibrary.simpleMessage(
             "You can change the language later from the settings"),
+        "lastname": MessageLookupByLibrary.simpleMessage("Last Name"),
         "learnmorebutton": MessageLookupByLibrary.simpleMessage("Learn more"),
         "lightTheme": MessageLookupByLibrary.simpleMessage("Light"),
         "locations": MessageLookupByLibrary.simpleMessage("Locations"),
+        "loginbutton": MessageLookupByLibrary.simpleMessage("Login"),
+        "logoutbutton": MessageLookupByLibrary.simpleMessage("Logout"),
         "mammogram": MessageLookupByLibrary.simpleMessage("Mammogram"),
         "mammogramHintBody": MessageLookupByLibrary.simpleMessage(
             "A mammogram is an X-ray picture of the breast. Doctors use a mammogram to look for early signs of breast cancer. Regular mammograms are the best tests doctors have to find breast cancer early, sometimes up to three years before it can be felt."),
@@ -155,14 +172,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "nodoctorfound":
             MessageLookupByLibrary.simpleMessage("No Doctor Found!"),
         "okbutton": MessageLookupByLibrary.simpleMessage("OK"),
+        "password": MessageLookupByLibrary.simpleMessage("Password"),
         "predictionresult":
             MessageLookupByLibrary.simpleMessage("Analysis Result"),
         "prevbutton": MessageLookupByLibrary.simpleMessage("Prev"),
         "rating": MessageLookupByLibrary.simpleMessage("Rating"),
         "readless": MessageLookupByLibrary.simpleMessage("show less"),
         "readmore": MessageLookupByLibrary.simpleMessage("read more"),
+        "rememberme": MessageLookupByLibrary.simpleMessage("Remember Me"),
         "reminders": MessageLookupByLibrary.simpleMessage("Reminders"),
         "resetbutton": MessageLookupByLibrary.simpleMessage("Reset"),
+        "resetpassword": MessageLookupByLibrary.simpleMessage("Reset Password"),
+        "resettext": MessageLookupByLibrary.simpleMessage(
+            "Please enter the email that you want to reset the password"),
         "seconds": MessageLookupByLibrary.simpleMessage("seconds"),
         "selectLanguage":
             MessageLookupByLibrary.simpleMessage("Select Language"),
@@ -218,6 +240,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "setreminderbutton":
             MessageLookupByLibrary.simpleMessage("Set a Reminder"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "signupbutton": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "skipbutton": MessageLookupByLibrary.simpleMessage("Skip"),
         "specialist": MessageLookupByLibrary.simpleMessage("Specialist"),
         "supervisorname": MessageLookupByLibrary.simpleMessage("Sharmin Akter"),

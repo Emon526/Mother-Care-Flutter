@@ -1,6 +1,7 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import '../const/consts.dart';
@@ -215,4 +216,22 @@ class Utils {
       ),
     );
   }
+
+  final firstnameValidator =
+      RequiredValidator(errorText: 'First Name is required');
+  final lastnameValidator =
+      RequiredValidator(errorText: 'Last Name is required');
+  final dobValidator =
+      RequiredValidator(errorText: 'Date of Birth is required');
+  final emailValidator = MultiValidator([
+    RequiredValidator(errorText: 'Email is required'),
+    EmailValidator(errorText: 'enter a valid email address'),
+  ]);
+  final confirmValidator = MatchValidator(errorText: 'Password do not match');
+  final passwordValidator = MultiValidator([
+    RequiredValidator(errorText: 'password is required'),
+    MinLengthValidator(8, errorText: 'password must be at least 8 digits long'),
+    PatternValidator(r'(?=.*?[#?!@$%^&*-])',
+        errorText: 'passwords must have at least one special character')
+  ]);
 }

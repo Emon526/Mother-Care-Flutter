@@ -2,7 +2,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:provider/provider.dart';
 import '../const/consts.dart';
+import '../providers/authprovider.dart';
 import '../screens/doctors/doctorslist.dart';
 import '../screens/memmographyscreening/memmography.dart';
 import '../screens/reminder/reminderlist.dart';
@@ -79,6 +81,13 @@ class DrawerWidget extends StatelessWidget {
                   withNavBar: false, // OPTIONAL VALUE. True by default.
                   pageTransitionAnimation: PageTransitionAnimation.cupertino,
                 );
+              },
+            ),
+            _buildListtile(
+              tiletitle: AppLocalizations.of(context)!.logoutbutton,
+              iconData: Icons.logout,
+              onTap: () async {
+                await context.read<AuthProvider>().logout();
               },
             ),
           ],

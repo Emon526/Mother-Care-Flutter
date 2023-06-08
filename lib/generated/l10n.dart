@@ -1379,6 +1379,176 @@ class S {
       args: [],
     );
   }
+
+  /// `Email`
+  String get email {
+    return Intl.message(
+      'Email',
+      name: 'email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get password {
+    return Intl.message(
+      'Password',
+      name: 'password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login`
+  String get loginbutton {
+    return Intl.message(
+      'Login',
+      name: 'loginbutton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Logout`
+  String get logoutbutton {
+    return Intl.message(
+      'Logout',
+      name: 'logoutbutton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign Up`
+  String get signupbutton {
+    return Intl.message(
+      'Sign Up',
+      name: 'signupbutton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Forgot Password`
+  String get forgotpassword {
+    return Intl.message(
+      'Forgot Password',
+      name: 'forgotpassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remember Me`
+  String get rememberme {
+    return Intl.message(
+      'Remember Me',
+      name: 'rememberme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don't have an account?`
+  String get donothaveaccount {
+    return Intl.message(
+      'Don\'t have an account?',
+      name: 'donothaveaccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Already have an account?`
+  String get haveaccount {
+    return Intl.message(
+      'Already have an account?',
+      name: 'haveaccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `First Name`
+  String get firstname {
+    return Intl.message(
+      'First Name',
+      name: 'firstname',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last Name`
+  String get lastname {
+    return Intl.message(
+      'Last Name',
+      name: 'lastname',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date of Birth`
+  String get dob {
+    return Intl.message(
+      'Date of Birth',
+      name: 'dob',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm Password`
+  String get confirmpassword {
+    return Intl.message(
+      'Confirm Password',
+      name: 'confirmpassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reset Password`
+  String get resetpassword {
+    return Intl.message(
+      'Reset Password',
+      name: 'resetpassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter the email that you want to reset the password`
+  String get resettext {
+    return Intl.message(
+      'Please enter the email that you want to reset the password',
+      name: 'resettext',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete Account`
+  String get deleteaccount {
+    return Intl.message(
+      'Delete Account',
+      name: 'deleteaccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete your account?`
+  String get deleteaccounttext {
+    return Intl.message(
+      'Are you sure you want to delete your account?',
+      name: 'deleteaccounttext',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

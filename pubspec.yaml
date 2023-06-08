@@ -32,9 +32,11 @@ dependencies:
   better_open_file: ^3.6.4
   carousel_slider: ^4.2.1
   chips_choice: ^3.0.0
+  cloud_firestore: ^4.8.0
   cupertino_icons: ^1.0.5
   day_night_time_picker: ^1.2.0+2
   easy_stepper: ^0.6.0
+  firebase_auth: ^4.6.2
   firebase_core: ^2.13.0
   firebase_ml_model_downloader: ^0.2.3+1
   firebase_storage: ^11.2.1
@@ -47,6 +49,7 @@ dependencies:
   flutter_statusbarcolor_ns: ^0.5.0
   flutter_svg: ^2.0.6
   flutter_tflite: ^1.0.1
+  form_field_validator: ^1.1.0
   http: ^0.13.6
   image_picker: ^0.8.7+5
   intl: ^0.18.0

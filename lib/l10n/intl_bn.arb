@@ -131,5 +131,22 @@
 "specialist":"বিশেষজ্ঞ",
 "unabletoloadImage":"ছবি লোড করা সম্বব হচ্ছে না",
 "nodoctorfound":"কোন চিকিৎসক খুঁজে পাওয়া যায়নি!",
-"noarticlefound":"কোন অনুচ্ছেদ খুঁজে পাওয়া যায়নি!"
+"noarticlefound":"কোন অনুচ্ছেদ খুঁজে পাওয়া যায়নি!",
+"email":"ইমেইল",
+"password":"পাসওয়ার্ড",
+"loginbutton":"প্রবেশ করুন",
+"logoutbutton":"প্রস্থান",
+"signupbutton":"নিবন্ধন করুন",
+"forgotpassword":"পাসওয়ার্ড ভুলে গেছেন",
+"rememberme":"আমাকে মনে রাখবেন",
+"donothaveaccount":"একটি অ্যাকাউন্ট নেই?",
+"haveaccount":"ইতিমধ্যে একটি অ্যাকাউন্ট আছে?",
+"firstname":"নামের প্রথম অংশ",
+"lastname":"নামের শেষ অংশ",
+"dob":"জন্ম তারিখ",
+"confirmpassword":"পাসওয়ার্ড নিশ্চিত করুন",
+"resetpassword":"পাসওয়ার্ড রিসেট করুন",
+"resettext":"আপনি যে ইমেলের পাসওয়ার্ড রিসেট করতে চান দয়া করে সেটি লিখুন ",
+"deleteaccount":"অ্যাকাউন্ট মুছে ফেলুন",
+"deleteaccounttext":"আপনি কি আপনার অ্যাকাউন্ট মুছে ফেলার বিষয়ে নিশ্চিত?"
 }
