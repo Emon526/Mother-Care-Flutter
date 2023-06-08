@@ -79,6 +79,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("ছবি পরিবর্তন করুন"),
         "checkyourselfbutton":
             MessageLookupByLibrary.simpleMessage("ধাপে ধাপে নিজেকে চেক করুন"),
+        "confirmpassword":
+            MessageLookupByLibrary.simpleMessage("পাসওয়ার্ড নিশ্চিত করুন"),
         "consultdoctorbutton":
             MessageLookupByLibrary.simpleMessage("চিকিৎসকের সাথে পরামর্শ করুন"),
         "creditBody": MessageLookupByLibrary.simpleMessage(
@@ -97,8 +99,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "credits": MessageLookupByLibrary.simpleMessage("কৃতিত্ব"),
         "darkTheme": MessageLookupByLibrary.simpleMessage("ডার্ক থিম"),
         "days": MessageLookupByLibrary.simpleMessage("দিন"),
+        "deleteaccount":
+            MessageLookupByLibrary.simpleMessage("অ্যাকাউন্ট মুছে ফেলুন"),
+        "deleteaccounttext": MessageLookupByLibrary.simpleMessage(
+            "আপনি কি আপনার অ্যাকাউন্ট মুছে ফেলার বিষয়ে নিশ্চিত?"),
+        "dob": MessageLookupByLibrary.simpleMessage("জন্ম তারিখ"),
         "doctors": MessageLookupByLibrary.simpleMessage("চিকিৎসক"),
         "donebutton": MessageLookupByLibrary.simpleMessage("সম্পন্ন"),
+        "donothaveaccount":
+            MessageLookupByLibrary.simpleMessage("একটি অ্যাকাউন্ট নেই?"),
+        "email": MessageLookupByLibrary.simpleMessage("ইমেইল"),
         "emptyReminder": MessageLookupByLibrary.simpleMessage(
             "কোনো রিমাইন্ডার এখনো যোগ করা হয়নি!"),
         "exitBody": MessageLookupByLibrary.simpleMessage(
@@ -110,10 +120,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "filterDoctorListError":
             MessageLookupByLibrary.simpleMessage("কিছু স্থান নির্বাচন করুন"),
         "finishbutton": MessageLookupByLibrary.simpleMessage("শেষ করুন"),
+        "firstname": MessageLookupByLibrary.simpleMessage("নামের প্রথম অংশ"),
+        "forgotpassword":
+            MessageLookupByLibrary.simpleMessage("পাসওয়ার্ড ভুলে গেছেন"),
         "generatePdfButton":
             MessageLookupByLibrary.simpleMessage("পিডিএফ তৈরি করুন"),
         "getpredictionresultbutton":
             MessageLookupByLibrary.simpleMessage("বিশ্লেষণ ফলাফল"),
+        "haveaccount": MessageLookupByLibrary.simpleMessage(
+            "ইতিমধ্যে একটি অ্যাকাউন্ট আছে?"),
         "hours": MessageLookupByLibrary.simpleMessage("ঘন্টা"),
         "howtoselfcheckbutton":
             MessageLookupByLibrary.simpleMessage("কীভাবে নিজেকে যাচাই করবেন"),
@@ -139,9 +154,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "language": MessageLookupByLibrary.simpleMessage("ভাষা"),
         "languageNote": MessageLookupByLibrary.simpleMessage(
             "আপনি পরবর্তীতে সেটিংস থেকে ভাষা পরিবর্তন করতে পারবেন"),
+        "lastname": MessageLookupByLibrary.simpleMessage("নামের শেষ অংশ"),
         "learnmorebutton": MessageLookupByLibrary.simpleMessage("আরও জানুন"),
         "lightTheme": MessageLookupByLibrary.simpleMessage("লাইট থিম"),
         "locations": MessageLookupByLibrary.simpleMessage("স্থানসমূহ"),
+        "loginbutton": MessageLookupByLibrary.simpleMessage("প্রবেশ করুন"),
+        "logoutbutton": MessageLookupByLibrary.simpleMessage("প্রস্থান"),
         "mammogram": MessageLookupByLibrary.simpleMessage("ম্যামোগ্রাম"),
         "mammogramHintBody": MessageLookupByLibrary.simpleMessage(
             "একটি ম্যামোগ্রাম হল স্তনের একটি এক্স-রে ছবি। স্তন ক্যান্সারের প্রাথমিক লক্ষণগুলি দেখতে চিকিৎসকরা একটি ম্যামোগ্রাম ব্যবহার করেন। নিয়মিত ম্যামোগ্রাম হল সর্বোত্তম পরীক্ষা যা চিকিৎসকদের স্তন ক্যান্সারের প্রথম দিকে খুঁজে বের করতে হয়, কখনও কখনও এটি অনুভব করার তিন বছর আগে পর্যন্ত।"),
@@ -158,14 +176,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "nodoctorfound": MessageLookupByLibrary.simpleMessage(
             "কোন চিকিৎসক খুঁজে পাওয়া যায়নি!"),
         "okbutton": MessageLookupByLibrary.simpleMessage("ঠিক আছে"),
+        "password": MessageLookupByLibrary.simpleMessage("পাসওয়ার্ড"),
         "predictionresult":
             MessageLookupByLibrary.simpleMessage("বিশ্লেষণ ফলাফল"),
         "prevbutton": MessageLookupByLibrary.simpleMessage("পূর্ববর্তী"),
         "rating": MessageLookupByLibrary.simpleMessage("রেটিং"),
         "readless": MessageLookupByLibrary.simpleMessage(" কম দেখান"),
         "readmore": MessageLookupByLibrary.simpleMessage("আরও পড়ুন"),
+        "rememberme": MessageLookupByLibrary.simpleMessage("আমাকে মনে রাখবেন"),
         "reminders": MessageLookupByLibrary.simpleMessage("রিমাইন্ডার"),
         "resetbutton": MessageLookupByLibrary.simpleMessage("পূনরায় করুন"),
+        "resetpassword":
+            MessageLookupByLibrary.simpleMessage("পাসওয়ার্ড রিসেট করুন"),
+        "resettext": MessageLookupByLibrary.simpleMessage(
+            "আপনি যে ইমেলের পাসওয়ার্ড রিসেট করতে চান দয়া করে সেটি লিখুন "),
         "seconds": MessageLookupByLibrary.simpleMessage("সেকেন্ড"),
         "selectLanguage":
             MessageLookupByLibrary.simpleMessage("ভাষা নির্বাচন করুন"),
@@ -226,6 +250,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "setreminderbutton":
             MessageLookupByLibrary.simpleMessage("একটি রিমাইন্ডার সেট করুন"),
         "settings": MessageLookupByLibrary.simpleMessage("সেটিংস"),
+        "signupbutton": MessageLookupByLibrary.simpleMessage("নিবন্ধন করুন"),
         "skipbutton": MessageLookupByLibrary.simpleMessage("এড়িয়ে যান"),
         "specialist": MessageLookupByLibrary.simpleMessage("বিশেষজ্ঞ"),
         "supervisorname":

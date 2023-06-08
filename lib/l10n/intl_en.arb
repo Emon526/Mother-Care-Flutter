@@ -131,6 +131,24 @@
 "specialist":"Specialist",
 "unabletoloadImage":"Unable to load image",
 "nodoctorfound":"No Doctor Found!",
-"noarticlefound":"No Article Found!"
+"noarticlefound":"No Article Found!",
+"email":"Email",
+"password":"Password",
+"loginbutton":"Login",
+"logoutbutton":"Logout",
+"signupbutton":"Sign Up",
+"forgotpassword":"Forgot Password",
+"rememberme":"Remember Me",
+"donothaveaccount":"Don't have an account?",
+"haveaccount":"Already have an account?",
+"firstname":"First Name",
+"lastname":"Last Name",
+"dob":"Date of Birth",
+"confirmpassword":"Confirm Password",
+"resetpassword":"Reset Password",
+"resettext":"Please enter the email that you want to reset the password",
+"deleteaccount":"Delete Account",
+"deleteaccounttext":"Are you sure you want to delete your account?"
+
 
 }
