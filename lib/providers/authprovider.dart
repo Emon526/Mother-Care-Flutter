@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -31,14 +29,12 @@ class AuthProvider extends ChangeNotifier {
   void rememberme({required bool rememberme}) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool('rememberme', rememberme);
-    log(name: 'rememberme', rememberme.toString());
     notifyListeners();
   }
 
   getrememberme() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     _remember = prefs.getBool('rememberme') ?? _remember;
-    log('getrememberme ');
     notifyListeners();
   }
 
@@ -61,17 +57,8 @@ class AuthProvider extends ChangeNotifier {
       required String dob,
       required String email,
       required String password}) async {
-    UserCredential cred = await auth.createUserWithEmailAndPassword(
-        email: email, password: password);
-
-    UserModel user = UserModel(
-      firstName: firstname,
-      lastName: lastname,
-      email: email,
-      dateofbirth: dob,
-      uid: cred.user!.uid,
-    );
-    await firestore.collection('users').doc(cred.user!.uid).set(user.toJson());
+    await auth.createUserWithEmailAndPassword(email: email, password: password);
+    await addUserData();
     notifyListeners();
   }
 
@@ -81,8 +68,8 @@ class AuthProvider extends ChangeNotifier {
   }
 
   Future<void> delete() async {
+    await deleteUserData();
     await auth.currentUser!.delete();
-    await firestore.collection('users').doc(auth.currentUser!.uid).delete();
     notifyListeners();
   }
 
@@ -90,7 +77,6 @@ class AuthProvider extends ChangeNotifier {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString('email', emailController.text.trim());
     await prefs.setString('password', passController.text.trim());
-    log('$email $password', name: 'saveRememberMe');
     fatchsaverememberme();
     notifyListeners();
   }
@@ -99,7 +85,6 @@ class AuthProvider extends ChangeNotifier {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString('email', '');
     await prefs.setString('password', '');
-    log('removeRememberMe ');
     fatchsaverememberme();
     notifyListeners();
   }
@@ -107,10 +92,29 @@ class AuthProvider extends ChangeNotifier {
   fatchsaverememberme() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     _email = prefs.getString('email') ?? _email;
-    _password = prefs.getString('password') ?? _email;
-    log('fatchsaverememberme ');
+    _password = prefs.getString('password') ?? _password;
     emailController.text = _email;
     passController.text = _password;
+    notifyListeners();
+  }
+
+  Future<void> addUserData() async {
+    UserModel user = UserModel(
+      firstName: 'firstname',
+      lastName: 'lastname',
+      email: 'email',
+      dateofbirth: 'dob',
+      uid: auth.currentUser!.uid,
+    );
+    await firestore
+        .collection('users')
+        .doc(auth.currentUser!.uid)
+        .set(user.toJson());
+    notifyListeners();
+  }
+
+  Future<void> deleteUserData() async {
+    await firestore.collection('users').doc(auth.currentUser!.uid).delete();
     notifyListeners();
   }
 }

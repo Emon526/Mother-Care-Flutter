@@ -171,8 +171,9 @@ class SettingScreen extends StatelessWidget {
               TextButton(
                 onPressed: () async {
                   try {
-                    context.read<AuthProvider>().delete();
+                    await context.read<AuthProvider>().delete();
 
+                    // ignore: use_build_context_synchronously
                     Navigator.of(context).pushAndRemoveUntil(
                       CupertinoPageRoute(builder: (_) => const LoginScreen()),
                       (Route<dynamic> route) => false,
