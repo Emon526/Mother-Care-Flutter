@@ -1,6 +1,7 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -53,6 +54,18 @@ class Utils {
             ],
           )
         ],
+      ),
+    );
+  }
+
+  Future customLoading() async {
+    return await showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) => Center(
+        child: SpinKitDoubleBounce(
+          color: Theme.of(context).primaryColor,
+        ),
       ),
     );
   }

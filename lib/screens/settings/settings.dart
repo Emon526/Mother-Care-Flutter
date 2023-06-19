@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -170,17 +172,18 @@ class SettingScreen extends StatelessWidget {
               ),
               TextButton(
                 onPressed: () async {
+                  // Show circular indicator while deleting credentials
+                  Utils(context).customLoading();
                   try {
                     await context.read<AuthProvider>().delete();
-
-                    // ignore: use_build_context_synchronously
-                    Navigator.of(context).pushAndRemoveUntil(
-                      CupertinoPageRoute(builder: (_) => const LoginScreen()),
-                      (Route<dynamic> route) => false,
-                    );
                   } on FirebaseAuthException catch (e) {
                     ResponsiveSnackbar.show(context, e.message!);
                   }
+                  Navigator.pop(context);
+                  Navigator.of(context).pushAndRemoveUntil(
+                    CupertinoPageRoute(builder: (_) => const LoginScreen()),
+                    (Route<dynamic> route) => false,
+                  );
                 },
                 child: Text(
                   AppLocalizations.of(context)!.yesbutton,

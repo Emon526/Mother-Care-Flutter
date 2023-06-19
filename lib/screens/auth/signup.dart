@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
@@ -210,9 +211,34 @@ class _SignupState extends State<Signup> {
                           const SizedBox(
                             height: 15,
                           ),
+                          //TODO:Add reload indicator
+                          // ElevatedButton(
+                          //   onPressed: () async {
+                          //     if (_formKey.currentState!.validate()) {
+                          //       try {
+                          //         await authprovider.signup(
+                          //           firstname: firstnameController.text.trim(),
+                          //           lastname: lastnameController.text.trim(),
+                          //           dob: dobController.text.trim(),
+                          //           email: emailController.text.trim(),
+                          //           password: confirmpassController.text.trim(),
+                          //         );
+                          //         // ignore: use_build_context_synchronously
+                          //         Navigator.pop(context);
+                          //       } on FirebaseAuthException catch (e) {
+                          //         ResponsiveSnackbar.show(context, e.message!);
+                          //       }
+                          //     }
+                          //   },
+                          //   child: Text(
+                          //     AppLocalizations.of(context)!.signupbutton,
+                          //   ),
+                          // ),
                           ElevatedButton(
                             onPressed: () async {
                               if (_formKey.currentState!.validate()) {
+                                authprovider.Loading = true;
+                                Utils(context).customLoading();
                                 try {
                                   await authprovider.signup(
                                     firstname: firstnameController.text.trim(),
@@ -226,6 +252,9 @@ class _SignupState extends State<Signup> {
                                 } on FirebaseAuthException catch (e) {
                                   ResponsiveSnackbar.show(context, e.message!);
                                 }
+                                // ignore: use_build_context_synchronously
+                                Navigator.pop(context);
+                                authprovider.Loading = false;
                               }
                             },
                             child: Text(

@@ -153,25 +153,22 @@ class _LoginScreenState extends State<LoginScreen> {
                             ElevatedButton(
                               onPressed: () async {
                                 if (_formKey.currentState!.validate()) {
+                                  // Show circular indicator while checking login credentials
+                                  Utils(context).customLoading();
                                   try {
-                                    await authprovider.login();
                                     if (authprovider.remember == true) {
                                       authprovider.saveRememberMe();
                                     } else {
                                       authprovider.removeRememberMe();
                                     }
+                                    await authprovider.login();
                                   } on FirebaseAuthException catch (e) {
                                     ResponsiveSnackbar.show(
                                         context, e.message!);
-
-                                    // if (e.code == 'user-not-found') {
-                                    //   ResponsiveSnackbar.show(context,
-                                    //       'No user found for that email.');
-                                    // } else if (e.code == 'wrong-password') {
-                                    //   ResponsiveSnackbar.show(context,
-                                    //       'Wrong password provided for that user.');
-                                    // }
                                   }
+                                  // Close the circular indicator dialog
+                                  // ignore: use_build_context_synchronously
+                                  Navigator.pop(context);
                                 }
                               },
                               child: Text(

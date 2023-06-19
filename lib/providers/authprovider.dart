@@ -18,6 +18,13 @@ class AuthProvider extends ChangeNotifier {
   String get email => _email;
   String _password = '';
   String get password => _password;
+  bool _isLoading = false;
+  bool get Loading => _isLoading;
+  set Loading(bool value) {
+    _isLoading = value;
+    notifyListeners();
+  }
+
   bool _remember = true;
   bool get remember => _remember;
   set remember(bool value) {
@@ -59,6 +66,7 @@ class AuthProvider extends ChangeNotifier {
       required String password}) async {
     await auth.createUserWithEmailAndPassword(email: email, password: password);
     await addUserData();
+    _isLoading = false;
     notifyListeners();
   }
 
