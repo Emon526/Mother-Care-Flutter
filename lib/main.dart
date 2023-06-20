@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
@@ -26,8 +29,8 @@ import 'providers/predictionprovider.dart';
 import 'providers/themeprovider.dart';
 
 void main() async {
-  //add splash time
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -87,22 +90,25 @@ class MyApp extends StatelessWidget {
         ],
         builder: (context, child) {
           return Consumer<ThemeProvider>(builder: (context, value, child) {
-            FlutterStatusbarcolor.setStatusBarColor(
-              value.isDarkTheme
-                  ? Colors.black
-                  : Colors.white, // set status bar color based on the theme
-            );
-            FlutterStatusbarcolor.setStatusBarWhiteForeground(
-              value.isDarkTheme, // set status bar icons based on the theme
-            );
-            FlutterStatusbarcolor.setNavigationBarColor(
-              value.isDarkTheme
-                  ? Colors.black
-                  : Colors.white, // set status bar color based on the theme
-            );
-            FlutterStatusbarcolor.setNavigationBarWhiteForeground(
-              value.isDarkTheme, // set status bar icons based on the theme
-            );
+            // FlutterStatusbarcolor.setStatusBarColor(
+            //   value.isDarkTheme
+            //       ? Colors.black
+            //       : Colors.white, // set status bar color based on the theme
+            // );
+            // FlutterStatusbarcolor.setStatusBarWhiteForeground(
+            //   value.isDarkTheme, // set status bar icons based on the theme
+            // );
+            // FlutterStatusbarcolor.setNavigationBarColor(
+            //   value.isDarkTheme
+            //       ? Colors.black
+            //       : Colors.white, // set status bar color based on the theme
+            // );
+            // FlutterStatusbarcolor.setNavigationBarWhiteForeground(
+            //   value.isDarkTheme, // set status bar icons based on the theme
+            // );
+
+            removesplash();
+            updatestatusbar(value.isDarkTheme);
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               title: Consts.APP_NAME,
@@ -127,5 +133,31 @@ class MyApp extends StatelessWidget {
             );
           });
         });
+  }
+
+  void removesplash() async {
+    return await Future.delayed(const Duration(seconds: 3), () {
+      log('Splash Remove');
+      FlutterNativeSplash.remove();
+    });
+  }
+
+  void updatestatusbar(bool isDarkTheme) async {
+    await FlutterStatusbarcolor.setStatusBarColor(
+      isDarkTheme
+          ? Colors.black
+          : Colors.white, // set status bar color based on the theme
+    );
+    await FlutterStatusbarcolor.setStatusBarWhiteForeground(
+      isDarkTheme, // set status bar icons based on the theme
+    );
+    await FlutterStatusbarcolor.setNavigationBarColor(
+      isDarkTheme
+          ? Colors.black
+          : Colors.white, // set status bar color based on the theme
+    );
+    await FlutterStatusbarcolor.setNavigationBarWhiteForeground(
+      isDarkTheme, // set status bar icons based on the theme
+    );
   }
 }

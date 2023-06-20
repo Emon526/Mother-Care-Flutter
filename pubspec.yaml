@@ -45,6 +45,7 @@ dependencies:
   flutter_local_notifications: ^14.1.1
   flutter_localizations:
     sdk: flutter
+  flutter_native_splash: ^2.2.16
   flutter_rating_bar: ^4.0.1
   flutter_spinkit: ^5.2.0
   flutter_statusbarcolor_ns: ^0.5.0
@@ -98,6 +99,19 @@ flutter_icons:
   macos:
     generate: false
     image_path: "assets/logo.png"
+
+flutter_native_splash:
+  color: "#ff80ab"
+  #background_image: "assets/background.png"
+  image: assets/logo.png
+  android: true
+  ios: true
+  web: true
+  android_gravity: center
+  ios_content_mode: center
+  web_image_mode: center
+  fullscreen: true
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter packages.
