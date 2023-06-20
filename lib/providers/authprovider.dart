@@ -18,12 +18,6 @@ class AuthProvider extends ChangeNotifier {
   String get email => _email;
   String _password = '';
   String get password => _password;
-  bool _isLoading = false;
-  bool get Loading => _isLoading;
-  set Loading(bool value) {
-    _isLoading = value;
-    notifyListeners();
-  }
 
   bool _remember = true;
   bool get remember => _remember;
@@ -64,9 +58,16 @@ class AuthProvider extends ChangeNotifier {
       required String dob,
       required String email,
       required String password}) async {
-    await auth.createUserWithEmailAndPassword(email: email, password: password);
-    await addUserData();
-    _isLoading = false;
+    await auth.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+    await addUserData(
+      firstName: firstname,
+      lastName: lastname,
+      email: email,
+      dob: dob,
+    );
     notifyListeners();
   }
 
@@ -76,8 +77,9 @@ class AuthProvider extends ChangeNotifier {
   }
 
   Future<void> delete() async {
-    await deleteUserData();
-    await auth.currentUser!.delete();
+    var user = auth.currentUser!;
+    await user.delete();
+    await deleteUserData(user.uid);
     notifyListeners();
   }
 
@@ -106,12 +108,17 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> addUserData() async {
+  Future<void> addUserData({
+    required String firstName,
+    required String lastName,
+    required String email,
+    required String dob,
+  }) async {
     UserModel user = UserModel(
-      firstName: 'firstname',
-      lastName: 'lastname',
-      email: 'email',
-      dateofbirth: 'dob',
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      dateofbirth: dob,
       uid: auth.currentUser!.uid,
     );
     await firestore
@@ -121,8 +128,23 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> deleteUserData() async {
-    await firestore.collection('users').doc(auth.currentUser!.uid).delete();
+  Future<void> deleteUserData(String user) async {
+    await firestore.collection('users').doc(user).delete();
     notifyListeners();
+  }
+
+  Stream<UserModel?> getUserData() {
+    final CollectionReference usersCollection = firestore.collection('users');
+    return usersCollection
+        .doc(auth.currentUser!.uid)
+        .snapshots()
+        .map((snapshot) {
+      if (snapshot.exists) {
+        final data = snapshot.data() as Map<String, dynamic>;
+        return UserModel.fromJson(data);
+      } else {
+        return null;
+      }
+    });
   }
 }
