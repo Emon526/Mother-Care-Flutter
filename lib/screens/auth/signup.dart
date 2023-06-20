@@ -23,7 +23,7 @@ class Signup extends StatefulWidget {
 class _SignupState extends State<Signup> {
   final _formKey = GlobalKey<FormState>();
   final firstnameController = TextEditingController(text: 'Asradful');
-  final lastnameController = TextEditingController(text: 'Asradful');
+  final lastnameController = TextEditingController(text: 'islam');
   final emailController = TextEditingController(text: 'Emonats526@gmail.com');
   final passController = TextEditingController(text: 'Abc123456@');
   final confirmpassController = TextEditingController(text: 'Abc123456@');
@@ -210,33 +210,9 @@ class _SignupState extends State<Signup> {
                           const SizedBox(
                             height: 15,
                           ),
-                          //TODO:Add reload indicator
-                          // ElevatedButton(
-                          //   onPressed: () async {
-                          //     if (_formKey.currentState!.validate()) {
-                          //       try {
-                          //         await authprovider.signup(
-                          //           firstname: firstnameController.text.trim(),
-                          //           lastname: lastnameController.text.trim(),
-                          //           dob: dobController.text.trim(),
-                          //           email: emailController.text.trim(),
-                          //           password: confirmpassController.text.trim(),
-                          //         );
-                          //         // ignore: use_build_context_synchronously
-                          //         Navigator.pop(context);
-                          //       } on FirebaseAuthException catch (e) {
-                          //         ResponsiveSnackbar.show(context, e.message!);
-                          //       }
-                          //     }
-                          //   },
-                          //   child: Text(
-                          //     AppLocalizations.of(context)!.signupbutton,
-                          //   ),
-                          // ),
                           ElevatedButton(
                             onPressed: () async {
                               if (_formKey.currentState!.validate()) {
-                                authprovider.Loading = true;
                                 Utils(context).customLoading();
                                 try {
                                   await authprovider.signup(
@@ -253,7 +229,6 @@ class _SignupState extends State<Signup> {
                                 }
                                 // ignore: use_build_context_synchronously
                                 Navigator.pop(context);
-                                authprovider.Loading = false;
                               }
                             },
                             child: Text(
@@ -353,7 +328,6 @@ class _SignupState extends State<Signup> {
                           date.toString(),
                         ),
                       );
-
                       Navigator.pop(context);
                       //TODO:fix focus
                       // FocusScope.of(context).requestFocus(emailfocusNode);
