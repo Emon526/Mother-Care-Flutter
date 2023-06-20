@@ -18,7 +18,7 @@ class AuthProvider extends ChangeNotifier {
   String get email => _email;
   String _password = '';
   String get password => _password;
-
+  UserModel? user;
   bool _remember = true;
   bool get remember => _remember;
   set remember(bool value) {
@@ -141,7 +141,8 @@ class AuthProvider extends ChangeNotifier {
         .map((snapshot) {
       if (snapshot.exists) {
         final data = snapshot.data() as Map<String, dynamic>;
-        return UserModel.fromJson(data);
+        user = UserModel.fromJson(data);
+        return user;
       } else {
         return null;
       }

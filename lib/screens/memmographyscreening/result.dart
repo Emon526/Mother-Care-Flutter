@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:intl/intl.dart';
+import 'package:mothercare/providers/authprovider.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
@@ -197,7 +199,13 @@ class PredictionResult extends StatelessWidget {
                           ]),
                       ElevatedButton.icon(
                         onPressed: () =>
-                            context.read<PdfGenerateProvider>().generateInvoice(
+                            context.read<PdfGenerateProvider>().generateReport(
+                                  patientName:
+                                      "${context.read<AuthProvider>().user!.firstName} ${context.read<AuthProvider>().user!.lastName}",
+                                  patientAge: calculateYears(context
+                                      .read<AuthProvider>()
+                                      .user!
+                                      .dateofbirth),
                                   predictionconfidence:
                                       predictionConfidence.toStringAsFixed(1),
                                   predictionresult: predictionLabel,
@@ -215,5 +223,23 @@ class PredictionResult extends StatelessWidget {
         );
       },
     );
+  }
+
+  String calculateYears(String date) {
+    DateTime currentDate = DateTime.now();
+
+    DateFormat dateFormat = DateFormat('EEE, dd MMMM yyyy');
+    DateTime parsedDate = dateFormat.parse(date);
+
+    int years = currentDate.year - parsedDate.year;
+
+    // Check if the current date has passed the birth date this year
+    if (currentDate.month < parsedDate.month ||
+        (currentDate.month == parsedDate.month &&
+            currentDate.day < parsedDate.day)) {
+      years--;
+    }
+
+    return years.toString();
   }
 }

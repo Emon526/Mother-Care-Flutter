@@ -8,7 +8,9 @@ import '../utils/savepdf_filemobile.dart'
     if (dart.library.html) '../utils/savepdf_fileweb.dart';
 
 class PdfGenerateProvider extends ChangeNotifier {
-  Future<void> generateInvoice({
+  Future<void> generateReport({
+    required String patientName,
+    required String patientAge,
     required String predictionconfidence,
     required String predictionresult,
   }) async {
@@ -34,11 +36,8 @@ class PdfGenerateProvider extends ChangeNotifier {
     drawPatientInfo(
       page: page,
       pageSize: pageSize,
-      reportId: '2058557939',
-      patientDetails:
-          '''Patient Name: Rima Khan\r\n\r\nAge: 18\r\n\r\nGender: Female
-      \r\nAddress: 51/A/3,West Raza Bazar, Dhaka, Bangladesh
-       \r\nPhone: 9365550136''',
+      reportId: DateTime.now().millisecondsSinceEpoch.toString(),
+      patientDetails: '''Patient Name: $patientName\r\n\r\nAge: $patientAge''',
     );
 
     drawresult(
@@ -107,7 +106,7 @@ class PdfGenerateProvider extends ChangeNotifier {
     //Create data foramt and convert it to text.
     final DateFormat format = DateFormat.yMMMMd('en_US');
     final String reportNumber =
-        'Report ID: {$reportId}\r\n\r\nReport Date: ${format.format(DateTime.now())}';
+        'Report ID: $reportId\r\n\r\nReport Date: ${format.format(DateTime.now())}';
     final Size contentSize = contentFont.measureString(reportNumber);
     // ignore: leading_newlines_in_multiline_strings
 
