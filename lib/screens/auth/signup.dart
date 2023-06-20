@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
@@ -34,6 +35,9 @@ class _SignupState extends State<Signup> {
   FocusNode passfocusNode = FocusNode();
   FocusNode emailfocusNode = FocusNode();
 
+  // final emailValidator =
+  // final confirmValidator = MatchValidator(errorText: '');
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -61,7 +65,9 @@ class _SignupState extends State<Signup> {
                             keyboardType: TextInputType.name,
                             textCapitalization: TextCapitalization.words,
                             controller: firstnameController,
-                            validator: Utils(context).firstnameValidator,
+                            validator: RequiredValidator(
+                                errorText:
+                                    AppLocalizations.of(context)!.addReminder),
                             decoration: InputDecoration(
                               labelText:
                                   AppLocalizations.of(context)!.firstname,
@@ -83,7 +89,9 @@ class _SignupState extends State<Signup> {
                             keyboardType: TextInputType.name,
                             textCapitalization: TextCapitalization.words,
                             controller: lastnameController,
-                            validator: Utils(context).lastnameValidator,
+                            validator: RequiredValidator(
+                                errorText: AppLocalizations.of(context)!
+                                    .lastnamerequirederror),
                             decoration: InputDecoration(
                               labelText: AppLocalizations.of(context)!.lastname,
                               hintText: AppLocalizations.of(context)!.lastname,
@@ -99,7 +107,9 @@ class _SignupState extends State<Signup> {
                             keyboardType: TextInputType.none,
                             // textCapitalization: TextCapitalization.words,
                             controller: dobController,
-                            validator: Utils(context).dobValidator,
+                            validator: RequiredValidator(
+                                errorText: AppLocalizations.of(context)!
+                                    .dobrequirederror),
                             decoration: InputDecoration(
                               labelText: AppLocalizations.of(context)!.dob,
                               hintText: AppLocalizations.of(context)!.dob,
@@ -121,7 +131,14 @@ class _SignupState extends State<Signup> {
                             keyboardType: TextInputType.emailAddress,
                             textCapitalization: TextCapitalization.sentences,
                             controller: emailController,
-                            validator: Utils(context).emailValidator,
+                            validator: MultiValidator([
+                              RequiredValidator(
+                                  errorText: AppLocalizations.of(context)!
+                                      .emailrequirederror),
+                              EmailValidator(
+                                  errorText: AppLocalizations.of(context)!
+                                      .emailvaliderror),
+                            ]),
                             decoration: InputDecoration(
                               labelText: AppLocalizations.of(context)!.email,
                               hintText: AppLocalizations.of(context)!.email,
@@ -144,7 +161,17 @@ class _SignupState extends State<Signup> {
                             textInputAction: TextInputAction.next,
                             keyboardType: TextInputType.visiblePassword,
                             controller: passController,
-                            validator: Utils(context).passwordValidator,
+                            validator: MultiValidator([
+                              RequiredValidator(
+                                  errorText: AppLocalizations.of(context)!
+                                      .passrequirederror),
+                              MinLengthValidator(8,
+                                  errorText: AppLocalizations.of(context)!
+                                      .passlengthderror),
+                              PatternValidator(r'(?=.*?[#?!@$%^&*-])',
+                                  errorText: AppLocalizations.of(context)!
+                                      .passvaliderror)
+                            ]),
                             decoration: InputDecoration(
                               labelText: AppLocalizations.of(context)!.password,
                               hintText: AppLocalizations.of(context)!.password,
@@ -178,8 +205,9 @@ class _SignupState extends State<Signup> {
                             textInputAction: TextInputAction.done,
                             keyboardType: TextInputType.visiblePassword,
                             controller: confirmpassController,
-                            validator: (val) => Utils(context)
-                                .confirmValidator
+                            validator: (val) => MatchValidator(
+                                    errorText: AppLocalizations.of(context)!
+                                        .passmatcherror)
                                 .validateMatch(
                                     val!, passController.text.trim()),
                             decoration: InputDecoration(

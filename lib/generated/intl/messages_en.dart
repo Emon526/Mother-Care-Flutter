@@ -42,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "addReminderTitle": MessageLookupByLibrary.simpleMessage("Title"),
         "addRemindertitleError":
             MessageLookupByLibrary.simpleMessage("Please Enter Title"),
+        "age": MessageLookupByLibrary.simpleMessage("Age"),
         "and": MessageLookupByLibrary.simpleMessage("And"),
         "applybutton": MessageLookupByLibrary.simpleMessage("Apply"),
         "appname": MessageLookupByLibrary.simpleMessage(" Mother Care"),
@@ -97,16 +98,23 @@ class MessageLookup extends MessageLookupByLibrary {
             "Daffodil International University"),
         "credits": MessageLookupByLibrary.simpleMessage("Credits"),
         "darkTheme": MessageLookupByLibrary.simpleMessage("Dark"),
+        "day": MessageLookupByLibrary.simpleMessage("Day"),
         "days": MessageLookupByLibrary.simpleMessage("days"),
         "deleteaccount": MessageLookupByLibrary.simpleMessage("Delete Account"),
         "deleteaccounttext": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to delete your account?"),
         "dob": MessageLookupByLibrary.simpleMessage("Date of Birth"),
+        "dobrequirederror":
+            MessageLookupByLibrary.simpleMessage("Date of Birth is required"),
         "doctors": MessageLookupByLibrary.simpleMessage("Doctor"),
         "donebutton": MessageLookupByLibrary.simpleMessage("Done"),
         "donothaveaccount":
             MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "emailrequirederror":
+            MessageLookupByLibrary.simpleMessage("Email is required"),
+        "emailvaliderror":
+            MessageLookupByLibrary.simpleMessage("Enter a valid email address"),
         "emptyReminder":
             MessageLookupByLibrary.simpleMessage("No reminder Added Yet!"),
         "exitBody": MessageLookupByLibrary.simpleMessage(
@@ -119,6 +127,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please select some locations"),
         "finishbutton": MessageLookupByLibrary.simpleMessage("Finish"),
         "firstname": MessageLookupByLibrary.simpleMessage("First Name"),
+        "firstnamerequirederror":
+            MessageLookupByLibrary.simpleMessage("First Name is required"),
         "forgotpassword":
             MessageLookupByLibrary.simpleMessage("Forgot Password"),
         "generatePdfButton":
@@ -151,6 +161,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "languageNote": MessageLookupByLibrary.simpleMessage(
             "You can change the language later from the settings"),
         "lastname": MessageLookupByLibrary.simpleMessage("Last Name"),
+        "lastnamerequirederror":
+            MessageLookupByLibrary.simpleMessage("Last Name is required"),
         "learnmorebutton": MessageLookupByLibrary.simpleMessage("Learn more"),
         "lightTheme": MessageLookupByLibrary.simpleMessage("Light"),
         "locations": MessageLookupByLibrary.simpleMessage("Locations"),
@@ -165,6 +177,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "mammographyscreening":
             MessageLookupByLibrary.simpleMessage("Mammography Analysis"),
         "minutes": MessageLookupByLibrary.simpleMessage("minutes"),
+        "month": MessageLookupByLibrary.simpleMessage("Month"),
+        "name": MessageLookupByLibrary.simpleMessage("Name"),
         "nextbutton": MessageLookupByLibrary.simpleMessage("Next"),
         "noarticlefound":
             MessageLookupByLibrary.simpleMessage("No Article Found!"),
@@ -172,6 +186,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "nodoctorfound":
             MessageLookupByLibrary.simpleMessage("No Doctor Found!"),
         "okbutton": MessageLookupByLibrary.simpleMessage("OK"),
+        "passlengthderror": MessageLookupByLibrary.simpleMessage(
+            "Password must be at least 8 digits long"),
+        "passmatcherror":
+            MessageLookupByLibrary.simpleMessage("Password do not match"),
+        "passrequirederror":
+            MessageLookupByLibrary.simpleMessage("Password is required"),
+        "passvaliderror": MessageLookupByLibrary.simpleMessage(
+            "Passwords must have at least one special character"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "predictionresult":
             MessageLookupByLibrary.simpleMessage("Analysis Result"),
@@ -253,6 +275,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "waitingforimage":
             MessageLookupByLibrary.simpleMessage("Click to Upload Image"),
         "whatis": m2,
+        "year": MessageLookupByLibrary.simpleMessage("Year"),
         "years": MessageLookupByLibrary.simpleMessage("years"),
         "yesbutton": MessageLookupByLibrary.simpleMessage("YES")
       };

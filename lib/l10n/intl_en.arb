@@ -143,12 +143,29 @@
 "haveaccount":"Already have an account?",
 "firstname":"First Name",
 "lastname":"Last Name",
+"name":"Name",
+"age":"Age",
+"year":"Year",
+"month":"Month",
+"day":"Day",
 "dob":"Date of Birth",
 "confirmpassword":"Confirm Password",
 "resetpassword":"Reset Password",
 "resettext":"Please enter the email that you want to reset the password",
 "deleteaccount":"Delete Account",
-"deleteaccounttext":"Are you sure you want to delete your account?"
+"deleteaccounttext":"Are you sure you want to delete your account?",
+"firstnamerequirederror":"First Name is required",
+"lastnamerequirederror":"Last Name is required",
+"dobrequirederror":"Date of Birth is required",
+"emailrequirederror":"Email is required",
+"emailvaliderror":"Enter a valid email address",
+"passrequirederror":"Password is required",
+"passvaliderror":"Passwords must have at least one special character",
+"passlengthderror":"Password must be at least 8 digits long",
+"passmatcherror":"Password do not match"
+
+
+
 
 
 }

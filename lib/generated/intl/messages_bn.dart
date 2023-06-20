@@ -42,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "addReminderTitle": MessageLookupByLibrary.simpleMessage("শিরোনাম"),
         "addRemindertitleError":
             MessageLookupByLibrary.simpleMessage("অনুগ্রহ করে শিরোনাম লিখুন"),
+        "age": MessageLookupByLibrary.simpleMessage("বয়স"),
         "and": MessageLookupByLibrary.simpleMessage("এবং"),
         "applybutton": MessageLookupByLibrary.simpleMessage("আবেদন করুন"),
         "appname": MessageLookupByLibrary.simpleMessage("মাদার কেয়ার"),
@@ -98,17 +99,24 @@ class MessageLookup extends MessageLookupByLibrary {
             "ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটি"),
         "credits": MessageLookupByLibrary.simpleMessage("কৃতিত্ব"),
         "darkTheme": MessageLookupByLibrary.simpleMessage("ডার্ক থিম"),
+        "day": MessageLookupByLibrary.simpleMessage("দিন"),
         "days": MessageLookupByLibrary.simpleMessage("দিন"),
         "deleteaccount":
             MessageLookupByLibrary.simpleMessage("অ্যাকাউন্ট মুছে ফেলুন"),
         "deleteaccounttext": MessageLookupByLibrary.simpleMessage(
             "আপনি কি আপনার অ্যাকাউন্ট মুছে ফেলার বিষয়ে নিশ্চিত?"),
         "dob": MessageLookupByLibrary.simpleMessage("জন্ম তারিখ"),
+        "dobrequirederror":
+            MessageLookupByLibrary.simpleMessage("জন্মতারিখ আবশ্যক"),
         "doctors": MessageLookupByLibrary.simpleMessage("চিকিৎসক"),
         "donebutton": MessageLookupByLibrary.simpleMessage("সম্পন্ন"),
         "donothaveaccount":
             MessageLookupByLibrary.simpleMessage("একটি অ্যাকাউন্ট নেই?"),
         "email": MessageLookupByLibrary.simpleMessage("ইমেইল"),
+        "emailrequirederror":
+            MessageLookupByLibrary.simpleMessage("ইমেইল আবশ্যক"),
+        "emailvaliderror":
+            MessageLookupByLibrary.simpleMessage("একটি বৈধ ইমেইল ঠিকানা লিখুন"),
         "emptyReminder": MessageLookupByLibrary.simpleMessage(
             "কোনো রিমাইন্ডার এখনো যোগ করা হয়নি!"),
         "exitBody": MessageLookupByLibrary.simpleMessage(
@@ -121,6 +129,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("কিছু স্থান নির্বাচন করুন"),
         "finishbutton": MessageLookupByLibrary.simpleMessage("শেষ করুন"),
         "firstname": MessageLookupByLibrary.simpleMessage("নামের প্রথম অংশ"),
+        "firstnamerequirederror":
+            MessageLookupByLibrary.simpleMessage("প্রথম নাম আবশ্যক"),
         "forgotpassword":
             MessageLookupByLibrary.simpleMessage("পাসওয়ার্ড ভুলে গেছেন"),
         "generatePdfButton":
@@ -155,6 +165,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "languageNote": MessageLookupByLibrary.simpleMessage(
             "আপনি পরবর্তীতে সেটিংস থেকে ভাষা পরিবর্তন করতে পারবেন"),
         "lastname": MessageLookupByLibrary.simpleMessage("নামের শেষ অংশ"),
+        "lastnamerequirederror":
+            MessageLookupByLibrary.simpleMessage("শেষ নাম প্রয়োজন"),
         "learnmorebutton": MessageLookupByLibrary.simpleMessage("আরও জানুন"),
         "lightTheme": MessageLookupByLibrary.simpleMessage("লাইট থিম"),
         "locations": MessageLookupByLibrary.simpleMessage("স্থানসমূহ"),
@@ -169,6 +181,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "mammographyscreening":
             MessageLookupByLibrary.simpleMessage("ম্যামোগ্রাফি বিশ্লেষণ"),
         "minutes": MessageLookupByLibrary.simpleMessage("মিনিট"),
+        "month": MessageLookupByLibrary.simpleMessage("মাস"),
+        "name": MessageLookupByLibrary.simpleMessage("নাম"),
         "nextbutton": MessageLookupByLibrary.simpleMessage("পরবর্তী"),
         "noarticlefound": MessageLookupByLibrary.simpleMessage(
             "কোন অনুচ্ছেদ খুঁজে পাওয়া যায়নি!"),
@@ -176,6 +190,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "nodoctorfound": MessageLookupByLibrary.simpleMessage(
             "কোন চিকিৎসক খুঁজে পাওয়া যায়নি!"),
         "okbutton": MessageLookupByLibrary.simpleMessage("ঠিক আছে"),
+        "passlengthderror": MessageLookupByLibrary.simpleMessage(
+            "পাসওয়ার্ড কমপক্ষে ৮ সংখ্যার হতে হবে"),
+        "passmatcherror":
+            MessageLookupByLibrary.simpleMessage("পাসওয়ার্ড মিলছে না"),
+        "passrequirederror":
+            MessageLookupByLibrary.simpleMessage("পাসওয়ার্ড আবশ্যক"),
+        "passvaliderror": MessageLookupByLibrary.simpleMessage(
+            "পাসওয়ার্ডে কমপক্ষে একটি বিশেষ অক্ষর থাকতে হবে"),
         "password": MessageLookupByLibrary.simpleMessage("পাসওয়ার্ড"),
         "predictionresult":
             MessageLookupByLibrary.simpleMessage("বিশ্লেষণ ফলাফল"),
@@ -264,6 +286,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "waitingforimage":
             MessageLookupByLibrary.simpleMessage("ছবি আপলোডের জন্য ক্লিক করুন"),
         "whatis": m2,
+        "year": MessageLookupByLibrary.simpleMessage("বছর"),
         "years": MessageLookupByLibrary.simpleMessage("বছর"),
         "yesbutton": MessageLookupByLibrary.simpleMessage("হ্যাঁ")
       };

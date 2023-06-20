@@ -1490,6 +1490,56 @@ class S {
     );
   }
 
+  /// `Name`
+  String get name {
+    return Intl.message(
+      'Name',
+      name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Age`
+  String get age {
+    return Intl.message(
+      'Age',
+      name: 'age',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Year`
+  String get year {
+    return Intl.message(
+      'Year',
+      name: 'year',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Month`
+  String get month {
+    return Intl.message(
+      'Month',
+      name: 'month',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Day`
+  String get day {
+    return Intl.message(
+      'Day',
+      name: 'day',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Date of Birth`
   String get dob {
     return Intl.message(
@@ -1545,6 +1595,96 @@ class S {
     return Intl.message(
       'Are you sure you want to delete your account?',
       name: 'deleteaccounttext',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `First Name is required`
+  String get firstnamerequirederror {
+    return Intl.message(
+      'First Name is required',
+      name: 'firstnamerequirederror',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last Name is required`
+  String get lastnamerequirederror {
+    return Intl.message(
+      'Last Name is required',
+      name: 'lastnamerequirederror',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date of Birth is required`
+  String get dobrequirederror {
+    return Intl.message(
+      'Date of Birth is required',
+      name: 'dobrequirederror',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email is required`
+  String get emailrequirederror {
+    return Intl.message(
+      'Email is required',
+      name: 'emailrequirederror',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter a valid email address`
+  String get emailvaliderror {
+    return Intl.message(
+      'Enter a valid email address',
+      name: 'emailvaliderror',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password is required`
+  String get passrequirederror {
+    return Intl.message(
+      'Password is required',
+      name: 'passrequirederror',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Passwords must have at least one special character`
+  String get passvaliderror {
+    return Intl.message(
+      'Passwords must have at least one special character',
+      name: 'passvaliderror',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must be at least 8 digits long`
+  String get passlengthderror {
+    return Intl.message(
+      'Password must be at least 8 digits long',
+      name: 'passlengthderror',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password do not match`
+  String get passmatcherror {
+    return Intl.message(
+      'Password do not match',
+      name: 'passmatcherror',
       desc: '',
       args: [],
     );

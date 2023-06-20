@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../providers/authprovider.dart';
-import '../../utils/utils.dart';
 import '../../widget/responsivesnackbar.dart';
 
 class ForgotPassword extends StatefulWidget {
@@ -64,7 +64,14 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                             keyboardType: TextInputType.emailAddress,
                             textCapitalization: TextCapitalization.sentences,
                             controller: emailController,
-                            validator: Utils(context).emailValidator,
+                            validator: MultiValidator([
+                              RequiredValidator(
+                                  errorText: AppLocalizations.of(context)!
+                                      .emailrequirederror),
+                              EmailValidator(
+                                  errorText: AppLocalizations.of(context)!
+                                      .emailvaliderror),
+                            ]),
                             decoration: InputDecoration(
                               labelText: AppLocalizations.of(context)!.email,
                               hintText: AppLocalizations.of(context)!.email,

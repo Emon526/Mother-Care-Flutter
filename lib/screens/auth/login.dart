@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -63,7 +64,14 @@ class _LoginScreenState extends State<LoginScreen> {
                               keyboardType: TextInputType.emailAddress,
                               textCapitalization: TextCapitalization.sentences,
                               controller: authprovider.emailController,
-                              validator: Utils(context).emailValidator,
+                              validator: MultiValidator([
+                                RequiredValidator(
+                                    errorText: AppLocalizations.of(context)!
+                                        .emailrequirederror),
+                                EmailValidator(
+                                    errorText: AppLocalizations.of(context)!
+                                        .emailvaliderror),
+                              ]),
                               decoration: InputDecoration(
                                 labelText: AppLocalizations.of(context)!.email,
                                 hintText: AppLocalizations.of(context)!.email,
@@ -82,7 +90,17 @@ class _LoginScreenState extends State<LoginScreen> {
                               textInputAction: TextInputAction.done,
                               keyboardType: TextInputType.visiblePassword,
                               controller: authprovider.passController,
-                              validator: Utils(context).passwordValidator,
+                              validator: MultiValidator([
+                                RequiredValidator(
+                                    errorText: AppLocalizations.of(context)!
+                                        .passrequirederror),
+                                MinLengthValidator(8,
+                                    errorText: AppLocalizations.of(context)!
+                                        .passlengthderror),
+                                PatternValidator(r'(?=.*?[#?!@$%^&*-])',
+                                    errorText: AppLocalizations.of(context)!
+                                        .passvaliderror)
+                              ]),
                               decoration: InputDecoration(
                                 labelText:
                                     AppLocalizations.of(context)!.password,
