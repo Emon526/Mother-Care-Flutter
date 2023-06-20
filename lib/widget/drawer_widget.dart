@@ -4,11 +4,13 @@ import 'package:line_icons/line_icons.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:provider/provider.dart';
 import '../const/consts.dart';
+import '../models/usermodel.dart';
 import '../providers/authprovider.dart';
 import '../screens/doctors/doctorslist.dart';
 import '../screens/memmographyscreening/memmography.dart';
 import '../screens/reminder/reminderlist.dart';
 import '../screens/settings/settings.dart';
+import '../utils/utils.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({super.key});
@@ -21,9 +23,31 @@ class DrawerWidget extends StatelessWidget {
       child: SafeArea(
         child: Column(
           children: [
-            _buildHeader(
-              context: context,
-              size: size,
+            Consumer<AuthProvider>(
+              builder: (context, value, child) {
+                return StreamBuilder<UserModel?>(
+                  stream: value.getUserData(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      final userData = snapshot.data!;
+
+                      return _buildHeader(
+                        context: context,
+                        size: size,
+                        name: "${userData.firstName} ${userData.lastName}",
+                        age: Utils(context).calculateAge(
+                          dateOfBirth: userData.dateofbirth,
+                        ),
+                        email: userData.email,
+                      );
+                    } else if (snapshot.hasError) {
+                      return Text('Error: ${snapshot.error}');
+                    } else {
+                      return const CircularProgressIndicator();
+                    }
+                  },
+                );
+              },
             ),
             const SizedBox(
               height: 10,
@@ -99,30 +123,51 @@ class DrawerWidget extends StatelessWidget {
   _buildHeader({
     required BuildContext context,
     required Size size,
+    required String name,
+    required String age,
+    required String email,
   }) {
-    return Stack(
-      alignment: Alignment.bottomCenter,
-      children: [
-        SizedBox(
-          height: size.height * 0.3,
-          // color: Theme.of(context).primaryColor,
-          child: Image.asset(
-            color: Theme.of(context).primaryColor,
-            Consts.LOGO,
-          ),
-        ),
-        Positioned(
-          // bottom: 20,
-          child: Text(
-            AppLocalizations.of(context)!.appname,
-            style: TextStyle(
-              fontSize: 24.0,
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Center(
+            child: Image.asset(
               color: Theme.of(context).primaryColor,
-              fontWeight: FontWeight.bold,
+              Consts.LOGO,
+              height: size.height * 0.2,
             ),
           ),
-        ),
-      ],
+          Text(
+            '${AppLocalizations.of(context)!.name} : $name',
+            style: TextStyle(
+              color: Theme.of(context).primaryColor,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          const SizedBox(
+            height: 5,
+          ),
+          Text(
+            "${AppLocalizations.of(context)!.email} : $email",
+            style: TextStyle(
+              color: Theme.of(context).primaryColor,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          const SizedBox(
+            height: 5,
+          ),
+          Text(
+            '${AppLocalizations.of(context)!.age} : $age',
+            style: TextStyle(
+              color: Theme.of(context).primaryColor,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ],
+      ),
     );
   }
 

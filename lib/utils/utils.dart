@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -104,6 +106,18 @@ class Utils {
         ),
       ),
     );
+  }
+
+  String checkEmpty({
+    required int duration,
+    required String days,
+    required BuildContext context,
+  }) {
+    if (duration == 0) {
+      return '';
+    } else {
+      return "${formatNumber(number: duration)} $days ";
+    }
   }
 
   formatDate({required DateTime dateTime}) {
@@ -247,4 +261,44 @@ class Utils {
     PatternValidator(r'(?=.*?[#?!@$%^&*-])',
         errorText: 'passwords must have at least one special character')
   ]);
+
+  String calculateAge({
+    required String dateOfBirth,
+  }) {
+    DateTime currentDate = DateTime.now();
+
+    DateFormat dateFormat = DateFormat('EEE, dd MMMM yyyy', 'en');
+    DateTime parsedDate = dateFormat.parse(dateOfBirth);
+
+    int years = currentDate.year - parsedDate.year;
+    int months = currentDate.month - parsedDate.month;
+    int days = currentDate.day - parsedDate.day;
+
+    if (days < 0) {
+      months--;
+      days += currentDate
+          .difference(
+              DateTime(currentDate.year, currentDate.month - 1, parsedDate.day))
+          .inDays;
+    }
+
+    if (months < 0) {
+      years--;
+      months += 12;
+    }
+    String ageString = '${checkEmpty(
+      duration: years,
+      days: AppLocalizations.of(context)!.year,
+      context: context,
+    )}${checkEmpty(
+      duration: months,
+      days: AppLocalizations.of(context)!.month,
+      context: context,
+    )}${checkEmpty(
+      duration: days,
+      days: AppLocalizations.of(context)!.day,
+      context: context,
+    )}';
+    return ageString;
+  }
 }
