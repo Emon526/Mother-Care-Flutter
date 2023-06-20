@@ -67,37 +67,25 @@ class ReminderProvider extends ChangeNotifier {
     int minutesRemainder = duration.inMinutes % 60;
     int secondsRemainder = duration.inSeconds % 60;
 
-    String formattedDuration = '${checkEmpty(
+    String formattedDuration = '${Utils(context).checkEmpty(
       duration: days,
       days: AppLocalizations.of(context)!.days,
       context: context,
-    )}${checkEmpty(
+    )}${Utils(context).checkEmpty(
       duration: hoursRemainder,
       days: AppLocalizations.of(context)!.hours,
       context: context,
-    )}${checkEmpty(
+    )}${Utils(context).checkEmpty(
       duration: minutesRemainder,
       days: AppLocalizations.of(context)!.minutes,
       context: context,
-    )}${checkEmpty(
+    )}${Utils(context).checkEmpty(
       duration: secondsRemainder,
       days: AppLocalizations.of(context)!.seconds,
       context: context,
     )}';
 
     return formattedDuration;
-  }
-
-  String checkEmpty({
-    required int duration,
-    required String days,
-    required BuildContext context,
-  }) {
-    if (duration == 0) {
-      return '';
-    } else {
-      return "${Utils(context).formatNumber(number: duration)} $days ";
-    }
   }
 
   Future<void> getPendingReminders() async {
