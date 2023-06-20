@@ -25,10 +25,10 @@ class ThemeProvider with ChangeNotifier {
 
   getTheme() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    var theme = prefs.getString('themeMode') ?? 'system';
+    var theme = prefs.getString('themeMode') ?? 'light';
     _themeMode = ThemeMode.values.firstWhere(
         (element) => element.toString() == 'ThemeMode.$theme',
-        orElse: () => ThemeMode.system);
+        orElse: () => ThemeMode.light);
     notifyListeners();
   }
 
