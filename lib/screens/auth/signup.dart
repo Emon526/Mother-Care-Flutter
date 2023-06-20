@@ -346,16 +346,17 @@ class _SignupState extends State<Signup> {
                   SfDateRangePicker(
                     cancelText: AppLocalizations.of(context)!.cancelbutton,
                     confirmText: AppLocalizations.of(context)!.okbutton,
+                    maxDate: DateTime.now(),
                     onSelectionChanged: (args) {
                       context.read<ReminderProvider>().seletedDate =
                           DateTime.parse(args.value.toString());
                     },
                     onSubmit: (date) {
-                      dobController.text = Utils(context).formatDate(
-                        dateTime: DateTime.parse(
-                          date.toString(),
-                        ),
-                      );
+                      DateFormat dateFormat =
+                          DateFormat('EEE, dd MMMM yyyy', 'en');
+                      dobController.text =
+                          dateFormat.format(DateTime.parse(date.toString()));
+
                       Navigator.pop(context);
                       //TODO:fix focus
                       // FocusScope.of(context).requestFocus(emailfocusNode);
