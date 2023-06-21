@@ -195,6 +195,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "passvaliderror": MessageLookupByLibrary.simpleMessage(
             "Passwords must have at least one special character"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "pickimageSnakeBar": MessageLookupByLibrary.simpleMessage(
+            "Please select a profile photo"),
         "predictionresult":
             MessageLookupByLibrary.simpleMessage("Analysis Result"),
         "prevbutton": MessageLookupByLibrary.simpleMessage("Prev"),

@@ -199,6 +199,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "passvaliderror": MessageLookupByLibrary.simpleMessage(
             "পাসওয়ার্ডে কমপক্ষে একটি বিশেষ অক্ষর থাকতে হবে"),
         "password": MessageLookupByLibrary.simpleMessage("পাসওয়ার্ড"),
+        "pickimageSnakeBar": MessageLookupByLibrary.simpleMessage(
+            "একটি প্রোফাইল ফটো নির্বাচন করুন"),
         "predictionresult":
             MessageLookupByLibrary.simpleMessage("বিশ্লেষণ ফলাফল"),
         "prevbutton": MessageLookupByLibrary.simpleMessage("পূর্ববর্তী"),

@@ -105,6 +105,7 @@
 "addReminderDateError":"একটি তারিখ পছন্দ করুন",
 "addReminderTimeError":"একটি সময় পছন্দ করুন",
 "addReminderSnakeBar":"আপনাকে {duration} পরে মনে করিয়ে দেওয়া হবে",
+"pickimageSnakeBar":"একটি প্রোফাইল ফটো নির্বাচন করুন",
 "days":"দিন",
 "hours":"ঘন্টা",
 "minutes":"মিনিট",

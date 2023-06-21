@@ -1,5 +1,7 @@
+import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -13,7 +15,8 @@ class AuthProvider extends ChangeNotifier {
   final emailController = TextEditingController();
   final passController = TextEditingController();
   final auth = FirebaseAuth.instance;
-  var firestore = FirebaseFirestore.instance;
+  var firestore = FirebaseFirestore.instance.collection('users');
+  var firestorage = FirebaseStorage.instance.ref().child('profileimage');
   String _email = '';
   String get email => _email;
   String _password = '';
@@ -52,12 +55,14 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> signup(
-      {required String firstname,
-      required String lastname,
-      required String dob,
-      required String email,
-      required String password}) async {
+  Future<void> signup({
+    required String firstname,
+    required String lastname,
+    required String dob,
+    required String email,
+    required String password,
+    required File profilephoto,
+  }) async {
     await auth.createUserWithEmailAndPassword(
       email: email,
       password: password,
@@ -67,6 +72,7 @@ class AuthProvider extends ChangeNotifier {
       lastName: lastname,
       email: email,
       dob: dob,
+      profilephoto: profilephoto,
     );
     notifyListeners();
   }
@@ -108,33 +114,40 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> addUserData({
-    required String firstName,
-    required String lastName,
-    required String email,
-    required String dob,
-  }) async {
+  Future<void> addUserData(
+      {required String firstName,
+      required String lastName,
+      required String email,
+      required String dob,
+      required File profilephoto}) async {
+    String profilephotoUrl = '';
+    if (profilephoto.path.isNotEmpty) {
+      final ref = firestorage.child('${auth.currentUser!.uid}.jpg');
+      await ref.putFile(profilephoto);
+      profilephotoUrl = await ref.getDownloadURL();
+    }
     UserModel user = UserModel(
       firstName: firstName,
       lastName: lastName,
       email: email,
       dateofbirth: dob,
       uid: auth.currentUser!.uid,
+      profilepicture: profilephotoUrl,
     );
-    await firestore
-        .collection('users')
-        .doc(auth.currentUser!.uid)
-        .set(user.toJson());
+    await firestore.doc(auth.currentUser!.uid).set(user.toJson());
     notifyListeners();
   }
 
   Future<void> deleteUserData(String user) async {
-    await firestore.collection('users').doc(user).delete();
+    await firestore.doc(user).delete();
+    final ref = firestorage.child('$user.jpg');
+    await ref.delete();
+
     notifyListeners();
   }
 
   Stream<UserModel?> getUserData() {
-    final CollectionReference usersCollection = firestore.collection('users');
+    final CollectionReference usersCollection = firestore;
     return usersCollection
         .doc(auth.currentUser!.uid)
         .snapshots()

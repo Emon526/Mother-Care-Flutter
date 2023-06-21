@@ -1,9 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:provider/provider.dart';
-import '../const/consts.dart';
 import '../models/usermodel.dart';
 import '../providers/authprovider.dart';
 import '../screens/doctors/doctorslist.dart';
@@ -39,11 +40,14 @@ class DrawerWidget extends StatelessWidget {
                           dateOfBirth: userData.dateofbirth,
                         ),
                         email: userData.email,
+                        profilePhoto: userData.profilepicture,
                       );
                     } else if (snapshot.hasError) {
                       return Text('Error: ${snapshot.error}');
                     } else {
-                      return const CircularProgressIndicator();
+                      return SpinKitDoubleBounce(
+                        color: Theme.of(context).primaryColor,
+                      );
                     }
                   },
                 );
@@ -126,18 +130,40 @@ class DrawerWidget extends StatelessWidget {
     required String name,
     required String age,
     required String email,
+    required String profilePhoto,
   }) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Center(
-            child: Image.asset(
-              color: Theme.of(context).primaryColor,
-              Consts.LOGO,
-              height: size.height * 0.2,
+          SizedBox(
+            height: size.height * 0.2,
+            child: Center(
+              child: CachedNetworkImage(
+                imageUrl: profilePhoto,
+                imageBuilder: (context, imageProvider) => CircleAvatar(
+                  radius: size.height * 0.1,
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(100),
+                    child: Image(
+                      image: imageProvider,
+                      height: size.height * 0.2,
+                      width: size.height * 0.2,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                placeholder: (context, url) => SpinKitDoubleBounce(
+                  color: Theme.of(context).primaryColor,
+                ),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+              ),
             ),
+          ),
+          const SizedBox(
+            height: 5,
           ),
           Text(
             '${AppLocalizations.of(context)!.name} : $name',

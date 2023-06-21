@@ -1110,6 +1110,16 @@ class S {
     );
   }
 
+  /// `Please select a profile photo`
+  String get pickimageSnakeBar {
+    return Intl.message(
+      'Please select a profile photo',
+      name: 'pickimageSnakeBar',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `days`
   String get days {
     return Intl.message(

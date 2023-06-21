@@ -1,10 +1,13 @@
+import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:random_avatar/random_avatar.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 import '../../const/consts.dart';
@@ -23,20 +26,19 @@ class Signup extends StatefulWidget {
 
 class _SignupState extends State<Signup> {
   final _formKey = GlobalKey<FormState>();
-  final firstnameController = TextEditingController();
-  final lastnameController = TextEditingController();
-  final emailController = TextEditingController();
-  final passController = TextEditingController();
-  final confirmpassController = TextEditingController();
+  final firstnameController = TextEditingController(text: 'Asraful');
+  final lastnameController = TextEditingController(text: 'Islam');
+  final emailController = TextEditingController(text: 'emonats526@gmail.com');
+  final passController = TextEditingController(text: 'Abc123456@');
+  final confirmpassController = TextEditingController(text: 'Abc123456@');
   final dobController = TextEditingController();
   bool _isObscured = true;
   FocusNode dobfocusNode = FocusNode();
   FocusNode confirmpassfocusNode = FocusNode();
   FocusNode passfocusNode = FocusNode();
   FocusNode emailfocusNode = FocusNode();
-
-  // final emailValidator =
-  // final confirmValidator = MatchValidator(errorText: '');
+  ImagePicker picker = ImagePicker();
+  File? pickedimage;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +54,7 @@ class _SignupState extends State<Signup> {
                 padding: const EdgeInsets.all(12.0),
                 child: Column(
                   children: [
-                    _logo(context: context, size: size),
+                    _profilephoto(context: context, size: size),
                     const SizedBox(
                       height: 15,
                     ),
@@ -240,7 +242,14 @@ class _SignupState extends State<Signup> {
                           ),
                           ElevatedButton(
                             onPressed: () async {
-                              if (_formKey.currentState!.validate()) {
+                              pickedimage == null
+                                  ? ResponsiveSnackbar.show(
+                                      context,
+                                      AppLocalizations.of(context)!
+                                          .pickimageSnakeBar)
+                                  : null;
+                              if (pickedimage != null &&
+                                  _formKey.currentState!.validate()) {
                                 Utils(context).customLoading();
                                 try {
                                   await authprovider.signup(
@@ -249,6 +258,7 @@ class _SignupState extends State<Signup> {
                                     dob: dobController.text.trim(),
                                     email: emailController.text.trim(),
                                     password: confirmpassController.text.trim(),
+                                    profilephoto: pickedimage!,
                                   );
                                   // ignore: use_build_context_synchronously
                                   Navigator.pop(context);
@@ -285,6 +295,9 @@ class _SignupState extends State<Signup> {
   }
 
   _showCalender() {
+    DateTime date = DateTime.now().subtract(
+      const Duration(days: 30),
+    );
     return showCupertinoModalPopup<void>(
       context: context,
       barrierDismissible: false,
@@ -346,7 +359,7 @@ class _SignupState extends State<Signup> {
                   SfDateRangePicker(
                     cancelText: AppLocalizations.of(context)!.cancelbutton,
                     confirmText: AppLocalizations.of(context)!.okbutton,
-                    maxDate: DateTime.now(),
+                    maxDate: date,
                     onSelectionChanged: (args) {
                       context.read<ReminderProvider>().seletedDate =
                           DateTime.parse(args.value.toString());
@@ -395,8 +408,8 @@ class _SignupState extends State<Signup> {
                     showNavigationArrow: true,
                     selectionMode: DateRangePickerSelectionMode.single,
                     view: DateRangePickerView.month,
-                    initialDisplayDate: DateTime.now(),
-                    initialSelectedDate: DateTime.now(),
+                    initialDisplayDate: date,
+                    initialSelectedDate: date,
                     navigationDirection:
                         DateRangePickerNavigationDirection.vertical,
                     navigationMode: DateRangePickerNavigationMode.snap,
@@ -410,7 +423,7 @@ class _SignupState extends State<Signup> {
     );
   }
 
-  _logo({
+  _profilephoto({
     required BuildContext context,
     required Size size,
   }) {
@@ -419,24 +432,61 @@ class _SignupState extends State<Signup> {
       children: [
         SizedBox(
           height: size.height * 0.2,
-          // color: Theme.of(context).primaryColor,
-          child: Image.asset(
-            color: Theme.of(context).primaryColor,
-            Consts.LOGO,
-          ),
+          child: pickedimage != null
+              ? CircleAvatar(
+                  radius: size.height * 0.2,
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(100),
+                    child: Image.file(
+                      pickedimage!,
+                      height: size.height * 0.2,
+                      width: size.height * 0.2,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                )
+              : CircleAvatar(
+                  radius: size.height * 0.2,
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                  child: RandomAvatar(
+                    'profilephoto',
+                    trBackground: true,
+                  ),
+                ),
         ),
         Positioned(
-          // bottom: 20,
-          child: Text(
-            AppLocalizations.of(context)!.appname,
-            style: TextStyle(
-              fontSize: 16.0,
+          bottom: 10,
+          right: 80,
+          child: InkWell(
+            onTap: () {
+              pickImage();
+            },
+            child: Icon(
+              pickedimage == null
+                  ? Icons.add_a_photo_outlined
+                  : Icons.change_circle_outlined,
               color: Theme.of(context).primaryColor,
-              fontWeight: FontWeight.bold,
             ),
           ),
         ),
       ],
     );
+  }
+
+  void pickImage() async {
+    try {
+      var image = await picker.pickImage(source: ImageSource.gallery);
+      if (image == null) return;
+
+      setState(() {
+        pickedimage = File(image.path);
+      });
+    } catch (error) {
+      ResponsiveSnackbar.show(
+        context,
+        error.toString(),
+      );
+    }
   }
 }

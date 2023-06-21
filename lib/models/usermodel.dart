@@ -4,6 +4,7 @@ class UserModel {
   String lastName;
   String email;
   String dateofbirth;
+  String profilepicture;
 
   UserModel({
     required this.uid,
@@ -11,6 +12,7 @@ class UserModel {
     required this.lastName,
     required this.email,
     required this.dateofbirth,
+    required this.profilepicture,
   });
 
   Map<String, dynamic> toJson() {
@@ -20,6 +22,7 @@ class UserModel {
       'email': email,
       'dateofbirth': dateofbirth,
       'uid': uid,
+      'profilepicture': profilepicture,
     };
   }
 
@@ -30,6 +33,7 @@ class UserModel {
       email: json['email'],
       dateofbirth: json['dateofbirth'],
       uid: json['uid'],
+      profilepicture: json['profilepicture'],
     );
   }
 }
