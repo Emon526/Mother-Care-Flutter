@@ -53,9 +53,9 @@ class DrawerWidget extends StatelessWidget {
                 );
               },
             ),
-            const SizedBox(
-              height: 10,
-            ),
+            // const SizedBox(
+            //   height: 10,
+            // ),
             _buildListtile(
               iconData: LineIcons.stethoscope,
               tiletitle: AppLocalizations.of(context)!.doctors,
@@ -163,7 +163,7 @@ class DrawerWidget extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 5,
+            height: 10,
           ),
           Text(
             '${AppLocalizations.of(context)!.name} : $name',
