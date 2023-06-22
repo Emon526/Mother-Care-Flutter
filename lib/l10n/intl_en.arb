@@ -106,6 +106,8 @@
 "addReminderTimeError":"Please Pick a Time",
 "addReminderSnakeBar":"You will be reminded {duration} later",
 "pickimageSnakeBar":"Please select a profile photo",
+"forgotpasswordSnakeBar":"Please check your email",
+"termsconditionSnakeBar":"Please accept terms & conditions",
 "days":"days",
 "hours":"hours",
 "minutes":"minutes",

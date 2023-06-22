@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:mothercare/widget/customexpandedbutton.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../providers/authprovider.dart';
@@ -81,21 +82,20 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           const SizedBox(
                             height: 20,
                           ),
-                          ElevatedButton(
+                          CustomExpanedButton(
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
                                 authprovider
                                     .resetPassword(emailController.text.trim());
                                 ResponsiveSnackbar.show(
                                   context,
-                                  'please check your email',
+                                  AppLocalizations.of(context)!
+                                      .forgotpasswordSnakeBar,
                                 );
                                 Navigator.pop(context);
                               }
                             },
-                            child: Text(
-                              AppLocalizations.of(context)!.resetpassword,
-                            ),
+                            text: AppLocalizations.of(context)!.resetpassword,
                           ),
                         ],
                       ),

@@ -15,6 +15,7 @@ import '../../providers/authprovider.dart';
 import '../../providers/languageprovider.dart';
 import '../../providers/reminderprovider.dart';
 import '../../utils/utils.dart';
+import '../../widget/customexpandedbutton.dart';
 import '../../widget/responsivesnackbar.dart';
 
 class Signup extends StatefulWidget {
@@ -31,7 +32,7 @@ class _SignupState extends State<Signup> {
   final emailController = TextEditingController(text: 'emonats526@gmail.com');
   final passController = TextEditingController(text: 'Abc123456@');
   final confirmpassController = TextEditingController(text: 'Abc123456@');
-  final dobController = TextEditingController();
+  final dobController = TextEditingController(text: 'Tue, 23 May 2023');
   bool _isObscured = true;
   FocusNode dobfocusNode = FocusNode();
   FocusNode confirmpassfocusNode = FocusNode();
@@ -240,7 +241,32 @@ class _SignupState extends State<Signup> {
                           const SizedBox(
                             height: 15,
                           ),
-                          ElevatedButton(
+                          //TODO: signup privacy notice on error show snackbar
+                          Row(
+                            children: [
+                              Checkbox(
+                                value: authprovider.acceptpolicy,
+                                onChanged: (value) {
+                                  authprovider.acceptpolicy = value!;
+                                },
+                              ),
+                              Flexible(
+                                child: Text(
+                                  'By Sign up, you agree to accept our Privacy Policy,Terms of Service and Notification settings',
+                                  // AppLocalizations.of(context)!.rememberme,
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    // fontWeight: FontWeight.w500,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          CustomExpanedButton(
                             onPressed: () async {
                               pickedimage == null
                                   ? ResponsiveSnackbar.show(
@@ -248,8 +274,16 @@ class _SignupState extends State<Signup> {
                                       AppLocalizations.of(context)!
                                           .pickimageSnakeBar)
                                   : null;
+                              authprovider.acceptpolicy
+                                  ? null
+                                  : ResponsiveSnackbar.show(
+                                      context,
+                                      AppLocalizations.of(context)!
+                                          .termsconditionSnakeBar,
+                                    );
                               if (pickedimage != null &&
-                                  _formKey.currentState!.validate()) {
+                                  _formKey.currentState!.validate() &&
+                                  authprovider.acceptpolicy) {
                                 Utils(context).customLoading();
                                 try {
                                   await authprovider.signup(
@@ -269,9 +303,10 @@ class _SignupState extends State<Signup> {
                                 Navigator.pop(context);
                               }
                             },
-                            child: Text(
-                              AppLocalizations.of(context)!.signupbutton,
-                            ),
+                            text: AppLocalizations.of(context)!.signupbutton,
+                          ),
+                          const SizedBox(
+                            height: 10,
                           ),
                           TextButton(
                             onPressed: () {
@@ -280,7 +315,10 @@ class _SignupState extends State<Signup> {
                             child: Text(
                               AppLocalizations.of(context)!.haveaccount,
                             ),
-                          )
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
                         ],
                       ),
                     )

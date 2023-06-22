@@ -133,6 +133,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("প্রথম নাম আবশ্যক"),
         "forgotpassword":
             MessageLookupByLibrary.simpleMessage("পাসওয়ার্ড ভুলে গেছেন"),
+        "forgotpasswordSnakeBar": MessageLookupByLibrary.simpleMessage(
+            "অনুগ্রহপূর্বক আপনার ইমেইল চেক করুন"),
         "generatePdfButton":
             MessageLookupByLibrary.simpleMessage("পিডিএফ তৈরি করুন"),
         "getpredictionresultbutton":
@@ -280,6 +282,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "supervisorname":
             MessageLookupByLibrary.simpleMessage("শারমিন আক্তারের"),
         "systemTheme": MessageLookupByLibrary.simpleMessage("সিস্টেম থিম"),
+        "termsconditionSnakeBar":
+            MessageLookupByLibrary.simpleMessage("শর্তাবলী স্বীকার করুন"),
         "theme": MessageLookupByLibrary.simpleMessage("থিম"),
         "unabletoloadImage":
             MessageLookupByLibrary.simpleMessage("ছবি লোড করা সম্বব হচ্ছে না"),

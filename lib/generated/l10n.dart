@@ -1120,6 +1120,26 @@ class S {
     );
   }
 
+  /// `Please check your email`
+  String get forgotpasswordSnakeBar {
+    return Intl.message(
+      'Please check your email',
+      name: 'forgotpasswordSnakeBar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please accept terms & conditions`
+  String get termsconditionSnakeBar {
+    return Intl.message(
+      'Please accept terms & conditions',
+      name: 'termsconditionSnakeBar',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `days`
   String get days {
     return Intl.message(

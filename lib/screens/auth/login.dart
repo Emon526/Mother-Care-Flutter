@@ -8,6 +8,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../const/consts.dart';
 import '../../providers/authprovider.dart';
 import '../../utils/utils.dart';
+import '../../widget/customexpandedbutton.dart';
 import '../../widget/responsivesnackbar.dart';
 import 'forgotpassword.dart';
 import 'signup.dart';
@@ -168,7 +169,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                 )
                               ],
                             ),
-                            ElevatedButton(
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            CustomExpanedButton(
                               onPressed: () async {
                                 if (_formKey.currentState!.validate()) {
                                   // Show circular indicator while checking login credentials
@@ -189,9 +193,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                   Navigator.pop(context);
                                 }
                               },
-                              child: Text(
-                                AppLocalizations.of(context)!.loginbutton,
-                              ),
+                              text: AppLocalizations.of(context)!.loginbutton,
+                            ),
+                            const SizedBox(
+                              height: 20,
                             ),
                             TextButton(
                               onPressed: () {

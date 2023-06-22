@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:mothercare/widget/customexpandedbutton.dart';
 import 'package:provider/provider.dart';
 
 import '../../const/consts.dart';
@@ -31,7 +32,7 @@ class OnBoardingScreen extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Column(
                   children: [
                     _logo(
@@ -55,31 +56,19 @@ class OnBoardingScreen extends StatelessWidget {
                     const SizedBox(
                       height: 20,
                     ),
-                    Card(
-                      child: InkWell(
-                        onTap: () {
-                          // Navigator.of(context).pushAndRemoveUntil(
-                          //   CupertinoPageRoute(
-                          //       builder: (_) => const IntroductionPage()),
-                          //   (Route<dynamic> route) => false,
-                          // );
-                          Navigator.of(context).push(
-                            CupertinoPageRoute(
-                                builder: (_) => const IntroductionPage()),
-                          );
-                        },
-                        borderRadius:
-                            BorderRadius.circular(Consts.DefaultBorderRadius),
-                        child: ListTile(
-                          title: Text(
-                            AppLocalizations.of(context)!.nextbutton,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
+                    CustomExpanedButton(
+                      onPressed: () {
+                        // Navigator.of(context).pushAndRemoveUntil(
+                        //   CupertinoPageRoute(
+                        //       builder: (_) => const IntroductionPage()),
+                        //   (Route<dynamic> route) => false,
+                        // );
+                        Navigator.of(context).push(
+                          CupertinoPageRoute(
+                              builder: (_) => const IntroductionPage()),
+                        );
+                      },
+                      text: AppLocalizations.of(context)!.nextbutton,
                     ),
                     const SizedBox(
                       height: 5,

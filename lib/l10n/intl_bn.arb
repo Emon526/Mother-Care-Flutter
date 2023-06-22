@@ -106,6 +106,8 @@
 "addReminderTimeError":"একটি সময় পছন্দ করুন",
 "addReminderSnakeBar":"আপনাকে {duration} পরে মনে করিয়ে দেওয়া হবে",
 "pickimageSnakeBar":"একটি প্রোফাইল ফটো নির্বাচন করুন",
+"forgotpasswordSnakeBar":"অনুগ্রহপূর্বক আপনার ইমেইল চেক করুন",
+"termsconditionSnakeBar":"শর্তাবলী স্বীকার করুন",
 "days":"দিন",
 "hours":"ঘন্টা",
 "minutes":"মিনিট",

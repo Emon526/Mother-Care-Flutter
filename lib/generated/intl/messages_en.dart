@@ -131,6 +131,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("First Name is required"),
         "forgotpassword":
             MessageLookupByLibrary.simpleMessage("Forgot Password"),
+        "forgotpasswordSnakeBar":
+            MessageLookupByLibrary.simpleMessage("Please check your email"),
         "generatePdfButton":
             MessageLookupByLibrary.simpleMessage("Generate Pdf"),
         "getpredictionresultbutton":
@@ -269,6 +271,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "specialist": MessageLookupByLibrary.simpleMessage("Specialist"),
         "supervisorname": MessageLookupByLibrary.simpleMessage("Sharmin Akter"),
         "systemTheme": MessageLookupByLibrary.simpleMessage("System"),
+        "termsconditionSnakeBar": MessageLookupByLibrary.simpleMessage(
+            "Please accept terms & conditions"),
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
         "unabletoloadImage":
             MessageLookupByLibrary.simpleMessage("Unable to load image"),

@@ -30,6 +30,13 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  bool _acceptpolicy = true;
+  bool get acceptpolicy => _acceptpolicy;
+  set acceptpolicy(bool value) {
+    _acceptpolicy = value;
+    notifyListeners();
+  }
+
   void rememberme({required bool rememberme}) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool('rememberme', rememberme);
