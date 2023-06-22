@@ -1,19 +1,22 @@
-# Mother Care
+# Mother Care - Breast Cancer Prediction
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Emon526/Mother-Care-Flutter/blob/master/LICENSE) 
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Emon526/Mother-Care-Flutter/blob/main/LICENSE)
 [![GitHub Issues](https://img.shields.io/github/issues/Emon526/Mother-Care-Flutter.svg)](https://github.com/Emon526/Mother-Care-Flutter/issues)
 [![GitHub Forks](https://img.shields.io/github/forks/Emon526/Mother-Care-Flutter.svg)](https://github.com/Emon526/Mother-Care-Flutter/network)
 [![GitHub Stars](https://img.shields.io/github/stars/Emon526/Mother-Care-Flutter.svg)](https://github.com/Emon526/Mother-Care-Flutter/stargazers)
 
-Mother Care is a [Flutter](https://flutter.dev/) project focused on providing essential resources and support for expecting mothers and newborns. The app aims to provide a comprehensive platform that includes features such as tracking pregnancy progress, accessing helpful articles, connecting with healthcare professionals, and more.
+Mother Care is an ML-based application designed to help detect breast cancer in its early stages using mammography images. It also includes a special feature for self-breast check. In addition to the prediction capabilities, the application provides a range of features to support users in managing their breast health and accessing important resources.
 
 ## Features
 
-- Pregnancy tracking and milestone reminders
-- Educational articles and resources for new parents
-- Appointment scheduling with healthcare professionals
-- Community forum for sharing experiences and seeking advice
-- Push notifications for important updates and reminders
+- Breast cancer prediction using ML algorithms and mammography images
+- Self-breast check with guided instructions and tips for early detection
+- Login and sign up functionality to personalize user experience
+- Breast cancer articles and resources for educational purposes
+- Doctor appointment scheduling with the ability to filter doctors by specialization
+- Reminder creation for self-breast checks and medical appointments
+- Support for multiple languages to cater to a diverse user base
+- Theme customization options to enhance user experience
 
 ## Installation
 
