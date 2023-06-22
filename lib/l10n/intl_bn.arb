@@ -121,6 +121,7 @@
 "uploadimage":"চিত্র আপলোড",
 "changeimage":"ছবি পরিবর্তন করুন",
 "mammographyNote":"একটি {mammogram} দ্বারা রোগীর ছবি তোলা উচিত",
+"mammographymodeldownloading":"মডেল ডাউনলোড হচ্ছে",
 "getpredictionresultbutton":"বিশ্লেষণ ফলাফল",
 "predictionresult":"বিশ্লেষণ ফলাফল",
 "generatePdfButton":"পিডিএফ তৈরি করুন",

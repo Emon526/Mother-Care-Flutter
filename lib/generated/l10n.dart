@@ -1270,6 +1270,16 @@ class S {
     );
   }
 
+  /// `Downloading Model`
+  String get mammographymodeldownloading {
+    return Intl.message(
+      'Downloading Model',
+      name: 'mammographymodeldownloading',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Get Analysis Result`
   String get getpredictionresultbutton {
     return Intl.message(

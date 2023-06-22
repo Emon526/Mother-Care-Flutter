@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:provider/provider.dart';
@@ -53,15 +54,22 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
         // centerTitle: true,
       ),
       body: context.watch<ModelProvider>().isDownloading
-          ? const Center(
+          ? Center(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  CircularProgressIndicator(),
-                  SizedBox(
+                  SpinKitDoubleBounce(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                  const SizedBox(
                     height: 10,
                   ),
-                  Text('Downloading Model')
+                  Text(
+                    AppLocalizations.of(context)!.mammographymodeldownloading,
+                    style: TextStyle(
+                      color: Theme.of(context).primaryColor,
+                    ),
+                  )
                 ],
               ),
             )

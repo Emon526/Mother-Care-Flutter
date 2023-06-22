@@ -180,6 +180,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "mammogramHintTitle":
             MessageLookupByLibrary.simpleMessage("একটি ম্যামোগ্রাম কি?"),
         "mammographyNote": m1,
+        "mammographymodeldownloading":
+            MessageLookupByLibrary.simpleMessage("মডেল ডাউনলোড হচ্ছে"),
         "mammographyscreening":
             MessageLookupByLibrary.simpleMessage("ম্যামোগ্রাফি বিশ্লেষণ"),
         "minutes": MessageLookupByLibrary.simpleMessage("মিনিট"),

@@ -121,6 +121,7 @@
 "uploadimage":"Upload Image",
 "changeimage":"Change Image",
 "mammographyNote":"The Patient should be photographed by a {mammogram}",
+"mammographymodeldownloading":"Downloading Model",
 "getpredictionresultbutton":"Get Analysis Result",
 "predictionresult":"Analysis Result",
 "generatePdfButton":"Generate Pdf",
