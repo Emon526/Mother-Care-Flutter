@@ -206,71 +206,31 @@ class SettingScreen extends StatelessWidget {
         Utils(context).boldsentenceword(
           text: AppLocalizations.of(context)!.creditBody,
           boldTextList: [
-            AppLocalizations.of(context)!.creditdevelopername1,
-            AppLocalizations.of(context)!.creditdevelopername2,
-            AppLocalizations.of(context)!.creditdevelopername3,
-            AppLocalizations.of(context)!.supervisorname,
+            {
+              'text': AppLocalizations.of(context)!.creditdevelopername1,
+              'url': Consts.CREDIT_DEVELOPER1_URL,
+            },
+            {
+              'text': AppLocalizations.of(context)!.creditdevelopername2,
+              'url': Consts.CREDIT_DEVELOPER2_URL,
+            },
+            {
+              'text': AppLocalizations.of(context)!.creditdevelopername3,
+              'url': Consts.CREDIT_DEVELOPER3_URL,
+            },
+            {
+              'text': AppLocalizations.of(context)!.supervisorname,
+              'url': Consts.CREDIT_SUPERVISOR_URL,
+            },
           ],
           textAlign: TextAlign.center,
         ),
         const SizedBox(
           height: 20,
         ),
-        // Text(
-        //   AppLocalizations.of(context)!.creditdeveloper,
-        //   style: const TextStyle(
-        //     fontWeight: FontWeight.bold,
-        //   ),
-        // ),
-        // const SizedBox(
-        //   height: 10,
-        // ),
-        // _submittedBy(
-        //   context: context,
-        //   name: AppLocalizations.of(context)!.creditdevelopername1,
-        // ),
-        // const SizedBox(
-        //   height: 10,
-        // ),
-        // _submittedBy(
-        //   context: context,
-        //   name: AppLocalizations.of(context)!.creditdevelopername2,
-        // ),
-        // const SizedBox(
-        //   height: 10,
-        // ),
-        // Text(
-        //   AppLocalizations.of(context)!.and,
-        //   style: const TextStyle(
-        //     fontWeight: FontWeight.bold,
-        //   ),
-        // ),
-        // const SizedBox(
-        //   height: 10,
-        // ),
-        // _submittedBy(
-        //   context: context,
-        //   name: AppLocalizations.of(context)!.creditdevelopername3,
-        // ),
-        // const SizedBox(
-        //   height: 20,
-        // ),
       ],
     );
   }
-
-  // _submittedBy({
-  //   required String name,
-  //   required BuildContext context,
-  // }) {
-  //   return Column(
-  //     children: [
-  //       Text(name),
-  //       Text(AppLocalizations.of(context)!.creditdeveloperdepartment),
-  //       Text(AppLocalizations.of(context)!.creditdeveloperuniversity),
-  //     ],
-  //   );
-  // }
 
   _buildListtile({
     required IconData iconData,
