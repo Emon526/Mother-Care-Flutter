@@ -1,11 +1,16 @@
+import 'dart:developer';
+
+import 'package:flutter/gestures.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../const/consts.dart';
 import '../providers/languageprovider.dart';
+import '../widget/responsivesnackbar.dart';
 
 class Utils {
   BuildContext context;
@@ -170,77 +175,6 @@ class Utils {
     return bengaliTranslation;
   }
 
-  RichText boldsentenceword({
-    required String text,
-    required List<String> boldTextList,
-    TextAlign? textAlign,
-  }) {
-    List<InlineSpan> spans = [];
-
-    // Iterate through the text and check for matches with the bold text list
-    int startIndex = 0;
-    int endIndex = 0;
-
-    while (startIndex < text.length) {
-      bool foundMatch = false;
-
-      // Check for matches with each item in the bold text list
-      for (String boldText in boldTextList) {
-        endIndex = startIndex + boldText.length;
-
-        if (endIndex <= text.length &&
-            text.substring(startIndex, endIndex) == boldText) {
-          // Add the regular text part before the bold text
-          if (startIndex > 0 && startIndex > endIndex) {
-            spans.add(TextSpan(
-              text: text.substring(0, startIndex),
-              style: TextStyle(
-                color: Theme.of(context).primaryColor,
-              ),
-            ));
-          }
-
-          // Add the bold text part
-          spans.add(TextSpan(
-            text: text.substring(startIndex, endIndex),
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              // color: Colors.red,
-            ),
-          ));
-
-          startIndex = endIndex;
-          foundMatch = true;
-          break;
-        }
-      }
-
-      if (!foundMatch) {
-        endIndex = startIndex + 1;
-
-        // Add the regular text part
-        spans.add(TextSpan(
-          text: text.substring(startIndex, endIndex),
-          style: TextStyle(
-            color: Theme.of(context).primaryColor,
-          ),
-        ));
-
-        startIndex = endIndex;
-      }
-    }
-
-    return RichText(
-      textAlign: textAlign ?? TextAlign.start,
-      text: TextSpan(
-        children: spans,
-        style: TextStyle(
-          color: Theme.of(context).primaryColor,
-        ),
-      ),
-    );
-  }
-
   String calculateAge({
     required String dateOfBirth,
   }) {
@@ -279,5 +213,120 @@ class Utils {
       context: context,
     )}';
     return ageString;
+  }
+
+  RichText boldsentenceword({
+    required String text,
+    required List<Map<String, String>> boldTextList,
+    TextAlign?
+        textAlign, // Make sure to pass the context when calling this function
+  }) {
+    List<InlineSpan> spans = [];
+
+    // Iterate through the text and check for matches with the bold text list
+    int startIndex = 0;
+    int endIndex = 0;
+
+    while (startIndex < text.length) {
+      bool foundMatch = false;
+
+      // Check for matches with each item in the bold text list
+      for (Map<String, String> boldTextMap in boldTextList) {
+        String boldText = boldTextMap['text']!;
+        String url = boldTextMap['url']!;
+
+        endIndex = startIndex + boldText.length;
+
+        if (endIndex <= text.length &&
+            text.substring(startIndex, endIndex) == boldText) {
+          // Add the regular text part before the bold text
+          if (startIndex > 0 && startIndex > endIndex) {
+            spans.add(TextSpan(
+              text: text.substring(0, startIndex),
+              style: TextStyle(
+                color: Theme.of(context).primaryColor,
+              ),
+            ));
+          }
+
+          spans.add(_buildClickableTextSpan(
+            context,
+            text.substring(startIndex, endIndex),
+            url,
+          ));
+
+          startIndex = endIndex;
+          foundMatch = true;
+          break;
+        }
+      }
+
+      if (!foundMatch) {
+        endIndex = startIndex + 1;
+
+        // Add the regular text part
+        spans.add(TextSpan(
+          text: text.substring(startIndex, endIndex),
+          style: TextStyle(
+            color: Theme.of(context).primaryColor,
+          ),
+        ));
+
+        startIndex = endIndex;
+      }
+    }
+
+    return RichText(
+      textAlign: textAlign ?? TextAlign.start,
+      text: TextSpan(
+        children: spans,
+        style: TextStyle(
+          fontSize: 12,
+          color: Theme.of(context).primaryColor,
+        ),
+      ),
+    );
+  }
+
+  TextSpan _buildClickableTextSpan(
+    BuildContext context,
+    String text,
+    String url,
+  ) {
+    if (url != '') {
+      return TextSpan(
+        text: text,
+        style: TextStyle(
+          color: Theme.of(context).primaryColor,
+          fontWeight: FontWeight.bold,
+          decoration: TextDecoration.underline,
+        ),
+        recognizer: TapGestureRecognizer()
+          ..onTap = () {
+            // Handle the URL press event here
+            _launchURL(url);
+          },
+      );
+    } else {
+      return TextSpan(
+        text: text,
+        style: TextStyle(
+          color: Theme.of(context).primaryColor,
+          fontWeight: FontWeight.bold,
+        ),
+      );
+    }
+  }
+
+  Future<void> _launchURL(String url) async {
+    try {
+      await canLaunchUrl(Uri.parse(url));
+      await launchUrl(Uri.parse(url));
+    } catch (e) {
+      ResponsiveSnackbar.show(
+        context,
+        e.toString(),
+      );
+    }
   }
 }

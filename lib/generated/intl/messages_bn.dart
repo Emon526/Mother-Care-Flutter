@@ -191,6 +191,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "nobutton": MessageLookupByLibrary.simpleMessage("না"),
         "nodoctorfound": MessageLookupByLibrary.simpleMessage(
             "কোন চিকিৎসক খুঁজে পাওয়া যায়নি!"),
+        "notificationsettings":
+            MessageLookupByLibrary.simpleMessage("বিজ্ঞপ্তি সেটিংস"),
         "okbutton": MessageLookupByLibrary.simpleMessage("ঠিক আছে"),
         "passlengthderror": MessageLookupByLibrary.simpleMessage(
             "পাসওয়ার্ড কমপক্ষে ৮ সংখ্যার হতে হবে"),
@@ -206,6 +208,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "predictionresult":
             MessageLookupByLibrary.simpleMessage("বিশ্লেষণ ফলাফল"),
         "prevbutton": MessageLookupByLibrary.simpleMessage("পূর্ববর্তী"),
+        "privacypolicy": MessageLookupByLibrary.simpleMessage("গোপনীয়তা নীতি"),
         "rating": MessageLookupByLibrary.simpleMessage("রেটিং"),
         "readless": MessageLookupByLibrary.simpleMessage(" কম দেখান"),
         "readmore": MessageLookupByLibrary.simpleMessage("আরও পড়ুন"),
@@ -276,6 +279,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "setreminderbutton":
             MessageLookupByLibrary.simpleMessage("একটি রিমাইন্ডার সেট করুন"),
         "settings": MessageLookupByLibrary.simpleMessage("সেটিংস"),
+        "sighupnotice": MessageLookupByLibrary.simpleMessage(
+            "সাইন আপ করার মাধ্যমে, আপনি আমাদের গোপনীয়তা নীতি, পরিষেবার শর্তাবলী এবং বিজ্ঞপ্তি সেটিংস গ্রহণ করতে সম্মতি প্রদান করবেন ৷"),
         "signupbutton": MessageLookupByLibrary.simpleMessage("নিবন্ধন করুন"),
         "skipbutton": MessageLookupByLibrary.simpleMessage("এড়িয়ে যান"),
         "specialist": MessageLookupByLibrary.simpleMessage("বিশেষজ্ঞ"),
@@ -284,6 +289,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "systemTheme": MessageLookupByLibrary.simpleMessage("সিস্টেম থিম"),
         "termsconditionSnakeBar":
             MessageLookupByLibrary.simpleMessage("শর্তাবলী স্বীকার করুন"),
+        "termsservices":
+            MessageLookupByLibrary.simpleMessage("পরিষেবার শর্তাবলী"),
         "theme": MessageLookupByLibrary.simpleMessage("থিম"),
         "unabletoloadImage":
             MessageLookupByLibrary.simpleMessage("ছবি লোড করা সম্বব হচ্ছে না"),

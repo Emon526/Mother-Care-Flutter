@@ -241,7 +241,6 @@ class _SignupState extends State<Signup> {
                           const SizedBox(
                             height: 15,
                           ),
-                          //TODO: signup privacy notice on error show snackbar
                           Row(
                             children: [
                               Checkbox(
@@ -251,15 +250,27 @@ class _SignupState extends State<Signup> {
                                 },
                               ),
                               Flexible(
-                                child: Text(
-                                  'By Sign up, you agree to accept our Privacy Policy,Terms of Service and Notification settings',
-                                  // AppLocalizations.of(context)!.rememberme,
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    // fontWeight: FontWeight.w500,
-                                    color: Theme.of(context).primaryColor,
-                                  ),
-                                ),
+                                child: Utils(context).boldsentenceword(
+                                    text: AppLocalizations.of(context)!
+                                        .sighupnotice,
+                                    boldTextList: [
+                                      {
+                                        'text': AppLocalizations.of(context)!
+                                            .privacypolicy,
+                                        'url': Consts.PRIVACY_POLICY_URL,
+                                      },
+                                      {
+                                        'text': AppLocalizations.of(context)!
+                                            .termsservices,
+                                        'url': Consts.TERMS_CONDITIONS_URL,
+                                      },
+                                      {
+                                        'text': AppLocalizations.of(context)!
+                                            .notificationsettings,
+                                        'url':
+                                            Consts.NOTIFICATIONS_SETTINGS_URL,
+                                      },
+                                    ]),
                               ),
                             ],
                           ),

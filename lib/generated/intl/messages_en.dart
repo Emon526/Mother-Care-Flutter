@@ -187,6 +187,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "nobutton": MessageLookupByLibrary.simpleMessage("NO"),
         "nodoctorfound":
             MessageLookupByLibrary.simpleMessage("No Doctor Found!"),
+        "notificationsettings":
+            MessageLookupByLibrary.simpleMessage("Notification settings"),
         "okbutton": MessageLookupByLibrary.simpleMessage("OK"),
         "passlengthderror": MessageLookupByLibrary.simpleMessage(
             "Password must be at least 8 digits long"),
@@ -202,6 +204,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "predictionresult":
             MessageLookupByLibrary.simpleMessage("Analysis Result"),
         "prevbutton": MessageLookupByLibrary.simpleMessage("Prev"),
+        "privacypolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
         "rating": MessageLookupByLibrary.simpleMessage("Rating"),
         "readless": MessageLookupByLibrary.simpleMessage("show less"),
         "readmore": MessageLookupByLibrary.simpleMessage("read more"),
@@ -266,6 +269,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "setreminderbutton":
             MessageLookupByLibrary.simpleMessage("Set a Reminder"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "sighupnotice": MessageLookupByLibrary.simpleMessage(
+            "By Sign up, you agree to accept our Privacy Policy, Terms of Services and Notification settings"),
         "signupbutton": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "skipbutton": MessageLookupByLibrary.simpleMessage("Skip"),
         "specialist": MessageLookupByLibrary.simpleMessage("Specialist"),
@@ -273,6 +278,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "systemTheme": MessageLookupByLibrary.simpleMessage("System"),
         "termsconditionSnakeBar": MessageLookupByLibrary.simpleMessage(
             "Please accept terms & conditions"),
+        "termsservices":
+            MessageLookupByLibrary.simpleMessage("Terms of Services"),
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
         "unabletoloadImage":
             MessageLookupByLibrary.simpleMessage("Unable to load image"),

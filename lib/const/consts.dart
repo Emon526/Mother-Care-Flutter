@@ -6,12 +6,18 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class Consts {
   static const THEME_STATUS = "THEME_STATUS";
   static const BASE_URL = 'https://mother-care.onrender.com';
+  static const PRIVACY_POLICY_URL = 'https://www.google.com';
+  static const TERMS_CONDITIONS_URL = 'https://www.facebook.com';
+  static const NOTIFICATIONS_SETTINGS_URL = 'https://www.twitter.com';
+
+  static const CREDIT_DEVELOPER1_URL = 'https://github.com/Emon526';
+  static const CREDIT_DEVELOPER2_URL = 'https://github.com/Shahajadahasib';
+  static const CREDIT_DEVELOPER3_URL = 'https://github.com/SabbirHossain18';
+  static const CREDIT_SUPERVISOR_URL =
+      'https://faculty.daffodilvarsity.edu.bd/profile/cse/sharmin-cse.html';
+
   static const APP_NAME = "Mother Care";
   static const LOGO = 'assets/inapplogo.png';
-  static const TITLE_1 = '';
-  static const TITLE_2 = '';
-  static const SUBTITLE_1 = '';
-  static const SUBTITLE_2 = '';
 
   static const MEMMOGRAPHYPREDICTIONMODEL = "breastcancerprediction";
   static const MEMMOGRAPHYPREDICTIONLABEL = "labels.txt";

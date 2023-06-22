@@ -1719,6 +1719,46 @@ class S {
       args: [],
     );
   }
+
+  /// `By Sign up, you agree to accept our Privacy Policy, Terms of Services and Notification settings`
+  String get sighupnotice {
+    return Intl.message(
+      'By Sign up, you agree to accept our Privacy Policy, Terms of Services and Notification settings',
+      name: 'sighupnotice',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Privacy Policy`
+  String get privacypolicy {
+    return Intl.message(
+      'Privacy Policy',
+      name: 'privacypolicy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Terms of Services`
+  String get termsservices {
+    return Intl.message(
+      'Terms of Services',
+      name: 'termsservices',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notification settings`
+  String get notificationsettings {
+    return Intl.message(
+      'Notification settings',
+      name: 'notificationsettings',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -165,7 +165,11 @@
 "passrequirederror":"Password is required",
 "passvaliderror":"Passwords must have at least one special character",
 "passlengthderror":"Password must be at least 8 digits long",
-"passmatcherror":"Password do not match"
+"passmatcherror":"Password do not match",
+"sighupnotice":"By Sign up, you agree to accept our Privacy Policy, Terms of Services and Notification settings",
+"privacypolicy":"Privacy Policy",
+"termsservices":"Terms of Services",
+"notificationsettings":"Notification settings"
 
 
 
