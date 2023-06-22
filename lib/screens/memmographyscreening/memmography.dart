@@ -96,7 +96,12 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
                         text: AppLocalizations.of(context)!.mammographyNote(
                           AppLocalizations.of(context)!.mammogram,
                         ),
-                        boldTextList: [AppLocalizations.of(context)!.mammogram],
+                        boldTextList: [
+                          {
+                            'text': AppLocalizations.of(context)!.mammogram,
+                            'url': '',
+                          },
+                        ],
                       ),
                     )
                   ],
@@ -206,7 +211,11 @@ class _MemmographyPredictionState extends State<MemmographyPrediction> {
                               text: AppLocalizations.of(context)!.whatis(
                                   AppLocalizations.of(context)!.mammogram),
                               boldTextList: [
-                                AppLocalizations.of(context)!.mammogram
+                                {
+                                  'text':
+                                      AppLocalizations.of(context)!.mammogram,
+                                  'url': '',
+                                },
                               ],
                             ),
                           )

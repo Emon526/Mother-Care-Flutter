@@ -66,7 +66,11 @@ class PredictionResult extends StatelessWidget {
                                 AppLocalizations.of(context)!.mammogram,
                               ),
                               boldTextList: [
-                                AppLocalizations.of(context)!.mammogram
+                                {
+                                  'text':
+                                      AppLocalizations.of(context)!.mammogram,
+                                  'url': '',
+                                },
                               ],
                             ),
                           )
