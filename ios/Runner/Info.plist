@@ -56,7 +56,6 @@
 		<array>
 			<string>en</string>
 			<string>de_DE</string>
-			...
 		</array>
 		<key>UIStatusBarHidden</key>
 		<true/>
