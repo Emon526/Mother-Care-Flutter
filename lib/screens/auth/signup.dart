@@ -27,12 +27,12 @@ class Signup extends StatefulWidget {
 
 class _SignupState extends State<Signup> {
   final _formKey = GlobalKey<FormState>();
-  final firstnameController = TextEditingController(text: 'Asraful');
-  final lastnameController = TextEditingController(text: 'Islam');
-  final emailController = TextEditingController(text: 'emonats526@gmail.com');
-  final passController = TextEditingController(text: 'Abc123456@');
-  final confirmpassController = TextEditingController(text: 'Abc123456@');
-  final dobController = TextEditingController(text: 'Tue, 23 May 2023');
+  final firstnameController = TextEditingController();
+  final lastnameController = TextEditingController();
+  final emailController = TextEditingController();
+  final passController = TextEditingController();
+  final confirmpassController = TextEditingController();
+  final dobController = TextEditingController();
   bool _isObscured = true;
   FocusNode dobfocusNode = FocusNode();
   FocusNode confirmpassfocusNode = FocusNode();
