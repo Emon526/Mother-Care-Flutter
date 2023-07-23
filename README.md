@@ -4,6 +4,7 @@
 [![GitHub Issues](https://img.shields.io/github/issues/Emon526/Mother-Care-Flutter.svg)](https://github.com/Emon526/Mother-Care-Flutter/issues)
 [![GitHub Forks](https://img.shields.io/github/forks/Emon526/Mother-Care-Flutter.svg)](https://github.com/Emon526/Mother-Care-Flutter/network)
 [![GitHub Stars](https://img.shields.io/github/stars/Emon526/Mother-Care-Flutter.svg)](https://github.com/Emon526/Mother-Care-Flutter/stargazers)
+[![Releases](https://github.com/Emon526/Mother-Care-Flutter/actions/workflows/release.yml/badge.svg)](https://github.com/Emon526/Mother-Care-Flutter/actions/workflows/release.yml)
 
 Mother Care is an ML-based application designed to help detect breast cancer in its early stages using mammography images. It also includes a special feature for self-breast check. In addition to the prediction capabilities, the application provides a range of features to support users in managing their breast health and accessing important resources.
 
