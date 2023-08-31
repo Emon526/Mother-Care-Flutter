@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -305,12 +307,10 @@ class _SignupState extends State<Signup> {
                                     password: confirmpassController.text.trim(),
                                     profilephoto: pickedimage!,
                                   );
-                                  // ignore: use_build_context_synchronously
                                   Navigator.pop(context);
                                 } on FirebaseAuthException catch (e) {
                                   ResponsiveSnackbar.show(context, e.message!);
                                 }
-                                // ignore: use_build_context_synchronously
                                 Navigator.pop(context);
                               }
                             },

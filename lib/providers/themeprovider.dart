@@ -34,7 +34,9 @@ class ThemeProvider with ChangeNotifier {
 
   getSystemTheme(BuildContext context) {
     _isDarkTheme =
-        WidgetsBinding.instance.window.platformBrightness == Brightness.dark;
+        // WidgetsBinding.instance.window.platformBrightness == Brightness.dark;
+        WidgetsBinding.instance.platformDispatcher.platformBrightness ==
+            Brightness.dark;
     notifyListeners();
   }
 }

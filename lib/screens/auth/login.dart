@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -189,7 +191,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                         context, e.message!);
                                   }
                                   // Close the circular indicator dialog
-                                  // ignore: use_build_context_synchronously
                                   Navigator.pop(context);
                                 }
                               },

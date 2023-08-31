@@ -8,7 +8,6 @@ import 'package:provider/provider.dart';
 import '../models/usermodel.dart';
 import '../providers/authprovider.dart';
 import '../screens/doctors/doctorslist.dart';
-import '../screens/memmographyscreening/memmography.dart';
 import '../screens/reminder/reminderlist.dart';
 import '../screens/settings/settings.dart';
 import '../utils/utils.dart';
@@ -75,18 +74,6 @@ class DrawerWidget extends StatelessWidget {
             //     context.read<ModelProvider>().deleteModel();
             //   },
             // ),
-            _buildListtile(
-              iconData: Icons.insights_outlined,
-              tiletitle: AppLocalizations.of(context)!.mammographyscreening,
-              onTap: () {
-                PersistentNavBarNavigator.pushNewScreen(
-                  context,
-                  screen: const MemmographyPrediction(),
-                  withNavBar: false, // OPTIONAL VALUE. True by default.
-                  pageTransitionAnimation: PageTransitionAnimation.cupertino,
-                );
-              },
-            ),
             _buildListtile(
               iconData: LineIcons.calendarAlt,
               tiletitle: AppLocalizations.of(context)!.reminders,

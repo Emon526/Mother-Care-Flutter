@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'screens/doctors/doctorslist.dart';
-import 'screens/memmographyscreening/memmography.dart';
 import 'screens/reminder/reminder.dart';
 import 'screens/reminder/reminderlist.dart';
 import 'widget/persistent_nav_bar.dart';
@@ -17,10 +16,6 @@ class RouteManager {
       case initialRoute:
         return MaterialPageRoute(
           builder: (context) => const PersistentNavBar(),
-        );
-      case memmographyscreening:
-        return MaterialPageRoute(
-          builder: (context) => const MemmographyPrediction(),
         );
       case doctors:
         return MaterialPageRoute(

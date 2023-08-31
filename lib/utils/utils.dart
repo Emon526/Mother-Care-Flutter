@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
@@ -155,22 +157,6 @@ class Utils {
     var f =
         NumberFormat('###.##', context.read<LanguageProvider>().languageCode);
     return f.format(number);
-  }
-
-//TODO: Translate prediction output Text is not working
-  String translateText({required String string}) {
-    // log(string);
-    var input = string;
-    final bengaliTranslation = Intl.message(
-      input,
-      locale: context.read<LanguageProvider>().languageCode,
-      // args: [],
-      // desc: 'Cancerers',
-    );
-
-    debugPrint(
-        '${context.read<LanguageProvider>().languageCode}: $bengaliTranslation');
-    return bengaliTranslation;
   }
 
   String calculateAge({

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -16,7 +14,6 @@ import 'providers/authprovider.dart';
 import 'providers/breastcancerprovider.dart';
 import 'providers/doctorprovider.dart';
 import 'providers/languageprovider.dart';
-import 'providers/pdfgenerateprovider.dart';
 import 'providers/reminderprovider.dart';
 import 'providers/selfcheckprovider.dart';
 import 'screens/auth/auth.dart';
@@ -25,7 +22,6 @@ import 'services/apiservice.dart';
 import 'services/notificationservice.dart';
 import 'providers/modelprovider.dart';
 import 'providers/nav_bar_provider.dart';
-import 'providers/predictionprovider.dart';
 import 'providers/themeprovider.dart';
 
 void main() async {
@@ -79,13 +75,7 @@ class MyApp extends StatelessWidget {
             create: (_) => ModelProvider(),
           ),
           ChangeNotifierProvider(
-            create: (_) => PredictionProvider(),
-          ),
-          ChangeNotifierProvider(
             create: (_) => ReminderProvider(),
-          ),
-          ChangeNotifierProvider(
-            create: (_) => PdfGenerateProvider(),
           ),
         ],
         builder: (context, child) {
@@ -137,7 +127,6 @@ class MyApp extends StatelessWidget {
 
   void removesplash() async {
     return await Future.delayed(const Duration(seconds: 3), () {
-      log('Splash Remove');
       FlutterNativeSplash.remove();
     });
   }
