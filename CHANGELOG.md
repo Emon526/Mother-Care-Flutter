@@ -1,4 +1,13 @@
-# 1.0.0 (2023-07-23)
+## [1.0.1](https://github.com/Emon526/Mother-Care-Flutter/compare/v1.0.0...v1.0.1) (2023-08-31)
+
+
+### Bug Fixes
+
+* Bug fix and Dependency Update ([6467ba5](https://github.com/Emon526/Mother-Care-Flutter/commit/6467ba5346a821e60932d44290949ecf1750db05))
+
+
+
+# [1.0.0](https://github.com/Emon526/Mother-Care-Flutter/compare/0fb96d777899bbdb3169dfe25b9d14d69ecc5045...v1.0.0) (2023-07-23)
 
 
 ### Bug Fixes
