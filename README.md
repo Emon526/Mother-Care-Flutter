@@ -45,6 +45,43 @@ Mother Care is an ML-based application designed to help detect breast cancer in 
    flutter run
    ```
 
+5. Generate Launcher Icons:
+
+   ```bash
+   dart run flutter_launcher_icons
+   ```
+
+5. Update Pods:
+
+   ```bash
+   cd ios
+   pod cache clean --all
+
+   rm Podfile.lock
+
+   rm -rf .symlinks/
+
+   cd ..
+
+   flutter clean
+
+   flutter pub get
+
+   cd ios
+
+   pod update
+
+   pod repo update
+
+   pod install --repo-update
+
+   pod update
+
+   pod install
+
+   cd ..
+   ```
+
 For detailed instructions, please refer to the [Flutter documentation](https://flutter.dev/docs/get-started/install).
 
 ## Contributing
