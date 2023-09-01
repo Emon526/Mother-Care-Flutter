@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:mothercare/utils/utils.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:provider/provider.dart';
 import '../providers/nav_bar_provider.dart';
 import '../screens/awareness/awareness.dart';
 import '../screens/breastcancer/breastcancer.dart';
 import '../screens/selfcheck/self_check_page.dart';
+import '../utils/utils.dart';
 import 'drawer_widget.dart';
 
 class PersistentNavBar extends StatelessWidget {
