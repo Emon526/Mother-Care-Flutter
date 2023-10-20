@@ -62,6 +62,7 @@ jobs:
 
       - name: Build iOS
         run: |
+          pod repo update
           flutter build ios --release --no-codesign
           cd build/ios/iphoneos
           mkdir Payload
