@@ -37,7 +37,7 @@ void main() async {
       Permission.notification.request();
     }
   });
-  await ApiService.apirequest();
+  ApiService.apirequest();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await NotificationService().initNotification();
   runApp(const MyApp());

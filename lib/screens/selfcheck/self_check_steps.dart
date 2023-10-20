@@ -57,7 +57,9 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
           // finishedStepTextColor: Colors.deepOrange,
           finishedStepBackgroundColor: Theme.of(context).colorScheme.secondary,
           finishedStepBorderColor: Theme.of(context).colorScheme.secondary,
-          defaultLineColor: Theme.of(context).primaryColor,
+          lineStyle: LineStyle(
+            defaultLineColor: Theme.of(context).primaryColor,
+          ),
           // activeStepIconColor: Colors.deepOrange,
           activeStepBorderColor: Theme.of(context).primaryColor,
           activeStepBackgroundColor: Theme.of(context).primaryColor,
