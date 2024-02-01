@@ -49,7 +49,7 @@ class _SignupState extends State<Signup> {
 
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      body: Consumer<AuthProvider>(
+      body: Consumer<AuthrizationProviders>(
         builder: (context, authprovider, child) {
           return SingleChildScrollView(
             child: SafeArea(

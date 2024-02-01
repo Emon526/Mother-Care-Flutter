@@ -36,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
       },
       child: Scaffold(
         resizeToAvoidBottomInset: true,
-        body: Consumer<AuthProvider>(
+        body: Consumer<AuthrizationProviders>(
           builder: (context, authprovider, child) {
             return SingleChildScrollView(
               child: SafeArea(

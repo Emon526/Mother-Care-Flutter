@@ -57,7 +57,7 @@ class MyApp extends StatelessWidget {
             create: (_) => LanguageProvider(),
           ),
           ChangeNotifierProvider(
-            create: (_) => AuthProvider(),
+            create: (_) => AuthrizationProviders(),
           ),
           ChangeNotifierProvider(
             create: (_) => NavBarProvider(),

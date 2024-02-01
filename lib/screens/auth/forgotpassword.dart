@@ -28,7 +28,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
           ),
         ),
       ),
-      body: Consumer<AuthProvider>(
+      body: Consumer<AuthrizationProviders>(
         builder: (context, authprovider, child) {
           return SingleChildScrollView(
             child: SafeArea(

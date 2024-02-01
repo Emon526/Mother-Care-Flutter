@@ -9,7 +9,7 @@ import '../../providers/languageprovider.dart';
 import '../auth/auth.dart';
 
 class IntroductionPage extends StatefulWidget {
-  const IntroductionPage({Key? key}) : super(key: key);
+  const IntroductionPage({super.key});
 
   @override
   IntroductionPageState createState() => IntroductionPageState();

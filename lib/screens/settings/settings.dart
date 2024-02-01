@@ -175,7 +175,7 @@ class SettingScreen extends StatelessWidget {
                   // Show circular indicator while deleting credentials
                   Utils(context).customLoading();
                   try {
-                    await context.read<AuthProvider>().delete();
+                    await context.read<AuthrizationProviders>().delete();
                   } on FirebaseAuthException catch (e) {
                     ResponsiveSnackbar.show(context, e.message!);
                   }

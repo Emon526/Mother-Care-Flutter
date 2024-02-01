@@ -7,11 +7,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/usermodel.dart';
 
-class AuthProvider extends ChangeNotifier {
-  AuthProvider() {
+class AuthrizationProviders extends ChangeNotifier {
+  AuthrizationProviders() {
     getrememberme();
     fatchsaverememberme();
   }
+
   final emailController = TextEditingController();
   final passController = TextEditingController();
   final auth = FirebaseAuth.instance;

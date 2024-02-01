@@ -7,11 +7,11 @@ import '../../widget/persistent_nav_bar.dart';
 import 'login.dart';
 
 class Auth extends StatelessWidget {
-  const Auth({Key? key}) : super(key: key);
+  const Auth({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<AuthProvider>(
+    return Consumer<AuthrizationProviders>(
       builder: (context, value, child) {
         return StreamBuilder<User?>(
           stream: value.auth.userChanges(),

@@ -23,7 +23,7 @@ class DrawerWidget extends StatelessWidget {
       child: SafeArea(
         child: Column(
           children: [
-            Consumer<AuthProvider>(
+            Consumer<AuthrizationProviders>(
               builder: (context, value, child) {
                 return StreamBuilder<UserModel?>(
                   stream: value.getUserData(),
@@ -102,7 +102,7 @@ class DrawerWidget extends StatelessWidget {
               tiletitle: AppLocalizations.of(context)!.logoutbutton,
               iconData: Icons.logout,
               onTap: () async {
-                await context.read<AuthProvider>().logout();
+                await context.read<AuthrizationProviders>().logout();
               },
             ),
           ],
