@@ -121,14 +121,19 @@ class _SelfCheckPageState extends State<SelfCheckPage> {
                 ),
               ],
             ),
+            //TODO:: Navvigation animation fix
             ElevatedButton(
               onPressed: () {
-                PersistentNavBarNavigator.pushNewScreen(
-                  context,
-                  screen: const SelfCheckSteps(),
-                  withNavBar: true, // OPTIONAL VALUE. True by default.
-                  pageTransitionAnimation: PageTransitionAnimation.cupertino,
-                );
+                // PersistentNavBarNavigator.pushNewScreen(
+                //   context,
+                //   screen: const SelfCheckSteps(),
+                //   withNavBar: true, // OPTIONAL VALUE. True by default.
+                //   pageTransitionAnimation: PageTransitionAnimation.cupertino,
+                // );
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SelfCheckSteps()));
               },
               child: Text(AppLocalizations.of(context)!.checkyourselfbutton),
             ),

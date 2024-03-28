@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:easy_stepper/easy_stepper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:provider/provider.dart';
@@ -30,16 +31,26 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      body: _easyStepper(
-        easysteppersteps: easysteppersteps(
-          context: context,
+      appBar: AppBar(
+        //TODO:: Add Self Check Localization
+        title: const Text('Self Check'),
+      ),
+      body: SafeArea(
+        child: _easyStepper(
           size: size,
+          easysteppersteps: easysteppersteps(
+            context: context,
+            size: size,
+          ),
         ),
       ),
     );
   }
 
-  _easyStepper({required List<Widget> easysteppersteps}) {
+  _easyStepper({
+    required List<Widget> easysteppersteps,
+    required Size size,
+  }) {
     return Column(
       children: [
         EasyStepper(
@@ -251,7 +262,7 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
         // easysteppersteps[context.read<SelfCheckProvider>().current],
         const Spacer(),
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(size.width * 0.1),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

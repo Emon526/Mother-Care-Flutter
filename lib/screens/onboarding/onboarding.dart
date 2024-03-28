@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 import '../../const/consts.dart';
 import '../../providers/languageprovider.dart';
+import '../../providers/themeprovider.dart';
 import '../../utils/utils.dart';
 import '../../widget/customexpandedbutton.dart';
 import '../../widget/selectionbuttonwidget.dart';
@@ -13,85 +15,102 @@ import 'introduction.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
-
+//TODO:: Fix pop scope not showing first time in physical device
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    return WillPopScope(
-      onWillPop: () async => await Utils(context).onWillPop(),
-      child: Scaffold(
-        body: SafeArea(
-          child: Stack(
-            alignment: Alignment.bottomCenter,
-            children: [
-              Opacity(
-                opacity: 0.2,
-                child: SvgPicture.asset(
-                  'assets/images/family.svg',
-                  width: size.width,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    _logo(
-                      context: context,
-                      size: size,
+    return Consumer<ThemeProvider>(builder: (context, themeProvider, child) {
+      return PopScope(
+        canPop: false,
+        onPopInvoked: (bool didPop) => Utils(context).onWillPop(),
+        child: Scaffold(
+          body: AnnotatedRegion(
+            value: SystemUiOverlayStyle(
+              systemNavigationBarColor:
+                  themeProvider.isDarkTheme ? Colors.black : Colors.white,
+              systemNavigationBarIconBrightness: themeProvider.isDarkTheme
+                  ? Brightness.light
+                  : Brightness.dark,
+              statusBarColor:
+                  themeProvider.isDarkTheme ? Colors.black : Colors.white,
+              statusBarIconBrightness: themeProvider.isDarkTheme
+                  ? Brightness.light
+                  : Brightness.dark,
+            ),
+            child: SafeArea(
+              child: Stack(
+                alignment: Alignment.bottomCenter,
+                children: [
+                  Opacity(
+                    opacity: 0.2,
+                    child: SvgPicture.asset(
+                      'assets/images/family.svg',
+                      width: size.width,
                     ),
-                    SizedBox(
-                      height: size.height * 0.1,
-                    ),
-                    Text(
-                      AppLocalizations.of(context)!.selectLanguage,
-                      style: TextStyle(
-                        color: Theme.of(context).primaryColor,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    _languagetileWidget(),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    CustomExpanedButton(
-                      onPressed: () {
-                        // Navigator.of(context).pushAndRemoveUntil(
-                        //   CupertinoPageRoute(
-                        //       builder: (_) => const IntroductionPage()),
-                        //   (Route<dynamic> route) => false,
-                        // );
-                        Navigator.of(context).push(
-                          CupertinoPageRoute(
-                              builder: (_) => const IntroductionPage()),
-                        );
-                      },
-                      text: AppLocalizations.of(context)!.nextbutton,
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    Opacity(
-                      opacity: 0.5,
-                      child: Text(
-                        AppLocalizations.of(context)!.languageNote,
-                        style: const TextStyle(
-                          fontSize: 12.0,
-                          // color: Colors.black45,
-                          // fontWeight: FontWeight.bold,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        _logo(
+                          context: context,
+                          size: size,
                         ),
-                      ),
+                        SizedBox(
+                          height: size.height * 0.1,
+                        ),
+                        Text(
+                          AppLocalizations.of(context)!.selectLanguage,
+                          style: TextStyle(
+                            color: Theme.of(context).primaryColor,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        _languagetileWidget(),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        CustomExpanedButton(
+                          onPressed: () {
+                            // Navigator.of(context).pushAndRemoveUntil(
+                            //   CupertinoPageRoute(
+                            //       builder: (_) => const IntroductionPage()),
+                            //   (Route<dynamic> route) => false,
+                            // )
+                            Navigator.of(context).push(
+                              CupertinoPageRoute(
+                                  builder: (_) => const IntroductionPage()),
+                            );
+                          },
+                          text: AppLocalizations.of(context)!.nextbutton,
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        Opacity(
+                          opacity: 0.5,
+                          child: Text(
+                            AppLocalizations.of(context)!.languageNote,
+                            style: const TextStyle(
+                              fontSize: 12.0,
+                              // color: Colors.black45,
+                              // fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 
   _logo({

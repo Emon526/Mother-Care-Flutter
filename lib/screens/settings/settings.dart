@@ -1,9 +1,6 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:line_icons/line_icons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
@@ -54,14 +51,14 @@ class SettingScreen extends StatelessWidget {
                 child: _languagetileWidget(),
               ),
             ),
-            _buildListtile(
-              iconData: LineIcons.code,
-              tiletitle: AppLocalizations.of(context)!.credits,
-              // onTap: () => _credits(context),
-              onTap: () => Utils(context).showCustomDialog(
-                child: _creditWidget(context: context),
-              ),
-            ),
+            // _buildListtile(
+            //   iconData: LineIcons.code,
+            //   tiletitle: AppLocalizations.of(context)!.credits,
+            //   // onTap: () => _credits(context),
+            //   onTap: () => Utils(context).showCustomDialog(
+            //     child: _creditWidget(context: context),
+            //   ),
+            // ),
             _buildListtile(
               iconData: Icons.delete_outline,
               tiletitle: AppLocalizations.of(context)!.deleteaccount,
@@ -76,8 +73,22 @@ class SettingScreen extends StatelessWidget {
             // ),
             const Spacer(),
             _logo(context: context, size: size),
+            _credit(
+              context: context,
+              url: Consts.CREDIT_DEVELOPER1_URL,
+            ),
           ],
         ),
+      ),
+    );
+  }
+
+  _credit({required BuildContext context, required String url}) {
+    return GestureDetector(
+      onTap: () => Utils(context).launchURL(url),
+      child: const Padding(
+        padding: EdgeInsets.all(8.0),
+        child: Text("Made with ❤️ by Asraful"),
       ),
     );
   }
@@ -171,14 +182,14 @@ class SettingScreen extends StatelessWidget {
                 ),
               ),
               TextButton(
-                onPressed: () async {
+                onPressed: () {
                   // Show circular indicator while deleting credentials
                   Utils(context).customLoading();
-                  try {
-                    await context.read<AuthrizationProviders>().delete();
-                  } on FirebaseAuthException catch (e) {
-                    ResponsiveSnackbar.show(context, e.message!);
-                  }
+
+                  context
+                      .read<AuthrizationProviders>()
+                      .delete(context: context);
+
                   Navigator.pop(context);
                   Navigator.of(context).pushAndRemoveUntil(
                     CupertinoPageRoute(builder: (_) => const LoginScreen()),

@@ -72,7 +72,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                               EmailValidator(
                                   errorText: AppLocalizations.of(context)!
                                       .emailvaliderror),
-                            ]),
+                            ]).call,
                             decoration: InputDecoration(
                               labelText: AppLocalizations.of(context)!.email,
                               hintText: AppLocalizations.of(context)!.email,

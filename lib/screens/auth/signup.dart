@@ -49,6 +49,7 @@ class _SignupState extends State<Signup> {
 
     return Scaffold(
       resizeToAvoidBottomInset: true,
+      //TODO:: Add App Bar
       body: Consumer<AuthrizationProviders>(
         builder: (context, authprovider, child) {
           return SingleChildScrollView(
@@ -71,8 +72,9 @@ class _SignupState extends State<Signup> {
                             textCapitalization: TextCapitalization.words,
                             controller: firstnameController,
                             validator: RequiredValidator(
-                                errorText:
-                                    AppLocalizations.of(context)!.addReminder),
+                                    errorText: AppLocalizations.of(context)!
+                                        .addReminder)
+                                .call,
                             decoration: InputDecoration(
                               labelText:
                                   AppLocalizations.of(context)!.firstname,
@@ -95,8 +97,9 @@ class _SignupState extends State<Signup> {
                             textCapitalization: TextCapitalization.words,
                             controller: lastnameController,
                             validator: RequiredValidator(
-                                errorText: AppLocalizations.of(context)!
-                                    .lastnamerequirederror),
+                                    errorText: AppLocalizations.of(context)!
+                                        .lastnamerequirederror)
+                                .call,
                             decoration: InputDecoration(
                               labelText: AppLocalizations.of(context)!.lastname,
                               hintText: AppLocalizations.of(context)!.lastname,
@@ -113,8 +116,9 @@ class _SignupState extends State<Signup> {
                             // textCapitalization: TextCapitalization.words,
                             controller: dobController,
                             validator: RequiredValidator(
-                                errorText: AppLocalizations.of(context)!
-                                    .dobrequirederror),
+                                    errorText: AppLocalizations.of(context)!
+                                        .dobrequirederror)
+                                .call,
                             decoration: InputDecoration(
                               labelText: AppLocalizations.of(context)!.dob,
                               hintText: AppLocalizations.of(context)!.dob,
@@ -143,7 +147,7 @@ class _SignupState extends State<Signup> {
                               EmailValidator(
                                   errorText: AppLocalizations.of(context)!
                                       .emailvaliderror),
-                            ]),
+                            ]).call,
                             decoration: InputDecoration(
                               labelText: AppLocalizations.of(context)!.email,
                               hintText: AppLocalizations.of(context)!.email,
@@ -176,7 +180,7 @@ class _SignupState extends State<Signup> {
                               PatternValidator(r'(?=.*?[#?!@$%^&*-])',
                                   errorText: AppLocalizations.of(context)!
                                       .passvaliderror)
-                            ]),
+                            ]).call,
                             decoration: InputDecoration(
                               labelText: AppLocalizations.of(context)!.password,
                               hintText: AppLocalizations.of(context)!.password,

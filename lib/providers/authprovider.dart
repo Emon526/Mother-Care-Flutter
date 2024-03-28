@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -6,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/usermodel.dart';
+import '../widget/responsivesnackbar.dart';
 
 class AuthrizationProviders extends ChangeNotifier {
   AuthrizationProviders() {
@@ -90,10 +93,15 @@ class AuthrizationProviders extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> delete() async {
-    var user = auth.currentUser!;
-    await user.delete();
-    await deleteUserData(user.uid);
+  void delete({required BuildContext context}) async {
+    try {
+      var user = auth.currentUser!;
+      await user.delete();
+      await deleteUserData(user.uid);
+    } on FirebaseAuthException catch (e) {
+      await ResponsiveSnackbar.show(context, e.message!);
+    }
+
     notifyListeners();
   }
 
