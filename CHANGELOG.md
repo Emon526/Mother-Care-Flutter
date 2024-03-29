@@ -1,3 +1,14 @@
+## [1.0.4](https://github.com/Emon526/Mother-Care-Flutter/compare/v1.0.3...v1.0.4) (2024-03-29)
+
+
+### Bug Fixes
+
+* Bug Fix ([f1fddf2](https://github.com/Emon526/Mother-Care-Flutter/commit/f1fddf2f62b43865340b723d6a37b686397d0ecf))
+* Bug Fix ([10750ab](https://github.com/Emon526/Mother-Care-Flutter/commit/10750ab0ec7d8cb36d2be135ca576cc2087a9dce))
+* Updated to latest Flutter Sdk ([039ec21](https://github.com/Emon526/Mother-Care-Flutter/commit/039ec21bd298ec67a3908d7ce47d142a3d2bad4f))
+
+
+
 ## [1.0.3](https://github.com/Emon526/Mother-Care-Flutter/compare/v1.0.2...v1.0.3) (2023-10-21)
 
 
