@@ -170,6 +170,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "locations": MessageLookupByLibrary.simpleMessage("Locations"),
         "loginbutton": MessageLookupByLibrary.simpleMessage("Login"),
         "logoutbutton": MessageLookupByLibrary.simpleMessage("Logout"),
+        "madewithbyasraful":
+            MessageLookupByLibrary.simpleMessage("Made with ❤️ by Asraful"),
         "mammogram": MessageLookupByLibrary.simpleMessage("Mammogram"),
         "mammogramHintBody": MessageLookupByLibrary.simpleMessage(
             "A mammogram is an X-ray picture of the breast. Doctors use a mammogram to look for early signs of breast cancer. Regular mammograms are the best tests doctors have to find breast cancer early, sometimes up to three years before it can be felt."),

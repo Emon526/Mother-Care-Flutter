@@ -1769,6 +1769,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Made with ❤️ by Asraful`
+  String get madewithbyasraful {
+    return Intl.message(
+      'Made with ❤️ by Asraful',
+      name: 'madewithbyasraful',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -5,6 +5,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:provider/provider.dart';
+import '../const/consts.dart';
 import '../models/usermodel.dart';
 import '../providers/authprovider.dart';
 import '../screens/doctors/doctorslist.dart';
@@ -190,6 +191,9 @@ class DrawerWidget extends StatelessWidget {
     required Function onTap,
   }) {
     return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+      ),
       child: InkWell(
         onTap: () {
           onTap();

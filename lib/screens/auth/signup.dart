@@ -49,7 +49,11 @@ class _SignupState extends State<Signup> {
 
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      //TODO:: Add App Bar
+      appBar: AppBar(
+        title: Text(
+          AppLocalizations.of(context)!.signupbutton,
+        ),
+      ),
       body: Consumer<AuthrizationProviders>(
         builder: (context, authprovider, child) {
           return SingleChildScrollView(
@@ -364,111 +368,115 @@ class _SignupState extends State<Signup> {
             horizontal: MediaQuery.of(context).size.width * 0.05,
           ),
           backgroundColor: Theme.of(context).primaryColor,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          DateFormat('yyyy',
-                                  context.read<LanguageProvider>().languageCode)
-                              .format(context
-                                  .watch<ReminderProvider>()
-                                  .seletedDate),
-                          style: const TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                          ),
+          surfaceTintColor: Colors.transparent,
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        DateFormat('yyyy',
+                                context.read<LanguageProvider>().languageCode)
+                            .format(
+                                context.watch<ReminderProvider>().seletedDate),
+                        style: const TextStyle(
+                          fontSize: 14,
+                          color: Colors.white,
                         ),
-                        const SizedBox(
-                          height: 5,
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        DateFormat('EEE, MMM dd',
+                                context.read<LanguageProvider>().languageCode)
+                            .format(
+                                context.watch<ReminderProvider>().seletedDate),
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 30,
+                          color: Colors.white,
                         ),
-                        Text(
-                          DateFormat('EEE, MMM dd',
-                                  context.read<LanguageProvider>().languageCode)
-                              .format(context
-                                  .watch<ReminderProvider>()
-                                  .seletedDate),
-                          style: const TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 30,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  SfDateRangePicker(
-                    cancelText: AppLocalizations.of(context)!.cancelbutton,
-                    confirmText: AppLocalizations.of(context)!.okbutton,
-                    maxDate: date,
-                    onSelectionChanged: (args) {
-                      context.read<ReminderProvider>().seletedDate =
-                          DateTime.parse(args.value.toString());
-                    },
-                    onSubmit: (date) {
-                      DateFormat dateFormat =
-                          DateFormat('EEE, dd MMMM yyyy', 'en');
-                      dobController.text =
-                          dateFormat.format(DateTime.parse(date.toString()));
-
-                      Navigator.pop(context);
-                      //TODO:fix focus
-                      // FocusScope.of(context).requestFocus(emailfocusNode);
-                    },
-                    onCancel: () {
-                      Navigator.pop(context);
-                    },
-                    headerStyle: const DateRangePickerHeaderStyle(
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                SfDateRangePicker(
+                  backgroundColor: Theme.of(context).primaryColor,
+                  cancelText: AppLocalizations.of(context)!.cancelbutton,
+                  confirmText: AppLocalizations.of(context)!.okbutton,
+                  maxDate: date,
+                  onSelectionChanged: (args) {
+                    context.read<ReminderProvider>().seletedDate =
+                        DateTime.parse(args.value.toString());
+                  },
+                  monthViewSettings: const DateRangePickerMonthViewSettings(
+                    viewHeaderStyle: DateRangePickerViewHeaderStyle(
                       textStyle: TextStyle(
                         color: Colors.white,
                       ),
                     ),
-                    selectionTextStyle: TextStyle(
-                      color: Theme.of(context).primaryColor,
-                    ),
-                    monthCellStyle: const DateRangePickerMonthCellStyle(
-                      todayTextStyle: TextStyle(
-                        color: Colors.white,
-                      ),
-                      textStyle: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                    yearCellStyle: DateRangePickerYearCellStyle(
-                      textStyle: const TextStyle(
-                        color: Colors.white,
-                      ),
-                      todayTextStyle: TextStyle(
-                        color: Theme.of(context).colorScheme.secondary,
-                      ),
-                    ),
-                    selectionColor: Theme.of(context).colorScheme.secondary,
-                    todayHighlightColor: Colors.white,
-                    showActionButtons: true,
-                    enablePastDates: true,
-                    showNavigationArrow: true,
-                    selectionMode: DateRangePickerSelectionMode.single,
-                    view: DateRangePickerView.month,
-                    initialDisplayDate: date,
-                    initialSelectedDate: date,
-                    navigationDirection:
-                        DateRangePickerNavigationDirection.vertical,
-                    navigationMode: DateRangePickerNavigationMode.snap,
                   ),
-                ],
-              ),
+                  onSubmit: (date) {
+                    DateFormat dateFormat =
+                        DateFormat('EEE, dd MMMM yyyy', 'en');
+                    dobController.text =
+                        dateFormat.format(DateTime.parse(date.toString()));
+                    Navigator.pop(context);
+                    //TODO:fix focus for emailfocus node
+                    // FocusScope.of(context).requestFocus(emailfocusNode);
+                  },
+                  onCancel: () {
+                    Navigator.pop(context);
+                  },
+                  headerStyle: DateRangePickerHeaderStyle(
+                    textStyle: const TextStyle(
+                      color: Colors.white,
+                    ),
+                    backgroundColor: Theme.of(context).primaryColor,
+                  ),
+                  selectionTextStyle: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                  monthCellStyle: const DateRangePickerMonthCellStyle(
+                    todayTextStyle: TextStyle(
+                      color: Colors.white,
+                    ),
+                    textStyle: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  yearCellStyle: DateRangePickerYearCellStyle(
+                    textStyle: const TextStyle(
+                      color: Colors.white,
+                    ),
+                    todayTextStyle: TextStyle(
+                      color: Theme.of(context).colorScheme.secondary,
+                    ),
+                  ),
+                  selectionColor: Theme.of(context).colorScheme.secondary,
+                  todayHighlightColor: Colors.white,
+                  showActionButtons: true,
+                  enablePastDates: true,
+                  showNavigationArrow: true,
+                  selectionMode: DateRangePickerSelectionMode.single,
+                  view: DateRangePickerView.month,
+                  initialDisplayDate: date,
+                  initialSelectedDate: date,
+                  navigationDirection:
+                      DateRangePickerNavigationDirection.vertical,
+                  navigationMode: DateRangePickerNavigationMode.snap,
+                ),
+              ],
             ),
           ),
         );

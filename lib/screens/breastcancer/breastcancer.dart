@@ -79,6 +79,10 @@ class BreastCancerPage extends StatelessWidget {
                 shrinkWrap: true,
                 itemBuilder: (context, index) => ShimmerWidget(
                       child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.circular(Consts.DefaultBorderRadius),
+                        ),
                         child: Stack(
                           children: [
                             ExpansionTile(
@@ -97,6 +101,9 @@ class BreastCancerPage extends StatelessWidget {
   Widget responsiveArticleTile(
       {required ArticleModel article, required String locale}) {
     return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+      ),
       child: ExpansionTile(
         trailing: const SizedBox(),
         textColor: Colors.white,
@@ -105,7 +112,6 @@ class BreastCancerPage extends StatelessWidget {
           article.articleTitle[locale]!,
           style: const TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 20,
           ),
         ),
         children: [
@@ -202,7 +208,7 @@ class BreastCancerPage extends StatelessWidget {
             style: const TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.white,
-              fontSize: 18,
+              // fontSize: 18,
             )));
       }
     }
@@ -211,7 +217,7 @@ class BreastCancerPage extends StatelessWidget {
       TextSpan(children: spans),
       style: const TextStyle(
         color: Colors.white,
-        fontSize: 18,
+        // fontSize: 18,
       ),
     );
   }

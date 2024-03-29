@@ -174,6 +174,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "locations": MessageLookupByLibrary.simpleMessage("স্থানসমূহ"),
         "loginbutton": MessageLookupByLibrary.simpleMessage("প্রবেশ করুন"),
         "logoutbutton": MessageLookupByLibrary.simpleMessage("প্রস্থান"),
+        "madewithbyasraful": MessageLookupByLibrary.simpleMessage(
+            "আশ্রাফুল ❤️ দিয়ে তৈরি করেছেন"),
         "mammogram": MessageLookupByLibrary.simpleMessage("ম্যামোগ্রাম"),
         "mammogramHintBody": MessageLookupByLibrary.simpleMessage(
             "একটি ম্যামোগ্রাম হল স্তনের একটি এক্স-রে ছবি। স্তন ক্যান্সারের প্রাথমিক লক্ষণগুলি দেখতে চিকিৎসকরা একটি ম্যামোগ্রাম ব্যবহার করেন। নিয়মিত ম্যামোগ্রাম হল সর্বোত্তম পরীক্ষা যা চিকিৎসকদের স্তন ক্যান্সারের প্রথম দিকে খুঁজে বের করতে হয়, কখনও কখনও এটি অনুভব করার তিন বছর আগে পর্যন্ত।"),

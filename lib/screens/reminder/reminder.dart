@@ -220,108 +220,113 @@ class _ReminderState extends State<Reminder> {
             horizontal: MediaQuery.of(context).size.width * 0.05,
           ),
           backgroundColor: Theme.of(context).primaryColor,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          DateFormat('yyyy',
-                                  context.read<LanguageProvider>().languageCode)
-                              .format(context
-                                  .watch<ReminderProvider>()
-                                  .seletedDate),
-                          style: const TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                          ),
+          surfaceTintColor: Colors.transparent,
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        DateFormat('yyyy',
+                                context.read<LanguageProvider>().languageCode)
+                            .format(
+                                context.watch<ReminderProvider>().seletedDate),
+                        style: const TextStyle(
+                          fontSize: 14,
+                          color: Colors.white,
                         ),
-                        const SizedBox(
-                          height: 5,
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        DateFormat('EEE, MMM dd',
+                                context.read<LanguageProvider>().languageCode)
+                            .format(
+                                context.watch<ReminderProvider>().seletedDate),
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 30,
+                          color: Colors.white,
                         ),
-                        Text(
-                          DateFormat('EEE, MMM dd',
-                                  context.read<LanguageProvider>().languageCode)
-                              .format(context
-                                  .watch<ReminderProvider>()
-                                  .seletedDate),
-                          style: const TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 30,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  SfDateRangePicker(
-                    cancelText: AppLocalizations.of(context)!.cancelbutton,
-                    confirmText: AppLocalizations.of(context)!.okbutton,
-                    onSelectionChanged: (args) {
-                      context.read<ReminderProvider>().seletedDate =
-                          DateTime.parse(args.value.toString());
-                    },
-                    onSubmit: (date) {
-                      dateController.text = Utils(context).formatDate(
-                        dateTime: DateTime.parse(
-                          date.toString(),
-                        ),
-                      );
-                      Navigator.pop(context);
-                    },
-                    onCancel: () {
-                      Navigator.pop(context);
-                    },
-                    headerStyle: const DateRangePickerHeaderStyle(
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                SfDateRangePicker(
+                  backgroundColor: Theme.of(context).primaryColor,
+                  cancelText: AppLocalizations.of(context)!.cancelbutton,
+                  confirmText: AppLocalizations.of(context)!.okbutton,
+                  onSelectionChanged: (args) {
+                    context.read<ReminderProvider>().seletedDate =
+                        DateTime.parse(args.value.toString());
+                  },
+                  onSubmit: (date) {
+                    dateController.text = Utils(context).formatDate(
+                      dateTime: DateTime.parse(
+                        date.toString(),
+                      ),
+                    );
+                    Navigator.pop(context);
+                  },
+                  onCancel: () {
+                    Navigator.pop(context);
+                  },
+                  monthViewSettings: const DateRangePickerMonthViewSettings(
+                    viewHeaderStyle: DateRangePickerViewHeaderStyle(
                       textStyle: TextStyle(
                         color: Colors.white,
                       ),
                     ),
-                    selectionTextStyle: TextStyle(
-                      color: Theme.of(context).primaryColor,
-                    ),
-                    monthCellStyle: const DateRangePickerMonthCellStyle(
-                      todayTextStyle: TextStyle(
-                        color: Colors.white,
-                      ),
-                      textStyle: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                    yearCellStyle: DateRangePickerYearCellStyle(
-                      textStyle: const TextStyle(
-                        color: Colors.white,
-                      ),
-                      todayTextStyle: TextStyle(
-                        color: Theme.of(context).colorScheme.secondary,
-                      ),
-                    ),
-                    selectionColor: Theme.of(context).colorScheme.secondary,
-                    todayHighlightColor: Colors.white,
-                    showActionButtons: true,
-                    enablePastDates: false,
-                    showNavigationArrow: true,
-                    selectionMode: DateRangePickerSelectionMode.single,
-                    view: DateRangePickerView.month,
-                    initialDisplayDate: DateTime.now(),
-                    initialSelectedDate: DateTime.now(),
-                    navigationDirection:
-                        DateRangePickerNavigationDirection.vertical,
-                    navigationMode: DateRangePickerNavigationMode.snap,
                   ),
-                ],
-              ),
+                  headerStyle: DateRangePickerHeaderStyle(
+                    textStyle: const TextStyle(
+                      color: Colors.white,
+                    ),
+                    backgroundColor: Theme.of(context).primaryColor,
+                  ),
+                  selectionTextStyle: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                  monthCellStyle: const DateRangePickerMonthCellStyle(
+                    todayTextStyle: TextStyle(
+                      color: Colors.white,
+                    ),
+                    textStyle: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  yearCellStyle: DateRangePickerYearCellStyle(
+                    textStyle: const TextStyle(
+                      color: Colors.white,
+                    ),
+                    todayTextStyle: TextStyle(
+                      color: Theme.of(context).colorScheme.secondary,
+                    ),
+                  ),
+                  selectionColor: Theme.of(context).colorScheme.secondary,
+                  todayHighlightColor: Colors.white,
+                  showActionButtons: true,
+                  enablePastDates: false,
+                  showNavigationArrow: true,
+                  selectionMode: DateRangePickerSelectionMode.single,
+                  view: DateRangePickerView.month,
+                  initialDisplayDate: DateTime.now(),
+                  initialSelectedDate: DateTime.now(),
+                  navigationDirection:
+                      DateRangePickerNavigationDirection.vertical,
+                  navigationMode: DateRangePickerNavigationMode.snap,
+                ),
+              ],
             ),
           ),
         );

@@ -13,6 +13,7 @@ class Styles {
       floatingActionButtonTheme: FloatingActionButtonThemeData(
         backgroundColor:
             isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor,
+        foregroundColor: isDarkTheme ? Colors.white : Colors.white,
       ),
       brightness: isDarkTheme ? Brightness.dark : Brightness.light,
       visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -230,6 +231,9 @@ class Styles {
         ),
       ),
       listTileTheme: ListTileThemeData(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+        ),
         textColor: isDarkTheme ? Colors.white : Colors.white,
         iconColor: isDarkTheme ? Colors.white : Colors.white,
       ),

@@ -13,8 +13,9 @@ class SelfCheckFinish extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          //TODO:: Add Self Check Localization
-          title: const Text("Self Check"),
+          title: Text(
+            AppLocalizations.of(context)!.selfcheck,
+          ),
         ),
         body: Padding(
           padding: const EdgeInsets.all(16.0),

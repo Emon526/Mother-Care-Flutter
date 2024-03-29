@@ -1,7 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:easy_stepper/easy_stepper.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:provider/provider.dart';
@@ -32,8 +31,9 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
 
     return Scaffold(
       appBar: AppBar(
-        //TODO:: Add Self Check Localization
-        title: const Text('Self Check'),
+        title: Text(
+          AppLocalizations.of(context)!.selfcheck,
+        ),
       ),
       body: SafeArea(
         child: _easyStepper(

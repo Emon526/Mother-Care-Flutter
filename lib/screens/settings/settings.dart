@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -10,7 +9,6 @@ import '../../providers/languageprovider.dart';
 import '../../providers/nav_bar_provider.dart';
 import '../../providers/themeprovider.dart';
 import '../../utils/utils.dart';
-import '../../widget/responsivesnackbar.dart';
 import '../../widget/selectionbuttonwidget.dart';
 import '../auth/login.dart';
 
@@ -77,6 +75,9 @@ class SettingScreen extends StatelessWidget {
               context: context,
               url: Consts.CREDIT_DEVELOPER1_URL,
             ),
+            SizedBox(
+              height: size.height * 0.01,
+            )
           ],
         ),
       ),
@@ -86,9 +87,15 @@ class SettingScreen extends StatelessWidget {
   _credit({required BuildContext context, required String url}) {
     return GestureDetector(
       onTap: () => Utils(context).launchURL(url),
-      child: const Padding(
-        padding: EdgeInsets.all(8.0),
-        child: Text("Made with ❤️ by Asraful"),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
+          AppLocalizations.of(context)!.madewithbyasraful,
+          style: TextStyle(
+            color: Theme.of(context).primaryColor,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
     );
   }
@@ -208,40 +215,40 @@ class SettingScreen extends StatelessWidget {
     );
   }
 
-  Widget _creditWidget({
-    required BuildContext context,
-  }) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Utils(context).boldsentenceword(
-          text: AppLocalizations.of(context)!.creditBody,
-          boldTextList: [
-            {
-              'text': AppLocalizations.of(context)!.creditdevelopername1,
-              'url': Consts.CREDIT_DEVELOPER1_URL,
-            },
-            {
-              'text': AppLocalizations.of(context)!.creditdevelopername2,
-              'url': Consts.CREDIT_DEVELOPER2_URL,
-            },
-            {
-              'text': AppLocalizations.of(context)!.creditdevelopername3,
-              'url': Consts.CREDIT_DEVELOPER3_URL,
-            },
-            {
-              'text': AppLocalizations.of(context)!.supervisorname,
-              'url': Consts.CREDIT_SUPERVISOR_URL,
-            },
-          ],
-          textAlign: TextAlign.center,
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-      ],
-    );
-  }
+  // Widget _creditWidget({
+  //   required BuildContext context,
+  // }) {
+  //   return Column(
+  //     mainAxisSize: MainAxisSize.min,
+  //     children: [
+  //       Utils(context).boldsentenceword(
+  //         text: AppLocalizations.of(context)!.creditBody,
+  //         boldTextList: [
+  //           {
+  //             'text': AppLocalizations.of(context)!.creditdevelopername1,
+  //             'url': Consts.CREDIT_DEVELOPER1_URL,
+  //           },
+  //           {
+  //             'text': AppLocalizations.of(context)!.creditdevelopername2,
+  //             'url': Consts.CREDIT_DEVELOPER2_URL,
+  //           },
+  //           {
+  //             'text': AppLocalizations.of(context)!.creditdevelopername3,
+  //             'url': Consts.CREDIT_DEVELOPER3_URL,
+  //           },
+  //           {
+  //             'text': AppLocalizations.of(context)!.supervisorname,
+  //             'url': Consts.CREDIT_SUPERVISOR_URL,
+  //           },
+  //         ],
+  //         textAlign: TextAlign.center,
+  //       ),
+  //       const SizedBox(
+  //         height: 20,
+  //       ),
+  //     ],
+  //   );
+  // }
 
   _buildListtile({
     required IconData iconData,
@@ -249,7 +256,11 @@ class SettingScreen extends StatelessWidget {
     required Function onTap,
   }) {
     return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+      ),
       child: InkWell(
+        borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
         onTap: () {
           onTap();
         },
