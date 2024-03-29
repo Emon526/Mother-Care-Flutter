@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/gestures.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class Utils {
   Utils(this.context);
   Size get getScreenSize => MediaQuery.of(context).size;
 
-  onWillPop() async {
+  void onWillPop() async {
     return showCustomDialog(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -49,7 +50,7 @@ class Utils {
                 ),
               ),
               TextButton(
-                onPressed: () => Navigator.of(context).pop(true),
+                onPressed: () => SystemNavigator.pop(),
                 child: Text(
                   AppLocalizations.of(context)!.yesbutton,
                   style: TextStyle(color: Theme.of(context).primaryColor),
@@ -288,7 +289,7 @@ class Utils {
         recognizer: TapGestureRecognizer()
           ..onTap = () {
             // Handle the URL press event here
-            _launchURL(url);
+            launchURL(url);
           },
       );
     } else {
@@ -302,7 +303,7 @@ class Utils {
     }
   }
 
-  Future<void> _launchURL(String url) async {
+  Future<void> launchURL(String url) async {
     try {
       await canLaunchUrl(Uri.parse(url));
       await launchUrl(Uri.parse(url));

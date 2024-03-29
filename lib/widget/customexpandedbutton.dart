@@ -17,10 +17,10 @@ class CustomExpanedButton extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: Text(
             text,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
+            // textAlign: TextAlign.center,
+            // style: const TextStyle(
+            //   fontWeight: FontWeight.bold,
+            // ),
           ),
         ),
       ),

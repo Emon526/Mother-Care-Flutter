@@ -29,7 +29,6 @@ class LanguageProvider extends ChangeNotifier {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool('isBoardingCompleate', isBoardingCompleate);
     savelanguage(languageCode: _languageCode);
-    notifyListeners();
   }
 
   void savelanguage({required String languageCode}) async {

@@ -87,7 +87,7 @@ class Awareness extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  context.read<NavBarProvider>().setControllerIndex = 1;
+                  context.read<NavBarProvider>().selectedIndex = 1;
                 },
                 child: Text(
                   AppLocalizations.of(context)!.learnmorebutton,
@@ -134,7 +134,7 @@ class Awareness extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  context.read<NavBarProvider>().setControllerIndex = 2;
+                  context.read<NavBarProvider>().selectedIndex = 2;
                 },
                 child: Text(
                   AppLocalizations.of(context)!.howtoselfcheckbutton,

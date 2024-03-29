@@ -29,14 +29,17 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    return WillPopScope(
-      onWillPop: () async {
-        return await Utils(context)
-            .onWillPop(); // Allow popping the current route
-      },
-      child: Scaffold(
-        resizeToAvoidBottomInset: true,
-        body: Consumer<AuthrizationProviders>(
+    // return WillPopScope(
+    //   onWillPop: () async {
+    //     return await Utils(context)
+    //         .onWillPop(); // Allow popping the current route
+    //   },
+    return Scaffold(
+      resizeToAvoidBottomInset: true,
+      body: PopScope(
+        canPop: false,
+        onPopInvoked: (bool didPop) => Utils(context).onWillPop(),
+        child: Consumer<AuthrizationProviders>(
           builder: (context, authprovider, child) {
             return SingleChildScrollView(
               child: SafeArea(
@@ -56,6 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Column(
                           children: [
                             TextFormField(
+                              // style: TextStyle(color: Colors.white),
                               textInputAction: TextInputAction.next,
                               onTap: () => setState(() {}),
                               onEditingComplete: () {
@@ -74,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 EmailValidator(
                                     errorText: AppLocalizations.of(context)!
                                         .emailvaliderror),
-                              ]),
+                              ]).call,
                               decoration: InputDecoration(
                                 labelText: AppLocalizations.of(context)!.email,
                                 hintText: AppLocalizations.of(context)!.email,
@@ -103,7 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 PatternValidator(r'(?=.*?[#?!@$%^&*-])',
                                     errorText: AppLocalizations.of(context)!
                                         .passvaliderror)
-                              ]),
+                              ]).call,
                               decoration: InputDecoration(
                                 labelText:
                                     AppLocalizations.of(context)!.password,

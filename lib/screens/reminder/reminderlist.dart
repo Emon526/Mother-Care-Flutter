@@ -4,6 +4,7 @@ import 'package:line_icons/line_icons.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:provider/provider.dart';
 
+import '../../const/consts.dart';
 import '../../providers/reminderprovider.dart';
 import '../../services/notificationservice.dart';
 import '../../utils/utils.dart';
@@ -53,84 +54,66 @@ class ReminderList extends StatelessWidget {
                   var reminder =
                       context.watch<ReminderProvider>().reminders[index];
                   return Card(
-                    child: Material(
-                      color: Theme.of(context).primaryColor,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Flex(
-                              direction: Axis.horizontal,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Flexible(
-                                  child: Text(
-                                    reminder.reminderTitle,
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
-                                      fontSize: 18,
-                                    ),
-                                  ),
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    context
-                                        .read<ReminderProvider>()
-                                        .deleteReminder(
-                                          id: reminder.reminderId,
-                                        );
-                                    NotificationService()
-                                        .deleteScheduleNotification(
-                                      id: reminder.reminderId,
-                                    );
-                                  },
-                                  child: const Icon(
-                                    Icons.delete_outline,
+                    shape: RoundedRectangleBorder(
+                      borderRadius:
+                          BorderRadius.circular(Consts.DefaultBorderRadius),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Flex(
+                            direction: Axis.horizontal,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Flexible(
+                                child: Text(
+                                  reminder.reminderTitle,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
                                     color: Colors.white,
+                                    fontSize: 18,
                                   ),
                                 ),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Flex(
-                              direction: Axis.horizontal,
-                              children: [
-                                Flexible(
-                                  child: Row(
-                                    children: [
-                                      const Icon(
-                                        LineIcons.calendar,
-                                        color: Colors.white,
-                                      ),
-                                      const SizedBox(
-                                        width: 5,
-                                      ),
-                                      Text(
-                                        Utils(context).formatDate(
-                                          dateTime: reminder.reminderDateTime,
-                                        ),
-                                        style: const TextStyle(
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  context
+                                      .read<ReminderProvider>()
+                                      .deleteReminder(
+                                        id: reminder.reminderId,
+                                      );
+                                  NotificationService()
+                                      .deleteScheduleNotification(
+                                    id: reminder.reminderId,
+                                  );
+                                },
+                                child: const Icon(
+                                  Icons.delete_outline,
+                                  color: Colors.white,
                                 ),
-                                Row(
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Flex(
+                            direction: Axis.horizontal,
+                            children: [
+                              Flexible(
+                                child: Row(
                                   children: [
                                     const Icon(
-                                      LineIcons.clock,
+                                      LineIcons.calendar,
                                       color: Colors.white,
                                     ),
                                     const SizedBox(
                                       width: 5,
                                     ),
                                     Text(
-                                      Utils(context).formatTime(
+                                      Utils(context).formatDate(
                                         dateTime: reminder.reminderDateTime,
                                       ),
                                       style: const TextStyle(
@@ -139,10 +122,29 @@ class ReminderList extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                              ],
-                            ),
-                          ],
-                        ),
+                              ),
+                              Row(
+                                children: [
+                                  const Icon(
+                                    LineIcons.clock,
+                                    color: Colors.white,
+                                  ),
+                                  const SizedBox(
+                                    width: 5,
+                                  ),
+                                  Text(
+                                    Utils(context).formatTime(
+                                      dateTime: reminder.reminderDateTime,
+                                    ),
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                   );

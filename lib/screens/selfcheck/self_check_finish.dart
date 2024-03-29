@@ -12,81 +12,88 @@ class SelfCheckFinish extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          title: Text(
+            AppLocalizations.of(context)!.selfcheck,
+          ),
+        ),
         body: Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Text(
-            AppLocalizations.of(context)!.selfCheckFinishTitle,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 22.0,
-              color: Theme.of(context).primaryColor,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Text(
-              AppLocalizations.of(context)!.selfCheckFinishBody,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
-            ),
-          ),
-          Column(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              ElevatedButton(
-                onPressed: () {
-                  PersistentNavBarNavigator.pushNewScreen(
-                    context,
-                    screen: const Reminder(),
-                    withNavBar: false, // OPTIONAL VALUE. True by default.
-                    pageTransitionAnimation: PageTransitionAnimation.cupertino,
-                  );
-                },
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(AppLocalizations.of(context)!.setreminderbutton),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    const Icon(
-                      LineIcons.calendarAlt,
-                    ),
-                  ],
+              Text(
+                AppLocalizations.of(context)!.selfCheckFinishTitle,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 22.0,
+                  color: Theme.of(context).primaryColor,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  PersistentNavBarNavigator.pushNewScreen(
-                    context,
-                    screen: const DoctorsList(),
-                    withNavBar: false, // OPTIONAL VALUE. True by default.
-                    pageTransitionAnimation: PageTransitionAnimation.cupertino,
-                  );
-                },
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(AppLocalizations.of(context)!.consultdoctorbutton),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    const Icon(
-                      LineIcons.stethoscope,
-                    ),
-                  ],
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Text(
+                  AppLocalizations.of(context)!.selfCheckFinishBody,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
                 ),
               ),
+              Column(
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      PersistentNavBarNavigator.pushNewScreen(
+                        context,
+                        screen: const Reminder(),
+                        withNavBar: false, // OPTIONAL VALUE. True by default.
+                        pageTransitionAnimation:
+                            PageTransitionAnimation.cupertino,
+                      );
+                    },
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(AppLocalizations.of(context)!.setreminderbutton),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        const Icon(
+                          LineIcons.calendarAlt,
+                        ),
+                      ],
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      PersistentNavBarNavigator.pushNewScreen(
+                        context,
+                        screen: const DoctorsList(),
+                        withNavBar: false, // OPTIONAL VALUE. True by default.
+                        pageTransitionAnimation:
+                            PageTransitionAnimation.cupertino,
+                      );
+                    },
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(AppLocalizations.of(context)!.consultdoctorbutton),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        const Icon(
+                          LineIcons.stethoscope,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              )
             ],
-          )
-        ],
-      ),
-    ));
+          ),
+        ));
   }
 }

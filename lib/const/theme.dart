@@ -13,6 +13,7 @@ class Styles {
       floatingActionButtonTheme: FloatingActionButtonThemeData(
         backgroundColor:
             isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor,
+        foregroundColor: isDarkTheme ? Colors.white : Colors.white,
       ),
       brightness: isDarkTheme ? Brightness.dark : Brightness.light,
       visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -25,6 +26,7 @@ class Styles {
           ),
       scaffoldBackgroundColor: isDarkTheme ? Colors.black : Colors.white,
       appBarTheme: AppBarTheme(
+        centerTitle: true,
         titleTextStyle: TextStyle(
           color: isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor,
           fontSize: 18,
@@ -33,6 +35,9 @@ class Styles {
         actionsIconTheme: IconThemeData(
           color: isDarkTheme ? Colors.white : Colors.black,
         ),
+        surfaceTintColor: Colors.transparent,
+        // color: isDarkTheme ? Colors.black : Colors.white,
+        // foregroundColor: isDarkTheme ? Colors.black : Colors.white,
         backgroundColor: Colors.transparent,
         shadowColor: Colors.transparent,
         systemOverlayStyle: SystemUiOverlayStyle(
@@ -53,7 +58,9 @@ class Styles {
       progressIndicatorTheme: ProgressIndicatorThemeData(
         color: isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor,
       ),
-
+      dialogTheme: DialogTheme(
+        backgroundColor: isDarkTheme ? Colors.black : Colors.white,
+      ),
       // snackBarTheme: const SnackBarThemeData(
       //   backgroundColor: Colors.deepOrangeAccent,
       //   contentTextStyle: TextStyle(
@@ -98,6 +105,55 @@ class Styles {
         selectionHandleColor:
             isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor,
       ),
+      textTheme: TextTheme(
+        // labelLarge: TextStyle(
+        //   color: isDarkTheme ? Colors.white : Colors.black,
+        //   //   fontSize: 30,
+        //   //   fontStyle: FontStyle.italic,
+        // ),
+        // labelMedium: TextStyle(
+        //   color: isDarkTheme ? Colors.white : Colors.black,
+        // ),
+        // labelSmall: TextStyle(
+        //   color: isDarkTheme ? Colors.white : Colors.black,
+        // ),
+        // titleLarge: TextStyle(
+        //   color: isDarkTheme ? Colors.white : Colors.black,
+        //   //   fontSize: 30,
+        //   //   fontStyle: FontStyle.italic,
+        // ),
+        // titleMedium: TextStyle(
+        //   color: isDarkTheme ? Colors.white : Colors.black,
+        // ),
+        // titleSmall: TextStyle(
+        //   color: isDarkTheme ? Colors.white : Colors.black,
+        // ),
+        // displayLarge: TextStyle(
+        //   color: isDarkTheme ? Colors.white : Colors.black,
+        //   //   fontSize: 72,
+        //   //   fontWeight: FontWeight.bold,
+        // ),
+        // displayMedium: TextStyle(
+        //   color: isDarkTheme ? Colors.white : Colors.black,
+        // ),
+        // displaySmall: TextStyle(
+        //   color: isDarkTheme ? Colors.white : Colors.black,
+        //   //   fontSize: 30,
+        //   //   fontStyle: FontStyle.italic,
+        // ),
+        bodyLarge: TextStyle(
+          color: isDarkTheme ? Colors.white : Colors.black,
+          //   fontSize: 30,
+          //   fontStyle: FontStyle.italic,
+        ),
+        bodySmall: TextStyle(
+          color: isDarkTheme ? Colors.white : Colors.black,
+        ),
+        bodyMedium: TextStyle(
+          color: isDarkTheme ? Colors.white : Colors.black,
+        ),
+      ),
+
       inputDecorationTheme: InputDecorationTheme(
         labelStyle: TextStyle(
           color: isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor,
@@ -156,9 +212,16 @@ class Styles {
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+          ),
+          foregroundColor: Colors.white,
           disabledBackgroundColor: isDarkTheme ? Colors.grey : Colors.grey,
           backgroundColor:
               isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor,
+          // textStyle: const TextStyle(
+          //   fontWeight: FontWeight.bold,
+          // ),
         ),
       ),
       textButtonTheme: TextButtonThemeData(
@@ -168,6 +231,9 @@ class Styles {
         ),
       ),
       listTileTheme: ListTileThemeData(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+        ),
         textColor: isDarkTheme ? Colors.white : Colors.white,
         iconColor: isDarkTheme ? Colors.white : Colors.white,
       ),

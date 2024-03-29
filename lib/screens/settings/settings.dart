@@ -1,9 +1,5 @@
-// ignore_for_file: use_build_context_synchronously
-
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:line_icons/line_icons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
@@ -13,7 +9,6 @@ import '../../providers/languageprovider.dart';
 import '../../providers/nav_bar_provider.dart';
 import '../../providers/themeprovider.dart';
 import '../../utils/utils.dart';
-import '../../widget/responsivesnackbar.dart';
 import '../../widget/selectionbuttonwidget.dart';
 import '../auth/login.dart';
 
@@ -54,14 +49,14 @@ class SettingScreen extends StatelessWidget {
                 child: _languagetileWidget(),
               ),
             ),
-            _buildListtile(
-              iconData: LineIcons.code,
-              tiletitle: AppLocalizations.of(context)!.credits,
-              // onTap: () => _credits(context),
-              onTap: () => Utils(context).showCustomDialog(
-                child: _creditWidget(context: context),
-              ),
-            ),
+            // _buildListtile(
+            //   iconData: LineIcons.code,
+            //   tiletitle: AppLocalizations.of(context)!.credits,
+            //   // onTap: () => _credits(context),
+            //   onTap: () => Utils(context).showCustomDialog(
+            //     child: _creditWidget(context: context),
+            //   ),
+            // ),
             _buildListtile(
               iconData: Icons.delete_outline,
               tiletitle: AppLocalizations.of(context)!.deleteaccount,
@@ -76,7 +71,30 @@ class SettingScreen extends StatelessWidget {
             // ),
             const Spacer(),
             _logo(context: context, size: size),
+            _credit(
+              context: context,
+              url: Consts.CREDIT_DEVELOPER1_URL,
+            ),
+            SizedBox(
+              height: size.height * 0.01,
+            )
           ],
+        ),
+      ),
+    );
+  }
+
+  _credit({required BuildContext context, required String url}) {
+    return GestureDetector(
+      onTap: () => Utils(context).launchURL(url),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
+          AppLocalizations.of(context)!.madewithbyasraful,
+          style: TextStyle(
+            color: Theme.of(context).primaryColor,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );
@@ -171,14 +189,14 @@ class SettingScreen extends StatelessWidget {
                 ),
               ),
               TextButton(
-                onPressed: () async {
+                onPressed: () {
                   // Show circular indicator while deleting credentials
                   Utils(context).customLoading();
-                  try {
-                    await context.read<AuthrizationProviders>().delete();
-                  } on FirebaseAuthException catch (e) {
-                    ResponsiveSnackbar.show(context, e.message!);
-                  }
+
+                  context
+                      .read<AuthrizationProviders>()
+                      .delete(context: context);
+
                   Navigator.pop(context);
                   Navigator.of(context).pushAndRemoveUntil(
                     CupertinoPageRoute(builder: (_) => const LoginScreen()),
@@ -197,40 +215,40 @@ class SettingScreen extends StatelessWidget {
     );
   }
 
-  Widget _creditWidget({
-    required BuildContext context,
-  }) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Utils(context).boldsentenceword(
-          text: AppLocalizations.of(context)!.creditBody,
-          boldTextList: [
-            {
-              'text': AppLocalizations.of(context)!.creditdevelopername1,
-              'url': Consts.CREDIT_DEVELOPER1_URL,
-            },
-            {
-              'text': AppLocalizations.of(context)!.creditdevelopername2,
-              'url': Consts.CREDIT_DEVELOPER2_URL,
-            },
-            {
-              'text': AppLocalizations.of(context)!.creditdevelopername3,
-              'url': Consts.CREDIT_DEVELOPER3_URL,
-            },
-            {
-              'text': AppLocalizations.of(context)!.supervisorname,
-              'url': Consts.CREDIT_SUPERVISOR_URL,
-            },
-          ],
-          textAlign: TextAlign.center,
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-      ],
-    );
-  }
+  // Widget _creditWidget({
+  //   required BuildContext context,
+  // }) {
+  //   return Column(
+  //     mainAxisSize: MainAxisSize.min,
+  //     children: [
+  //       Utils(context).boldsentenceword(
+  //         text: AppLocalizations.of(context)!.creditBody,
+  //         boldTextList: [
+  //           {
+  //             'text': AppLocalizations.of(context)!.creditdevelopername1,
+  //             'url': Consts.CREDIT_DEVELOPER1_URL,
+  //           },
+  //           {
+  //             'text': AppLocalizations.of(context)!.creditdevelopername2,
+  //             'url': Consts.CREDIT_DEVELOPER2_URL,
+  //           },
+  //           {
+  //             'text': AppLocalizations.of(context)!.creditdevelopername3,
+  //             'url': Consts.CREDIT_DEVELOPER3_URL,
+  //           },
+  //           {
+  //             'text': AppLocalizations.of(context)!.supervisorname,
+  //             'url': Consts.CREDIT_SUPERVISOR_URL,
+  //           },
+  //         ],
+  //         textAlign: TextAlign.center,
+  //       ),
+  //       const SizedBox(
+  //         height: 20,
+  //       ),
+  //     ],
+  //   );
+  // }
 
   _buildListtile({
     required IconData iconData,
@@ -238,7 +256,11 @@ class SettingScreen extends StatelessWidget {
     required Function onTap,
   }) {
     return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+      ),
       child: InkWell(
+        borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
         onTap: () {
           onTap();
         },
