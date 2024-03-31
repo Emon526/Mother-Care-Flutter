@@ -26,7 +26,6 @@ class ThemeProvider with ChangeNotifier {
       FlutterNativeSplash.remove();
       debugPrint('remove splash');
     });
-    notifyListeners();
   }
 
   saveTheme({required String themeMode}) async {

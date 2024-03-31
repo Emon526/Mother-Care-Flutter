@@ -78,10 +78,9 @@ class MyApp extends StatelessWidget {
           ),
         ],
         builder: (context, child) {
+          context.read<ThemeProvider>().removesplash();
           return Consumer<ThemeProvider>(
               builder: (context, themeProvider, child) {
-            themeProvider.removesplash();
-
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               title: Consts.APP_NAME,
