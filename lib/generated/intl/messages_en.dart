@@ -43,6 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "addRemindertitleError":
             MessageLookupByLibrary.simpleMessage("Please Enter Title"),
         "age": MessageLookupByLibrary.simpleMessage("Age"),
+        "am": MessageLookupByLibrary.simpleMessage("AM"),
         "and": MessageLookupByLibrary.simpleMessage("And"),
         "applybutton": MessageLookupByLibrary.simpleMessage("Apply"),
         "appname": MessageLookupByLibrary.simpleMessage(" Mother Care"),
@@ -205,6 +206,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "pickimageSnakeBar": MessageLookupByLibrary.simpleMessage(
             "Please select a profile photo"),
+        "pm": MessageLookupByLibrary.simpleMessage("PM"),
         "predictionresult":
             MessageLookupByLibrary.simpleMessage("Analysis Result"),
         "prevbutton": MessageLookupByLibrary.simpleMessage("Prev"),

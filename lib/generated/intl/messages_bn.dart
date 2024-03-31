@@ -43,6 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "addRemindertitleError":
             MessageLookupByLibrary.simpleMessage("অনুগ্রহ করে শিরোনাম লিখুন"),
         "age": MessageLookupByLibrary.simpleMessage("বয়স"),
+        "am": MessageLookupByLibrary.simpleMessage("এ.এম"),
         "and": MessageLookupByLibrary.simpleMessage("এবং"),
         "applybutton": MessageLookupByLibrary.simpleMessage("আবেদন করুন"),
         "appname": MessageLookupByLibrary.simpleMessage("মাদার কেয়ার"),
@@ -209,6 +210,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "password": MessageLookupByLibrary.simpleMessage("পাসওয়ার্ড"),
         "pickimageSnakeBar": MessageLookupByLibrary.simpleMessage(
             "একটি প্রোফাইল ফটো নির্বাচন করুন"),
+        "pm": MessageLookupByLibrary.simpleMessage("পি.এম"),
         "predictionresult":
             MessageLookupByLibrary.simpleMessage("বিশ্লেষণ ফলাফল"),
         "prevbutton": MessageLookupByLibrary.simpleMessage("পূর্ববর্তী"),

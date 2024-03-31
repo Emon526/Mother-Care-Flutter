@@ -4,7 +4,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:intl/intl.dart';
-import 'package:day_night_time_picker/day_night_time_picker.dart';
 
 import '../../const/consts.dart';
 import '../../models/remindermodel.dart';
@@ -13,6 +12,7 @@ import '../../providers/reminderprovider.dart';
 import '../../services/notificationservice.dart';
 import '../../utils/utils.dart';
 import '../../widget/responsivesnackbar.dart';
+import '../../widget/showclockwidget.dart';
 
 class Reminder extends StatefulWidget {
   const Reminder({super.key});
@@ -92,9 +92,7 @@ class _ReminderState extends State<Reminder> {
                       Expanded(
                         child: TextFormField(
                           readOnly: true,
-                          onTap: () => Navigator.of(context).push(
-                            _showClock(),
-                          ),
+                          onTap: () => ShowClockWidget(context, timeController),
                           controller: timeController,
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -163,46 +161,6 @@ class _ReminderState extends State<Reminder> {
             ),
           ),
         ));
-  }
-
-//TODO: fix background color for day-night-time-picker in dark mode
-  //TODO: fix day-night-time-picker localization for am,pm,hour,min and digits
-  _showClock() {
-    return showPicker(
-      // accentColor: Colors.red,
-      // barrierColor: Colors.black,
-      dialogInsetPadding: EdgeInsets.symmetric(
-        horizontal: MediaQuery.of(context).size.width * 0.05,
-      ),
-      height: 390,
-      borderRadius: Consts.DefaultBorderRadius,
-      okText: AppLocalizations.of(context)!.okbutton,
-      cancelText: AppLocalizations.of(context)!.cancelbutton,
-      // hourLabel: 'hour',
-      // minuteLabel: 'min',
-      iosStylePicker: true,
-      context: context,
-      barrierDismissible: false,
-      okStyle: const TextStyle(
-        color: Colors.white,
-        fontWeight: FontWeight.bold,
-      ),
-      cancelStyle: const TextStyle(
-        color: Colors.white,
-        fontWeight: FontWeight.bold,
-      ),
-      value: context.read<ReminderProvider>().time,
-      onChange: (newTime) {
-        context.read<ReminderProvider>().time = newTime;
-      },
-      minuteInterval: TimePickerInterval.ONE,
-
-      onChangeDateTime: (DateTime dateTime) {
-        timeController.text = Utils(context).formatTime(
-          dateTime: dateTime,
-        );
-      },
-    );
   }
 
   // TODO: fix  localization for digits like dates and years

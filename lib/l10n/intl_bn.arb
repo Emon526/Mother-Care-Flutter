@@ -102,6 +102,8 @@
 "addReminderTitle":"শিরোনাম",
 "addReminderDate":"তারিখ",
 "addReminderTime":"সময়",
+"am":"এ.এম",
+"pm":"পি.এম",
 "addRemindertitleError":"অনুগ্রহ করে শিরোনাম লিখুন",
 "addReminderDateError":"একটি তারিখ পছন্দ করুন",
 "addReminderTimeError":"একটি সময় পছন্দ করুন",

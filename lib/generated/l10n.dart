@@ -1070,6 +1070,26 @@ class S {
     );
   }
 
+  /// `AM`
+  String get am {
+    return Intl.message(
+      'AM',
+      name: 'am',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `PM`
+  String get pm {
+    return Intl.message(
+      'PM',
+      name: 'pm',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Please Enter Title`
   String get addRemindertitleError {
     return Intl.message(

@@ -102,6 +102,8 @@
 "addReminderTitle":"Title",
 "addReminderDate":"Date",
 "addReminderTime":"Time",
+"am":"AM",
+"pm":"PM",
 "addRemindertitleError":"Please Enter Title",
 "addReminderDateError":"Please Pick a Date",
 "addReminderTimeError":"Please Pick a Time",
