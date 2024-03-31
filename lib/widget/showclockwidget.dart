@@ -11,10 +11,10 @@ class ShowClockWidget {
   BuildContext context;
   TextEditingController controller;
   ShowClockWidget({required this.context, required this.controller}) {
-    showClock();
+    _showClock();
   }
   //TODO: fix day-night-time-picker localization for digits
-  showClock() {
+  _showClock() {
     Navigator.of(context).push(
       showPicker(
         backgroundColor: Theme.of(context).primaryColor,
