@@ -10,7 +10,7 @@ import '../utils/utils.dart';
 class ShowClockWidget {
   BuildContext context;
   TextEditingController controller;
-  ShowClockWidget(this.context, this.controller) {
+  ShowClockWidget({required this.context, required this.controller}) {
     showClock();
   }
   //TODO: fix day-night-time-picker localization for digits

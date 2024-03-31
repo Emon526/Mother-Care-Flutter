@@ -92,7 +92,10 @@ class _ReminderState extends State<Reminder> {
                       Expanded(
                         child: TextFormField(
                           readOnly: true,
-                          onTap: () => ShowClockWidget(context, timeController),
+                          onTap: () => ShowClockWidget(
+                            context: context,
+                            controller: timeController,
+                          ),
                           controller: timeController,
                           validator: (value) {
                             if (value!.isEmpty) {
