@@ -2,7 +2,6 @@
 
 import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:form_field_validator/form_field_validator.dart';
@@ -10,15 +9,13 @@ import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:random_avatar/random_avatar.dart';
-import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 import '../../const/consts.dart';
 import '../../providers/authprovider.dart';
-import '../../providers/languageprovider.dart';
-import '../../providers/reminderprovider.dart';
 import '../../utils/utils.dart';
 import '../../widget/customexpandedbutton.dart';
 import '../../widget/responsivesnackbar.dart';
+import '../../widget/showcalenderwidget.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -42,7 +39,9 @@ class _SignupState extends State<Signup> {
   FocusNode emailfocusNode = FocusNode();
   ImagePicker picker = ImagePicker();
   File? pickedimage;
-
+  DateTime date = DateTime.now().subtract(
+    const Duration(days: 30),
+  );
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -351,139 +350,6 @@ class _SignupState extends State<Signup> {
     );
   }
 
-  _showCalender() {
-    DateTime date = DateTime.now().subtract(
-      const Duration(days: 30),
-    );
-    return showCupertinoModalPopup<void>(
-      context: context,
-      barrierDismissible: false,
-      barrierColor: Colors.black45,
-      builder: (BuildContext context) {
-        return Dialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
-          ),
-          insetPadding: EdgeInsets.symmetric(
-            horizontal: MediaQuery.of(context).size.width * 0.05,
-          ),
-          backgroundColor: Theme.of(context).primaryColor,
-          surfaceTintColor: Colors.transparent,
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        DateFormat('yyyy',
-                                context.read<LanguageProvider>().languageCode)
-                            .format(
-                                context.watch<ReminderProvider>().seletedDate),
-                        style: const TextStyle(
-                          fontSize: 14,
-                          color: Colors.white,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        DateFormat('EEE, MMM dd',
-                                context.read<LanguageProvider>().languageCode)
-                            .format(
-                                context.watch<ReminderProvider>().seletedDate),
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 30,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                SfDateRangePicker(
-                  backgroundColor: Theme.of(context).primaryColor,
-                  cancelText: AppLocalizations.of(context)!.cancelbutton,
-                  confirmText: AppLocalizations.of(context)!.okbutton,
-                  maxDate: date,
-                  onSelectionChanged: (args) {
-                    context.read<ReminderProvider>().seletedDate =
-                        DateTime.parse(args.value.toString());
-                  },
-                  monthViewSettings: const DateRangePickerMonthViewSettings(
-                    viewHeaderStyle: DateRangePickerViewHeaderStyle(
-                      textStyle: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  onSubmit: (date) {
-                    DateFormat dateFormat =
-                        DateFormat('EEE, dd MMMM yyyy', 'en');
-                    dobController.text =
-                        dateFormat.format(DateTime.parse(date.toString()));
-                    Navigator.pop(context);
-                    //TODO:fix focus for emailfocus node
-                    // FocusScope.of(context).requestFocus(emailfocusNode);
-                  },
-                  onCancel: () {
-                    Navigator.pop(context);
-                  },
-                  headerStyle: DateRangePickerHeaderStyle(
-                    textStyle: const TextStyle(
-                      color: Colors.white,
-                    ),
-                    backgroundColor: Theme.of(context).primaryColor,
-                  ),
-                  selectionTextStyle: TextStyle(
-                    color: Theme.of(context).primaryColor,
-                  ),
-                  monthCellStyle: const DateRangePickerMonthCellStyle(
-                    todayTextStyle: TextStyle(
-                      color: Colors.white,
-                    ),
-                    textStyle: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                  yearCellStyle: DateRangePickerYearCellStyle(
-                    textStyle: const TextStyle(
-                      color: Colors.white,
-                    ),
-                    todayTextStyle: TextStyle(
-                      color: Theme.of(context).colorScheme.secondary,
-                    ),
-                  ),
-                  selectionColor: Theme.of(context).colorScheme.secondary,
-                  todayHighlightColor: Colors.white,
-                  showActionButtons: true,
-                  enablePastDates: true,
-                  showNavigationArrow: true,
-                  selectionMode: DateRangePickerSelectionMode.single,
-                  view: DateRangePickerView.month,
-                  initialDisplayDate: date,
-                  initialSelectedDate: date,
-                  navigationDirection:
-                      DateRangePickerNavigationDirection.vertical,
-                  navigationMode: DateRangePickerNavigationMode.snap,
-                ),
-              ],
-            ),
-          ),
-        );
-      },
-    );
-  }
-
   _profilephoto({
     required BuildContext context,
     required Size size,
@@ -549,5 +415,22 @@ class _SignupState extends State<Signup> {
         error.toString(),
       );
     }
+  }
+
+  _showCalender() {
+    ShowCalenderWidget(
+      context: context,
+      maxDate: date,
+      enablePastDates: true,
+      initialDisplayDate: date,
+      initialSelectedDate: date,
+      onSubmit: (date) {
+        DateFormat dateFormat = DateFormat('EEE, dd MMMM yyyy', 'en');
+        dobController.text = dateFormat.format(DateTime.parse(date.toString()));
+        Navigator.pop(context);
+        //TODO:fix focus for emailfocus node
+        // FocusScope.of(context).requestFocus(emailfocusNode);
+      },
+    );
   }
 }
