@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'const/consts.dart';
@@ -22,6 +21,7 @@ import 'services/notificationservice.dart';
 import 'providers/modelprovider.dart';
 import 'providers/nav_bar_provider.dart';
 import 'providers/themeprovider.dart';
+import 'services/permissionservice.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -31,11 +31,7 @@ void main() async {
   );
 
   tz.initializeTimeZones();
-  await Permission.notification.isDenied.then((value) {
-    if (value) {
-      Permission.notification.request();
-    }
-  });
+
   ApiService.apirequest();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await NotificationService().initNotification();
@@ -79,6 +75,7 @@ class MyApp extends StatelessWidget {
         ],
         builder: (context, child) {
           context.read<ThemeProvider>().removesplash();
+          PermissionService();
           return Consumer<ThemeProvider>(
               builder: (context, themeProvider, child) {
             return MaterialApp(
