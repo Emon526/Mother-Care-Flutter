@@ -17,6 +17,7 @@ class Consts {
 
   static const APP_NAME = "Mother Care";
   static const LOGO = 'assets/inapplogo.png';
+  static const APPID = 'com.asrafulislam.mothercare';
 
   static const MEMMOGRAPHYPREDICTIONMODEL = "breastcancerprediction";
   static const MEMMOGRAPHYPREDICTIONLABEL = "labels.txt";

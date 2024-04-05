@@ -130,7 +130,7 @@ class _ReminderState extends State<Reminder> {
                     height: 20,
                   ),
                   ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
                       if (_reminderformKey.currentState!.validate()) {
                         int id =
                             context.read<ReminderProvider>().reminders.length;
@@ -144,7 +144,7 @@ class _ReminderState extends State<Reminder> {
                               ),
                             );
 
-                        NotificationService().showScheduleNotification(
+                        await NotificationService().showScheduleNotification(
                           id: id,
                           title: AppLocalizations.of(context)!.reminders,
                           body: titleController.text.trim(),
@@ -152,7 +152,7 @@ class _ReminderState extends State<Reminder> {
                           payload: '$reminderDate',
                         );
 
-                        ResponsiveSnackbar.show(
+                        await ResponsiveSnackbar.show(
                           context,
                           AppLocalizations.of(context)!.addReminderSnakeBar(
                             context.read<ReminderProvider>().getDuration(
