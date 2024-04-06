@@ -55,9 +55,9 @@
 			<string>en</string>
 			<string>de_DE</string>
 		</array>
-		<key>UIStatusBarHidden</key>
-		<true/>
+		<!-- <key>UIStatusBarHidden</key>
+		<true/> -->
 		<key>UIViewControllerBasedStatusBarAppearance</key>
-		<false/>
+		<true/>
 	</dict>
 </plist>

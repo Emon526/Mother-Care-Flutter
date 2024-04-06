@@ -36,8 +36,6 @@ class Styles {
           color: isDarkTheme ? Colors.white : Colors.black,
         ),
         surfaceTintColor: Colors.transparent,
-        // color: isDarkTheme ? Colors.black : Colors.white,
-        // foregroundColor: isDarkTheme ? Colors.black : Colors.white,
         backgroundColor: Colors.transparent,
         shadowColor: Colors.transparent,
         systemOverlayStyle: SystemUiOverlayStyle(
@@ -49,9 +47,6 @@ class Styles {
           color: isDarkTheme ? Colors.white : Colors.black,
         ),
       ),
-      // iconTheme: IconThemeData(
-      //   color: isDarkTheme ? Colors.white : Colors.black,
-      // ),
       cardTheme: CardTheme(
         color: isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor,
       ),
