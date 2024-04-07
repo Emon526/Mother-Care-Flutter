@@ -80,10 +80,12 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 flutter_launcher_icons:
-  image_path: "assets/logo.png"
+  # image_path: "assets/logo.png"
+  image_path_android:  "assets/android-logo.png"
+  image_path_ios:  "assets/ios-logo.png"
   adaptive_icon_background: "#ff80ab"
   adaptive_icon_foreground: "assets/logo.png"
-  min_sdk_android: 16 # android min sdk min:16, default 21
+  min_sdk_android: 24 # android min sdk min:16, default 21
   android: true
   ios: true
   remove_alpha_ios: true
