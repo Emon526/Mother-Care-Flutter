@@ -15,7 +15,6 @@ import 'introduction.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
-//TODO:: Fix pop scope not showing first time in physical device
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;

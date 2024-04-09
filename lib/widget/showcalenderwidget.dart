@@ -26,7 +26,7 @@ class ShowCalenderWidget {
   }) {
     _showCalender();
   }
-  // TODO: fix  localization for digits like dates and years
+
   _showCalender() {
     return showCupertinoModalPopup<void>(
       context: context,

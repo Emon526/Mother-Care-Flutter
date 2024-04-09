@@ -13,7 +13,7 @@ class ShowClockWidget {
   ShowClockWidget({required this.context, required this.controller}) {
     _showClock();
   }
-  //TODO: fix day-night-time-picker localization for digits
+
   _showClock() {
     Navigator.of(context).push(
       showPicker(
