@@ -314,4 +314,17 @@ class Utils {
       );
     }
   }
+
+//TODO :: Apply navigator to full project
+  Future<void> pushReplacement({required Widget widget}) async {
+    await Navigator.pushReplacement(
+      context,
+      CupertinoPageRoute(builder: (context) => widget),
+    );
+  }
+
+  Future<void> push({required Widget widget}) async {
+    await Navigator.push(
+        context, CupertinoPageRoute(builder: (context) => widget));
+  }
 }

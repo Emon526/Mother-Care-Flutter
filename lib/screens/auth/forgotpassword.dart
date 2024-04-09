@@ -40,9 +40,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   children: [
                     Text(
                       AppLocalizations.of(context)!.resetpassword,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 24,
+                        color: Theme.of(context).primaryColor,
                       ),
                     ),
                     const SizedBox(

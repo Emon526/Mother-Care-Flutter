@@ -252,8 +252,10 @@ class DoctorsList extends StatelessWidget {
                                   tooltip: (index, value) => value,
                                 ),
                                 choiceStyle: C2ChipStyle.outlined(
-                                  color:
-                                      Theme.of(context).colorScheme.secondary,
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall!
+                                      .color,
                                   borderWidth: 2,
                                   selectedStyle: C2ChipStyle(
                                     borderColor: Theme.of(context).primaryColor,
