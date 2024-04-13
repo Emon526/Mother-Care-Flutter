@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -73,16 +72,9 @@ class OnBoardingScreen extends StatelessWidget {
                           height: 20,
                         ),
                         CustomExpanedButton(
-                          onPressed: () {
-                            // Navigator.of(context).pushAndRemoveUntil(
-                            //   CupertinoPageRoute(
-                            //       builder: (_) => const IntroductionPage()),
-                            //   (Route<dynamic> route) => false,
-                            // )
-                            Navigator.of(context).push(
-                              CupertinoPageRoute(
-                                  builder: (_) => const IntroductionPage()),
-                            );
+                          onPressed: () async {
+                            await Utils(context)
+                                .push(widget: const IntroductionPage());
                           },
                           text: AppLocalizations.of(context)!.nextbutton,
                         ),

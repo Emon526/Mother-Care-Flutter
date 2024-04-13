@@ -3,7 +3,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:provider/provider.dart';
 import '../const/consts.dart';
 import '../models/usermodel.dart';
@@ -59,13 +58,8 @@ class DrawerWidget extends StatelessWidget {
             _buildListtile(
               iconData: LineIcons.stethoscope,
               tiletitle: AppLocalizations.of(context)!.doctors,
-              onTap: () {
-                PersistentNavBarNavigator.pushNewScreen(
-                  context,
-                  screen: const DoctorsList(),
-                  withNavBar: false, // OPTIONAL VALUE. True by default.
-                  pageTransitionAnimation: PageTransitionAnimation.cupertino,
-                );
+              onTap: () async {
+                await Utils(context).push(widget: const DoctorsList());
               },
             ),
             // _buildListtile(
@@ -78,25 +72,15 @@ class DrawerWidget extends StatelessWidget {
             _buildListtile(
               iconData: LineIcons.calendarAlt,
               tiletitle: AppLocalizations.of(context)!.reminders,
-              onTap: () {
-                PersistentNavBarNavigator.pushNewScreen(
-                  context,
-                  screen: const ReminderList(),
-                  withNavBar: false, // OPTIONAL VALUE. True by default.
-                  pageTransitionAnimation: PageTransitionAnimation.cupertino,
-                );
+              onTap: () async {
+                await Utils(context).push(widget: const ReminderList());
               },
             ),
             _buildListtile(
               tiletitle: AppLocalizations.of(context)!.settings,
               iconData: Icons.settings_outlined,
-              onTap: () {
-                PersistentNavBarNavigator.pushNewScreen(
-                  context,
-                  screen: const SettingScreen(),
-                  withNavBar: false, // OPTIONAL VALUE. True by default.
-                  pageTransitionAnimation: PageTransitionAnimation.cupertino,
-                );
+              onTap: () async {
+                await Utils(context).push(widget: const SettingScreen());
               },
             ),
             _buildListtile(

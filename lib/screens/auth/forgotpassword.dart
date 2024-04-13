@@ -3,8 +3,8 @@ import 'package:form_field_validator/form_field_validator.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../providers/authprovider.dart';
+import '../../utils/utils.dart';
 import '../../widget/customexpandedbutton.dart';
-import '../../widget/responsivesnackbar.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({super.key});
@@ -84,16 +84,16 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                             height: 20,
                           ),
                           CustomExpanedButton(
-                            onPressed: () {
+                            onPressed: () async {
                               if (_formKey.currentState!.validate()) {
                                 authprovider
                                     .resetPassword(emailController.text.trim());
-                                ResponsiveSnackbar.show(
-                                  context,
-                                  AppLocalizations.of(context)!
+
+                                Navigator.pop(context);
+                                await Utils(context).showsnackbar(
+                                  message: AppLocalizations.of(context)!
                                       .forgotpasswordSnakeBar,
                                 );
-                                Navigator.pop(context);
                               }
                             },
                             text: AppLocalizations.of(context)!.resetpassword,

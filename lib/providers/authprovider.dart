@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/usermodel.dart';
-import '../widget/responsivesnackbar.dart';
+import '../utils/utils.dart';
 
 class AuthrizationProviders extends ChangeNotifier {
   AuthrizationProviders() {
@@ -99,7 +99,7 @@ class AuthrizationProviders extends ChangeNotifier {
       await user.delete();
       await deleteUserData(user.uid);
     } on FirebaseAuthException catch (e) {
-      await ResponsiveSnackbar.show(context, e.message!);
+      await Utils(context).showsnackbar(message: e.message!);
     }
 
     notifyListeners();

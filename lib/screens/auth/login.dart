@@ -1,7 +1,5 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:form_field_validator/form_field_validator.dart';
@@ -13,7 +11,6 @@ import '../../providers/authprovider.dart';
 import '../../providers/themeprovider.dart';
 import '../../utils/utils.dart';
 import '../../widget/customexpandedbutton.dart';
-import '../../widget/responsivesnackbar.dart';
 import 'forgotpassword.dart';
 import 'signup.dart';
 
@@ -174,11 +171,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                   TextButton(
                                     onPressed: () {
-                                      Navigator.of(context).push(
-                                        CupertinoPageRoute(
-                                            builder: (_) =>
-                                                const ForgotPassword()),
-                                      );
+                                      Utils(context)
+                                          .push(widget: const ForgotPassword());
                                     },
                                     child: Text(
                                       '${AppLocalizations.of(context)!.forgotpassword}?',
@@ -208,11 +202,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                       }
                                       await authprovider.login();
                                     } on FirebaseAuthException catch (e) {
-                                      ResponsiveSnackbar.show(
-                                          context, e.message!);
+                                      _onerror(e.message);
                                     }
                                     // Close the circular indicator dialog
-                                    Navigator.pop(context);
+                                    _stopCustomLoading();
                                   }
                                 },
                                 text: AppLocalizations.of(context)!.loginbutton,
@@ -221,11 +214,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                 height: 20,
                               ),
                               TextButton(
-                                onPressed: () {
-                                  Navigator.of(context).push(
-                                    CupertinoPageRoute(
-                                        builder: (_) => const Signup()),
-                                  );
+                                onPressed: () async {
+                                  await Utils(context)
+                                      .push(widget: const Signup());
                                 },
                                 child: Text(
                                   AppLocalizations.of(context)!
@@ -245,6 +236,14 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  void _onerror(String? message) async {
+    await Utils(context).showsnackbar(message: message!);
+  }
+
+  _stopCustomLoading() {
+    Navigator.pop(context);
   }
 
   _logo({

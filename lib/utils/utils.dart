@@ -63,7 +63,7 @@ class Utils {
     );
   }
 
-  Future customLoading() async {
+  void customLoading() async {
     return await showDialog(
       context: context,
       barrierDismissible: false,

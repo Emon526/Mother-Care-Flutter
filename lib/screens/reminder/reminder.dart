@@ -8,7 +8,6 @@ import '../../providers/languageprovider.dart';
 import '../../providers/reminderprovider.dart';
 import '../../services/notificationservice.dart';
 import '../../utils/utils.dart';
-import '../../widget/responsivesnackbar.dart';
 import '../../widget/showcalenderwidget.dart';
 import '../../widget/showclockwidget.dart';
 
@@ -143,27 +142,15 @@ class _ReminderState extends State<Reminder> {
                                 reminderDateTime: reminderDate,
                               ),
                             );
-
-                        await NotificationService().showScheduleNotification(
-                          id: id,
-                          title: AppLocalizations.of(context)!.reminders,
-                          body: titleController.text.trim(),
-                          scheduleDateTime: reminderDate,
-                          payload: '$reminderDate',
-                        );
-
-                        await ResponsiveSnackbar.show(
-                          context,
-                          AppLocalizations.of(context)!.addReminderSnakeBar(
-                            context.read<ReminderProvider>().getDuration(
-                                context: context,
-                                reminderDate: reminderDate,
-                                local: context
-                                    .read<LanguageProvider>()
-                                    .languageCode),
-                          ),
-                        );
                         Navigator.pop(context);
+                        await showsnackbar(
+                          reminderDate: reminderDate,
+                        );
+
+                        await showsNotification(
+                          id: id,
+                          reminderDate: reminderDate,
+                        );
                       }
                     },
                     child: Text(
@@ -175,6 +162,32 @@ class _ReminderState extends State<Reminder> {
             ),
           ),
         ));
+  }
+
+  Future<void> showsnackbar({
+    required DateTime reminderDate,
+  }) async {
+    await Utils(context).showsnackbar(
+      message: AppLocalizations.of(context)!.addReminderSnakeBar(
+        context.read<ReminderProvider>().getDuration(
+            context: context,
+            reminderDate: reminderDate,
+            local: context.read<LanguageProvider>().languageCode),
+      ),
+    );
+  }
+
+  Future<void> showsNotification({
+    required int id,
+    required DateTime reminderDate,
+  }) async {
+    await NotificationService().showScheduleNotification(
+      id: id,
+      title: AppLocalizations.of(context)!.reminders,
+      body: titleController.text.trim(),
+      scheduleDateTime: reminderDate,
+      payload: '$reminderDate',
+    );
   }
 
   DateTime _getReminderDate() {

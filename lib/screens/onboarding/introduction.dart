@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -6,6 +5,7 @@ import 'package:introduction_screen/introduction_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/languageprovider.dart';
+import '../../utils/utils.dart';
 import '../auth/auth.dart';
 
 class IntroductionPage extends StatefulWidget {
@@ -140,13 +140,9 @@ class IntroductionPageState extends State<IntroductionPage> {
     );
   }
 
-  void _onIntroEnd(BuildContext context) {
-    Navigator.of(context).pushAndRemoveUntil(
-      CupertinoPageRoute(builder: (_) => const Auth()),
-      (Route<dynamic> route) => false,
-    );
-
+  void _onIntroEnd(BuildContext context) async {
     context.read<LanguageProvider>().isBoardingCompleate = true;
-    context.read<LanguageProvider>().boardingCompleated();
+    // context.read<LanguageProvider>().boardingCompleated();
+    await Utils(context).pushUntil(widget: const Auth());
   }
 }

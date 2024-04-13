@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +16,7 @@ class SettingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //TODO::Add profile option
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
@@ -189,7 +189,7 @@ class SettingScreen extends StatelessWidget {
                 ),
               ),
               TextButton(
-                onPressed: () {
+                onPressed: () async {
                   // Show circular indicator while deleting credentials
                   Utils(context).customLoading();
 
@@ -198,10 +198,7 @@ class SettingScreen extends StatelessWidget {
                       .delete(context: context);
 
                   Navigator.pop(context);
-                  Navigator.of(context).pushAndRemoveUntil(
-                    CupertinoPageRoute(builder: (_) => const LoginScreen()),
-                    (Route<dynamic> route) => false,
-                  );
+                  await Utils(context).pushUntil(widget: const LoginScreen());
                 },
                 child: Text(
                   AppLocalizations.of(context)!.yesbutton,

@@ -14,7 +14,6 @@ import '../../const/consts.dart';
 import '../../providers/authprovider.dart';
 import '../../utils/utils.dart';
 import '../../widget/customexpandedbutton.dart';
-import '../../widget/responsivesnackbar.dart';
 import '../../widget/showcalenderwidget.dart';
 
 class Signup extends StatefulWidget {
@@ -289,16 +288,14 @@ class _SignupState extends State<Signup> {
                           CustomExpanedButton(
                             onPressed: () async {
                               pickedimage == null
-                                  ? ResponsiveSnackbar.show(
-                                      context,
-                                      AppLocalizations.of(context)!
+                                  ? await Utils(context).showsnackbar(
+                                      message: AppLocalizations.of(context)!
                                           .pickimageSnakeBar)
                                   : null;
                               authprovider.acceptpolicy
                                   ? null
-                                  : ResponsiveSnackbar.show(
-                                      context,
-                                      AppLocalizations.of(context)!
+                                  : await Utils(context).showsnackbar(
+                                      message: AppLocalizations.of(context)!
                                           .termsconditionSnakeBar,
                                     );
                               if (pickedimage != null &&
@@ -316,7 +313,8 @@ class _SignupState extends State<Signup> {
                                   );
                                   Navigator.pop(context);
                                 } on FirebaseAuthException catch (e) {
-                                  ResponsiveSnackbar.show(context, e.message!);
+                                  await Utils(context)
+                                      .showsnackbar(message: e.message!);
                                 }
                                 Navigator.pop(context);
                               }
@@ -410,9 +408,8 @@ class _SignupState extends State<Signup> {
         pickedimage = File(image.path);
       });
     } catch (error) {
-      ResponsiveSnackbar.show(
-        context,
-        error.toString(),
+      await Utils(context).showsnackbar(
+        message: error.toString(),
       );
     }
   }

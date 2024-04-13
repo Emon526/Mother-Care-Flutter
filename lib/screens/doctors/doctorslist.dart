@@ -1,7 +1,6 @@
 import 'package:chips_choice/chips_choice.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:provider/provider.dart';
 import '../../models/doctormodel.dart';
 import '../../providers/doctorprovider.dart';
@@ -68,16 +67,11 @@ class DoctorsList extends StatelessWidget {
                         var doctordata = filterdoctorList[index];
                         return DoctorCardWidget(
                           doctorModel: doctordata,
-                          onTap: () {
-                            PersistentNavBarNavigator.pushNewScreen(
-                              context,
-                              screen: Doctor(
+                          onTap: () async {
+                            await Utils(context).push(
+                              widget: Doctor(
                                 doctor: doctordata,
                               ),
-                              withNavBar:
-                                  false, // OPTIONAL VALUE. True by default.
-                              pageTransitionAnimation:
-                                  PageTransitionAnimation.cupertino,
                             );
                           },
                         );
@@ -116,16 +110,11 @@ class DoctorsList extends StatelessWidget {
                                 var doctordata = doctors[index];
                                 return DoctorCardWidget(
                                   doctorModel: doctordata,
-                                  onTap: () {
-                                    PersistentNavBarNavigator.pushNewScreen(
-                                      context,
-                                      screen: Doctor(
+                                  onTap: () async {
+                                    await Utils(context).push(
+                                      widget: Doctor(
                                         doctor: doctordata,
                                       ),
-                                      withNavBar:
-                                          false, // OPTIONAL VALUE. True by default.
-                                      pageTransitionAnimation:
-                                          PageTransitionAnimation.cupertino,
                                     );
                                   },
                                 );

@@ -38,7 +38,6 @@ class LanguageProvider extends ChangeNotifier {
 
   getBoarding() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    // _isBoardingCompleate = false;
     _isBoardingCompleate =
         prefs.getBool('isBoardingCompleate') ?? _isBoardingCompleate;
   }
