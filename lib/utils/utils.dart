@@ -1,5 +1,4 @@
-// ignore_for_file: use_build_context_synchronously
-
+import 'package:age_calculator/age_calculator.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -159,39 +158,23 @@ class Utils {
     }
   }
 
-//TODO:: Fix age calculator
   String calculateAge({
     required String dateOfBirth,
   }) {
-    DateTime currentDate = DateTime.now();
-
+    DateDuration duration;
     DateFormat dateFormat = DateFormat('EEE, dd MMMM yyyy', 'en');
     DateTime parsedDate = dateFormat.parse(dateOfBirth);
 
-    int years = currentDate.year - parsedDate.year;
-    int months = currentDate.month - parsedDate.month;
-    int days = currentDate.day - parsedDate.day;
+    duration = AgeCalculator.age(parsedDate);
 
-    if (days < 0) {
-      months--;
-      days += currentDate
-          .difference(
-              DateTime(currentDate.year, currentDate.month - 1, parsedDate.day))
-          .inDays;
-    }
-
-    if (months < 0) {
-      years--;
-      months += 12;
-    }
     String ageString = '${checkEmpty(
-      duration: years,
+      duration: duration.years,
       days: AppLocalizations.of(context)!.year,
     )}${checkEmpty(
-      duration: months,
+      duration: duration.months,
       days: AppLocalizations.of(context)!.month,
     )}${checkEmpty(
-      duration: days,
+      duration: duration.days,
       days: AppLocalizations.of(context)!.day,
     )}';
     return ageString;
@@ -232,7 +215,6 @@ class Utils {
           }
 
           spans.add(_buildClickableTextSpan(
-            context,
             text.substring(startIndex, endIndex),
             url,
           ));
@@ -271,7 +253,6 @@ class Utils {
   }
 
   TextSpan _buildClickableTextSpan(
-    BuildContext context,
     String text,
     String url,
   ) {
@@ -305,10 +286,7 @@ class Utils {
       await canLaunchUrl(Uri.parse(url));
       await launchUrl(Uri.parse(url));
     } catch (e) {
-      ResponsiveSnackbar.show(
-        context,
-        e.toString(),
-      );
+      await showsnackbar(message: e.toString());
     }
   }
 
