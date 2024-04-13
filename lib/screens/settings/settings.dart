@@ -3,84 +3,87 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 import '../../const/consts.dart';
-import '../../providers/authprovider.dart';
 import '../../providers/languageprovider.dart';
 import '../../providers/nav_bar_provider.dart';
 import '../../providers/themeprovider.dart';
 import '../../utils/utils.dart';
-import '../../widget/selectionbuttonwidget.dart';
-import '../auth/login.dart';
+import '../../widget/customdropdownbutton.dart';
+
+import '../../widget/settingsbuttonitemwidget.dart';
+import '../../widget/settingsectionwidget.dart';
+import '../../widget/settingsitemwidget.dart';
+import 'profile.dart';
 
 class SettingScreen extends StatelessWidget {
   const SettingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    //TODO::Add profile option
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(
           AppLocalizations.of(context)!.settings,
         ),
-        // centerTitle: true,
       ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            _buildListtile(
-              tiletitle: AppLocalizations.of(context)!.theme,
-              iconData: context.watch<ThemeProvider>().themeMode ==
-                      ThemeMode.system
-                  ? Icons.phonelink_setup_outlined
-                  : context.watch<ThemeProvider>().themeMode == ThemeMode.light
-                      ? Icons.light_mode_outlined
-                      : Icons.dark_mode_outlined,
-              onTap: () => Utils(context).showCustomDialog(
-                child: _themetileWidget(
-                  context: context,
-                ),
-              ),
-            ),
-            _buildListtile(
-              tiletitle: AppLocalizations.of(context)!.language,
-              iconData: Icons.language_outlined,
-              onTap: () => Utils(context).showCustomDialog(
-                child: _languagetileWidget(),
-              ),
-            ),
-            // _buildListtile(
-            //   iconData: LineIcons.code,
-            //   tiletitle: AppLocalizations.of(context)!.credits,
-            //   // onTap: () => _credits(context),
-            //   onTap: () => Utils(context).showCustomDialog(
-            //     child: _creditWidget(context: context),
-            //   ),
-            // ),
-            _buildListtile(
-              iconData: Icons.delete_outline,
-              tiletitle: AppLocalizations.of(context)!.deleteaccount,
-              onTap: () => Utils(context).showCustomDialog(
-                child: _deleteAccount(context: context),
-              ),
-            ),
-            // _buildListtile(
-            //   iconData: LineIcons.envelope,
-            //   tiletitle: 'Contact Us',
-            //   onTap: () {},
-            // ),
-            const Spacer(),
-            _logo(context: context, size: size),
-            _credit(
-              context: context,
-              url: Consts.CREDIT_DEVELOPER1_URL,
-            ),
-            SizedBox(
-              height: size.height * 0.01,
-            )
-          ],
+      body: Column(
+        children: [
+          _generalSection(context: context),
+          const Spacer(),
+          _logo(context: context, size: size),
+          _credit(
+            context: context,
+            url: Consts.CREDIT_DEVELOPER_URL,
+          ),
+          SizedBox(
+            height: size.height * 0.01,
+          )
+        ],
+      ),
+    );
+  }
+
+  _generalSection({required BuildContext context}) {
+    return SettingsSection(
+      title: AppLocalizations.of(context)!.general,
+      children: [
+        SettingsItem(
+          label: AppLocalizations.of(context)!.theme,
+          child: CustomDropdownButton(
+            value: context.watch<ThemeProvider>().themeMode,
+            items: ThemeMode.values.map((theme) {
+              return DropdownMenuItem(
+                value: theme,
+                alignment: Alignment.center,
+                child: Text(theme == ThemeMode.system
+                    ? AppLocalizations.of(context)!.systemTheme
+                    : theme == ThemeMode.light
+                        ? AppLocalizations.of(context)!.lightTheme
+                        : AppLocalizations.of(context)!.darkTheme),
+              );
+            }).toList(),
+            onChanged: (theme) =>
+                context.read<ThemeProvider>().themeMode = theme,
+          ),
         ),
-      ),
+        SettingsItem(
+          label: AppLocalizations.of(context)!.language,
+          child: CustomDropdownButton(
+            value: context.watch<LanguageProvider>().language,
+            items:
+                context.watch<LanguageProvider>().languageList.map((language) {
+              return DropdownMenuItem(
+                value: language,
+                alignment: Alignment.center,
+                child: Text(language),
+              );
+            }).toList(),
+            onChanged: (language) =>
+                context.read<LanguageProvider>().language = language,
+          ),
+        ),
+      ],
     );
   }
 
@@ -139,252 +142,10 @@ class SettingScreen extends StatelessWidget {
             color: Theme.of(context).primaryColor,
           ),
         ),
-        // const SizedBox(
-        //   height: 10,
-        // ),
-        // const Text(
-        //   'You are using latest version of this application ',
-        //   textAlign: TextAlign.center,
-        //   style: TextStyle(
-        //       // fontWeight: FontWeight.bold,
-        //       ),
-        // ),
         const SizedBox(
           height: 20,
         ),
       ],
     );
-  }
-
-  Widget _deleteAccount({required BuildContext context}) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            AppLocalizations.of(context)!.deleteaccount,
-            style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).primaryColor),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Text(
-            AppLocalizations.of(context)!.deleteaccounttext,
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              TextButton(
-                onPressed: () => Navigator.of(context).pop(false),
-                child: Text(
-                  AppLocalizations.of(context)!.nobutton,
-                  style: TextStyle(color: Theme.of(context).primaryColor),
-                ),
-              ),
-              TextButton(
-                onPressed: () async {
-                  // Show circular indicator while deleting credentials
-                  Utils(context).customLoading();
-
-                  context
-                      .read<AuthrizationProviders>()
-                      .delete(context: context);
-
-                  Navigator.pop(context);
-                  await Utils(context).pushUntil(widget: const LoginScreen());
-                },
-                child: Text(
-                  AppLocalizations.of(context)!.yesbutton,
-                  style: TextStyle(color: Theme.of(context).primaryColor),
-                ),
-              ),
-            ],
-          )
-        ],
-      ),
-    );
-  }
-
-  // Widget _creditWidget({
-  //   required BuildContext context,
-  // }) {
-  //   return Column(
-  //     mainAxisSize: MainAxisSize.min,
-  //     children: [
-  //       Utils(context).boldsentenceword(
-  //         text: AppLocalizations.of(context)!.creditBody,
-  //         boldTextList: [
-  //           {
-  //             'text': AppLocalizations.of(context)!.creditdevelopername1,
-  //             'url': Consts.CREDIT_DEVELOPER1_URL,
-  //           },
-  //           {
-  //             'text': AppLocalizations.of(context)!.creditdevelopername2,
-  //             'url': Consts.CREDIT_DEVELOPER2_URL,
-  //           },
-  //           {
-  //             'text': AppLocalizations.of(context)!.creditdevelopername3,
-  //             'url': Consts.CREDIT_DEVELOPER3_URL,
-  //           },
-  //           {
-  //             'text': AppLocalizations.of(context)!.supervisorname,
-  //             'url': Consts.CREDIT_SUPERVISOR_URL,
-  //           },
-  //         ],
-  //         textAlign: TextAlign.center,
-  //       ),
-  //       const SizedBox(
-  //         height: 20,
-  //       ),
-  //     ],
-  //   );
-  // }
-
-  _buildListtile({
-    required IconData iconData,
-    required String tiletitle,
-    required Function onTap,
-  }) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
-      ),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
-        onTap: () {
-          onTap();
-        },
-        child: ListTile(
-          title: Text(tiletitle),
-          trailing: Icon(iconData),
-        ),
-      ),
-    );
-  }
-
-  _themetileWidget({required BuildContext context}) {
-    return Consumer<ThemeProvider>(builder: (context, provider, child) {
-      return Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              AppLocalizations.of(context)!.selectTheme,
-              style: TextStyle(
-                color: Theme.of(context).primaryColor,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
-                border: Border.all(
-                  color: Theme.of(context).primaryColor,
-                ),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SelectionButtonWidget(
-                    buttontitle: AppLocalizations.of(context)!.systemTheme,
-                    iconCondition: provider.themeMode == ThemeMode.system,
-                    ontap: () {
-                      provider.themeMode = ThemeMode.system;
-                    },
-                  ),
-                  Divider(
-                    color: Theme.of(context).primaryColor,
-                    height: 0,
-                  ),
-                  SelectionButtonWidget(
-                    iconCondition: provider.themeMode == ThemeMode.light,
-                    buttontitle: AppLocalizations.of(context)!.lightTheme,
-                    ontap: () {
-                      provider.themeMode = ThemeMode.light;
-                    },
-                  ),
-                  Divider(
-                    color: Theme.of(context).primaryColor,
-                    height: 0,
-                  ),
-                  SelectionButtonWidget(
-                    iconCondition: provider.themeMode == ThemeMode.dark,
-                    buttontitle: AppLocalizations.of(context)!.darkTheme,
-                    ontap: () {
-                      provider.themeMode = ThemeMode.dark;
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    });
-  }
-
-  _languagetileWidget() {
-    return Consumer<LanguageProvider>(builder: (context, provider, child) {
-      return Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              AppLocalizations.of(context)!.selectLanguage,
-              style: TextStyle(
-                color: Theme.of(context).primaryColor,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
-                border: Border.all(
-                  color: Theme.of(context).primaryColor,
-                ),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SelectionButtonWidget(
-                    buttontitle: 'English',
-                    iconCondition: provider.languageCode == 'en',
-                    ontap: () {
-                      provider.languageCode = 'en';
-                    },
-                  ),
-                  Divider(
-                    color: Theme.of(context).primaryColor,
-                    height: 0,
-                  ),
-                  SelectionButtonWidget(
-                    iconCondition: provider.languageCode == 'bn',
-                    buttontitle: 'বাংলা',
-                    ontap: () {
-                      provider.languageCode = 'bn';
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    });
   }
 }

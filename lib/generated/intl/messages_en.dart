@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "account": MessageLookupByLibrary.simpleMessage("Account"),
         "addReminder": MessageLookupByLibrary.simpleMessage("Add Reminder"),
         "addReminderDate": MessageLookupByLibrary.simpleMessage("Date"),
         "addReminderDateError":
@@ -134,6 +135,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Forgot Password"),
         "forgotpasswordSnakeBar":
             MessageLookupByLibrary.simpleMessage("Please check your email"),
+        "general": MessageLookupByLibrary.simpleMessage("General"),
         "generatePdfButton":
             MessageLookupByLibrary.simpleMessage("Generate Pdf"),
         "getpredictionresultbutton":
@@ -172,7 +174,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginbutton": MessageLookupByLibrary.simpleMessage("Login"),
         "logoutbutton": MessageLookupByLibrary.simpleMessage("Logout"),
         "madewithbyasraful":
-            MessageLookupByLibrary.simpleMessage("Made with ❤️ by Asraful"),
+            MessageLookupByLibrary.simpleMessage("Created with ❤️ by Asraful"),
         "mammogram": MessageLookupByLibrary.simpleMessage("Mammogram"),
         "mammogramHintBody": MessageLookupByLibrary.simpleMessage(
             "A mammogram is an X-ray picture of the breast. Doctors use a mammogram to look for early signs of breast cancer. Regular mammograms are the best tests doctors have to find breast cancer early, sometimes up to three years before it can be felt."),
@@ -195,6 +197,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "notificationsettings":
             MessageLookupByLibrary.simpleMessage("Notification settings"),
         "okbutton": MessageLookupByLibrary.simpleMessage("OK"),
+        "open": MessageLookupByLibrary.simpleMessage("Open"),
         "passlengthderror": MessageLookupByLibrary.simpleMessage(
             "Password must be at least 8 digits long"),
         "passmatcherror":
@@ -211,6 +214,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Analysis Result"),
         "prevbutton": MessageLookupByLibrary.simpleMessage("Prev"),
         "privacypolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
+        "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "rating": MessageLookupByLibrary.simpleMessage("Rating"),
         "readless": MessageLookupByLibrary.simpleMessage("show less"),
         "readmore": MessageLookupByLibrary.simpleMessage("read more"),

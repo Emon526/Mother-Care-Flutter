@@ -151,6 +151,7 @@ class OnBoardingScreen extends StatelessWidget {
               iconCondition: provider.languageCode == 'en',
               ontap: () {
                 provider.languageCode = 'en';
+                provider.language = 'English';
               },
             ),
             Divider(
@@ -162,6 +163,7 @@ class OnBoardingScreen extends StatelessWidget {
               buttontitle: 'বাংলা',
               ontap: () {
                 provider.languageCode = 'bn';
+                provider.language = 'বাংলা';
               },
             ),
           ],

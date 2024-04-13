@@ -101,41 +101,41 @@ class Styles {
             isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor,
       ),
       textTheme: TextTheme(
-        // labelLarge: TextStyle(
-        //   color: isDarkTheme ? Colors.white : Colors.black,
-        //   //   fontSize: 30,
-        //   //   fontStyle: FontStyle.italic,
-        // ),
-        // labelMedium: TextStyle(
-        //   color: isDarkTheme ? Colors.white : Colors.black,
-        // ),
-        // labelSmall: TextStyle(
-        //   color: isDarkTheme ? Colors.white : Colors.black,
-        // ),
-        // titleLarge: TextStyle(
-        //   color: isDarkTheme ? Colors.white : Colors.black,
-        //   //   fontSize: 30,
-        //   //   fontStyle: FontStyle.italic,
-        // ),
-        // titleMedium: TextStyle(
-        //   color: isDarkTheme ? Colors.white : Colors.black,
-        // ),
-        // titleSmall: TextStyle(
-        //   color: isDarkTheme ? Colors.white : Colors.black,
-        // ),
-        // displayLarge: TextStyle(
-        //   color: isDarkTheme ? Colors.white : Colors.black,
-        //   //   fontSize: 72,
-        //   //   fontWeight: FontWeight.bold,
-        // ),
-        // displayMedium: TextStyle(
-        //   color: isDarkTheme ? Colors.white : Colors.black,
-        // ),
-        // displaySmall: TextStyle(
-        //   color: isDarkTheme ? Colors.white : Colors.black,
-        //   //   fontSize: 30,
-        //   //   fontStyle: FontStyle.italic,
-        // ),
+        labelLarge: TextStyle(
+          color: isDarkTheme ? Colors.white : Colors.black,
+          //   fontSize: 30,
+          //   fontStyle: FontStyle.italic,
+        ),
+        labelMedium: TextStyle(
+          color: isDarkTheme ? Colors.white : Colors.black,
+        ),
+        labelSmall: TextStyle(
+          color: isDarkTheme ? Colors.white : Colors.black,
+        ),
+        titleLarge: TextStyle(
+          color: isDarkTheme ? Colors.white : Colors.black,
+          //   fontSize: 30,
+          //   fontStyle: FontStyle.italic,
+        ),
+        titleMedium: TextStyle(
+          color: isDarkTheme ? Colors.white : Colors.black,
+        ),
+        titleSmall: TextStyle(
+          color: isDarkTheme ? Colors.white : Colors.black,
+        ),
+        displayLarge: TextStyle(
+          color: isDarkTheme ? Colors.white : Colors.black,
+          //   fontSize: 72,
+          //   fontWeight: FontWeight.bold,
+        ),
+        displayMedium: TextStyle(
+          color: isDarkTheme ? Colors.white : Colors.black,
+        ),
+        displaySmall: TextStyle(
+          color: isDarkTheme ? Colors.white : Colors.black,
+          //   fontSize: 30,
+          //   fontStyle: FontStyle.italic,
+        ),
         bodyLarge: TextStyle(
           color: isDarkTheme ? Colors.white : Colors.black,
           //   fontSize: 30,

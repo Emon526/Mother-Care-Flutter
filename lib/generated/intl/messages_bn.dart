@@ -28,6 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "account": MessageLookupByLibrary.simpleMessage("অ্যাকাউন্ট"),
         "addReminder":
             MessageLookupByLibrary.simpleMessage("রিমাইন্ডার যোগ করুন"),
         "addReminderDate": MessageLookupByLibrary.simpleMessage("তারিখ"),
@@ -136,6 +137,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("পাসওয়ার্ড ভুলে গেছেন"),
         "forgotpasswordSnakeBar": MessageLookupByLibrary.simpleMessage(
             "অনুগ্রহপূর্বক আপনার ইমেইল চেক করুন"),
+        "general": MessageLookupByLibrary.simpleMessage("সাধারণ"),
         "generatePdfButton":
             MessageLookupByLibrary.simpleMessage("পিডিএফ তৈরি করুন"),
         "getpredictionresultbutton":
@@ -199,6 +201,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "notificationsettings":
             MessageLookupByLibrary.simpleMessage("বিজ্ঞপ্তি সেটিংস"),
         "okbutton": MessageLookupByLibrary.simpleMessage("ঠিক আছে"),
+        "open": MessageLookupByLibrary.simpleMessage("খুলুন"),
         "passlengthderror": MessageLookupByLibrary.simpleMessage(
             "পাসওয়ার্ড কমপক্ষে ৮ সংখ্যার হতে হবে"),
         "passmatcherror":
@@ -215,6 +218,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("বিশ্লেষণ ফলাফল"),
         "prevbutton": MessageLookupByLibrary.simpleMessage("পূর্ববর্তী"),
         "privacypolicy": MessageLookupByLibrary.simpleMessage("গোপনীয়তা নীতি"),
+        "profile": MessageLookupByLibrary.simpleMessage("প্রোফাইল"),
         "rating": MessageLookupByLibrary.simpleMessage("রেটিং"),
         "readless": MessageLookupByLibrary.simpleMessage(" কম দেখান"),
         "readmore": MessageLookupByLibrary.simpleMessage("আরও পড়ুন"),

@@ -1790,11 +1790,51 @@ class S {
     );
   }
 
-  /// `Made with ❤️ by Asraful`
+  /// `Created with ❤️ by Asraful`
   String get madewithbyasraful {
     return Intl.message(
-      'Made with ❤️ by Asraful',
+      'Created with ❤️ by Asraful',
       name: 'madewithbyasraful',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `General`
+  String get general {
+    return Intl.message(
+      'General',
+      name: 'general',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account`
+  String get account {
+    return Intl.message(
+      'Account',
+      name: 'account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get profile {
+    return Intl.message(
+      'Profile',
+      name: 'profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Open`
+  String get open {
+    return Intl.message(
+      'Open',
+      name: 'open',
       desc: '',
       args: [],
     );
