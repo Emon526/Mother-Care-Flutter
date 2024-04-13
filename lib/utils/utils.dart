@@ -111,18 +111,6 @@ class Utils {
     );
   }
 
-  String checkEmpty({
-    required int duration,
-    required String days,
-    required BuildContext context,
-  }) {
-    if (duration == 0) {
-      return '';
-    } else {
-      return "${formatNumber(number: duration)} $days ";
-    }
-  }
-
   formatDate({required DateTime dateTime}) {
     DateFormat dateFormat = DateFormat(
         'EEE, dd MMMM yyyy', context.read<LanguageProvider>().languageCode);
@@ -160,6 +148,18 @@ class Utils {
     return f.format(number);
   }
 
+  String checkEmpty({
+    required int duration,
+    required String days,
+  }) {
+    if (duration == 0) {
+      return '';
+    } else {
+      return "${formatNumber(number: duration)} $days ";
+    }
+  }
+
+//TODO:: Fix age calculator
   String calculateAge({
     required String dateOfBirth,
   }) {
@@ -187,15 +187,12 @@ class Utils {
     String ageString = '${checkEmpty(
       duration: years,
       days: AppLocalizations.of(context)!.year,
-      context: context,
     )}${checkEmpty(
       duration: months,
       days: AppLocalizations.of(context)!.month,
-      context: context,
     )}${checkEmpty(
       duration: days,
       days: AppLocalizations.of(context)!.day,
-      context: context,
     )}';
     return ageString;
   }
@@ -315,7 +312,10 @@ class Utils {
     }
   }
 
-//TODO :: Apply navigator to full project
+  Future<void> showsnackbar({required String message}) async {
+    await ResponsiveSnackbar.show(context, message);
+  }
+
   Future<void> pushReplacement({required Widget widget}) async {
     await Navigator.pushReplacement(
       context,
@@ -326,5 +326,12 @@ class Utils {
   Future<void> push({required Widget widget}) async {
     await Navigator.push(
         context, CupertinoPageRoute(builder: (context) => widget));
+  }
+
+  Future<void> pushUntil({required Widget widget}) async {
+    await Navigator.of(context).pushAndRemoveUntil(
+      CupertinoPageRoute(builder: (_) => widget),
+      (Route<dynamic> route) => false,
+    );
   }
 }
