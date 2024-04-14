@@ -68,6 +68,7 @@ class _SignupState extends State<Signup> {
                       key: _formKey,
                       child: Column(
                         children: [
+                          //TODO:: remove first and last name. use name
                           TextFormField(
                             textInputAction: TextInputAction.next,
                             keyboardType: TextInputType.name,
@@ -348,6 +349,7 @@ class _SignupState extends State<Signup> {
     );
   }
 
+//TODO:: Profile photo will be optional
   _profilephoto({
     required BuildContext context,
     required Size size,
