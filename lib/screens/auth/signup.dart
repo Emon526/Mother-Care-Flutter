@@ -76,7 +76,7 @@ class _SignupState extends State<Signup> {
                             controller: firstnameController,
                             validator: RequiredValidator(
                                     errorText: AppLocalizations.of(context)!
-                                        .addReminder)
+                                        .firstnamerequirederror)
                                 .call,
                             decoration: InputDecoration(
                               labelText:
