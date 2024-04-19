@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:mothercare/const/consts.dart';
 
+import '../const/consts.dart';
 import 'settingsitemwidget.dart';
 
-class ButtonEntry extends StatelessWidget {
+class SettingsButtonItem extends StatelessWidget {
   final String label;
   final String buttonLabel;
   final void Function() onTap;
 
-  const ButtonEntry({
+  const SettingsButtonItem({
     super.key,
     required this.label,
     required this.buttonLabel,

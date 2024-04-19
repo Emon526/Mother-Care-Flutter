@@ -29,6 +29,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "account": MessageLookupByLibrary.simpleMessage("অ্যাকাউন্ট"),
+        "accountinformation":
+            MessageLookupByLibrary.simpleMessage("হিসাবের তথ্য"),
         "addReminder":
             MessageLookupByLibrary.simpleMessage("রিমাইন্ডার যোগ করুন"),
         "addReminderDate": MessageLookupByLibrary.simpleMessage("তারিখ"),
@@ -191,6 +193,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("ম্যামোগ্রাফি বিশ্লেষণ"),
         "minutes": MessageLookupByLibrary.simpleMessage("মিনিট"),
         "month": MessageLookupByLibrary.simpleMessage("মাস"),
+        "more": MessageLookupByLibrary.simpleMessage("আরো"),
         "name": MessageLookupByLibrary.simpleMessage("নাম"),
         "nextbutton": MessageLookupByLibrary.simpleMessage("পরবর্তী"),
         "noarticlefound": MessageLookupByLibrary.simpleMessage(
@@ -211,6 +214,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "passvaliderror": MessageLookupByLibrary.simpleMessage(
             "পাসওয়ার্ডে কমপক্ষে একটি বিশেষ অক্ষর থাকতে হবে"),
         "password": MessageLookupByLibrary.simpleMessage("পাসওয়ার্ড"),
+        "personalinformation":
+            MessageLookupByLibrary.simpleMessage("ব্যক্তিগত তথ্য"),
         "pickimageSnakeBar": MessageLookupByLibrary.simpleMessage(
             "একটি প্রোফাইল ফটো নির্বাচন করুন"),
         "pm": MessageLookupByLibrary.simpleMessage("পি.এম"),

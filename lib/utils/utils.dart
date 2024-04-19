@@ -17,6 +17,12 @@ class Utils {
   Utils(this.context);
   Size get getScreenSize => MediaQuery.of(context).size;
 
+  Widget get verticalSpace {
+    return SizedBox(
+      height: getScreenSize.height * 0.02,
+    );
+  }
+
   void onWillPop() async {
     return showCustomDialog(
       child: Column(

@@ -10,7 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../models/usermodel.dart';
 import '../utils/utils.dart';
 
-class AuthrizationProviders extends ChangeNotifier {
+class AuthrizationProviders with ChangeNotifier {
   AuthrizationProviders() {
     getrememberme();
     fatchsaverememberme();
@@ -53,7 +53,7 @@ class AuthrizationProviders extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> logout() async {
+  void logout() async {
     await auth.signOut();
     notifyListeners();
   }

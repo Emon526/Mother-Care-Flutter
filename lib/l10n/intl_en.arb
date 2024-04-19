@@ -178,5 +178,8 @@
 "general":"General",
 "account":"Account",
 "profile":"Profile",
-"open":"Open"
+"open":"Open",
+"more":"More",
+"personalinformation":"Personal Information",
+"accountinformation":"Account Information"
 }

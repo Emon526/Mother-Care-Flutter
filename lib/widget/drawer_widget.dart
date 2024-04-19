@@ -83,13 +83,6 @@ class DrawerWidget extends StatelessWidget {
                 await Utils(context).push(widget: const SettingScreen());
               },
             ),
-            _buildListtile(
-              tiletitle: AppLocalizations.of(context)!.logoutbutton,
-              iconData: Icons.logout,
-              onTap: () async {
-                await context.read<AuthrizationProviders>().logout();
-              },
-            ),
           ],
         ),
       ),

@@ -30,6 +30,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "account": MessageLookupByLibrary.simpleMessage("Account"),
+        "accountinformation":
+            MessageLookupByLibrary.simpleMessage("Account Information"),
         "addReminder": MessageLookupByLibrary.simpleMessage("Add Reminder"),
         "addReminderDate": MessageLookupByLibrary.simpleMessage("Date"),
         "addReminderDateError":
@@ -187,6 +189,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Mammography Analysis"),
         "minutes": MessageLookupByLibrary.simpleMessage("minutes"),
         "month": MessageLookupByLibrary.simpleMessage("Month"),
+        "more": MessageLookupByLibrary.simpleMessage("More"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "nextbutton": MessageLookupByLibrary.simpleMessage("Next"),
         "noarticlefound":
@@ -207,6 +210,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "passvaliderror": MessageLookupByLibrary.simpleMessage(
             "Passwords must have at least one special character"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "personalinformation":
+            MessageLookupByLibrary.simpleMessage("Personal Information"),
         "pickimageSnakeBar": MessageLookupByLibrary.simpleMessage(
             "Please select a profile photo"),
         "pm": MessageLookupByLibrary.simpleMessage("PM"),

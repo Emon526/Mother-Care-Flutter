@@ -1839,6 +1839,36 @@ class S {
       args: [],
     );
   }
+
+  /// `More`
+  String get more {
+    return Intl.message(
+      'More',
+      name: 'more',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Personal Information`
+  String get personalinformation {
+    return Intl.message(
+      'Personal Information',
+      name: 'personalinformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account Information`
+  String get accountinformation {
+    return Intl.message(
+      'Account Information',
+      name: 'accountinformation',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

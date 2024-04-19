@@ -30,6 +30,7 @@ class SettingScreen extends StatelessWidget {
       body: Column(
         children: [
           _generalSection(context: context),
+          _accountSection(context: context),
           const Spacer(),
           _logo(context: context, size: size),
           _credit(
@@ -82,6 +83,23 @@ class SettingScreen extends StatelessWidget {
             onChanged: (language) =>
                 context.read<LanguageProvider>().language = language,
           ),
+        ),
+      ],
+    );
+  }
+
+  _accountSection({required BuildContext context}) {
+    return SettingsSection(
+      title: AppLocalizations.of(context)!.account,
+      children: [
+        SettingsButtonItem(
+          label: AppLocalizations.of(context)!.profile,
+          buttonLabel: AppLocalizations.of(context)!.open,
+          onTap: () async {
+            await Utils(context).push(
+              widget: const ProfileScreen(),
+            );
+          },
         ),
       ],
     );
