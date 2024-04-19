@@ -195,6 +195,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "month": MessageLookupByLibrary.simpleMessage("মাস"),
         "more": MessageLookupByLibrary.simpleMessage("আরো"),
         "name": MessageLookupByLibrary.simpleMessage("নাম"),
+        "namerequirederror": MessageLookupByLibrary.simpleMessage("নাম আবশ্যক"),
         "nextbutton": MessageLookupByLibrary.simpleMessage("পরবর্তী"),
         "noarticlefound": MessageLookupByLibrary.simpleMessage(
             "কোন অনুচ্ছেদ খুঁজে পাওয়া যায়নি!"),

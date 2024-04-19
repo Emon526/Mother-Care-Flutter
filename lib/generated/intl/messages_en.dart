@@ -191,6 +191,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "month": MessageLookupByLibrary.simpleMessage("Month"),
         "more": MessageLookupByLibrary.simpleMessage("More"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
+        "namerequirederror":
+            MessageLookupByLibrary.simpleMessage("Name is required"),
         "nextbutton": MessageLookupByLibrary.simpleMessage("Next"),
         "noarticlefound":
             MessageLookupByLibrary.simpleMessage("No Article Found!"),

@@ -25,8 +25,7 @@ class Signup extends StatefulWidget {
 
 class _SignupState extends State<Signup> {
   final _formKey = GlobalKey<FormState>();
-  final firstnameController = TextEditingController();
-  final lastnameController = TextEditingController();
+  final nameController = TextEditingController();
   final emailController = TextEditingController();
   final passController = TextEditingController();
   final confirmpassController = TextEditingController();
@@ -61,33 +60,11 @@ class _SignupState extends State<Signup> {
                 child: Column(
                   children: [
                     _profilephoto(context: context, size: size),
-                    const SizedBox(
-                      height: 15,
-                    ),
+                    Utils(context).verticalSpace,
                     Form(
                       key: _formKey,
                       child: Column(
                         children: [
-                          //TODO:: remove first and last name. use name
-                          TextFormField(
-                            textInputAction: TextInputAction.next,
-                            keyboardType: TextInputType.name,
-                            textCapitalization: TextCapitalization.words,
-                            controller: firstnameController,
-                            validator: RequiredValidator(
-                                    errorText: AppLocalizations.of(context)!
-                                        .firstnamerequirederror)
-                                .call,
-                            decoration: InputDecoration(
-                              labelText:
-                                  AppLocalizations.of(context)!.firstname,
-                              hintText: AppLocalizations.of(context)!.firstname,
-                              border: const OutlineInputBorder(),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 15,
-                          ),
                           TextFormField(
                             onEditingComplete: () {
                               //TODO: fix showcalender error
@@ -98,20 +75,40 @@ class _SignupState extends State<Signup> {
                             textInputAction: TextInputAction.next,
                             keyboardType: TextInputType.name,
                             textCapitalization: TextCapitalization.words,
-                            controller: lastnameController,
+                            controller: nameController,
                             validator: RequiredValidator(
                                     errorText: AppLocalizations.of(context)!
-                                        .lastnamerequirederror)
+                                        .namerequirederror)
                                 .call,
                             decoration: InputDecoration(
-                              labelText: AppLocalizations.of(context)!.lastname,
-                              hintText: AppLocalizations.of(context)!.lastname,
+                              labelText: AppLocalizations.of(context)!.name,
+                              hintText: AppLocalizations.of(context)!.name,
                               border: const OutlineInputBorder(),
                             ),
                           ),
-                          const SizedBox(
-                            height: 15,
-                          ),
+                          Utils(context).verticalSpace,
+                          // TextFormField(
+                          //   onEditingComplete: () {
+                          //     //TODO: fix showcalender error
+                          //     FocusScope.of(context).unfocus();
+                          //     // FocusScope.of(context).requestFocus(dobfocusNode);
+                          //     _showCalender();
+                          //   },
+                          //   textInputAction: TextInputAction.next,
+                          //   keyboardType: TextInputType.name,
+                          //   textCapitalization: TextCapitalization.words,
+                          //   controller: lastnameController,
+                          //   validator: RequiredValidator(
+                          //           errorText: AppLocalizations.of(context)!
+                          //               .lastnamerequirederror)
+                          //       .call,
+                          //   decoration: InputDecoration(
+                          //     labelText: AppLocalizations.of(context)!.lastname,
+                          //     hintText: AppLocalizations.of(context)!.lastname,
+                          //     border: const OutlineInputBorder(),
+                          //   ),
+                          // ),
+                          //   Utils(context).verticalSpace,
                           TextFormField(
                             onTap: () => _showCalender(),
                             textInputAction: TextInputAction.next,
@@ -128,9 +125,7 @@ class _SignupState extends State<Signup> {
                               border: const OutlineInputBorder(),
                             ),
                           ),
-                          const SizedBox(
-                            height: 15,
-                          ),
+                          Utils(context).verticalSpace,
                           TextFormField(
                             onTap: () => setState(() {}),
                             onEditingComplete: () {
@@ -141,7 +136,7 @@ class _SignupState extends State<Signup> {
                             },
                             textInputAction: TextInputAction.next,
                             keyboardType: TextInputType.emailAddress,
-                            textCapitalization: TextCapitalization.sentences,
+                            textCapitalization: TextCapitalization.words,
                             controller: emailController,
                             validator: MultiValidator([
                               RequiredValidator(
@@ -157,9 +152,7 @@ class _SignupState extends State<Signup> {
                               border: const OutlineInputBorder(),
                             ),
                           ),
-                          const SizedBox(
-                            height: 15,
-                          ),
+                          Utils(context).verticalSpace,
                           TextFormField(
                             onTap: () => setState(() {}),
                             onEditingComplete: () {
@@ -207,9 +200,7 @@ class _SignupState extends State<Signup> {
                               ),
                             ),
                           ),
-                          const SizedBox(
-                            height: 15,
-                          ),
+                          Utils(context).verticalSpace,
                           TextFormField(
                             onTap: () => setState(() {}),
                             obscureText: _isObscured,
@@ -247,9 +238,7 @@ class _SignupState extends State<Signup> {
                               ),
                             ),
                           ),
-                          const SizedBox(
-                            height: 15,
-                          ),
+                          Utils(context).verticalSpace,
                           Row(
                             children: [
                               Checkbox(
@@ -283,30 +272,22 @@ class _SignupState extends State<Signup> {
                               ),
                             ],
                           ),
-                          const SizedBox(
-                            height: 15,
-                          ),
+                          Utils(context).verticalSpace,
                           CustomExpanedButton(
                             onPressed: () async {
-                              pickedimage == null
-                                  ? await Utils(context).showsnackbar(
-                                      message: AppLocalizations.of(context)!
-                                          .pickimageSnakeBar)
-                                  : null;
                               authprovider.acceptpolicy
                                   ? null
                                   : await Utils(context).showsnackbar(
                                       message: AppLocalizations.of(context)!
                                           .termsconditionSnakeBar,
                                     );
-                              if (pickedimage != null &&
-                                  _formKey.currentState!.validate() &&
-                                  authprovider.acceptpolicy) {
+                              if (_formKey.currentState!.validate() &&
+                                  authprovider.acceptpolicy &&
+                                  pickedimage != null) {
                                 Utils(context).customLoading();
                                 try {
                                   await authprovider.signup(
-                                    firstname: firstnameController.text.trim(),
-                                    lastname: lastnameController.text.trim(),
+                                    name: nameController.text.trim(),
                                     dob: dobController.text.trim(),
                                     email: emailController.text.trim(),
                                     password: confirmpassController.text.trim(),
@@ -319,12 +300,15 @@ class _SignupState extends State<Signup> {
                                 }
                                 Navigator.pop(context);
                               }
+                              pickedimage == null
+                                  ? await Utils(context).showsnackbar(
+                                      message: AppLocalizations.of(context)!
+                                          .pickimageSnakeBar)
+                                  : null;
                             },
                             text: AppLocalizations.of(context)!.signupbutton,
                           ),
-                          const SizedBox(
-                            height: 10,
-                          ),
+                          Utils(context).verticalSpace,
                           TextButton(
                             onPressed: () {
                               Navigator.pop(context);
@@ -333,9 +317,7 @@ class _SignupState extends State<Signup> {
                               AppLocalizations.of(context)!.haveaccount,
                             ),
                           ),
-                          const SizedBox(
-                            height: 20,
-                          ),
+                          Utils(context).verticalSpace,
                         ],
                       ),
                     )

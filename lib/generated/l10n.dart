@@ -1670,6 +1670,16 @@ class S {
     );
   }
 
+  /// `Name is required`
+  String get namerequirederror {
+    return Intl.message(
+      'Name is required',
+      name: 'namerequirederror',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Last Name is required`
   String get lastnamerequirederror {
     return Intl.message(

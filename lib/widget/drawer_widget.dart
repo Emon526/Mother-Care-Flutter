@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -34,7 +35,7 @@ class DrawerWidget extends StatelessWidget {
                       return _buildHeader(
                         context: context,
                         size: size,
-                        name: "${userData.firstName} ${userData.lastName}",
+                        name: userData.name,
                         age: Utils(context).calculateAge(
                           dateOfBirth: userData.dateofbirth,
                         ),
@@ -52,10 +53,9 @@ class DrawerWidget extends StatelessWidget {
                 );
               },
             ),
-            // const SizedBox(
-            //   height: 10,
-            // ),
+
             _buildListtile(
+              context: context,
               iconData: LineIcons.stethoscope,
               tiletitle: AppLocalizations.of(context)!.doctors,
               onTap: () async {
@@ -70,6 +70,7 @@ class DrawerWidget extends StatelessWidget {
             //   },
             // ),
             _buildListtile(
+              context: context,
               iconData: LineIcons.calendarAlt,
               tiletitle: AppLocalizations.of(context)!.reminders,
               onTap: () async {
@@ -77,6 +78,7 @@ class DrawerWidget extends StatelessWidget {
               },
             ),
             _buildListtile(
+              context: context,
               tiletitle: AppLocalizations.of(context)!.settings,
               iconData: Icons.settings_outlined,
               onTap: () async {
@@ -162,22 +164,27 @@ class DrawerWidget extends StatelessWidget {
     );
   }
 
-  _buildListtile({
-    required IconData iconData,
-    required String tiletitle,
-    required Function onTap,
-  }) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
-      ),
-      child: InkWell(
-        onTap: () {
-          onTap();
-        },
-        child: ListTile(
-          title: Text(tiletitle),
-          trailing: Icon(iconData),
+  _buildListtile(
+      {required IconData iconData,
+      required String tiletitle,
+      required Function onTap,
+      required BuildContext context}) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Material(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+        ),
+        color: Theme.of(context).primaryColor,
+        child: InkWell(
+          onTap: () {
+            onTap();
+          },
+          child: ListTile(
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+            title: Text(tiletitle),
+            trailing: Icon(iconData),
+          ),
         ),
       ),
     );

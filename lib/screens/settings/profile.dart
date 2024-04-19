@@ -46,8 +46,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 final userData = snapshot.data!;
-                nameController.text =
-                    "${userData.firstName} ${userData.lastName}";
+                nameController.text = userData.name;
                 dobController.text = userData.dateofbirth;
                 emailController.text = userData.email;
 

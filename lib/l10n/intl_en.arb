@@ -162,6 +162,7 @@
 "deleteaccount":"Delete Account",
 "deleteaccounttext":"Are you sure you want to delete your account?",
 "firstnamerequirederror":"First Name is required",
+"namerequirederror":"Name is required",
 "lastnamerequirederror":"Last Name is required",
 "dobrequirederror":"Date of Birth is required",
 "emailrequirederror":"Email is required",

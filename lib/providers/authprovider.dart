@@ -67,8 +67,7 @@ class AuthrizationProviders with ChangeNotifier {
   }
 
   Future<void> signup({
-    required String firstname,
-    required String lastname,
+    required String name,
     required String dob,
     required String email,
     required String password,
@@ -79,8 +78,7 @@ class AuthrizationProviders with ChangeNotifier {
       password: password,
     );
     await addUserData(
-      firstName: firstname,
-      lastName: lastname,
+      name: name,
       email: email,
       dob: dob,
       profilephoto: profilephoto,
@@ -131,8 +129,7 @@ class AuthrizationProviders with ChangeNotifier {
   }
 
   Future<void> addUserData(
-      {required String firstName,
-      required String lastName,
+      {required String name,
       required String email,
       required String dob,
       required File profilephoto}) async {
@@ -143,8 +140,7 @@ class AuthrizationProviders with ChangeNotifier {
       profilephotoUrl = await ref.getDownloadURL();
     }
     UserModel user = UserModel(
-      firstName: firstName,
-      lastName: lastName,
+      name: name,
       email: email,
       dateofbirth: dob,
       uid: auth.currentUser!.uid,
@@ -165,7 +161,7 @@ class AuthrizationProviders with ChangeNotifier {
   Stream<UserModel?> getUserData() {
     final CollectionReference usersCollection = firestore;
     return usersCollection
-        .doc(auth.currentUser!.uid)
+        .doc(auth.currentUser?.uid)
         .snapshots()
         .map((snapshot) {
       if (snapshot.exists) {

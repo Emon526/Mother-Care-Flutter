@@ -149,6 +149,7 @@
 "donothaveaccount":"একটি অ্যাকাউন্ট নেই?",
 "haveaccount":"ইতিমধ্যে একটি অ্যাকাউন্ট আছে?",
 "firstname":"নামের প্রথম অংশ",
+
 "lastname":"নামের শেষ অংশ",
 "dob":"জন্ম তারিখ",
 "name":"নাম",
@@ -162,6 +163,7 @@
 "deleteaccount":"অ্যাকাউন্ট মুছে ফেলুন",
 "deleteaccounttext":"আপনি কি আপনার অ্যাকাউন্ট মুছে ফেলার বিষয়ে নিশ্চিত?",
 "firstnamerequirederror":"প্রথম নাম আবশ্যক",
+"namerequirederror":"নাম আবশ্যক",
 "lastnamerequirederror":"শেষ নাম প্রয়োজন",
 "dobrequirederror":"জন্মতারিখ আবশ্যক",
 "emailrequirederror":"ইমেইল আবশ্যক",
