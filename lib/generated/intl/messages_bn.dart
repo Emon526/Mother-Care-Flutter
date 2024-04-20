@@ -116,7 +116,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "donebutton": MessageLookupByLibrary.simpleMessage("সম্পন্ন"),
         "donothaveaccount":
             MessageLookupByLibrary.simpleMessage("একটি অ্যাকাউন্ট নেই?"),
+        "editprofilebutton":
+            MessageLookupByLibrary.simpleMessage("প্রোফাইল সম্পাদনা করুন"),
         "email": MessageLookupByLibrary.simpleMessage("ইমেইল"),
+        "emailchangenotice": MessageLookupByLibrary.simpleMessage(
+            "ইমেল অ্যাকাউন্ট পরিবর্তন করা যাবে না"),
         "emailrequirederror":
             MessageLookupByLibrary.simpleMessage("ইমেইল আবশ্যক"),
         "emailvaliderror":
@@ -310,6 +314,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "theme": MessageLookupByLibrary.simpleMessage("থিম"),
         "unabletoloadImage":
             MessageLookupByLibrary.simpleMessage("ছবি লোড করা সম্বব হচ্ছে না"),
+        "updatebutton":
+            MessageLookupByLibrary.simpleMessage("প্রোফাইল আপডেট করুন"),
         "uploadimage": MessageLookupByLibrary.simpleMessage("চিত্র আপলোড"),
         "version": MessageLookupByLibrary.simpleMessage("সংস্করণ"),
         "waitingforimage":

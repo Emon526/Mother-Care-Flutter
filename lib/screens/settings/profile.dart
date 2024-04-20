@@ -3,15 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:form_field_validator/form_field_validator.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../../const/consts.dart';
 import '../../models/usermodel.dart';
 import '../../providers/authprovider.dart';
 import '../../utils/utils.dart';
-import '../../widget/showcalenderwidget.dart';
 import '../auth/auth.dart';
+import 'editprofile.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -24,7 +23,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
   final dobController = TextEditingController();
   final emailController = TextEditingController();
   final nameController = TextEditingController();
-
   DateTime date = DateTime.now().subtract(
     const Duration(days: 30),
   );
@@ -38,6 +36,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
         title: Text(
           AppLocalizations.of(context)!.profile,
         ),
+        actions: [
+          TextButton(
+            onPressed: () async {
+              await Utils(context).push(
+                widget: const EditProfileScreen(),
+              );
+            },
+            child: Text(
+              AppLocalizations.of(context)!.editprofilebutton,
+            ),
+          ),
+        ],
       ),
       body: Consumer<AuthrizationProviders>(
         builder: (context, value, child) {
@@ -46,14 +56,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 final userData = snapshot.data!;
-                nameController.text = userData.name;
-                dobController.text = userData.dateofbirth;
-                emailController.text = userData.email;
 
                 return _buildProfile(
                   context: context,
                   size: size,
-                  profilePhoto: userData.profilepicture,
+                  userData: userData,
                 );
               } else if (snapshot.hasError) {
                 return Text('Error: ${snapshot.error}');
@@ -146,29 +153,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  _showCalender() {
-    ShowCalenderWidget(
-      context: context,
-      maxDate: date,
-      enablePastDates: true,
-      initialDisplayDate: date,
-      initialSelectedDate: date,
-      onSubmit: (date) {
-        DateFormat dateFormat = DateFormat('EEE, dd MMMM yyyy', 'en');
-        dobController.text = dateFormat.format(DateTime.parse(date.toString()));
-        Navigator.pop(context);
-        //TODO:fix focus for emailfocus node
-        // FocusScope.of(context).requestFocus(emailfocusNode);
-      },
-    );
-  }
-
   _buildProfile({
     required BuildContext context,
     required Size size,
-    // required String name,
-    required String profilePhoto,
+    required UserModel userData,
   }) {
+    nameController.text = userData.name;
+    dobController.text = userData.dateofbirth;
+    emailController.text = userData.email;
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -182,26 +174,34 @@ class _ProfileScreenState extends State<ProfileScreen> {
           SizedBox(
             height: size.height * 0.2,
             child: Center(
-              child: CachedNetworkImage(
-                imageUrl: profilePhoto,
-                imageBuilder: (context, imageProvider) => CircleAvatar(
-                  radius: size.height * 0.1,
-                  backgroundColor: Theme.of(context).colorScheme.secondary,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(100),
-                    child: Image(
-                      image: imageProvider,
-                      height: size.height * 0.2,
-                      width: size.height * 0.2,
-                      fit: BoxFit.cover,
+              child: userData.profilepicture != null
+                  ? CachedNetworkImage(
+                      imageUrl: userData.profilepicture!,
+                      imageBuilder: (context, imageProvider) => CircleAvatar(
+                        radius: size.height * 0.1,
+                        backgroundColor:
+                            Theme.of(context).colorScheme.secondary,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(100),
+                          child: Image(
+                            image: imageProvider,
+                            height: size.height * 0.2,
+                            width: size.height * 0.2,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      placeholder: (context, url) => SpinKitDoubleBounce(
+                        color: Theme.of(context).primaryColor,
+                      ),
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
+                    )
+                  : Icon(
+                      Icons.account_circle,
+                      size: size.height * 0.2,
+                      // color: iconColor,
                     ),
-                  ),
-                ),
-                placeholder: (context, url) => SpinKitDoubleBounce(
-                  color: Theme.of(context).primaryColor,
-                ),
-                errorWidget: (context, url, error) => const Icon(Icons.error),
-              ),
             ),
           ),
           Utils(context).verticalSpace,

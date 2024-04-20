@@ -71,7 +71,7 @@ class AuthrizationProviders with ChangeNotifier {
     required String dob,
     required String email,
     required String password,
-    required File profilephoto,
+    required File? profilephoto,
   }) async {
     await auth.createUserWithEmailAndPassword(
       email: email,
@@ -132,11 +132,11 @@ class AuthrizationProviders with ChangeNotifier {
       {required String name,
       required String email,
       required String dob,
-      required File profilephoto}) async {
-    String profilephotoUrl = '';
-    if (profilephoto.path.isNotEmpty) {
+      required File? profilephoto}) async {
+    String? profilephotoUrl;
+    if (profilephoto?.path != null) {
       final ref = firestorage.child('${auth.currentUser!.uid}.jpg');
-      await ref.putFile(profilephoto);
+      await ref.putFile(profilephoto!);
       profilephotoUrl = await ref.getDownloadURL();
     }
     UserModel user = UserModel(
@@ -172,5 +172,27 @@ class AuthrizationProviders with ChangeNotifier {
         return null;
       }
     });
+  }
+
+  Future<void> updateUserData(
+      {required String name,
+      required String email,
+      required String dob,
+      required File? profilephoto}) async {
+    String? profilephotoUrl;
+    if (profilephoto?.path != null) {
+      final ref = firestorage.child('${auth.currentUser!.uid}.jpg');
+      await ref.putFile(profilephoto!);
+      profilephotoUrl = await ref.getDownloadURL();
+    }
+    UserModel userdata = UserModel(
+      name: name,
+      email: email,
+      dateofbirth: dob,
+      uid: auth.currentUser!.uid,
+      profilepicture: profilephotoUrl ?? user!.profilepicture,
+    );
+    await firestore.doc(auth.currentUser!.uid).update(userdata.toJson());
+    notifyListeners();
   }
 }

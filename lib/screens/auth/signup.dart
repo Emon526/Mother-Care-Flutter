@@ -282,8 +282,7 @@ class _SignupState extends State<Signup> {
                                           .termsconditionSnakeBar,
                                     );
                               if (_formKey.currentState!.validate() &&
-                                  authprovider.acceptpolicy &&
-                                  pickedimage != null) {
+                                  authprovider.acceptpolicy) {
                                 Utils(context).customLoading();
                                 try {
                                   await authprovider.signup(
@@ -291,7 +290,7 @@ class _SignupState extends State<Signup> {
                                     dob: dobController.text.trim(),
                                     email: emailController.text.trim(),
                                     password: confirmpassController.text.trim(),
-                                    profilephoto: pickedimage!,
+                                    profilephoto: pickedimage,
                                   );
                                   Navigator.pop(context);
                                 } on FirebaseAuthException catch (e) {
@@ -300,11 +299,6 @@ class _SignupState extends State<Signup> {
                                 }
                                 Navigator.pop(context);
                               }
-                              pickedimage == null
-                                  ? await Utils(context).showsnackbar(
-                                      message: AppLocalizations.of(context)!
-                                          .pickimageSnakeBar)
-                                  : null;
                             },
                             text: AppLocalizations.of(context)!.signupbutton,
                           ),
@@ -331,7 +325,6 @@ class _SignupState extends State<Signup> {
     );
   }
 
-//TODO:: Profile photo will be optional
   _profilephoto({
     required BuildContext context,
     required Size size,
@@ -359,7 +352,7 @@ class _SignupState extends State<Signup> {
                   radius: size.height * 0.2,
                   backgroundColor: Theme.of(context).colorScheme.secondary,
                   child: RandomAvatar(
-                    'profilephoto',
+                    DateTime.now().toIso8601String(),
                     trBackground: true,
                   ),
                 ),

@@ -130,6 +130,26 @@ class S {
     );
   }
 
+  /// `Edit Profile`
+  String get editprofilebutton {
+    return Intl.message(
+      'Edit Profile',
+      name: 'editprofilebutton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update Profile`
+  String get updatebutton {
+    return Intl.message(
+      'Update Profile',
+      name: 'updatebutton',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Learn more`
   String get learnmorebutton {
     return Intl.message(
@@ -1875,6 +1895,16 @@ class S {
     return Intl.message(
       'Account Information',
       name: 'accountinformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email account can't be changed`
+  String get emailchangenotice {
+    return Intl.message(
+      'Email account can\'t be changed',
+      name: 'emailchangenotice',
       desc: '',
       args: [],
     );

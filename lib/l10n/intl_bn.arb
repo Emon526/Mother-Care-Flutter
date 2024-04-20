@@ -8,6 +8,8 @@
 "finishbutton":"শেষ করুন",
 "applybutton":"আবেদন করুন",
 "resetbutton":"পূনরায় করুন",
+"editprofilebutton":"প্রোফাইল সম্পাদনা করুন",
+"updatebutton":"প্রোফাইল আপডেট করুন",
 "learnmorebutton":"আরও জানুন",
 "readmore": "আরও পড়ুন",
 "readless":" কম দেখান",
@@ -183,5 +185,6 @@
 "open":"খুলুন",
 "more":"আরো",
 "personalinformation":"ব্যক্তিগত তথ্য",
-"accountinformation":"হিসাবের তথ্য"
+"accountinformation":"হিসাবের তথ্য",
+"emailchangenotice":"ইমেল অ্যাকাউন্ট পরিবর্তন করা যাবে না"
 }

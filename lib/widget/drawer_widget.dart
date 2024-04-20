@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -35,12 +34,7 @@ class DrawerWidget extends StatelessWidget {
                       return _buildHeader(
                         context: context,
                         size: size,
-                        name: userData.name,
-                        age: Utils(context).calculateAge(
-                          dateOfBirth: userData.dateofbirth,
-                        ),
-                        email: userData.email,
-                        profilePhoto: userData.profilepicture,
+                        userData: userData,
                       );
                     } else if (snapshot.hasError) {
                       return Text('Error: ${snapshot.error}');
@@ -94,10 +88,7 @@ class DrawerWidget extends StatelessWidget {
   _buildHeader({
     required BuildContext context,
     required Size size,
-    required String name,
-    required String age,
-    required String email,
-    required String profilePhoto,
+    required UserModel userData,
   }) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -107,33 +98,41 @@ class DrawerWidget extends StatelessWidget {
           SizedBox(
             height: size.height * 0.2,
             child: Center(
-              child: CachedNetworkImage(
-                imageUrl: profilePhoto,
-                imageBuilder: (context, imageProvider) => CircleAvatar(
-                  radius: size.height * 0.1,
-                  backgroundColor: Theme.of(context).colorScheme.secondary,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(100),
-                    child: Image(
-                      image: imageProvider,
-                      height: size.height * 0.2,
-                      width: size.height * 0.2,
-                      fit: BoxFit.cover,
+              child: userData.profilepicture != null
+                  ? CachedNetworkImage(
+                      imageUrl: userData.profilepicture!,
+                      imageBuilder: (context, imageProvider) => CircleAvatar(
+                        radius: size.height * 0.1,
+                        backgroundColor:
+                            Theme.of(context).colorScheme.secondary,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(100),
+                          child: Image(
+                            image: imageProvider,
+                            height: size.height * 0.2,
+                            width: size.height * 0.2,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      placeholder: (context, url) => SpinKitDoubleBounce(
+                        color: Theme.of(context).primaryColor,
+                      ),
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
+                    )
+                  : Icon(
+                      Icons.account_circle,
+                      size: size.height * 0.2,
+                      // color: iconColor,
                     ),
-                  ),
-                ),
-                placeholder: (context, url) => SpinKitDoubleBounce(
-                  color: Theme.of(context).primaryColor,
-                ),
-                errorWidget: (context, url, error) => const Icon(Icons.error),
-              ),
             ),
           ),
           const SizedBox(
             height: 10,
           ),
           Text(
-            '${AppLocalizations.of(context)!.name} : $name',
+            '${AppLocalizations.of(context)!.name} : ${userData.name}',
             style: TextStyle(
               color: Theme.of(context).primaryColor,
               fontWeight: FontWeight.w500,
@@ -143,7 +142,7 @@ class DrawerWidget extends StatelessWidget {
             height: 5,
           ),
           Text(
-            "${AppLocalizations.of(context)!.email} : $email",
+            "${AppLocalizations.of(context)!.email} : ${userData.email}",
             style: TextStyle(
               color: Theme.of(context).primaryColor,
               fontWeight: FontWeight.w500,
@@ -153,7 +152,9 @@ class DrawerWidget extends StatelessWidget {
             height: 5,
           ),
           Text(
-            '${AppLocalizations.of(context)!.age} : $age',
+            '${AppLocalizations.of(context)!.age} : ${Utils(context).calculateAge(
+              dateOfBirth: userData.dateofbirth,
+            )}',
             style: TextStyle(
               color: Theme.of(context).primaryColor,
               fontWeight: FontWeight.w500,

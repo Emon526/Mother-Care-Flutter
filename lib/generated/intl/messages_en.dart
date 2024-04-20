@@ -114,7 +114,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "donebutton": MessageLookupByLibrary.simpleMessage("Done"),
         "donothaveaccount":
             MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
+        "editprofilebutton":
+            MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "emailchangenotice": MessageLookupByLibrary.simpleMessage(
+            "Email account can\'t be changed"),
         "emailrequirederror":
             MessageLookupByLibrary.simpleMessage("Email is required"),
         "emailvaliderror":
@@ -300,6 +304,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
         "unabletoloadImage":
             MessageLookupByLibrary.simpleMessage("Unable to load image"),
+        "updatebutton": MessageLookupByLibrary.simpleMessage("Update Profile"),
         "uploadimage": MessageLookupByLibrary.simpleMessage("Upload Image"),
         "version": MessageLookupByLibrary.simpleMessage("Version"),
         "waitingforimage":

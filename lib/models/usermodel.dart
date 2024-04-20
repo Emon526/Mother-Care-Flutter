@@ -3,7 +3,7 @@ class UserModel {
   String name;
   String email;
   String dateofbirth;
-  String profilepicture;
+  String? profilepicture;
 
   UserModel({
     required this.uid,

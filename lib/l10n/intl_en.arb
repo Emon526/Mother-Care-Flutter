@@ -8,6 +8,8 @@
 "finishbutton":"Finish",
 "applybutton":"Apply",
 "resetbutton":"Reset",
+"editprofilebutton":"Edit Profile",
+"updatebutton":"Update Profile",
 "learnmorebutton":"Learn more",
 "readmore":"read more",
 "readless":"show less",
@@ -182,5 +184,6 @@
 "open":"Open",
 "more":"More",
 "personalinformation":"Personal Information",
-"accountinformation":"Account Information"
+"accountinformation":"Account Information",
+"emailchangenotice":"Email account can't be changed"
 }
