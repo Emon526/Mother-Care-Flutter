@@ -29,8 +29,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    //TODO:: Add update information
-
     return Scaffold(
       appBar: AppBar(
         title: Text(

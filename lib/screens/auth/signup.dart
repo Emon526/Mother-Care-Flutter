@@ -25,14 +25,15 @@ class Signup extends StatefulWidget {
 
 class _SignupState extends State<Signup> {
   final _formKey = GlobalKey<FormState>();
-  final nameController = TextEditingController();
-  final emailController = TextEditingController();
-  final passController = TextEditingController();
-  final confirmpassController = TextEditingController();
+  final nameController = TextEditingController(text: 'test');
+  final emailController = TextEditingController(text: 'test@gmail.com');
+  final passController = TextEditingController(text: 'Abc123456@');
+  final confirmpassController = TextEditingController(text: 'Abc123456@');
   final dobController = TextEditingController();
   bool _isObscured = true;
   FocusNode dobfocusNode = FocusNode();
   FocusNode confirmpassfocusNode = FocusNode();
+  FocusNode namefocusNode = FocusNode();
   FocusNode passfocusNode = FocusNode();
   FocusNode emailfocusNode = FocusNode();
   ImagePicker picker = ImagePicker();
@@ -67,11 +68,10 @@ class _SignupState extends State<Signup> {
                         children: [
                           TextFormField(
                             onEditingComplete: () {
-                              //TODO: fix showcalender error
-                              FocusScope.of(context).unfocus();
-                              // FocusScope.of(context).requestFocus(dobfocusNode);
+                              namefocusNode.unfocus();
                               _showCalender();
                             },
+                            focusNode: namefocusNode,
                             textInputAction: TextInputAction.next,
                             keyboardType: TextInputType.name,
                             textCapitalization: TextCapitalization.words,
@@ -87,33 +87,10 @@ class _SignupState extends State<Signup> {
                             ),
                           ),
                           Utils(context).verticalSpace,
-                          // TextFormField(
-                          //   onEditingComplete: () {
-                          //     //TODO: fix showcalender error
-                          //     FocusScope.of(context).unfocus();
-                          //     // FocusScope.of(context).requestFocus(dobfocusNode);
-                          //     _showCalender();
-                          //   },
-                          //   textInputAction: TextInputAction.next,
-                          //   keyboardType: TextInputType.name,
-                          //   textCapitalization: TextCapitalization.words,
-                          //   controller: lastnameController,
-                          //   validator: RequiredValidator(
-                          //           errorText: AppLocalizations.of(context)!
-                          //               .lastnamerequirederror)
-                          //       .call,
-                          //   decoration: InputDecoration(
-                          //     labelText: AppLocalizations.of(context)!.lastname,
-                          //     hintText: AppLocalizations.of(context)!.lastname,
-                          //     border: const OutlineInputBorder(),
-                          //   ),
-                          // ),
-                          //   Utils(context).verticalSpace,
                           TextFormField(
                             onTap: () => _showCalender(),
                             textInputAction: TextInputAction.next,
                             keyboardType: TextInputType.none,
-                            // textCapitalization: TextCapitalization.words,
                             controller: dobController,
                             validator: RequiredValidator(
                                     errorText: AppLocalizations.of(context)!
@@ -127,13 +104,11 @@ class _SignupState extends State<Signup> {
                           ),
                           Utils(context).verticalSpace,
                           TextFormField(
-                            onTap: () => setState(() {}),
+                            // onTap: () => setState(() {}),
                             onEditingComplete: () {
-                              setState(() {
-                                FocusScope.of(context)
-                                    .requestFocus(passfocusNode);
-                              });
+                              passfocusNode.requestFocus();
                             },
+                            focusNode: emailfocusNode,
                             textInputAction: TextInputAction.next,
                             keyboardType: TextInputType.emailAddress,
                             textCapitalization: TextCapitalization.words,
@@ -154,12 +129,9 @@ class _SignupState extends State<Signup> {
                           ),
                           Utils(context).verticalSpace,
                           TextFormField(
-                            onTap: () => setState(() {}),
+                            // onTap: () => setState(() {}),
                             onEditingComplete: () {
-                              setState(() {
-                                FocusScope.of(context)
-                                    .requestFocus(confirmpassfocusNode);
-                              });
+                              confirmpassfocusNode.requestFocus();
                             },
                             obscureText: _isObscured,
                             focusNode: passfocusNode,
@@ -202,7 +174,7 @@ class _SignupState extends State<Signup> {
                           ),
                           Utils(context).verticalSpace,
                           TextFormField(
-                            onTap: () => setState(() {}),
+                            // onTap: () => setState(() {}),
                             obscureText: _isObscured,
                             focusNode: confirmpassfocusNode,
                             textInputAction: TextInputAction.done,
@@ -402,8 +374,7 @@ class _SignupState extends State<Signup> {
         DateFormat dateFormat = DateFormat('EEE, dd MMMM yyyy', 'en');
         dobController.text = dateFormat.format(DateTime.parse(date.toString()));
         Navigator.pop(context);
-        //TODO:fix focus for emailfocus node
-        // FocusScope.of(context).requestFocus(emailfocusNode);
+        emailfocusNode.requestFocus();
       },
     );
   }
