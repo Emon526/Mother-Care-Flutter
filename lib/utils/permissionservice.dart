@@ -1,42 +1,54 @@
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class PermissionService {
-  PermissionService() {
-    _showPermissionRequest();
+  Future<void> showPermissionRequest(BuildContext context) async {
+    await _requestPermissions(context);
   }
-  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-      FlutterLocalNotificationsPlugin();
 
-  // void _showPermissionRequest() async {
-  //   if (Platform.isAndroid) {
-  //     flutterLocalNotificationsPlugin
-  //         .resolvePlatformSpecificImplementation<
-  //             AndroidFlutterLocalNotificationsPlugin>()!
-  //         .requestNotificationsPermission();
-  //   } else if (Platform.isIOS) {
-  //     flutterLocalNotificationsPlugin
-  //         .resolvePlatformSpecificImplementation<
-  //             IOSFlutterLocalNotificationsPlugin>()!
-  //         .requestPermissions(
-  //           badge: true,
-  //           alert: true,
-  //           sound: true,
-  //         );
-  //   }
-  // }
-  void _showPermissionRequest() async {
-    if (await Permission.notification.isDenied ||
-        await Permission.notification.isLimited ||
-        await Permission.notification.isPermanentlyDenied ||
-        await Permission.notification.isProvisional ||
-        await Permission.notification.isRestricted) {
-      Permission.notification.request();
+  Future<void> _requestPermissions(BuildContext context) async {
+    Map<Permission, PermissionStatus> statuses = await [
+      Permission.photos,
+      Permission.notification,
+    ].request();
+
+    _handlePermissionStatus(
+        context, statuses[Permission.photos], 'Media Library');
+    _handlePermissionStatus(
+        context, statuses[Permission.notification], 'Notification');
+  }
+
+  void _handlePermissionStatus(
+      BuildContext context, PermissionStatus? status, String permissionName) {
+    if (status == PermissionStatus.permanentlyDenied) {
+      _showPermissionDeniedDialog(context, permissionName);
     }
-    // await Permission.notification.isDenied.then((value) {
-    //   if (value) {
-    //     Permission.notification.request();
-    //   }
-    // });
+  }
+
+  void _showPermissionDeniedDialog(
+      BuildContext context, String permissionName) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+        title: Text('$permissionName Permission'),
+        content: Text(
+            'The $permissionName permission is permanently denied. Please go to settings to enable it.'),
+        actions: <Widget>[
+          TextButton(
+            child: const Text('Cancel'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+          TextButton(
+            child: const Text('Settings'),
+            onPressed: () {
+              openAppSettings();
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      ),
+    );
   }
 }

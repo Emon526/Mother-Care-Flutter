@@ -183,12 +183,12 @@ class Styles {
 
         //   return null;
         // }),
-        fillColor: MaterialStateProperty.resolveWith<Color?>(
-            (Set<MaterialState> states) {
-          if (states.contains(MaterialState.disabled)) {
+        fillColor:
+            WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
+          if (states.contains(WidgetState.disabled)) {
             return isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor;
           }
-          if (states.contains(MaterialState.selected)) {
+          if (states.contains(WidgetState.selected)) {
             return isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor;
           }
 

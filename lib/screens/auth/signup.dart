@@ -24,6 +24,7 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
+  //TODO:: check is photos permission is granted or not.if needed use separate page to naviagte system settings
   final _formKey = GlobalKey<FormState>();
   final nameController = TextEditingController(text: 'test');
   final emailController = TextEditingController(text: 'test@gmail.com');

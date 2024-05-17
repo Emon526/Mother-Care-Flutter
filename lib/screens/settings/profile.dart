@@ -10,6 +10,7 @@ import '../../models/usermodel.dart';
 import '../../providers/authprovider.dart';
 import '../../utils/utils.dart';
 import '../auth/auth.dart';
+import '../auth/login.dart';
 import 'editprofile.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -136,7 +137,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         .delete(context: context);
 
                     Navigator.pop(context);
-                    await Utils(context).pushUntil(widget: const Auth());
+                    await Utils(context).pushUntil(
+                      widget: const LoginScreen(),
+                    );
                   },
                   child: Text(
                     AppLocalizations.of(context)!.yesbutton,

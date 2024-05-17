@@ -71,12 +71,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               TextFormField(
                                 // style: TextStyle(color: Colors.white),
                                 textInputAction: TextInputAction.next,
-                                onTap: () => setState(() {}),
                                 onEditingComplete: () {
-                                  setState(() {
-                                    FocusScope.of(context)
-                                        .requestFocus(passfocusNode);
-                                  });
+                                  passfocusNode.requestFocus();
                                 },
                                 keyboardType: TextInputType.emailAddress,
                                 textCapitalization:
@@ -101,9 +97,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                 height: 20,
                               ),
                               TextFormField(
-                                onTap: () => setState(() {
-                                  passfocusNode.requestFocus();
-                                }),
                                 focusNode: passfocusNode,
                                 obscureText: _isObscured,
                                 textInputAction: TextInputAction.done,

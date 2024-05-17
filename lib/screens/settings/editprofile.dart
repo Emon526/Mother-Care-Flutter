@@ -28,6 +28,7 @@ class EditProfileScreen extends StatefulWidget {
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
+  //TODO:: check is photos permission is granted or not.if needed use separate page to naviagte system settings
   final dobController = TextEditingController();
   final emailController = TextEditingController();
   final nameController = TextEditingController();

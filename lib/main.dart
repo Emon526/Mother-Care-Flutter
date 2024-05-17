@@ -40,6 +40,12 @@ void main() async {
   ApiService.apirequest();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await NotificationService().initNotification();
+
+  await Future.delayed(const Duration(seconds: 3), () {
+    FlutterNativeSplash.remove();
+    debugPrint('remove splash');
+  });
+
   //  handle notification tap in terminated state
   var initialNotification =
       await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
@@ -65,6 +71,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   void initState() {
+    permissions();
     listenToNotifications();
     super.initState();
   }
@@ -80,6 +87,11 @@ class _MyAppState extends State<MyApp> {
       );
       debugPrint('navigate to page');
     });
+  }
+
+  void permissions() async {
+    debugPrint('Requiesting permission');
+    await PermissionService().showPermissionRequest(context);
   }
 
   @override
@@ -115,8 +127,6 @@ class _MyAppState extends State<MyApp> {
           ),
         ],
         builder: (context, child) {
-          context.read<ThemeProvider>().removesplash();
-          PermissionService();
           return Consumer<ThemeProvider>(
               builder: (context, themeProvider, child) {
             return MaterialApp(

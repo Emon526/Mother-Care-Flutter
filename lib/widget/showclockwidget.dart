@@ -43,6 +43,7 @@ class ShowClockWidget {
           color: Colors.white,
           fontWeight: FontWeight.bold,
         ),
+        //TODO: CHECK CLOCK
         value: context.read<ReminderProvider>().time,
         onChange: (newTime) {
           context.read<ReminderProvider>().time = newTime;

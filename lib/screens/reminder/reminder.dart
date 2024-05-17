@@ -23,6 +23,7 @@ class _ReminderState extends State<Reminder> {
   final dateController = TextEditingController();
   final timeController = TextEditingController();
   final _reminderformKey = GlobalKey<FormState>();
+  //TODO:: check is notification permission is granted or not.if needed use separate page to naviagte system settings
   @override
   Widget build(BuildContext context) {
     return Scaffold(

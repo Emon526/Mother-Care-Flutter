@@ -1,4 +1,4 @@
-package com.example.mothercare
+package com.asrafulislam.mothercare
 
 import io.flutter.embedding.android.FlutterActivity
 
