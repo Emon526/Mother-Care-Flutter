@@ -23,11 +23,12 @@ import 'services/notificationservice.dart';
 import 'providers/modelprovider.dart';
 import 'providers/nav_bar_provider.dart';
 import 'providers/themeprovider.dart';
-import 'utils/permissionservice.dart';
+import 'services/permissionservice.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
+
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
@@ -71,13 +72,12 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   void initState() {
-    permissions();
-    listenToNotifications();
     super.initState();
+    listenToNotifications();
   }
 
-//  to listen notification tap in active state
-  listenToNotifications() {
+// handle notification tap in active state
+  void listenToNotifications() {
     debugPrint('Listening to notification');
     NotificationService.onClickNotification.stream.listen((event) {
       navigatorKey.currentState!.push(
@@ -85,13 +85,7 @@ class _MyAppState extends State<MyApp> {
           builder: (context) => const SelfCheckSteps(),
         ),
       );
-      debugPrint('navigate to page');
     });
-  }
-
-  void permissions() async {
-    debugPrint('Requiesting permission');
-    await PermissionService().showPermissionRequest(context);
   }
 
   @override
@@ -103,6 +97,9 @@ class _MyAppState extends State<MyApp> {
           ),
           ChangeNotifierProvider(
             create: (_) => LanguageProvider(),
+          ),
+          ChangeNotifierProvider(
+            create: (_) => PermissionService(),
           ),
           ChangeNotifierProvider(
             create: (_) => AuthrizationProviders(),

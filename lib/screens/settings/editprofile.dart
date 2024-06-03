@@ -10,10 +10,12 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 
 import '../../models/usermodel.dart';
 import '../../providers/authprovider.dart';
+import '../../services/permissionservice.dart';
 import '../../utils/utils.dart';
 import '../../widget/customexpandedbutton.dart';
 import '../../widget/showcalenderwidget.dart';
@@ -28,7 +30,6 @@ class EditProfileScreen extends StatefulWidget {
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
-  //TODO:: check is photos permission is granted or not.if needed use separate page to naviagte system settings
   final dobController = TextEditingController();
   final emailController = TextEditingController();
   final nameController = TextEditingController();
@@ -40,6 +41,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   );
   UserModel? user;
 
+  PermissionService permissionService = PermissionService();
+
   @override
   void initState() {
     super.initState();
@@ -48,6 +51,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     nameController.text = user!.name;
     dobController.text = user!.dateofbirth;
     emailController.text = user!.email;
+    _checkPermissions();
+  }
+
+  Future<void> _checkPermissions() async {
+    context.read<PermissionService>().photosStatus =
+        await permissionService.hasPermission(Permission.photos);
   }
 
   @override
@@ -227,7 +236,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           right: 100,
           child: InkWell(
             onTap: () {
-              pickImage();
+              context.read<PermissionService>().photosStatus.isGranted
+                  ? pickImage()
+                  : context
+                          .read<PermissionService>()
+                          .photosStatus
+                          .isPermanentlyDenied
+                      ? permissionService.showPermissionDeniedDialog(context)
+                      : requestPermission();
             },
             child: Icon(
               pickedimage == null
@@ -239,6 +255,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         ),
       ],
     );
+  }
+
+  void requestPermission() async {
+    context.read<PermissionService>().photosStatus =
+        await Permission.photos.request();
   }
 
   Widget usernoprofilepicture({required Size size}) {
@@ -254,7 +275,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           right: 20,
           child: InkWell(
             onTap: () {
-              pickImage();
+              context.read<PermissionService>().photosStatus.isGranted
+                  ? pickImage()
+                  : context
+                          .read<PermissionService>()
+                          .photosStatus
+                          .isPermanentlyDenied
+                      ? permissionService.showPermissionDeniedDialog(context)
+                      : requestPermission();
             },
             child: Icon(
               Icons.add_a_photo_outlined,
@@ -294,7 +322,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           right: 20,
           child: InkWell(
             onTap: () {
-              pickImage();
+              context.read<PermissionService>().photosStatus.isGranted
+                  ? pickImage()
+                  : context
+                          .read<PermissionService>()
+                          .photosStatus
+                          .isPermanentlyDenied
+                      ? permissionService.showPermissionDeniedDialog(context)
+                      : requestPermission();
             },
             child: Icon(
               Icons.change_circle_outlined,

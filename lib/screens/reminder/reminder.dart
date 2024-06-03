@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 
@@ -7,6 +8,7 @@ import '../../models/remindermodel.dart';
 import '../../providers/languageprovider.dart';
 import '../../providers/reminderprovider.dart';
 import '../../services/notificationservice.dart';
+import '../../services/permissionservice.dart';
 import '../../utils/utils.dart';
 import '../../widget/showcalenderwidget.dart';
 import '../../widget/showclockwidget.dart';
@@ -23,7 +25,20 @@ class _ReminderState extends State<Reminder> {
   final dateController = TextEditingController();
   final timeController = TextEditingController();
   final _reminderformKey = GlobalKey<FormState>();
-  //TODO:: check is notification permission is granted or not.if needed use separate page to naviagte system settings
+
+  PermissionService permissionService = PermissionService();
+
+  @override
+  void initState() {
+    super.initState();
+    _checkPermissions();
+  }
+
+  Future<void> _checkPermissions() async {
+    context.read<PermissionService>().notificationStatus =
+        await permissionService.hasPermission(Permission.notification);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -130,29 +145,19 @@ class _ReminderState extends State<Reminder> {
                     height: 20,
                   ),
                   ElevatedButton(
-                    onPressed: () async {
-                      if (_reminderformKey.currentState!.validate()) {
-                        int id =
-                            context.read<ReminderProvider>().reminders.length;
-                        DateTime reminderDate = _getReminderDate();
-
-                        context.read<ReminderProvider>().addReminder(
-                              reminder: ReminderModel(
-                                reminderId: id,
-                                reminderTitle: titleController.text.trim(),
-                                reminderDateTime: reminderDate,
-                              ),
-                            );
-                        Navigator.pop(context);
-                        await showsnackbar(
-                          reminderDate: reminderDate,
-                        );
-
-                        await showsNotification(
-                          id: id,
-                          reminderDate: reminderDate,
-                        );
-                      }
+                    onPressed: () {
+                      context
+                              .read<PermissionService>()
+                              .notificationStatus
+                              .isGranted
+                          ? addReminder()
+                          : context
+                                  .read<PermissionService>()
+                                  .notificationStatus
+                                  .isPermanentlyDenied
+                              ? permissionService
+                                  .showPermissionDeniedDialog(context)
+                              : requestPermission();
                     },
                     child: Text(
                       AppLocalizations.of(context)!.addReminder,
@@ -163,6 +168,35 @@ class _ReminderState extends State<Reminder> {
             ),
           ),
         ));
+  }
+
+  void requestPermission() async {
+    context.read<PermissionService>().notificationStatus =
+        await Permission.notification.request();
+  }
+
+  void addReminder() async {
+    if (_reminderformKey.currentState!.validate()) {
+      int id = context.read<ReminderProvider>().reminders.length;
+      DateTime reminderDate = _getReminderDate();
+
+      context.read<ReminderProvider>().addReminder(
+            reminder: ReminderModel(
+              reminderId: id,
+              reminderTitle: titleController.text.trim(),
+              reminderDateTime: reminderDate,
+            ),
+          );
+      Navigator.pop(context);
+      await showsnackbar(
+        reminderDate: reminderDate,
+      );
+
+      await showsNotification(
+        id: id,
+        reminderDate: reminderDate,
+      );
+    }
   }
 
   Future<void> showsnackbar({

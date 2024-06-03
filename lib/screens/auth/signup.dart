@@ -7,11 +7,13 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:random_avatar/random_avatar.dart';
 
 import '../../const/consts.dart';
 import '../../providers/authprovider.dart';
+import '../../services/permissionservice.dart';
 import '../../utils/utils.dart';
 import '../../widget/customexpandedbutton.dart';
 import '../../widget/showcalenderwidget.dart';
@@ -24,12 +26,11 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
-  //TODO:: check is photos permission is granted or not.if needed use separate page to naviagte system settings
   final _formKey = GlobalKey<FormState>();
-  final nameController = TextEditingController(text: 'test');
-  final emailController = TextEditingController(text: 'test@gmail.com');
-  final passController = TextEditingController(text: 'Abc123456@');
-  final confirmpassController = TextEditingController(text: 'Abc123456@');
+  final nameController = TextEditingController();
+  final emailController = TextEditingController();
+  final passController = TextEditingController();
+  final confirmpassController = TextEditingController();
   final dobController = TextEditingController();
   bool _isObscured = true;
   FocusNode dobfocusNode = FocusNode();
@@ -42,6 +43,19 @@ class _SignupState extends State<Signup> {
   DateTime date = DateTime.now().subtract(
     const Duration(days: 30),
   );
+  PermissionService permissionService = PermissionService();
+
+  @override
+  void initState() {
+    super.initState();
+    _checkPermissions();
+  }
+
+  Future<void> _checkPermissions() async {
+    context.read<PermissionService>().photosStatus =
+        await permissionService.hasPermission(Permission.photos);
+  }
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -335,7 +349,14 @@ class _SignupState extends State<Signup> {
           right: 80,
           child: InkWell(
             onTap: () {
-              pickImage();
+              context.read<PermissionService>().photosStatus.isGranted
+                  ? pickImage()
+                  : context
+                          .read<PermissionService>()
+                          .photosStatus
+                          .isPermanentlyDenied
+                      ? permissionService.showPermissionDeniedDialog(context)
+                      : requestPermission();
             },
             child: Icon(
               pickedimage == null
@@ -347,6 +368,11 @@ class _SignupState extends State<Signup> {
         ),
       ],
     );
+  }
+
+  void requestPermission() async {
+    context.read<PermissionService>().photosStatus =
+        await Permission.photos.request();
   }
 
   void pickImage() async {
