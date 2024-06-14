@@ -15,6 +15,12 @@ class AuthrizationProviders with ChangeNotifier {
     getrememberme();
     fatchsaverememberme();
   }
+  bool _isObscured = true;
+  bool get isObscured => _isObscured;
+  set isObscured(bool value) {
+    _isObscured = value;
+    notifyListeners();
+  }
 
   final emailController = TextEditingController();
   final passController = TextEditingController();

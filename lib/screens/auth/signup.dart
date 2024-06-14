@@ -32,7 +32,6 @@ class _SignupState extends State<Signup> {
   final passController = TextEditingController();
   final confirmpassController = TextEditingController();
   final dobController = TextEditingController();
-  bool _isObscured = true;
   FocusNode dobfocusNode = FocusNode();
   FocusNode confirmpassfocusNode = FocusNode();
   FocusNode namefocusNode = FocusNode();
@@ -54,6 +53,21 @@ class _SignupState extends State<Signup> {
   Future<void> _checkPermissions() async {
     context.read<PermissionService>().photosStatus =
         await permissionService.hasPermission(Permission.photos);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    nameController.dispose();
+    emailController.dispose();
+    passController.dispose();
+    confirmpassController.dispose();
+    dobController.dispose();
+    dobfocusNode.dispose();
+    confirmpassfocusNode.dispose();
+    namefocusNode.dispose();
+    passfocusNode.dispose();
+    emailfocusNode.dispose();
   }
 
   @override
@@ -148,7 +162,7 @@ class _SignupState extends State<Signup> {
                             onEditingComplete: () {
                               confirmpassfocusNode.requestFocus();
                             },
-                            obscureText: _isObscured,
+                            obscureText: authprovider.isObscured,
                             focusNode: passfocusNode,
                             textInputAction: TextInputAction.next,
                             keyboardType: TextInputType.visiblePassword,
@@ -170,14 +184,13 @@ class _SignupState extends State<Signup> {
                               border: const OutlineInputBorder(),
                               suffixIcon: InkWell(
                                 onTap: () {
-                                  setState(() {
-                                    _isObscured = !_isObscured;
-                                  });
+                                  authprovider.isObscured =
+                                      !authprovider.isObscured;
                                 },
                                 borderRadius: BorderRadius.circular(
                                     Consts.DefaultBorderRadius),
                                 child: Icon(
-                                  _isObscured
+                                  authprovider.isObscured
                                       ? Icons.visibility_outlined
                                       : Icons.visibility_off_outlined,
                                   color: passfocusNode.hasFocus
@@ -190,7 +203,7 @@ class _SignupState extends State<Signup> {
                           Utils(context).verticalSpace,
                           TextFormField(
                             // onTap: () => setState(() {}),
-                            obscureText: _isObscured,
+                            obscureText: authprovider.isObscured,
                             focusNode: confirmpassfocusNode,
                             textInputAction: TextInputAction.done,
                             keyboardType: TextInputType.visiblePassword,
@@ -208,14 +221,13 @@ class _SignupState extends State<Signup> {
                               border: const OutlineInputBorder(),
                               suffixIcon: InkWell(
                                 onTap: () {
-                                  setState(() {
-                                    _isObscured = !_isObscured;
-                                  });
+                                  authprovider.isObscured =
+                                      !authprovider.isObscured;
                                 },
                                 borderRadius: BorderRadius.circular(
                                     Consts.DefaultBorderRadius),
                                 child: Icon(
-                                  _isObscured
+                                  authprovider.isObscured
                                       ? Icons.visibility_outlined
                                       : Icons.visibility_off_outlined,
                                   color: confirmpassfocusNode.hasFocus

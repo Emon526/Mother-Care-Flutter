@@ -22,9 +22,14 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final _formKey = GlobalKey<FormState>();
-  bool _isObscured = true;
+  final formKey = GlobalKey<FormState>();
   FocusNode passfocusNode = FocusNode();
+  @override
+  void dispose() {
+    super.dispose();
+    passfocusNode.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -65,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           height: 20,
                         ),
                         Form(
-                          key: _formKey,
+                          key: formKey,
                           child: Column(
                             children: [
                               TextFormField(
@@ -98,7 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               TextFormField(
                                 focusNode: passfocusNode,
-                                obscureText: _isObscured,
+                                obscureText: authprovider.isObscured,
                                 textInputAction: TextInputAction.done,
                                 keyboardType: TextInputType.visiblePassword,
                                 controller: authprovider.passController,
@@ -121,14 +126,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                   border: const OutlineInputBorder(),
                                   suffixIcon: InkWell(
                                     onTap: () {
-                                      setState(() {
-                                        _isObscured = !_isObscured;
-                                      });
+                                      authprovider.isObscured =
+                                          !authprovider.isObscured;
                                     },
                                     borderRadius: BorderRadius.circular(
                                         Consts.DefaultBorderRadius),
                                     child: Icon(
-                                      _isObscured
+                                      authprovider.isObscured
                                           ? Icons.visibility_outlined
                                           : Icons.visibility_off_outlined,
                                       color: passfocusNode.hasFocus
@@ -184,7 +188,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               CustomExpanedButton(
                                 onPressed: () async {
-                                  if (_formKey.currentState!.validate()) {
+                                  if (formKey.currentState!.validate()) {
                                     // Show circular indicator while checking login credentials
                                     Utils(context).customLoading();
                                     try {

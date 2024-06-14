@@ -6,18 +6,14 @@ import '../../providers/authprovider.dart';
 import '../../utils/utils.dart';
 import '../../widget/customexpandedbutton.dart';
 
-class ForgotPassword extends StatefulWidget {
+class ForgotPassword extends StatelessWidget {
   const ForgotPassword({super.key});
 
   @override
-  State<ForgotPassword> createState() => _ForgotPasswordState();
-}
-
-class _ForgotPasswordState extends State<ForgotPassword> {
-  final _formKey = GlobalKey<FormState>();
-  final emailController = TextEditingController();
-  @override
   Widget build(BuildContext context) {
+    final formKey = GlobalKey<FormState>();
+
+    final emailController = TextEditingController();
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
@@ -56,7 +52,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       height: 20,
                     ),
                     Form(
-                      key: _formKey,
+                      key: formKey,
                       child: Column(
                         // mainAxisAlignment: MainAxisAlignment.start,
                         // crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,7 +81,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           ),
                           CustomExpanedButton(
                             onPressed: () async {
-                              if (_formKey.currentState!.validate()) {
+                              if (formKey.currentState!.validate()) {
                                 authprovider
                                     .resetPassword(emailController.text.trim());
 

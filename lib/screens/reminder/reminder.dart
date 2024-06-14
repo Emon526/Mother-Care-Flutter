@@ -40,6 +40,14 @@ class _ReminderState extends State<Reminder> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    dateController.dispose();
+    timeController.dispose();
+    titleController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(

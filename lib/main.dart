@@ -25,6 +25,7 @@ import 'providers/nav_bar_provider.dart';
 import 'providers/themeprovider.dart';
 import 'services/permissionservice.dart';
 
+// TODO: implement dispose to whole project
 final navigatorKey = GlobalKey<NavigatorState>();
 FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();

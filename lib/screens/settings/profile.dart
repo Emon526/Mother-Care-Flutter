@@ -27,6 +27,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
   DateTime date = DateTime.now().subtract(
     const Duration(days: 30),
   );
+
+  @override
+  void dispose() {
+    super.dispose();
+    nameController.dispose();
+    emailController.dispose();
+    dobController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;

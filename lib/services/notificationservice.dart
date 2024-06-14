@@ -5,6 +5,7 @@ import 'package:timezone/timezone.dart' as tz;
 
 import '../const/consts.dart';
 
+//TODO:: Fix Android Release mode notification error
 class NotificationService {
   final FlutterLocalNotificationsPlugin notificationsPlugin =
       FlutterLocalNotificationsPlugin();
