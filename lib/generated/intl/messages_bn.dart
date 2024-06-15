@@ -28,6 +28,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "account": MessageLookupByLibrary.simpleMessage("অ্যাকাউন্ট"),
+        "accountinformation":
+            MessageLookupByLibrary.simpleMessage("হিসাবের তথ্য"),
         "addReminder":
             MessageLookupByLibrary.simpleMessage("রিমাইন্ডার যোগ করুন"),
         "addReminderDate": MessageLookupByLibrary.simpleMessage("তারিখ"),
@@ -43,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "addRemindertitleError":
             MessageLookupByLibrary.simpleMessage("অনুগ্রহ করে শিরোনাম লিখুন"),
         "age": MessageLookupByLibrary.simpleMessage("বয়স"),
+        "am": MessageLookupByLibrary.simpleMessage("এ.এম"),
         "and": MessageLookupByLibrary.simpleMessage("এবং"),
         "applybutton": MessageLookupByLibrary.simpleMessage("আবেদন করুন"),
         "appname": MessageLookupByLibrary.simpleMessage("মাদার কেয়ার"),
@@ -112,7 +116,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "donebutton": MessageLookupByLibrary.simpleMessage("সম্পন্ন"),
         "donothaveaccount":
             MessageLookupByLibrary.simpleMessage("একটি অ্যাকাউন্ট নেই?"),
+        "editprofilebutton":
+            MessageLookupByLibrary.simpleMessage("প্রোফাইল সম্পাদনা করুন"),
         "email": MessageLookupByLibrary.simpleMessage("ইমেইল"),
+        "emailchangenotice": MessageLookupByLibrary.simpleMessage(
+            "ইমেল অ্যাকাউন্ট পরিবর্তন করা যাবে না"),
         "emailrequirederror":
             MessageLookupByLibrary.simpleMessage("ইমেইল আবশ্যক"),
         "emailvaliderror":
@@ -135,6 +143,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("পাসওয়ার্ড ভুলে গেছেন"),
         "forgotpasswordSnakeBar": MessageLookupByLibrary.simpleMessage(
             "অনুগ্রহপূর্বক আপনার ইমেইল চেক করুন"),
+        "general": MessageLookupByLibrary.simpleMessage("সাধারণ"),
         "generatePdfButton":
             MessageLookupByLibrary.simpleMessage("পিডিএফ তৈরি করুন"),
         "getpredictionresultbutton":
@@ -188,7 +197,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("ম্যামোগ্রাফি বিশ্লেষণ"),
         "minutes": MessageLookupByLibrary.simpleMessage("মিনিট"),
         "month": MessageLookupByLibrary.simpleMessage("মাস"),
+        "more": MessageLookupByLibrary.simpleMessage("আরো"),
         "name": MessageLookupByLibrary.simpleMessage("নাম"),
+        "namerequirederror": MessageLookupByLibrary.simpleMessage("নাম আবশ্যক"),
         "nextbutton": MessageLookupByLibrary.simpleMessage("পরবর্তী"),
         "noarticlefound": MessageLookupByLibrary.simpleMessage(
             "কোন অনুচ্ছেদ খুঁজে পাওয়া যায়নি!"),
@@ -198,6 +209,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "notificationsettings":
             MessageLookupByLibrary.simpleMessage("বিজ্ঞপ্তি সেটিংস"),
         "okbutton": MessageLookupByLibrary.simpleMessage("ঠিক আছে"),
+        "open": MessageLookupByLibrary.simpleMessage("খুলুন"),
         "passlengthderror": MessageLookupByLibrary.simpleMessage(
             "পাসওয়ার্ড কমপক্ষে ৮ সংখ্যার হতে হবে"),
         "passmatcherror":
@@ -207,12 +219,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "passvaliderror": MessageLookupByLibrary.simpleMessage(
             "পাসওয়ার্ডে কমপক্ষে একটি বিশেষ অক্ষর থাকতে হবে"),
         "password": MessageLookupByLibrary.simpleMessage("পাসওয়ার্ড"),
+        "personalinformation":
+            MessageLookupByLibrary.simpleMessage("ব্যক্তিগত তথ্য"),
         "pickimageSnakeBar": MessageLookupByLibrary.simpleMessage(
             "একটি প্রোফাইল ফটো নির্বাচন করুন"),
+        "pm": MessageLookupByLibrary.simpleMessage("পি.এম"),
         "predictionresult":
             MessageLookupByLibrary.simpleMessage("বিশ্লেষণ ফলাফল"),
         "prevbutton": MessageLookupByLibrary.simpleMessage("পূর্ববর্তী"),
         "privacypolicy": MessageLookupByLibrary.simpleMessage("গোপনীয়তা নীতি"),
+        "profile": MessageLookupByLibrary.simpleMessage("প্রোফাইল"),
         "rating": MessageLookupByLibrary.simpleMessage("রেটিং"),
         "readless": MessageLookupByLibrary.simpleMessage(" কম দেখান"),
         "readmore": MessageLookupByLibrary.simpleMessage("আরও পড়ুন"),
@@ -298,6 +314,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "theme": MessageLookupByLibrary.simpleMessage("থিম"),
         "unabletoloadImage":
             MessageLookupByLibrary.simpleMessage("ছবি লোড করা সম্বব হচ্ছে না"),
+        "updatebutton":
+            MessageLookupByLibrary.simpleMessage("প্রোফাইল আপডেট করুন"),
         "uploadimage": MessageLookupByLibrary.simpleMessage("চিত্র আপলোড"),
         "version": MessageLookupByLibrary.simpleMessage("সংস্করণ"),
         "waitingforimage":

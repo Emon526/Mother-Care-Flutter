@@ -55,9 +55,11 @@
 			<string>en</string>
 			<string>de_DE</string>
 		</array>
-		<key>UIStatusBarHidden</key>
-		<true/>
 		<key>UIViewControllerBasedStatusBarAppearance</key>
-		<false/>
+		<true/>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>App needs access to photo lib for profile images</string>
+		<key>NSUserNotificationsUsageDescription</key>
+		<string>App needs access to send notification for reminders</string>
 	</dict>
 </plist>

@@ -70,19 +70,15 @@ class ReminderProvider extends ChangeNotifier {
     String formattedDuration = '${Utils(context).checkEmpty(
       duration: days,
       days: AppLocalizations.of(context)!.days,
-      context: context,
     )}${Utils(context).checkEmpty(
       duration: hoursRemainder,
       days: AppLocalizations.of(context)!.hours,
-      context: context,
     )}${Utils(context).checkEmpty(
       duration: minutesRemainder,
       days: AppLocalizations.of(context)!.minutes,
-      context: context,
     )}${Utils(context).checkEmpty(
       duration: secondsRemainder,
       days: AppLocalizations.of(context)!.seconds,
-      context: context,
     )}';
 
     return formattedDuration;

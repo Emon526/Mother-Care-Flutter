@@ -29,6 +29,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "account": MessageLookupByLibrary.simpleMessage("Account"),
+        "accountinformation":
+            MessageLookupByLibrary.simpleMessage("Account Information"),
         "addReminder": MessageLookupByLibrary.simpleMessage("Add Reminder"),
         "addReminderDate": MessageLookupByLibrary.simpleMessage("Date"),
         "addReminderDateError":
@@ -43,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "addRemindertitleError":
             MessageLookupByLibrary.simpleMessage("Please Enter Title"),
         "age": MessageLookupByLibrary.simpleMessage("Age"),
+        "am": MessageLookupByLibrary.simpleMessage("AM"),
         "and": MessageLookupByLibrary.simpleMessage("And"),
         "applybutton": MessageLookupByLibrary.simpleMessage("Apply"),
         "appname": MessageLookupByLibrary.simpleMessage(" Mother Care"),
@@ -110,7 +114,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "donebutton": MessageLookupByLibrary.simpleMessage("Done"),
         "donothaveaccount":
             MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
+        "editprofilebutton":
+            MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "emailchangenotice": MessageLookupByLibrary.simpleMessage(
+            "Email account can\'t be changed"),
         "emailrequirederror":
             MessageLookupByLibrary.simpleMessage("Email is required"),
         "emailvaliderror":
@@ -133,6 +141,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Forgot Password"),
         "forgotpasswordSnakeBar":
             MessageLookupByLibrary.simpleMessage("Please check your email"),
+        "general": MessageLookupByLibrary.simpleMessage("General"),
         "generatePdfButton":
             MessageLookupByLibrary.simpleMessage("Generate Pdf"),
         "getpredictionresultbutton":
@@ -171,7 +180,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginbutton": MessageLookupByLibrary.simpleMessage("Login"),
         "logoutbutton": MessageLookupByLibrary.simpleMessage("Logout"),
         "madewithbyasraful":
-            MessageLookupByLibrary.simpleMessage("Made with ❤️ by Asraful"),
+            MessageLookupByLibrary.simpleMessage("Created with ❤️ by Asraful"),
         "mammogram": MessageLookupByLibrary.simpleMessage("Mammogram"),
         "mammogramHintBody": MessageLookupByLibrary.simpleMessage(
             "A mammogram is an X-ray picture of the breast. Doctors use a mammogram to look for early signs of breast cancer. Regular mammograms are the best tests doctors have to find breast cancer early, sometimes up to three years before it can be felt."),
@@ -184,7 +193,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Mammography Analysis"),
         "minutes": MessageLookupByLibrary.simpleMessage("minutes"),
         "month": MessageLookupByLibrary.simpleMessage("Month"),
+        "more": MessageLookupByLibrary.simpleMessage("More"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
+        "namerequirederror":
+            MessageLookupByLibrary.simpleMessage("Name is required"),
         "nextbutton": MessageLookupByLibrary.simpleMessage("Next"),
         "noarticlefound":
             MessageLookupByLibrary.simpleMessage("No Article Found!"),
@@ -194,6 +206,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "notificationsettings":
             MessageLookupByLibrary.simpleMessage("Notification settings"),
         "okbutton": MessageLookupByLibrary.simpleMessage("OK"),
+        "open": MessageLookupByLibrary.simpleMessage("Open"),
         "passlengthderror": MessageLookupByLibrary.simpleMessage(
             "Password must be at least 8 digits long"),
         "passmatcherror":
@@ -203,12 +216,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "passvaliderror": MessageLookupByLibrary.simpleMessage(
             "Passwords must have at least one special character"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "personalinformation":
+            MessageLookupByLibrary.simpleMessage("Personal Information"),
         "pickimageSnakeBar": MessageLookupByLibrary.simpleMessage(
             "Please select a profile photo"),
+        "pm": MessageLookupByLibrary.simpleMessage("PM"),
         "predictionresult":
             MessageLookupByLibrary.simpleMessage("Analysis Result"),
         "prevbutton": MessageLookupByLibrary.simpleMessage("Prev"),
         "privacypolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
+        "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "rating": MessageLookupByLibrary.simpleMessage("Rating"),
         "readless": MessageLookupByLibrary.simpleMessage("show less"),
         "readmore": MessageLookupByLibrary.simpleMessage("read more"),
@@ -287,6 +304,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
         "unabletoloadImage":
             MessageLookupByLibrary.simpleMessage("Unable to load image"),
+        "updatebutton": MessageLookupByLibrary.simpleMessage("Update Profile"),
         "uploadimage": MessageLookupByLibrary.simpleMessage("Upload Image"),
         "version": MessageLookupByLibrary.simpleMessage("Version"),
         "waitingforimage":

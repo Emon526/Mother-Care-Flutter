@@ -36,8 +36,6 @@ class Styles {
           color: isDarkTheme ? Colors.white : Colors.black,
         ),
         surfaceTintColor: Colors.transparent,
-        // color: isDarkTheme ? Colors.black : Colors.white,
-        // foregroundColor: isDarkTheme ? Colors.black : Colors.white,
         backgroundColor: Colors.transparent,
         shadowColor: Colors.transparent,
         systemOverlayStyle: SystemUiOverlayStyle(
@@ -49,9 +47,6 @@ class Styles {
           color: isDarkTheme ? Colors.white : Colors.black,
         ),
       ),
-      // iconTheme: IconThemeData(
-      //   color: isDarkTheme ? Colors.white : Colors.black,
-      // ),
       cardTheme: CardTheme(
         color: isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor,
       ),
@@ -106,41 +101,41 @@ class Styles {
             isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor,
       ),
       textTheme: TextTheme(
-        // labelLarge: TextStyle(
-        //   color: isDarkTheme ? Colors.white : Colors.black,
-        //   //   fontSize: 30,
-        //   //   fontStyle: FontStyle.italic,
-        // ),
-        // labelMedium: TextStyle(
-        //   color: isDarkTheme ? Colors.white : Colors.black,
-        // ),
-        // labelSmall: TextStyle(
-        //   color: isDarkTheme ? Colors.white : Colors.black,
-        // ),
-        // titleLarge: TextStyle(
-        //   color: isDarkTheme ? Colors.white : Colors.black,
-        //   //   fontSize: 30,
-        //   //   fontStyle: FontStyle.italic,
-        // ),
-        // titleMedium: TextStyle(
-        //   color: isDarkTheme ? Colors.white : Colors.black,
-        // ),
-        // titleSmall: TextStyle(
-        //   color: isDarkTheme ? Colors.white : Colors.black,
-        // ),
-        // displayLarge: TextStyle(
-        //   color: isDarkTheme ? Colors.white : Colors.black,
-        //   //   fontSize: 72,
-        //   //   fontWeight: FontWeight.bold,
-        // ),
-        // displayMedium: TextStyle(
-        //   color: isDarkTheme ? Colors.white : Colors.black,
-        // ),
-        // displaySmall: TextStyle(
-        //   color: isDarkTheme ? Colors.white : Colors.black,
-        //   //   fontSize: 30,
-        //   //   fontStyle: FontStyle.italic,
-        // ),
+        labelLarge: TextStyle(
+          color: isDarkTheme ? Colors.white : Colors.black,
+          //   fontSize: 30,
+          //   fontStyle: FontStyle.italic,
+        ),
+        labelMedium: TextStyle(
+          color: isDarkTheme ? Colors.white : Colors.black,
+        ),
+        labelSmall: TextStyle(
+          color: isDarkTheme ? Colors.white : Colors.black,
+        ),
+        titleLarge: TextStyle(
+          color: isDarkTheme ? Colors.white : Colors.black,
+          //   fontSize: 30,
+          //   fontStyle: FontStyle.italic,
+        ),
+        titleMedium: TextStyle(
+          color: isDarkTheme ? Colors.white : Colors.black,
+        ),
+        titleSmall: TextStyle(
+          color: isDarkTheme ? Colors.white : Colors.black,
+        ),
+        displayLarge: TextStyle(
+          color: isDarkTheme ? Colors.white : Colors.black,
+          //   fontSize: 72,
+          //   fontWeight: FontWeight.bold,
+        ),
+        displayMedium: TextStyle(
+          color: isDarkTheme ? Colors.white : Colors.black,
+        ),
+        displaySmall: TextStyle(
+          color: isDarkTheme ? Colors.white : Colors.black,
+          //   fontSize: 30,
+          //   fontStyle: FontStyle.italic,
+        ),
         bodyLarge: TextStyle(
           color: isDarkTheme ? Colors.white : Colors.black,
           //   fontSize: 30,
@@ -188,12 +183,12 @@ class Styles {
 
         //   return null;
         // }),
-        fillColor: MaterialStateProperty.resolveWith<Color?>(
-            (Set<MaterialState> states) {
-          if (states.contains(MaterialState.disabled)) {
+        fillColor:
+            WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
+          if (states.contains(WidgetState.disabled)) {
             return isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor;
           }
-          if (states.contains(MaterialState.selected)) {
+          if (states.contains(WidgetState.selected)) {
             return isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor;
           }
 

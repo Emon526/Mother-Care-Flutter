@@ -2,23 +2,21 @@
 
 import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:random_avatar/random_avatar.dart';
-import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 import '../../const/consts.dart';
 import '../../providers/authprovider.dart';
-import '../../providers/languageprovider.dart';
-import '../../providers/reminderprovider.dart';
+import '../../services/permissionservice.dart';
 import '../../utils/utils.dart';
 import '../../widget/customexpandedbutton.dart';
-import '../../widget/responsivesnackbar.dart';
+import '../../widget/showcalenderwidget.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -29,19 +27,48 @@ class Signup extends StatefulWidget {
 
 class _SignupState extends State<Signup> {
   final _formKey = GlobalKey<FormState>();
-  final firstnameController = TextEditingController();
-  final lastnameController = TextEditingController();
+  final nameController = TextEditingController();
   final emailController = TextEditingController();
   final passController = TextEditingController();
   final confirmpassController = TextEditingController();
   final dobController = TextEditingController();
-  bool _isObscured = true;
   FocusNode dobfocusNode = FocusNode();
   FocusNode confirmpassfocusNode = FocusNode();
+  FocusNode namefocusNode = FocusNode();
   FocusNode passfocusNode = FocusNode();
   FocusNode emailfocusNode = FocusNode();
   ImagePicker picker = ImagePicker();
   File? pickedimage;
+  DateTime date = DateTime.now().subtract(
+    const Duration(days: 30),
+  );
+  PermissionService permissionService = PermissionService();
+
+  @override
+  void initState() {
+    super.initState();
+    _checkPermissions();
+  }
+
+  Future<void> _checkPermissions() async {
+    context.read<PermissionService>().photosStatus =
+        await permissionService.hasPermission(Permission.photos);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    nameController.dispose();
+    emailController.dispose();
+    passController.dispose();
+    confirmpassController.dispose();
+    dobController.dispose();
+    dobfocusNode.dispose();
+    confirmpassfocusNode.dispose();
+    namefocusNode.dispose();
+    passfocusNode.dispose();
+    emailfocusNode.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,61 +90,36 @@ class _SignupState extends State<Signup> {
                 child: Column(
                   children: [
                     _profilephoto(context: context, size: size),
-                    const SizedBox(
-                      height: 15,
-                    ),
+                    Utils(context).verticalSpace,
                     Form(
                       key: _formKey,
                       child: Column(
                         children: [
                           TextFormField(
-                            textInputAction: TextInputAction.next,
-                            keyboardType: TextInputType.name,
-                            textCapitalization: TextCapitalization.words,
-                            controller: firstnameController,
-                            validator: RequiredValidator(
-                                    errorText: AppLocalizations.of(context)!
-                                        .addReminder)
-                                .call,
-                            decoration: InputDecoration(
-                              labelText:
-                                  AppLocalizations.of(context)!.firstname,
-                              hintText: AppLocalizations.of(context)!.firstname,
-                              border: const OutlineInputBorder(),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          TextFormField(
                             onEditingComplete: () {
-                              //TODO: fix showcalender error
-                              FocusScope.of(context).unfocus();
-                              // FocusScope.of(context).requestFocus(dobfocusNode);
+                              namefocusNode.unfocus();
                               _showCalender();
                             },
+                            focusNode: namefocusNode,
                             textInputAction: TextInputAction.next,
                             keyboardType: TextInputType.name,
                             textCapitalization: TextCapitalization.words,
-                            controller: lastnameController,
+                            controller: nameController,
                             validator: RequiredValidator(
                                     errorText: AppLocalizations.of(context)!
-                                        .lastnamerequirederror)
+                                        .namerequirederror)
                                 .call,
                             decoration: InputDecoration(
-                              labelText: AppLocalizations.of(context)!.lastname,
-                              hintText: AppLocalizations.of(context)!.lastname,
+                              labelText: AppLocalizations.of(context)!.name,
+                              hintText: AppLocalizations.of(context)!.name,
                               border: const OutlineInputBorder(),
                             ),
                           ),
-                          const SizedBox(
-                            height: 15,
-                          ),
+                          Utils(context).verticalSpace,
                           TextFormField(
                             onTap: () => _showCalender(),
                             textInputAction: TextInputAction.next,
                             keyboardType: TextInputType.none,
-                            // textCapitalization: TextCapitalization.words,
                             controller: dobController,
                             validator: RequiredValidator(
                                     errorText: AppLocalizations.of(context)!
@@ -129,20 +131,16 @@ class _SignupState extends State<Signup> {
                               border: const OutlineInputBorder(),
                             ),
                           ),
-                          const SizedBox(
-                            height: 15,
-                          ),
+                          Utils(context).verticalSpace,
                           TextFormField(
-                            onTap: () => setState(() {}),
+                            // onTap: () => setState(() {}),
                             onEditingComplete: () {
-                              setState(() {
-                                FocusScope.of(context)
-                                    .requestFocus(passfocusNode);
-                              });
+                              passfocusNode.requestFocus();
                             },
+                            focusNode: emailfocusNode,
                             textInputAction: TextInputAction.next,
                             keyboardType: TextInputType.emailAddress,
-                            textCapitalization: TextCapitalization.sentences,
+                            textCapitalization: TextCapitalization.words,
                             controller: emailController,
                             validator: MultiValidator([
                               RequiredValidator(
@@ -158,18 +156,13 @@ class _SignupState extends State<Signup> {
                               border: const OutlineInputBorder(),
                             ),
                           ),
-                          const SizedBox(
-                            height: 15,
-                          ),
+                          Utils(context).verticalSpace,
                           TextFormField(
-                            onTap: () => setState(() {}),
+                            // onTap: () => setState(() {}),
                             onEditingComplete: () {
-                              setState(() {
-                                FocusScope.of(context)
-                                    .requestFocus(confirmpassfocusNode);
-                              });
+                              confirmpassfocusNode.requestFocus();
                             },
-                            obscureText: _isObscured,
+                            obscureText: authprovider.isObscured,
                             focusNode: passfocusNode,
                             textInputAction: TextInputAction.next,
                             keyboardType: TextInputType.visiblePassword,
@@ -191,14 +184,13 @@ class _SignupState extends State<Signup> {
                               border: const OutlineInputBorder(),
                               suffixIcon: InkWell(
                                 onTap: () {
-                                  setState(() {
-                                    _isObscured = !_isObscured;
-                                  });
+                                  authprovider.isObscured =
+                                      !authprovider.isObscured;
                                 },
                                 borderRadius: BorderRadius.circular(
                                     Consts.DefaultBorderRadius),
                                 child: Icon(
-                                  _isObscured
+                                  authprovider.isObscured
                                       ? Icons.visibility_outlined
                                       : Icons.visibility_off_outlined,
                                   color: passfocusNode.hasFocus
@@ -208,12 +200,10 @@ class _SignupState extends State<Signup> {
                               ),
                             ),
                           ),
-                          const SizedBox(
-                            height: 15,
-                          ),
+                          Utils(context).verticalSpace,
                           TextFormField(
-                            onTap: () => setState(() {}),
-                            obscureText: _isObscured,
+                            // onTap: () => setState(() {}),
+                            obscureText: authprovider.isObscured,
                             focusNode: confirmpassfocusNode,
                             textInputAction: TextInputAction.done,
                             keyboardType: TextInputType.visiblePassword,
@@ -231,14 +221,13 @@ class _SignupState extends State<Signup> {
                               border: const OutlineInputBorder(),
                               suffixIcon: InkWell(
                                 onTap: () {
-                                  setState(() {
-                                    _isObscured = !_isObscured;
-                                  });
+                                  authprovider.isObscured =
+                                      !authprovider.isObscured;
                                 },
                                 borderRadius: BorderRadius.circular(
                                     Consts.DefaultBorderRadius),
                                 child: Icon(
-                                  _isObscured
+                                  authprovider.isObscured
                                       ? Icons.visibility_outlined
                                       : Icons.visibility_off_outlined,
                                   color: confirmpassfocusNode.hasFocus
@@ -248,9 +237,7 @@ class _SignupState extends State<Signup> {
                               ),
                             ),
                           ),
-                          const SizedBox(
-                            height: 15,
-                          ),
+                          Utils(context).verticalSpace,
                           Row(
                             children: [
                               Checkbox(
@@ -284,49 +271,37 @@ class _SignupState extends State<Signup> {
                               ),
                             ],
                           ),
-                          const SizedBox(
-                            height: 15,
-                          ),
+                          Utils(context).verticalSpace,
                           CustomExpanedButton(
                             onPressed: () async {
-                              pickedimage == null
-                                  ? ResponsiveSnackbar.show(
-                                      context,
-                                      AppLocalizations.of(context)!
-                                          .pickimageSnakeBar)
-                                  : null;
                               authprovider.acceptpolicy
                                   ? null
-                                  : ResponsiveSnackbar.show(
-                                      context,
-                                      AppLocalizations.of(context)!
+                                  : await Utils(context).showsnackbar(
+                                      message: AppLocalizations.of(context)!
                                           .termsconditionSnakeBar,
                                     );
-                              if (pickedimage != null &&
-                                  _formKey.currentState!.validate() &&
+                              if (_formKey.currentState!.validate() &&
                                   authprovider.acceptpolicy) {
                                 Utils(context).customLoading();
                                 try {
                                   await authprovider.signup(
-                                    firstname: firstnameController.text.trim(),
-                                    lastname: lastnameController.text.trim(),
+                                    name: nameController.text.trim(),
                                     dob: dobController.text.trim(),
                                     email: emailController.text.trim(),
                                     password: confirmpassController.text.trim(),
-                                    profilephoto: pickedimage!,
+                                    profilephoto: pickedimage,
                                   );
                                   Navigator.pop(context);
                                 } on FirebaseAuthException catch (e) {
-                                  ResponsiveSnackbar.show(context, e.message!);
+                                  await Utils(context)
+                                      .showsnackbar(message: e.message!);
                                 }
                                 Navigator.pop(context);
                               }
                             },
                             text: AppLocalizations.of(context)!.signupbutton,
                           ),
-                          const SizedBox(
-                            height: 10,
-                          ),
+                          Utils(context).verticalSpace,
                           TextButton(
                             onPressed: () {
                               Navigator.pop(context);
@@ -335,9 +310,7 @@ class _SignupState extends State<Signup> {
                               AppLocalizations.of(context)!.haveaccount,
                             ),
                           ),
-                          const SizedBox(
-                            height: 20,
-                          ),
+                          Utils(context).verticalSpace,
                         ],
                       ),
                     )
@@ -348,139 +321,6 @@ class _SignupState extends State<Signup> {
           );
         },
       ),
-    );
-  }
-
-  _showCalender() {
-    DateTime date = DateTime.now().subtract(
-      const Duration(days: 30),
-    );
-    return showCupertinoModalPopup<void>(
-      context: context,
-      barrierDismissible: false,
-      barrierColor: Colors.black45,
-      builder: (BuildContext context) {
-        return Dialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
-          ),
-          insetPadding: EdgeInsets.symmetric(
-            horizontal: MediaQuery.of(context).size.width * 0.05,
-          ),
-          backgroundColor: Theme.of(context).primaryColor,
-          surfaceTintColor: Colors.transparent,
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        DateFormat('yyyy',
-                                context.read<LanguageProvider>().languageCode)
-                            .format(
-                                context.watch<ReminderProvider>().seletedDate),
-                        style: const TextStyle(
-                          fontSize: 14,
-                          color: Colors.white,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        DateFormat('EEE, MMM dd',
-                                context.read<LanguageProvider>().languageCode)
-                            .format(
-                                context.watch<ReminderProvider>().seletedDate),
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 30,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                SfDateRangePicker(
-                  backgroundColor: Theme.of(context).primaryColor,
-                  cancelText: AppLocalizations.of(context)!.cancelbutton,
-                  confirmText: AppLocalizations.of(context)!.okbutton,
-                  maxDate: date,
-                  onSelectionChanged: (args) {
-                    context.read<ReminderProvider>().seletedDate =
-                        DateTime.parse(args.value.toString());
-                  },
-                  monthViewSettings: const DateRangePickerMonthViewSettings(
-                    viewHeaderStyle: DateRangePickerViewHeaderStyle(
-                      textStyle: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  onSubmit: (date) {
-                    DateFormat dateFormat =
-                        DateFormat('EEE, dd MMMM yyyy', 'en');
-                    dobController.text =
-                        dateFormat.format(DateTime.parse(date.toString()));
-                    Navigator.pop(context);
-                    //TODO:fix focus for emailfocus node
-                    // FocusScope.of(context).requestFocus(emailfocusNode);
-                  },
-                  onCancel: () {
-                    Navigator.pop(context);
-                  },
-                  headerStyle: DateRangePickerHeaderStyle(
-                    textStyle: const TextStyle(
-                      color: Colors.white,
-                    ),
-                    backgroundColor: Theme.of(context).primaryColor,
-                  ),
-                  selectionTextStyle: TextStyle(
-                    color: Theme.of(context).primaryColor,
-                  ),
-                  monthCellStyle: const DateRangePickerMonthCellStyle(
-                    todayTextStyle: TextStyle(
-                      color: Colors.white,
-                    ),
-                    textStyle: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                  yearCellStyle: DateRangePickerYearCellStyle(
-                    textStyle: const TextStyle(
-                      color: Colors.white,
-                    ),
-                    todayTextStyle: TextStyle(
-                      color: Theme.of(context).colorScheme.secondary,
-                    ),
-                  ),
-                  selectionColor: Theme.of(context).colorScheme.secondary,
-                  todayHighlightColor: Colors.white,
-                  showActionButtons: true,
-                  enablePastDates: true,
-                  showNavigationArrow: true,
-                  selectionMode: DateRangePickerSelectionMode.single,
-                  view: DateRangePickerView.month,
-                  initialDisplayDate: date,
-                  initialSelectedDate: date,
-                  navigationDirection:
-                      DateRangePickerNavigationDirection.vertical,
-                  navigationMode: DateRangePickerNavigationMode.snap,
-                ),
-              ],
-            ),
-          ),
-        );
-      },
     );
   }
 
@@ -511,7 +351,7 @@ class _SignupState extends State<Signup> {
                   radius: size.height * 0.2,
                   backgroundColor: Theme.of(context).colorScheme.secondary,
                   child: RandomAvatar(
-                    'profilephoto',
+                    DateTime.now().toIso8601String(),
                     trBackground: true,
                   ),
                 ),
@@ -521,7 +361,14 @@ class _SignupState extends State<Signup> {
           right: 80,
           child: InkWell(
             onTap: () {
-              pickImage();
+              context.read<PermissionService>().photosStatus.isGranted
+                  ? pickImage()
+                  : context
+                          .read<PermissionService>()
+                          .photosStatus
+                          .isPermanentlyDenied
+                      ? permissionService.showPermissionDeniedDialog(context)
+                      : requestPermission();
             },
             child: Icon(
               pickedimage == null
@@ -535,6 +382,11 @@ class _SignupState extends State<Signup> {
     );
   }
 
+  void requestPermission() async {
+    context.read<PermissionService>().photosStatus =
+        await Permission.photos.request();
+  }
+
   void pickImage() async {
     try {
       var image = await picker.pickImage(source: ImageSource.gallery);
@@ -544,10 +396,25 @@ class _SignupState extends State<Signup> {
         pickedimage = File(image.path);
       });
     } catch (error) {
-      ResponsiveSnackbar.show(
-        context,
-        error.toString(),
+      await Utils(context).showsnackbar(
+        message: error.toString(),
       );
     }
+  }
+
+  _showCalender() {
+    ShowCalenderWidget(
+      context: context,
+      maxDate: date,
+      enablePastDates: true,
+      initialDisplayDate: date,
+      initialSelectedDate: date,
+      onSubmit: (date) {
+        DateFormat dateFormat = DateFormat('EEE, dd MMMM yyyy', 'en');
+        dobController.text = dateFormat.format(DateTime.parse(date.toString()));
+        Navigator.pop(context);
+        emailfocusNode.requestFocus();
+      },
+    );
   }
 }

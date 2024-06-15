@@ -3,7 +3,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:provider/provider.dart';
 import '../const/consts.dart';
 import '../models/usermodel.dart';
@@ -35,12 +34,7 @@ class DrawerWidget extends StatelessWidget {
                       return _buildHeader(
                         context: context,
                         size: size,
-                        name: "${userData.firstName} ${userData.lastName}",
-                        age: Utils(context).calculateAge(
-                          dateOfBirth: userData.dateofbirth,
-                        ),
-                        email: userData.email,
-                        profilePhoto: userData.profilepicture,
+                        userData: userData,
                       );
                     } else if (snapshot.hasError) {
                       return Text('Error: ${snapshot.error}');
@@ -53,19 +47,13 @@ class DrawerWidget extends StatelessWidget {
                 );
               },
             ),
-            // const SizedBox(
-            //   height: 10,
-            // ),
+
             _buildListtile(
+              context: context,
               iconData: LineIcons.stethoscope,
               tiletitle: AppLocalizations.of(context)!.doctors,
-              onTap: () {
-                PersistentNavBarNavigator.pushNewScreen(
-                  context,
-                  screen: const DoctorsList(),
-                  withNavBar: false, // OPTIONAL VALUE. True by default.
-                  pageTransitionAnimation: PageTransitionAnimation.cupertino,
-                );
+              onTap: () async {
+                await Utils(context).push(widget: const DoctorsList());
               },
             ),
             // _buildListtile(
@@ -76,34 +64,19 @@ class DrawerWidget extends StatelessWidget {
             //   },
             // ),
             _buildListtile(
+              context: context,
               iconData: LineIcons.calendarAlt,
               tiletitle: AppLocalizations.of(context)!.reminders,
-              onTap: () {
-                PersistentNavBarNavigator.pushNewScreen(
-                  context,
-                  screen: const ReminderList(),
-                  withNavBar: false, // OPTIONAL VALUE. True by default.
-                  pageTransitionAnimation: PageTransitionAnimation.cupertino,
-                );
+              onTap: () async {
+                await Utils(context).push(widget: const ReminderList());
               },
             ),
             _buildListtile(
+              context: context,
               tiletitle: AppLocalizations.of(context)!.settings,
               iconData: Icons.settings_outlined,
-              onTap: () {
-                PersistentNavBarNavigator.pushNewScreen(
-                  context,
-                  screen: const SettingScreen(),
-                  withNavBar: false, // OPTIONAL VALUE. True by default.
-                  pageTransitionAnimation: PageTransitionAnimation.cupertino,
-                );
-              },
-            ),
-            _buildListtile(
-              tiletitle: AppLocalizations.of(context)!.logoutbutton,
-              iconData: Icons.logout,
               onTap: () async {
-                await context.read<AuthrizationProviders>().logout();
+                await Utils(context).push(widget: const SettingScreen());
               },
             ),
           ],
@@ -115,10 +88,7 @@ class DrawerWidget extends StatelessWidget {
   _buildHeader({
     required BuildContext context,
     required Size size,
-    required String name,
-    required String age,
-    required String email,
-    required String profilePhoto,
+    required UserModel userData,
   }) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -128,33 +98,41 @@ class DrawerWidget extends StatelessWidget {
           SizedBox(
             height: size.height * 0.2,
             child: Center(
-              child: CachedNetworkImage(
-                imageUrl: profilePhoto,
-                imageBuilder: (context, imageProvider) => CircleAvatar(
-                  radius: size.height * 0.1,
-                  backgroundColor: Theme.of(context).colorScheme.secondary,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(100),
-                    child: Image(
-                      image: imageProvider,
-                      height: size.height * 0.2,
-                      width: size.height * 0.2,
-                      fit: BoxFit.cover,
+              child: userData.profilepicture != null
+                  ? CachedNetworkImage(
+                      imageUrl: userData.profilepicture!,
+                      imageBuilder: (context, imageProvider) => CircleAvatar(
+                        radius: size.height * 0.1,
+                        backgroundColor:
+                            Theme.of(context).colorScheme.secondary,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(100),
+                          child: Image(
+                            image: imageProvider,
+                            height: size.height * 0.2,
+                            width: size.height * 0.2,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      placeholder: (context, url) => SpinKitDoubleBounce(
+                        color: Theme.of(context).primaryColor,
+                      ),
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
+                    )
+                  : Icon(
+                      Icons.account_circle,
+                      size: size.height * 0.2,
+                      // color: iconColor,
                     ),
-                  ),
-                ),
-                placeholder: (context, url) => SpinKitDoubleBounce(
-                  color: Theme.of(context).primaryColor,
-                ),
-                errorWidget: (context, url, error) => const Icon(Icons.error),
-              ),
             ),
           ),
           const SizedBox(
             height: 10,
           ),
           Text(
-            '${AppLocalizations.of(context)!.name} : $name',
+            '${AppLocalizations.of(context)!.name} : ${userData.name}',
             style: TextStyle(
               color: Theme.of(context).primaryColor,
               fontWeight: FontWeight.w500,
@@ -164,7 +142,7 @@ class DrawerWidget extends StatelessWidget {
             height: 5,
           ),
           Text(
-            "${AppLocalizations.of(context)!.email} : $email",
+            "${AppLocalizations.of(context)!.email} : ${userData.email}",
             style: TextStyle(
               color: Theme.of(context).primaryColor,
               fontWeight: FontWeight.w500,
@@ -174,7 +152,9 @@ class DrawerWidget extends StatelessWidget {
             height: 5,
           ),
           Text(
-            '${AppLocalizations.of(context)!.age} : $age',
+            '${AppLocalizations.of(context)!.age} : ${Utils(context).calculateAge(
+              dateOfBirth: userData.dateofbirth,
+            )}',
             style: TextStyle(
               color: Theme.of(context).primaryColor,
               fontWeight: FontWeight.w500,
@@ -185,22 +165,27 @@ class DrawerWidget extends StatelessWidget {
     );
   }
 
-  _buildListtile({
-    required IconData iconData,
-    required String tiletitle,
-    required Function onTap,
-  }) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
-      ),
-      child: InkWell(
-        onTap: () {
-          onTap();
-        },
-        child: ListTile(
-          title: Text(tiletitle),
-          trailing: Icon(iconData),
+  _buildListtile(
+      {required IconData iconData,
+      required String tiletitle,
+      required Function onTap,
+      required BuildContext context}) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Material(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+        ),
+        color: Theme.of(context).primaryColor,
+        child: InkWell(
+          onTap: () {
+            onTap();
+          },
+          child: ListTile(
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+            title: Text(tiletitle),
+            trailing: Icon(iconData),
+          ),
         ),
       ),
     );

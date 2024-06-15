@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../const/consts.dart';
+import '../../utils/utils.dart';
 import 'self_check_steps.dart';
 
 class SelfCheckPage extends StatefulWidget {
@@ -120,19 +121,9 @@ class _SelfCheckPageState extends State<SelfCheckPage> {
                 ),
               ],
             ),
-            //TODO:: Navvigation animation fix
             ElevatedButton(
               onPressed: () {
-                // PersistentNavBarNavigator.pushNewScreen(
-                //   context,
-                //   screen: const SelfCheckSteps(),
-                //   withNavBar: true, // OPTIONAL VALUE. True by default.
-                //   pageTransitionAnimation: PageTransitionAnimation.cupertino,
-                // );
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const SelfCheckSteps()));
+                Utils(context).push(widget: const SelfCheckSteps());
               },
               child: Text(AppLocalizations.of(context)!.checkyourselfbutton),
             ),

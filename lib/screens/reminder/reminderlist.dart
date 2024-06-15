@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:provider/provider.dart';
 
 import '../../const/consts.dart';
@@ -20,13 +19,8 @@ class ReminderList extends StatelessWidget {
     final viewPadding = MediaQuery.of(context).viewPadding;
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          PersistentNavBarNavigator.pushNewScreen(
-            context,
-            screen: const Reminder(),
-            withNavBar: false, // OPTIONAL VALUE. True by default.
-            pageTransitionAnimation: PageTransitionAnimation.cupertino,
-          );
+        onPressed: () async {
+          await Utils(context).push(widget: const Reminder());
         },
         child: const Icon(Icons.add),
       ),

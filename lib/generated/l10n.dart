@@ -130,6 +130,26 @@ class S {
     );
   }
 
+  /// `Edit Profile`
+  String get editprofilebutton {
+    return Intl.message(
+      'Edit Profile',
+      name: 'editprofilebutton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update Profile`
+  String get updatebutton {
+    return Intl.message(
+      'Update Profile',
+      name: 'updatebutton',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Learn more`
   String get learnmorebutton {
     return Intl.message(
@@ -1070,6 +1090,26 @@ class S {
     );
   }
 
+  /// `AM`
+  String get am {
+    return Intl.message(
+      'AM',
+      name: 'am',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `PM`
+  String get pm {
+    return Intl.message(
+      'PM',
+      name: 'pm',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Please Enter Title`
   String get addRemindertitleError {
     return Intl.message(
@@ -1650,6 +1690,16 @@ class S {
     );
   }
 
+  /// `Name is required`
+  String get namerequirederror {
+    return Intl.message(
+      'Name is required',
+      name: 'namerequirederror',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Last Name is required`
   String get lastnamerequirederror {
     return Intl.message(
@@ -1770,11 +1820,91 @@ class S {
     );
   }
 
-  /// `Made with ❤️ by Asraful`
+  /// `Created with ❤️ by Asraful`
   String get madewithbyasraful {
     return Intl.message(
-      'Made with ❤️ by Asraful',
+      'Created with ❤️ by Asraful',
       name: 'madewithbyasraful',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `General`
+  String get general {
+    return Intl.message(
+      'General',
+      name: 'general',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account`
+  String get account {
+    return Intl.message(
+      'Account',
+      name: 'account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get profile {
+    return Intl.message(
+      'Profile',
+      name: 'profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Open`
+  String get open {
+    return Intl.message(
+      'Open',
+      name: 'open',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `More`
+  String get more {
+    return Intl.message(
+      'More',
+      name: 'more',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Personal Information`
+  String get personalinformation {
+    return Intl.message(
+      'Personal Information',
+      name: 'personalinformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account Information`
+  String get accountinformation {
+    return Intl.message(
+      'Account Information',
+      name: 'accountinformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email account can't be changed`
+  String get emailchangenotice {
+    return Intl.message(
+      'Email account can\'t be changed',
+      name: 'emailchangenotice',
       desc: '',
       args: [],
     );

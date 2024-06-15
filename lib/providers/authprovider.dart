@@ -8,12 +8,18 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/usermodel.dart';
-import '../widget/responsivesnackbar.dart';
+import '../utils/utils.dart';
 
-class AuthrizationProviders extends ChangeNotifier {
+class AuthrizationProviders with ChangeNotifier {
   AuthrizationProviders() {
     getrememberme();
     fatchsaverememberme();
+  }
+  bool _isObscured = true;
+  bool get isObscured => _isObscured;
+  set isObscured(bool value) {
+    _isObscured = value;
+    notifyListeners();
   }
 
   final emailController = TextEditingController();
@@ -53,7 +59,7 @@ class AuthrizationProviders extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> logout() async {
+  void logout() async {
     await auth.signOut();
     notifyListeners();
   }
@@ -67,20 +73,18 @@ class AuthrizationProviders extends ChangeNotifier {
   }
 
   Future<void> signup({
-    required String firstname,
-    required String lastname,
+    required String name,
     required String dob,
     required String email,
     required String password,
-    required File profilephoto,
+    required File? profilephoto,
   }) async {
     await auth.createUserWithEmailAndPassword(
       email: email,
       password: password,
     );
     await addUserData(
-      firstName: firstname,
-      lastName: lastname,
+      name: name,
       email: email,
       dob: dob,
       profilephoto: profilephoto,
@@ -99,7 +103,7 @@ class AuthrizationProviders extends ChangeNotifier {
       await user.delete();
       await deleteUserData(user.uid);
     } on FirebaseAuthException catch (e) {
-      await ResponsiveSnackbar.show(context, e.message!);
+      await Utils(context).showsnackbar(message: e.message!);
     }
 
     notifyListeners();
@@ -131,20 +135,18 @@ class AuthrizationProviders extends ChangeNotifier {
   }
 
   Future<void> addUserData(
-      {required String firstName,
-      required String lastName,
+      {required String name,
       required String email,
       required String dob,
-      required File profilephoto}) async {
-    String profilephotoUrl = '';
-    if (profilephoto.path.isNotEmpty) {
+      required File? profilephoto}) async {
+    String? profilephotoUrl;
+    if (profilephoto?.path != null) {
       final ref = firestorage.child('${auth.currentUser!.uid}.jpg');
-      await ref.putFile(profilephoto);
+      await ref.putFile(profilephoto!);
       profilephotoUrl = await ref.getDownloadURL();
     }
     UserModel user = UserModel(
-      firstName: firstName,
-      lastName: lastName,
+      name: name,
       email: email,
       dateofbirth: dob,
       uid: auth.currentUser!.uid,
@@ -165,7 +167,7 @@ class AuthrizationProviders extends ChangeNotifier {
   Stream<UserModel?> getUserData() {
     final CollectionReference usersCollection = firestore;
     return usersCollection
-        .doc(auth.currentUser!.uid)
+        .doc(auth.currentUser?.uid)
         .snapshots()
         .map((snapshot) {
       if (snapshot.exists) {
@@ -176,5 +178,27 @@ class AuthrizationProviders extends ChangeNotifier {
         return null;
       }
     });
+  }
+
+  Future<void> updateUserData(
+      {required String name,
+      required String email,
+      required String dob,
+      required File? profilephoto}) async {
+    String? profilephotoUrl;
+    if (profilephoto?.path != null) {
+      final ref = firestorage.child('${auth.currentUser!.uid}.jpg');
+      await ref.putFile(profilephoto!);
+      profilephotoUrl = await ref.getDownloadURL();
+    }
+    UserModel userdata = UserModel(
+      name: name,
+      email: email,
+      dateofbirth: dob,
+      uid: auth.currentUser!.uid,
+      profilepicture: profilephotoUrl ?? user!.profilepicture,
+    );
+    await firestore.doc(auth.currentUser!.uid).update(userdata.toJson());
+    notifyListeners();
   }
 }

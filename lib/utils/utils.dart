@@ -1,5 +1,4 @@
-// ignore_for_file: use_build_context_synchronously
-
+import 'package:age_calculator/age_calculator.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -17,6 +16,12 @@ class Utils {
   BuildContext context;
   Utils(this.context);
   Size get getScreenSize => MediaQuery.of(context).size;
+
+  Widget get verticalSpace {
+    return SizedBox(
+      height: getScreenSize.height * 0.02,
+    );
+  }
 
   void onWillPop() async {
     return showCustomDialog(
@@ -63,7 +68,7 @@ class Utils {
     );
   }
 
-  Future customLoading() async {
+  void customLoading() async {
     return await showDialog(
       context: context,
       barrierDismissible: false,
@@ -111,18 +116,6 @@ class Utils {
     );
   }
 
-  String checkEmpty({
-    required int duration,
-    required String days,
-    required BuildContext context,
-  }) {
-    if (duration == 0) {
-      return '';
-    } else {
-      return "${formatNumber(number: duration)} $days ";
-    }
-  }
-
   formatDate({required DateTime dateTime}) {
     DateFormat dateFormat = DateFormat(
         'EEE, dd MMMM yyyy', context.read<LanguageProvider>().languageCode);
@@ -160,42 +153,35 @@ class Utils {
     return f.format(number);
   }
 
+  String checkEmpty({
+    required int duration,
+    required String days,
+  }) {
+    if (duration == 0) {
+      return '';
+    } else {
+      return "${formatNumber(number: duration)} $days ";
+    }
+  }
+
   String calculateAge({
     required String dateOfBirth,
   }) {
-    DateTime currentDate = DateTime.now();
-
+    DateDuration duration;
     DateFormat dateFormat = DateFormat('EEE, dd MMMM yyyy', 'en');
     DateTime parsedDate = dateFormat.parse(dateOfBirth);
 
-    int years = currentDate.year - parsedDate.year;
-    int months = currentDate.month - parsedDate.month;
-    int days = currentDate.day - parsedDate.day;
+    duration = AgeCalculator.age(parsedDate);
 
-    if (days < 0) {
-      months--;
-      days += currentDate
-          .difference(
-              DateTime(currentDate.year, currentDate.month - 1, parsedDate.day))
-          .inDays;
-    }
-
-    if (months < 0) {
-      years--;
-      months += 12;
-    }
     String ageString = '${checkEmpty(
-      duration: years,
+      duration: duration.years,
       days: AppLocalizations.of(context)!.year,
-      context: context,
     )}${checkEmpty(
-      duration: months,
+      duration: duration.months,
       days: AppLocalizations.of(context)!.month,
-      context: context,
     )}${checkEmpty(
-      duration: days,
+      duration: duration.days,
       days: AppLocalizations.of(context)!.day,
-      context: context,
     )}';
     return ageString;
   }
@@ -235,7 +221,6 @@ class Utils {
           }
 
           spans.add(_buildClickableTextSpan(
-            context,
             text.substring(startIndex, endIndex),
             url,
           ));
@@ -274,7 +259,6 @@ class Utils {
   }
 
   TextSpan _buildClickableTextSpan(
-    BuildContext context,
     String text,
     String url,
   ) {
@@ -308,10 +292,30 @@ class Utils {
       await canLaunchUrl(Uri.parse(url));
       await launchUrl(Uri.parse(url));
     } catch (e) {
-      ResponsiveSnackbar.show(
-        context,
-        e.toString(),
-      );
+      await showsnackbar(message: e.toString());
     }
+  }
+
+  Future<void> showsnackbar({required String message}) async {
+    await ResponsiveSnackbar.show(context, message);
+  }
+
+  Future<void> pushReplacement({required Widget widget}) async {
+    await Navigator.pushReplacement(
+      context,
+      CupertinoPageRoute(builder: (context) => widget),
+    );
+  }
+
+  Future<void> push({required Widget widget}) async {
+    await Navigator.push(
+        context, CupertinoPageRoute(builder: (context) => widget));
+  }
+
+  Future<void> pushUntil({required Widget widget}) async {
+    await Navigator.of(context).pushAndRemoveUntil(
+      CupertinoPageRoute(builder: (_) => widget),
+      (Route<dynamic> route) => false,
+    );
   }
 }

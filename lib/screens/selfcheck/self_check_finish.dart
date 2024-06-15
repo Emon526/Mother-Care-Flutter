@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
+import '../../utils/utils.dart';
 import '../doctors/doctorslist.dart';
 import '../reminder/reminder.dart';
 
@@ -45,14 +45,8 @@ class SelfCheckFinish extends StatelessWidget {
               Column(
                 children: [
                   ElevatedButton(
-                    onPressed: () {
-                      PersistentNavBarNavigator.pushNewScreen(
-                        context,
-                        screen: const Reminder(),
-                        withNavBar: false, // OPTIONAL VALUE. True by default.
-                        pageTransitionAnimation:
-                            PageTransitionAnimation.cupertino,
-                      );
+                    onPressed: () async {
+                      await Utils(context).push(widget: const Reminder());
                     },
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
@@ -68,14 +62,8 @@ class SelfCheckFinish extends StatelessWidget {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {
-                      PersistentNavBarNavigator.pushNewScreen(
-                        context,
-                        screen: const DoctorsList(),
-                        withNavBar: false, // OPTIONAL VALUE. True by default.
-                        pageTransitionAnimation:
-                            PageTransitionAnimation.cupertino,
-                      );
+                    onPressed: () async {
+                      await Utils(context).push(widget: const DoctorsList());
                     },
                     child: Row(
                       mainAxisSize: MainAxisSize.min,

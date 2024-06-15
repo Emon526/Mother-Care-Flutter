@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../const/consts.dart';
 
 class ResponsiveSnackbar {
-  static show(BuildContext context, String message) {
+  static Future<void> show(BuildContext context, String message) async {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         backgroundColor: Theme.of(context).primaryColor,

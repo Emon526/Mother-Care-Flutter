@@ -8,6 +8,8 @@
 "finishbutton":"শেষ করুন",
 "applybutton":"আবেদন করুন",
 "resetbutton":"পূনরায় করুন",
+"editprofilebutton":"প্রোফাইল সম্পাদনা করুন",
+"updatebutton":"প্রোফাইল আপডেট করুন",
 "learnmorebutton":"আরও জানুন",
 "readmore": "আরও পড়ুন",
 "readless":" কম দেখান",
@@ -102,6 +104,8 @@
 "addReminderTitle":"শিরোনাম",
 "addReminderDate":"তারিখ",
 "addReminderTime":"সময়",
+"am":"এ.এম",
+"pm":"পি.এম",
 "addRemindertitleError":"অনুগ্রহ করে শিরোনাম লিখুন",
 "addReminderDateError":"একটি তারিখ পছন্দ করুন",
 "addReminderTimeError":"একটি সময় পছন্দ করুন",
@@ -147,6 +151,7 @@
 "donothaveaccount":"একটি অ্যাকাউন্ট নেই?",
 "haveaccount":"ইতিমধ্যে একটি অ্যাকাউন্ট আছে?",
 "firstname":"নামের প্রথম অংশ",
+
 "lastname":"নামের শেষ অংশ",
 "dob":"জন্ম তারিখ",
 "name":"নাম",
@@ -160,6 +165,7 @@
 "deleteaccount":"অ্যাকাউন্ট মুছে ফেলুন",
 "deleteaccounttext":"আপনি কি আপনার অ্যাকাউন্ট মুছে ফেলার বিষয়ে নিশ্চিত?",
 "firstnamerequirederror":"প্রথম নাম আবশ্যক",
+"namerequirederror":"নাম আবশ্যক",
 "lastnamerequirederror":"শেষ নাম প্রয়োজন",
 "dobrequirederror":"জন্মতারিখ আবশ্যক",
 "emailrequirederror":"ইমেইল আবশ্যক",
@@ -172,5 +178,13 @@
 "privacypolicy":"গোপনীয়তা নীতি",
 "termsservices":"পরিষেবার শর্তাবলী",
 "notificationsettings":"বিজ্ঞপ্তি সেটিংস",
-"madewithbyasraful":"আশ্রাফুল ❤️ দিয়ে তৈরি করেছেন"
+"madewithbyasraful":"আশ্রাফুল ❤️ দিয়ে তৈরি করেছেন",
+"general":"সাধারণ",
+"account":"অ্যাকাউন্ট",
+"profile":"প্রোফাইল",
+"open":"খুলুন",
+"more":"আরো",
+"personalinformation":"ব্যক্তিগত তথ্য",
+"accountinformation":"হিসাবের তথ্য",
+"emailchangenotice":"ইমেল অ্যাকাউন্ট পরিবর্তন করা যাবে না"
 }

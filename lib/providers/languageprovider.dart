@@ -15,6 +15,22 @@ class LanguageProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  final List<String> _languageList = [
+    'English',
+    'বাংলা',
+  ];
+  List<String> get languageList => _languageList;
+  String _language = 'English';
+  String get language => _language;
+  set language(String language) {
+    _language = language;
+    if (language == 'English') {
+      languageCode = 'en';
+    } else if (language == 'বাংলা') {
+      languageCode = 'bn';
+    }
+  }
+
   String _languageCode = 'en';
   String get languageCode => _languageCode;
 
@@ -38,7 +54,6 @@ class LanguageProvider extends ChangeNotifier {
 
   getBoarding() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    // _isBoardingCompleate = false;
     _isBoardingCompleate =
         prefs.getBool('isBoardingCompleate') ?? _isBoardingCompleate;
   }
@@ -46,6 +61,7 @@ class LanguageProvider extends ChangeNotifier {
   getLanguage() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     _languageCode = prefs.getString('languageCode') ?? _languageCode;
+    _language = _languageCode == 'en' ? 'English' : 'বাংলা';
     Intl.defaultLocale = _languageCode;
   }
 

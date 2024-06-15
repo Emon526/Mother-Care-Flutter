@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -15,7 +14,6 @@ import 'introduction.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
-//TODO:: Fix pop scope not showing first time in physical device
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -74,16 +72,9 @@ class OnBoardingScreen extends StatelessWidget {
                           height: 20,
                         ),
                         CustomExpanedButton(
-                          onPressed: () {
-                            // Navigator.of(context).pushAndRemoveUntil(
-                            //   CupertinoPageRoute(
-                            //       builder: (_) => const IntroductionPage()),
-                            //   (Route<dynamic> route) => false,
-                            // )
-                            Navigator.of(context).push(
-                              CupertinoPageRoute(
-                                  builder: (_) => const IntroductionPage()),
-                            );
+                          onPressed: () async {
+                            await Utils(context)
+                                .push(widget: const IntroductionPage());
                           },
                           text: AppLocalizations.of(context)!.nextbutton,
                         ),
@@ -160,6 +151,7 @@ class OnBoardingScreen extends StatelessWidget {
               iconCondition: provider.languageCode == 'en',
               ontap: () {
                 provider.languageCode = 'en';
+                provider.language = 'English';
               },
             ),
             Divider(
@@ -171,6 +163,7 @@ class OnBoardingScreen extends StatelessWidget {
               buttontitle: 'বাংলা',
               ontap: () {
                 provider.languageCode = 'bn';
+                provider.language = 'বাংলা';
               },
             ),
           ],

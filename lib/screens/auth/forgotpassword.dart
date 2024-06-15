@@ -3,21 +3,17 @@ import 'package:form_field_validator/form_field_validator.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../providers/authprovider.dart';
+import '../../utils/utils.dart';
 import '../../widget/customexpandedbutton.dart';
-import '../../widget/responsivesnackbar.dart';
 
-class ForgotPassword extends StatefulWidget {
+class ForgotPassword extends StatelessWidget {
   const ForgotPassword({super.key});
 
   @override
-  State<ForgotPassword> createState() => _ForgotPasswordState();
-}
-
-class _ForgotPasswordState extends State<ForgotPassword> {
-  final _formKey = GlobalKey<FormState>();
-  final emailController = TextEditingController();
-  @override
   Widget build(BuildContext context) {
+    final formKey = GlobalKey<FormState>();
+
+    final emailController = TextEditingController();
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
@@ -40,9 +36,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   children: [
                     Text(
                       AppLocalizations.of(context)!.resetpassword,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 24,
+                        color: Theme.of(context).primaryColor,
                       ),
                     ),
                     const SizedBox(
@@ -55,7 +52,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       height: 20,
                     ),
                     Form(
-                      key: _formKey,
+                      key: formKey,
                       child: Column(
                         // mainAxisAlignment: MainAxisAlignment.start,
                         // crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,16 +80,16 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                             height: 20,
                           ),
                           CustomExpanedButton(
-                            onPressed: () {
-                              if (_formKey.currentState!.validate()) {
+                            onPressed: () async {
+                              if (formKey.currentState!.validate()) {
                                 authprovider
                                     .resetPassword(emailController.text.trim());
-                                ResponsiveSnackbar.show(
-                                  context,
-                                  AppLocalizations.of(context)!
+
+                                Navigator.pop(context);
+                                await Utils(context).showsnackbar(
+                                  message: AppLocalizations.of(context)!
                                       .forgotpasswordSnakeBar,
                                 );
-                                Navigator.pop(context);
                               }
                             },
                             text: AppLocalizations.of(context)!.resetpassword,

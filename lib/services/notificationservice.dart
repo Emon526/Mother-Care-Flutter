@@ -1,27 +1,40 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+
+import 'package:rxdart/rxdart.dart';
 import 'package:timezone/timezone.dart' as tz;
 
+import '../const/consts.dart';
+
+//TODO:: Fix Android Release mode notification error
 class NotificationService {
   final FlutterLocalNotificationsPlugin notificationsPlugin =
       FlutterLocalNotificationsPlugin();
+  static final onClickNotification = BehaviorSubject<String>();
+
+// on tap on any notification
+  static void onNotificationTap(NotificationResponse notificationResponse) {
+    onClickNotification.add(notificationResponse.payload!);
+  }
 
   Future<void> initNotification() async {
-    AndroidInitializationSettings initializationSettingsAndroid =
+    AndroidInitializationSettings settingsAndroid =
         const AndroidInitializationSettings('@mipmap/ic_launcher');
-    var initializationSettingsIos = DarwinInitializationSettings(
+    DarwinInitializationSettings settingsIos =
+        const DarwinInitializationSettings(
       requestAlertPermission: true,
       requestBadgePermission: true,
       requestSoundPermission: true,
-      onDidReceiveLocalNotification: (id, title, body, payload) {},
+      // onDidReceiveLocalNotification: (id, title, body, payload) {
+      //   log(payload!, name: 'initializationSettingsIos');
+      // },
     );
     var initializationSettings = InitializationSettings(
-      android: initializationSettingsAndroid,
-      iOS: initializationSettingsIos,
+      android: settingsAndroid,
+      iOS: settingsIos,
     );
-    await notificationsPlugin.initialize(
-      initializationSettings,
-      onDidReceiveNotificationResponse: (details) async {},
-    );
+    await notificationsPlugin.initialize(initializationSettings,
+        onDidReceiveNotificationResponse: onNotificationTap,
+        onDidReceiveBackgroundNotificationResponse: onNotificationTap);
   }
 
   Future deleteScheduleNotification({
@@ -45,7 +58,7 @@ class NotificationService {
         scheduleDateTime,
         tz.local,
       ),
-      await notificationDetails(),
+      notificationDetails(),
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
       payload: payload,
       uiLocalNotificationDateInterpretation:
@@ -53,13 +66,16 @@ class NotificationService {
     );
   }
 
-  notificationDetails() {
+  NotificationDetails notificationDetails() {
     return const NotificationDetails(
       android: AndroidNotificationDetails(
-        'channelId',
-        'channelName',
+        Consts.APPID,
+        Consts.APP_NAME,
+        channelDescription: 'reminders',
         importance: Importance.max,
         priority: Priority.high,
+        ticker: 'ticker',
+        //use action to add buttons
       ),
       iOS: DarwinNotificationDetails(),
     );

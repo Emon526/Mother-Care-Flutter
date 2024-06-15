@@ -2,7 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:easy_stepper/easy_stepper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+
 import 'package:provider/provider.dart';
 import '../../const/consts.dart';
 import '../../providers/selfcheckprovider.dart';
@@ -283,15 +283,11 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
               context.watch<SelfCheckProvider>().current ==
                       context.watch<SelfCheckProvider>().totalSteps - 1
                   ? ElevatedButton(
-                      onPressed: () {
-                        PersistentNavBarNavigator.pushNewScreen(
-                          context,
-                          screen: const SelfCheckFinish(),
-                          withNavBar: true, // OPTIONAL VALUE. True by default.
-                          pageTransitionAnimation:
-                              PageTransitionAnimation.cupertino,
+                      onPressed: () async {
+                        context.read<SelfCheckProvider>().current = 0;
+                        Utils(context).pushReplacement(
+                          widget: const SelfCheckFinish(),
                         );
-                        context.read<SelfCheckProvider>().current == 0;
                       },
                       child: Text(AppLocalizations.of(context)!.finishbutton))
                   : ElevatedButton(
