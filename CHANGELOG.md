@@ -1,3 +1,43 @@
+# [1.1.0](https://github.com/Emon526/Mother-Care-Flutter/compare/v1.0.4...v1.1.0) (2024-06-15)
+
+
+### Bug Fixes
+
+* age calculator fixed ([3087b4d](https://github.com/Emon526/Mother-Care-Flutter/commit/3087b4ddc64589be2459c7a47f39a547ef61f976))
+* alignment fixed ([d615b3c](https://github.com/Emon526/Mother-Care-Flutter/commit/d615b3c47eb6e817cc3d84ec4aa3ad22feca7171))
+* bug fix ([c9213f3](https://github.com/Emon526/Mother-Care-Flutter/commit/c9213f3ca77284c912136e8b6ab765e42b8b8fce))
+* convert to private functions ([7c1b85f](https://github.com/Emon526/Mother-Care-Flutter/commit/7c1b85fe38b785f3efe392329c148859b7425e72))
+* Date Picker Fixed ([d303ad7](https://github.com/Emon526/Mother-Care-Flutter/commit/d303ad7772e96977c5f3d8996e76a514da0403bf))
+* error text ([9de0dd8](https://github.com/Emon526/Mother-Care-Flutter/commit/9de0dd86ec1689e0fcd7b5ee2ffc585a5a2fa308))
+* fixed permission service ([f6eea99](https://github.com/Emon526/Mother-Care-Flutter/commit/f6eea99f92b9e775a895b574c25a5e2f3c70782f))
+* improved setting Ui ([86db109](https://github.com/Emon526/Mother-Care-Flutter/commit/86db1090195e4a76e09f771a87ace12e5a2c8b35))
+* ios status bar ([483003a](https://github.com/Emon526/Mother-Care-Flutter/commit/483003aeebc062bd1bc6c47c918bbd40b97887aa))
+* launcher icon ([ca77b39](https://github.com/Emon526/Mother-Care-Flutter/commit/ca77b399cd09c00de6bae9a80860f25b064ec5a2))
+* minor bug fix ([d3cf2f7](https://github.com/Emon526/Mother-Care-Flutter/commit/d3cf2f73c7618188619b6f6aaf1b83f68a87fe6a))
+* minor bug fix ([05e07f6](https://github.com/Emon526/Mother-Care-Flutter/commit/05e07f6aba97d489e851b8c10b608551b8860e84))
+* minor bug fix ([6eaee73](https://github.com/Emon526/Mother-Care-Flutter/commit/6eaee731ad6a70f9e715acd356a4273c2fc585b0))
+* minor bug fix ([33dae64](https://github.com/Emon526/Mother-Care-Flutter/commit/33dae648da541feb5347cb6326df5bf87aa0f05c))
+* notification bar color fixed ([64e6875](https://github.com/Emon526/Mother-Care-Flutter/commit/64e6875db674dd8cf4262e153afd4fc6841ea56b))
+* notification push service ([b37015c](https://github.com/Emon526/Mother-Care-Flutter/commit/b37015c76dd7e3791f4b626d61110b6103fa124c))
+* permission service added ([304f48f](https://github.com/Emon526/Mother-Care-Flutter/commit/304f48f18404b96c019a1a33694d047a1d76b146))
+* profile page added ([f607509](https://github.com/Emon526/Mother-Care-Flutter/commit/f607509495fe3bc931ce6be1518d91d5be5f3a9a))
+* Splash Remove Multiple call ([519b47b](https://github.com/Emon526/Mother-Care-Flutter/commit/519b47b272fabcc8df51cfd3224f5b440c51cb35))
+* Time Picker Localization added ([c2f77cc](https://github.com/Emon526/Mother-Care-Flutter/commit/c2f77cc1ddcde3713fc3be8961b4a850ab10d7f1))
+* updated to flutter 3.22 ([195c4b2](https://github.com/Emon526/Mother-Care-Flutter/commit/195c4b29725dad6101bef78902d1b29b75d71487))
+* updated to latest gradle ([88f962c](https://github.com/Emon526/Mother-Care-Flutter/commit/88f962ce3e90dd9851bf2f01dc53c95c99abd843))
+* updated to leatest gradle ([f1aa9de](https://github.com/Emon526/Mother-Care-Flutter/commit/f1aa9de8c4c2b585a7c37f7cac63184a1733ae2c))
+* upgraded gradle version to 8.3.1 ([58edc24](https://github.com/Emon526/Mother-Care-Flutter/commit/58edc2436dbe94d172e4bb59587e3e10f883d821))
+* used name insted of first name and last name ([873da51](https://github.com/Emon526/Mother-Care-Flutter/commit/873da51efc2b3061f509d928d7369d77192043ff))
+* various bug fix ([4be481b](https://github.com/Emon526/Mother-Care-Flutter/commit/4be481b42cdaafd0634cabe4564f079862c440d1))
+* various bug fix ([6728749](https://github.com/Emon526/Mother-Care-Flutter/commit/67287495766b659ba9c27f16405aef28c2c67141))
+
+
+### Features
+
+* profile update feature added ([4fe5aec](https://github.com/Emon526/Mother-Care-Flutter/commit/4fe5aec2e036345aee168e128b4a21f55043cd43))
+
+
+
 ## [1.0.4](https://github.com/Emon526/Mother-Care-Flutter/compare/v1.0.3...v1.0.4) (2024-03-29)
 
 
@@ -34,29 +74,6 @@
 ### Bug Fixes
 
 * Bug fix and Dependency Update ([6467ba5](https://github.com/Emon526/Mother-Care-Flutter/commit/6467ba5346a821e60932d44290949ecf1750db05))
-
-
-
-# [1.0.0](https://github.com/Emon526/Mother-Care-Flutter/compare/0fb96d777899bbdb3169dfe25b9d14d69ecc5045...v1.0.0) (2023-07-23)
-
-
-### Bug Fixes
-
-* Bug Fixes ([91605d7](https://github.com/Emon526/Mother-Care-Flutter/commit/91605d7e79a4f8675ea5f107546bb91407df6c3a))
-
-
-### chore
-
-* Initialize release version 1.0.0 ([0fb96d7](https://github.com/Emon526/Mother-Care-Flutter/commit/0fb96d777899bbdb3169dfe25b9d14d69ecc5045))
-
-
-### BREAKING CHANGES
-
-* - The authentication system has been completely redesigned, requiring users to reset their passwords. Please follow the password reset instructions in the updated documentation.
-
-- Added core functionality for the application.
-- Created initial database schema.
-- Updated project documentation.
 
 
 
