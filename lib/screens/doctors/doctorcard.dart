@@ -14,7 +14,7 @@ class DoctorCardWidget extends StatelessWidget {
     required this.onTap,
     required this.doctorModel,
   });
-//TODO::Fix Doctor card
+
   @override
   Widget build(BuildContext context) {
     final locale = context.watch<LanguageProvider>().languageCode;
@@ -25,10 +25,12 @@ class DoctorCardWidget extends StatelessWidget {
       },
       child: LayoutBuilder(
         builder: (context, constraints) {
-          final double containerWidth = constraints.maxWidth;
-          final double maxWidth = MediaQuery.of(context).size.width * 0.8;
-          final double width =
-              containerWidth > maxWidth ? maxWidth : containerWidth;
+          // final double containerWidth = constraints.maxWidth;
+
+          //   debugPrint(containerWidth.toString());
+          // final double maxWidth = MediaQuery.of(context).size.width * 0.8;
+          // final double width =
+          //     containerWidth > maxWidth ? maxWidth : containerWidth;
           return Container(
             decoration: BoxDecoration(
               border: Border.all(
@@ -36,7 +38,7 @@ class DoctorCardWidget extends StatelessWidget {
               ),
               borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
             ),
-            width: width,
+            //  width: width,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,

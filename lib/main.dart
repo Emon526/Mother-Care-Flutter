@@ -26,6 +26,7 @@ import 'providers/themeprovider.dart';
 import 'services/permissionservice.dart';
 
 // TODO: implement dispose to whole project
+// TODO: make full app responsive
 final navigatorKey = GlobalKey<NavigatorState>();
 FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
@@ -40,12 +41,16 @@ void main() async {
   tz.initializeTimeZones();
 
   ApiService.apirequest();
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
+  await SystemChrome.setEnabledSystemUIMode(
+    SystemUiMode.edgeToEdge,
+  );
+  // TODO: fix landscape view
+  // await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await NotificationService().initNotification();
 
   await Future.delayed(const Duration(seconds: 3), () {
     FlutterNativeSplash.remove();
-    debugPrint('remove splash');
   });
 
   //  handle notification tap in terminated state

@@ -12,8 +12,6 @@ class DoctorsListShimmer extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: ResponsiveGridView(
-        crossAxisCount: 2,
-        // itemCount: 10,
         itemBuilder: (context, index) {
           return LayoutBuilder(
             builder: (context, constraints) {
