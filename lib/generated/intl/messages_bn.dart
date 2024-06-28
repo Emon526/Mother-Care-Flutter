@@ -117,7 +117,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "donothaveaccount":
             MessageLookupByLibrary.simpleMessage("একটি অ্যাকাউন্ট নেই?"),
         "editprofilebutton":
-            MessageLookupByLibrary.simpleMessage("প্রোফাইল সম্পাদনা করুন"),
+            MessageLookupByLibrary.simpleMessage("প্রোফাইল সম্পাদনা"),
         "email": MessageLookupByLibrary.simpleMessage("ইমেইল"),
         "emailchangenotice": MessageLookupByLibrary.simpleMessage(
             "ইমেল অ্যাকাউন্ট পরিবর্তন করা যাবে না"),
@@ -219,6 +219,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "passvaliderror": MessageLookupByLibrary.simpleMessage(
             "পাসওয়ার্ডে কমপক্ষে একটি বিশেষ অক্ষর থাকতে হবে"),
         "password": MessageLookupByLibrary.simpleMessage("পাসওয়ার্ড"),
+        "permissionpermanentlydenied": MessageLookupByLibrary.simpleMessage(
+            "অনুমতি স্থায়ীভাবে অস্বীকার করা হয়েছে"),
+        "permissionpermanentlydeniednote": MessageLookupByLibrary.simpleMessage(
+            "আরো ভালো কার্যকারিতার জন্য অনুমতি দিন। এটি সক্ষম করতে দয়া করে সেটিংসে যান"),
         "personalinformation":
             MessageLookupByLibrary.simpleMessage("ব্যক্তিগত তথ্য"),
         "pickimageSnakeBar": MessageLookupByLibrary.simpleMessage(

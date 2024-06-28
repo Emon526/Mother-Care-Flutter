@@ -185,5 +185,7 @@
 "more":"More",
 "personalinformation":"Personal Information",
 "accountinformation":"Account Information",
-"emailchangenotice":"Email account can't be changed"
+"emailchangenotice":"Email account can't be changed",
+"permissionpermanentlydenied":"Permission Permanently Denied",
+"permissionpermanentlydeniednote":"Allow permissions for better functionality. Please go to settings to enable it"
 }

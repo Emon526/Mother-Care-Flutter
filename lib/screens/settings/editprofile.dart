@@ -51,6 +51,16 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     nameController.text = user!.name;
     dobController.text = user!.dateofbirth;
     emailController.text = user!.email;
+    // Define the input format and output format
+    DateFormat inputFormat = DateFormat('EEE, d MMMM yyyy', 'en');
+    DateFormat outputFormat = DateFormat('yyyy-MM-dd', 'en');
+
+    // Parse the input date string
+    DateTime parsedDate = inputFormat.parse(user!.dateofbirth.toString());
+    // Format the parsed date into the desired output format
+    String formatted = outputFormat.format(parsedDate);
+    date = DateTime.parse(formatted);
+
     _checkPermissions();
   }
 

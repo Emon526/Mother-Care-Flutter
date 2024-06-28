@@ -1,19 +1,15 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 import '../../const/consts.dart';
+import '../../providers/selfcheckprovider.dart';
 import '../../utils/utils.dart';
 import 'self_check_steps.dart';
 
-class SelfCheckPage extends StatefulWidget {
+class SelfCheckPage extends StatelessWidget {
   const SelfCheckPage({super.key});
 
-  @override
-  State<SelfCheckPage> createState() => _SelfCheckPageState();
-}
-
-class _SelfCheckPageState extends State<SelfCheckPage> {
-  int _current = 0;
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -64,9 +60,7 @@ class _SelfCheckPageState extends State<SelfCheckPage> {
                   items: items,
                   options: CarouselOptions(
                     onPageChanged: (index, reason) {
-                      setState(() {
-                        _current = index;
-                      });
+                      context.read<SelfCheckProvider>().currentSlider = index;
                     },
                     viewportFraction: 0.9,
                     aspectRatio: 1,
@@ -86,7 +80,7 @@ class _SelfCheckPageState extends State<SelfCheckPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     for (int i = 0; i < items.length; i++)
-                      if (i == _current)
+                      if (i == context.watch<SelfCheckProvider>().currentSlider)
                         Row(
                           children: [
                             Container(
@@ -123,6 +117,7 @@ class _SelfCheckPageState extends State<SelfCheckPage> {
             ),
             ElevatedButton(
               onPressed: () {
+                context.read<SelfCheckProvider>().currentStep = 0;
                 Utils(context).push(widget: const SelfCheckSteps());
               },
               child: Text(AppLocalizations.of(context)!.checkyourselfbutton),

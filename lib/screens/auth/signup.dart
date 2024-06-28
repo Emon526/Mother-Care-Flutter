@@ -360,7 +360,8 @@ class _SignupState extends State<Signup> {
           bottom: 10,
           right: 80,
           child: InkWell(
-            onTap: () {
+            onTap: () async {
+              await _checkPermissions();
               context.read<PermissionService>().photosStatus.isGranted
                   ? pickImage()
                   : context

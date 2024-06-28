@@ -8,7 +8,7 @@
 "finishbutton":"শেষ করুন",
 "applybutton":"আবেদন করুন",
 "resetbutton":"পূনরায় করুন",
-"editprofilebutton":"প্রোফাইল সম্পাদনা করুন",
+"editprofilebutton":"প্রোফাইল সম্পাদনা",
 "updatebutton":"প্রোফাইল আপডেট করুন",
 "learnmorebutton":"আরও জানুন",
 "readmore": "আরও পড়ুন",
@@ -186,5 +186,7 @@
 "more":"আরো",
 "personalinformation":"ব্যক্তিগত তথ্য",
 "accountinformation":"হিসাবের তথ্য",
-"emailchangenotice":"ইমেল অ্যাকাউন্ট পরিবর্তন করা যাবে না"
+"emailchangenotice":"ইমেল অ্যাকাউন্ট পরিবর্তন করা যাবে না",
+"permissionpermanentlydenied":"অনুমতি স্থায়ীভাবে অস্বীকার করা হয়েছে",
+"permissionpermanentlydeniednote":"আরো ভালো কার্যকারিতার জন্য অনুমতি দিন। এটি সক্ষম করতে দয়া করে সেটিংসে যান"
 }

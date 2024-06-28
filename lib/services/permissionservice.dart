@@ -1,4 +1,7 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import '../utils/utils.dart';
@@ -49,7 +52,6 @@ class PermissionService extends ChangeNotifier {
     return status;
   }
 
-  //TODO: add localization
   void showPermissionDeniedDialog(BuildContext context) {
     Utils(context).showCustomDialog(
         child: Padding(
@@ -57,17 +59,18 @@ class PermissionService extends ChangeNotifier {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Text(
-            'Permission Denied',
-            style: TextStyle(
+          Text(
+            AppLocalizations.of(context)!.permissionpermanentlydenied,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
           ),
           Utils(context).verticalSpace,
-          const Text(
+          Text(
             // 'The $permissionName permission is permanently denied. Please go to settings to enable it.'),
-            'Allow permissions for better functionality. Please go to settings to enable it.',
+            AppLocalizations.of(context)!.permissionpermanentlydeniednote,
             textAlign: TextAlign.center,
           ),
           Utils(context).verticalSpace,
@@ -77,19 +80,17 @@ class PermissionService extends ChangeNotifier {
               TextButton(
                 onPressed: () => Navigator.of(context).pop(false),
                 child: Text(
-                  'Cancel',
+                  AppLocalizations.of(context)!.cancelbutton,
                   style: TextStyle(color: Theme.of(context).primaryColor),
                 ),
               ),
-              //TODO: Fix user needs to go back to refresh permission status given from app settings
-              // needs to pop another screen
               TextButton(
                 onPressed: () async {
                   await openAppSettings();
                   Navigator.of(context).pop();
                 },
                 child: Text(
-                  'Settings',
+                  AppLocalizations.of(context)!.settings,
                   style: TextStyle(color: Theme.of(context).primaryColor),
                 ),
               ),

@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -153,7 +155,8 @@ class _ReminderState extends State<Reminder> {
                     height: 20,
                   ),
                   ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
+                      await _checkPermissions();
                       context
                               .read<PermissionService>()
                               .notificationStatus

@@ -57,7 +57,7 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
           // enableStepTapping: false,
           showLoadingAnimation: false,
           // disableScroll: true,
-          activeStep: context.watch<SelfCheckProvider>().current,
+          activeStep: context.watch<SelfCheckProvider>().currentStep,
           // lineLength: 50,
           // maxReachedStep: dotCount - 1,
           stepShape: StepShape.rRectangle,
@@ -78,7 +78,7 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
           // activeLineColor:
 
           onStepReached: (index) {
-            context.read<SelfCheckProvider>().current = index;
+            context.read<SelfCheckProvider>().currentStep = index;
             _stepWidgetChange(index: index);
           },
           steps: [
@@ -86,16 +86,18 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
               customStep: ClipRRect(
                 borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
                 child: Opacity(
-                  opacity:
-                      context.watch<SelfCheckProvider>().current == 0 ? 1 : 0.3,
+                  opacity: context.watch<SelfCheckProvider>().currentStep == 0
+                      ? 1
+                      : 0.3,
                   child: Image.asset(
                     'assets/images/self-check_step_1.jpg',
                   ),
                 ),
               ),
               customTitle: Opacity(
-                opacity:
-                    context.watch<SelfCheckProvider>().current == 0 ? 1 : 0.3,
+                opacity: context.watch<SelfCheckProvider>().currentStep == 0
+                    ? 1
+                    : 0.3,
                 child: Text(
                   AppLocalizations.of(context)!.selfCheckStep1Title,
                   textAlign: TextAlign.center,
@@ -109,16 +111,18 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
               customStep: ClipRRect(
                 borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
                 child: Opacity(
-                  opacity:
-                      context.watch<SelfCheckProvider>().current == 1 ? 1 : 0.3,
+                  opacity: context.watch<SelfCheckProvider>().currentStep == 1
+                      ? 1
+                      : 0.3,
                   child: Image.asset(
                     'assets/images/self-check_step_2.jpg',
                   ),
                 ),
               ),
               customTitle: Opacity(
-                opacity:
-                    context.watch<SelfCheckProvider>().current == 1 ? 1 : 0.3,
+                opacity: context.watch<SelfCheckProvider>().currentStep == 1
+                    ? 1
+                    : 0.3,
                 child: Text(
                   AppLocalizations.of(context)!.selfCheckStep2Title,
                   textAlign: TextAlign.center,
@@ -132,16 +136,18 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
               customStep: ClipRRect(
                 borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
                 child: Opacity(
-                  opacity:
-                      context.watch<SelfCheckProvider>().current == 2 ? 1 : 0.3,
+                  opacity: context.watch<SelfCheckProvider>().currentStep == 2
+                      ? 1
+                      : 0.3,
                   child: Image.asset(
                     'assets/images/self-check_step_3.jpg',
                   ),
                 ),
               ),
               customTitle: Opacity(
-                opacity:
-                    context.watch<SelfCheckProvider>().current == 2 ? 1 : 0.3,
+                opacity: context.watch<SelfCheckProvider>().currentStep == 2
+                    ? 1
+                    : 0.3,
                 child: Text(
                   AppLocalizations.of(context)!.selfCheckStep3Title,
                   textAlign: TextAlign.center,
@@ -155,16 +161,18 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
               customStep: ClipRRect(
                 borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
                 child: Opacity(
-                  opacity:
-                      context.watch<SelfCheckProvider>().current == 3 ? 1 : 0.3,
+                  opacity: context.watch<SelfCheckProvider>().currentStep == 3
+                      ? 1
+                      : 0.3,
                   child: Image.asset(
                     'assets/images/self-check_step_4.jpg',
                   ),
                 ),
               ),
               customTitle: Opacity(
-                opacity:
-                    context.watch<SelfCheckProvider>().current == 3 ? 1 : 0.3,
+                opacity: context.watch<SelfCheckProvider>().currentStep == 3
+                    ? 1
+                    : 0.3,
                 child: Text(
                   AppLocalizations.of(context)!.selfCheckStep4Title,
                   textAlign: TextAlign.center,
@@ -178,16 +186,18 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
               customStep: ClipRRect(
                 borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
                 child: Opacity(
-                  opacity:
-                      context.watch<SelfCheckProvider>().current == 4 ? 1 : 0.3,
+                  opacity: context.watch<SelfCheckProvider>().currentStep == 4
+                      ? 1
+                      : 0.3,
                   child: Image.asset(
                     'assets/images/self-check_step_5.jpg',
                   ),
                 ),
               ),
               customTitle: Opacity(
-                opacity:
-                    context.watch<SelfCheckProvider>().current == 4 ? 1 : 0.3,
+                opacity: context.watch<SelfCheckProvider>().currentStep == 4
+                    ? 1
+                    : 0.3,
                 child: Text(
                   AppLocalizations.of(context)!.selfCheckStep5Title,
                   textAlign: TextAlign.center,
@@ -201,16 +211,18 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
               customStep: ClipRRect(
                 borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
                 child: Opacity(
-                  opacity:
-                      context.watch<SelfCheckProvider>().current == 5 ? 1 : 0.3,
+                  opacity: context.watch<SelfCheckProvider>().currentStep == 5
+                      ? 1
+                      : 0.3,
                   child: Image.asset(
                     'assets/images/self-check_step_6.jpg',
                   ),
                 ),
               ),
               customTitle: Opacity(
-                opacity:
-                    context.watch<SelfCheckProvider>().current == 5 ? 1 : 0.3,
+                opacity: context.watch<SelfCheckProvider>().currentStep == 5
+                    ? 1
+                    : 0.3,
                 child: Text(
                   AppLocalizations.of(context)!.selfCheckStep6Title,
                   textAlign: TextAlign.center,
@@ -224,16 +236,18 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
               customStep: ClipRRect(
                 borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
                 child: Opacity(
-                  opacity:
-                      context.watch<SelfCheckProvider>().current == 6 ? 1 : 0.3,
+                  opacity: context.watch<SelfCheckProvider>().currentStep == 6
+                      ? 1
+                      : 0.3,
                   child: Image.asset(
                     'assets/images/self-check_step_7.jpg',
                   ),
                 ),
               ),
               customTitle: Opacity(
-                opacity:
-                    context.watch<SelfCheckProvider>().current == 6 ? 1 : 0.3,
+                opacity: context.watch<SelfCheckProvider>().currentStep == 6
+                    ? 1
+                    : 0.3,
                 child: Text(
                   AppLocalizations.of(context)!.selfCheckStep7Title,
                   textAlign: TextAlign.center,
@@ -250,7 +264,7 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
           carouselController: stepcontroller,
           items: easysteppersteps,
           options: CarouselOptions(
-            initialPage: context.watch<SelfCheckProvider>().current,
+            initialPage: context.watch<SelfCheckProvider>().currentStep,
             scrollPhysics: const NeverScrollableScrollPhysics(),
             enableInfiniteScroll: false,
             viewportFraction: 0.9,
@@ -266,25 +280,27 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              context.read<SelfCheckProvider>().current == 0
+              context.read<SelfCheckProvider>().currentStep == 0
                   ? const SizedBox()
                   : ElevatedButton(
                       child: Text(AppLocalizations.of(context)!.prevbutton),
                       onPressed: () {
                         // activeStep MUST BE GREATER THAN 0 TO PREVENT OVERFLOW.
-                        if (context.read<SelfCheckProvider>().current > 0) {
-                          context.read<SelfCheckProvider>().current--;
+                        if (context.read<SelfCheckProvider>().currentStep > 0) {
+                          context.read<SelfCheckProvider>().currentStep--;
 
                           _stepWidgetChange(
-                              index: context.read<SelfCheckProvider>().current);
+                              index: context
+                                  .read<SelfCheckProvider>()
+                                  .currentStep);
                         }
                       },
                     ),
-              context.watch<SelfCheckProvider>().current ==
+              context.watch<SelfCheckProvider>().currentStep ==
                       context.watch<SelfCheckProvider>().totalSteps - 1
                   ? ElevatedButton(
                       onPressed: () async {
-                        context.read<SelfCheckProvider>().current = 0;
+                        context.read<SelfCheckProvider>().currentStep = 0;
                         Utils(context).pushReplacement(
                           widget: const SelfCheckFinish(),
                         );
@@ -293,9 +309,10 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
                   : ElevatedButton(
                       child: Text(AppLocalizations.of(context)!.nextbutton),
                       onPressed: () {
-                        context.read<SelfCheckProvider>().current++;
+                        context.read<SelfCheckProvider>().currentStep++;
                         _stepWidgetChange(
-                            index: context.read<SelfCheckProvider>().current);
+                            index:
+                                context.read<SelfCheckProvider>().currentStep);
                       },
                     ),
             ],

@@ -14,7 +14,7 @@ class DoctorCardWidget extends StatelessWidget {
     required this.onTap,
     required this.doctorModel,
   });
-
+//TODO::Fix Doctor card
   @override
   Widget build(BuildContext context) {
     final locale = context.watch<LanguageProvider>().languageCode;
