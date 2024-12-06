@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import '../../const/consts.dart';
 import '../../providers/selfcheckprovider.dart';
 import '../../utils/utils.dart';
+import '../../widget/selfcheckdatawidget.dart';
 import 'self_check_steps.dart';
 
 class SelfCheckPage extends StatelessWidget {
@@ -15,160 +16,135 @@ class SelfCheckPage extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     List<Widget> items = [
-      _buildDataCard(
-        size: size,
-        imagepath: 'assets/images/change_1.jpeg',
+      SelfCheckDataWidget(
+        imagePath: 'assets/images/change_1.jpeg',
         title: AppLocalizations.of(context)!.selfCheckInstruction1Title,
-        subtitle: AppLocalizations.of(context)!.selfCheckInstruction1Subtitle,
+        subTitle: AppLocalizations.of(context)!.selfCheckInstruction1Subtitle,
       ),
-      _buildDataCard(
-        size: size,
-        imagepath: 'assets/images/change_2.jpeg',
+      SelfCheckDataWidget(
+        imagePath: 'assets/images/change_2.jpeg',
         title: AppLocalizations.of(context)!.selfCheckInstruction2Title,
-        subtitle: AppLocalizations.of(context)!.selfCheckInstruction2Subtitle,
+        subTitle: AppLocalizations.of(context)!.selfCheckInstruction2Subtitle,
       ),
-      _buildDataCard(
-        size: size,
-        imagepath: 'assets/images/change_3.jpeg',
+      SelfCheckDataWidget(
+        imagePath: 'assets/images/change_3.jpeg',
         title: AppLocalizations.of(context)!.selfCheckInstruction3Title,
-        subtitle: AppLocalizations.of(context)!.selfCheckInstruction3Subtitle,
+        subTitle: AppLocalizations.of(context)!.selfCheckInstruction3Subtitle,
       ),
-      _buildDataCard(
-        size: size,
-        imagepath: 'assets/images/change_4.jpeg',
+      SelfCheckDataWidget(
+        imagePath: 'assets/images/change_4.jpeg',
         title: AppLocalizations.of(context)!.selfCheckInstruction4Title,
-        subtitle: AppLocalizations.of(context)!.selfCheckInstruction4Subtitle,
+        subTitle: AppLocalizations.of(context)!.selfCheckInstruction4Subtitle,
       ),
     ];
+    Widget buildDots({
+      required int length,
+    }) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          for (int i = 0; i < length; i++)
+            if (i == context.watch<SelfCheckProvider>().currentSlider)
+              Row(
+                children: [
+                  Container(
+                    // width: size.width * 0.07,
+                    // height: size.width * 0.03,
+                    width: MediaQuery.of(context).orientation ==
+                            Orientation.portrait
+                        ? size.width * 0.07
+                        : size.width * 0.03,
+                    height: MediaQuery.of(context).orientation ==
+                            Orientation.portrait
+                        ? size.width * 0.03
+                        : size.width * 0.01,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.rectangle,
+                      borderRadius:
+                          BorderRadius.circular(Consts.DefaultBorderRadius),
+                      color: Theme.of(context).primaryColor,
+                    ),
+                  ),
+                  SizedBox(
+                    width: size.width * 0.015,
+                  ),
+                ],
+              )
+            else
+              Row(
+                children: [
+                  CircleAvatar(
+                    radius: 5.0,
+                    backgroundColor: Theme.of(context).colorScheme.secondary,
+                  ),
+                  SizedBox(
+                    width: size.width * 0.015,
+                  ),
+                ],
+              ),
+        ],
+      );
+    }
 
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Text(
-              AppLocalizations.of(context)!.selfCheckInstructionTitle,
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 22,
-                  color: Theme.of(context).primaryColor),
-            ),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                CarouselSlider(
-                  items: items,
-                  options: CarouselOptions(
-                    onPageChanged: (index, reason) {
-                      context.read<SelfCheckProvider>().currentSlider = index;
-                    },
-                    viewportFraction: 0.9,
-                    aspectRatio: 1,
-                    initialPage: 0,
-                    enableInfiniteScroll: true,
-                    reverse: false,
-                    autoPlay: true,
-                    autoPlayInterval: const Duration(seconds: 3),
-                    autoPlayAnimationDuration:
-                        const Duration(milliseconds: 800),
-                    autoPlayCurve: Curves.fastOutSlowIn,
-                    enlargeCenterPage: true,
-                    scrollDirection: Axis.horizontal,
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    for (int i = 0; i < items.length; i++)
-                      if (i == context.watch<SelfCheckProvider>().currentSlider)
-                        Row(
-                          children: [
-                            Container(
-                              width: size.width * 0.07,
-                              height: size.width * 0.03,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.rectangle,
-                                borderRadius: BorderRadius.circular(
-                                    Consts.DefaultBorderRadius),
-                                color: Theme.of(context).primaryColor,
-                              ),
-                            ),
-                            SizedBox(
-                              width: size.width * 0.015,
-                            ),
-                          ],
-                        )
-                      else
-                        Row(
-                          children: [
-                            CircleAvatar(
-                              radius: 5.0,
-                              backgroundColor:
-                                  Theme.of(context).colorScheme.secondary,
-                            ),
-                            SizedBox(
-                              width: size.width * 0.015,
-                            ),
-                          ],
-                        ),
-                  ],
-                ),
-              ],
-            ),
-            ElevatedButton(
-              onPressed: () {
-                context.read<SelfCheckProvider>().currentStep = 0;
-                Utils(context).push(widget: const SelfCheckSteps());
-              },
-              child: Text(AppLocalizations.of(context)!.checkyourselfbutton),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  _buildDataCard({
-    required Size size,
-    required String imagepath,
-    required String title,
-    required String subtitle,
-  }) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
-            child: Image.asset(
-              imagepath,
-              fit: BoxFit.cover,
-            ),
-          ),
-          SizedBox(
-            height: size.height * 0.015,
-          ),
           Text(
-            title,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
-            ),
+            AppLocalizations.of(context)!.selfCheckInstructionTitle,
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize:
+                    MediaQuery.of(context).orientation == Orientation.portrait
+                        ? 18
+                        : 22,
+                color: Theme.of(context).primaryColor),
           ),
-          SizedBox(
-            height: size.height * 0.015,
-          ),
-          Expanded(
-            child: Text(
-              subtitle,
-              style: const TextStyle(
-                fontWeight: FontWeight.normal,
-                fontSize: 18,
+          Column(
+            children: [
+              CarouselSlider(
+                items: items,
+                options: CarouselOptions(
+                  onPageChanged: (index, reason) {
+                    context.read<SelfCheckProvider>().currentSlider = index;
+                  },
+                  viewportFraction: 0.9,
+                  //height: size.height * 0.35,
+                  height:
+                      MediaQuery.of(context).orientation == Orientation.portrait
+                          ? size.height * 0.5
+                          : size.height * 0.3,
+                  // aspectRatio:
+                  //     MediaQuery.of(context).orientation == Orientation.portrait
+                  //         ? 1
+                  //         : 5,
+                  initialPage: 0,
+                  enableInfiniteScroll: true,
+                  reverse: false,
+                  autoPlay: false,
+                  autoPlayInterval: const Duration(seconds: 3),
+                  autoPlayAnimationDuration: const Duration(milliseconds: 800),
+                  autoPlayCurve: Curves.fastOutSlowIn,
+                  enlargeCenterPage: true,
+                  scrollDirection: Axis.horizontal,
+                ),
               ),
-            ),
+              SizedBox(
+                height: size.height * 0.015,
+              ),
+              buildDots(length: items.length),
+            ],
+          ),
+          ElevatedButton(
+            onPressed: () {
+              context.read<SelfCheckProvider>().currentStep = 0;
+              Utils(context).push(widget: const SelfCheckSteps());
+            },
+            child: Text(AppLocalizations.of(context)!.checkyourselfbutton),
           ),
         ],
-      ),
+      )),
     );
   }
 }

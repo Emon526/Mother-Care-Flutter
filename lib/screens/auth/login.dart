@@ -37,7 +37,8 @@ class _LoginScreenState extends State<LoginScreen> {
       resizeToAvoidBottomInset: true,
       body: PopScope(
         canPop: false,
-        onPopInvoked: (bool didPop) => Utils(context).onWillPop(),
+        onPopInvokedWithResult: (bool didPop, dynamic) =>
+            Utils(context).onWillPop(),
         child: AnnotatedRegion(
           value: SystemUiOverlayStyle(
             systemNavigationBarColor: context.read<ThemeProvider>().isDarkTheme

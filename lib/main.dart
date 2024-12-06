@@ -20,7 +20,6 @@ import 'screens/onboarding/onboarding.dart';
 import 'screens/selfcheck/self_check_steps.dart';
 import 'services/apiservice.dart';
 import 'services/notificationservice.dart';
-import 'providers/modelprovider.dart';
 import 'providers/nav_bar_provider.dart';
 import 'providers/themeprovider.dart';
 import 'services/permissionservice.dart';
@@ -46,7 +45,7 @@ void main() async {
     SystemUiMode.edgeToEdge,
   );
   // TODO: fix landscape view
-  // await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  //await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await NotificationService().initNotification();
 
   await Future.delayed(const Duration(seconds: 3), () {
@@ -121,9 +120,6 @@ class _MyAppState extends State<MyApp> {
           ),
           ChangeNotifierProvider(
             create: (_) => DoctorProvider(),
-          ),
-          ChangeNotifierProvider(
-            create: (_) => ModelProvider(),
           ),
           ChangeNotifierProvider(
             create: (_) => ReminderProvider(),

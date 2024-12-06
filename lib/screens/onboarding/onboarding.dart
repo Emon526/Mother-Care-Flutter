@@ -20,7 +20,8 @@ class OnBoardingScreen extends StatelessWidget {
     return Consumer<ThemeProvider>(builder: (context, themeProvider, child) {
       return PopScope(
         canPop: false,
-        onPopInvoked: (bool didPop) => Utils(context).onWillPop(),
+        onPopInvokedWithResult: (bool didPop, dynamic) =>
+            Utils(context).onWillPop(),
         child: Scaffold(
           body: AnnotatedRegion(
             value: SystemUiOverlayStyle(
