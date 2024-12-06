@@ -2,7 +2,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:easy_stepper/easy_stepper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:mothercare/widget/selfcheckdatawidget.dart';
 
 import 'package:provider/provider.dart';
 import '../../const/consts.dart';
@@ -233,125 +232,121 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
         ),
       ),
       body: SafeArea(
-        child: Container(
-          //  color: Colors.red,
-          child: Column(
-            //mainAxisSize: MainAxisSize.min,
-            // crossAxisAlignment: CrossAxisAlignment.start,
-            // mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              steps(),
-              Expanded(
-                child: CarouselSlider(
-                  disableGesture: true,
-                  carouselController: stepcontroller,
-                  options: CarouselOptions(
-                    initialPage: context.watch<SelfCheckProvider>().currentStep,
-                    scrollPhysics: const NeverScrollableScrollPhysics(),
-                    enableInfiniteScroll: false,
-                    viewportFraction: 0.9,
-                    height: MediaQuery.of(context).orientation ==
-                            Orientation.portrait
-                        ? size.height * 0.5
-                        : size.height * 0.3,
-                    // aspectRatio: 1,
-                    enlargeCenterPage: true,
-                    scrollDirection: Axis.horizontal,
-                  ),
-                  items: [
-                    SelfCheckStepWidget(
-                      image: 'assets/images/self-check_step_1.jpg',
-                      title: AppLocalizations.of(context)!.selfCheckStep1Title,
-                      description:
-                          AppLocalizations.of(context)!.selfCheckStep1Body,
-                    ),
-                    SelfCheckStepWidget(
-                      image: 'assets/images/self-check_step_2.jpg',
-                      title: AppLocalizations.of(context)!.selfCheckStep2Title,
-                      description:
-                          AppLocalizations.of(context)!.selfCheckStep2Body,
-                    ),
-                    SelfCheckStepWidget(
-                      image: 'assets/images/self-check_step_3.jpg',
-                      title: AppLocalizations.of(context)!.selfCheckStep3Title,
-                      description:
-                          AppLocalizations.of(context)!.selfCheckStep3Body,
-                    ),
-                    SelfCheckStepWidget(
-                      image: 'assets/images/self-check_step_4.jpg',
-                      title: AppLocalizations.of(context)!.selfCheckStep4Title,
-                      description:
-                          AppLocalizations.of(context)!.selfCheckStep4Body,
-                    ),
-                    SelfCheckStepWidget(
-                      image: 'assets/images/self-check_step_5.jpg',
-                      title: AppLocalizations.of(context)!.selfCheckStep5Title,
-                      description:
-                          AppLocalizations.of(context)!.selfCheckStep5Body,
-                    ),
-                    SelfCheckStepWidget(
-                      image: 'assets/images/self-check_step_6.jpg',
-                      title: AppLocalizations.of(context)!.selfCheckStep6Title,
-                      description:
-                          AppLocalizations.of(context)!.selfCheckStep6Body,
-                    ),
-                    SelfCheckStepWidget(
-                      image: 'assets/images/self-check_step_7.jpg',
-                      title: AppLocalizations.of(context)!.selfCheckStep7Title,
-                      description:
-                          AppLocalizations.of(context)!.selfCheckStep7Body,
-                    ),
-                  ],
+        child: Column(
+          //mainAxisSize: MainAxisSize.min,
+          // crossAxisAlignment: CrossAxisAlignment.start,
+          // mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            steps(),
+            Expanded(
+              child: CarouselSlider(
+                disableGesture: true,
+                carouselController: stepcontroller,
+                options: CarouselOptions(
+                  initialPage: context.watch<SelfCheckProvider>().currentStep,
+                  scrollPhysics: const NeverScrollableScrollPhysics(),
+                  enableInfiniteScroll: false,
+                  viewportFraction: 0.9,
+                  height:
+                      MediaQuery.of(context).orientation == Orientation.portrait
+                          ? size.height * 0.5
+                          : size.height * 0.3,
+                  // aspectRatio: 1,
+                  enlargeCenterPage: true,
+                  scrollDirection: Axis.horizontal,
                 ),
+                items: [
+                  SelfCheckStepWidget(
+                    image: 'assets/images/self-check_step_1.jpg',
+                    title: AppLocalizations.of(context)!.selfCheckStep1Title,
+                    description:
+                        AppLocalizations.of(context)!.selfCheckStep1Body,
+                  ),
+                  SelfCheckStepWidget(
+                    image: 'assets/images/self-check_step_2.jpg',
+                    title: AppLocalizations.of(context)!.selfCheckStep2Title,
+                    description:
+                        AppLocalizations.of(context)!.selfCheckStep2Body,
+                  ),
+                  SelfCheckStepWidget(
+                    image: 'assets/images/self-check_step_3.jpg',
+                    title: AppLocalizations.of(context)!.selfCheckStep3Title,
+                    description:
+                        AppLocalizations.of(context)!.selfCheckStep3Body,
+                  ),
+                  SelfCheckStepWidget(
+                    image: 'assets/images/self-check_step_4.jpg',
+                    title: AppLocalizations.of(context)!.selfCheckStep4Title,
+                    description:
+                        AppLocalizations.of(context)!.selfCheckStep4Body,
+                  ),
+                  SelfCheckStepWidget(
+                    image: 'assets/images/self-check_step_5.jpg',
+                    title: AppLocalizations.of(context)!.selfCheckStep5Title,
+                    description:
+                        AppLocalizations.of(context)!.selfCheckStep5Body,
+                  ),
+                  SelfCheckStepWidget(
+                    image: 'assets/images/self-check_step_6.jpg',
+                    title: AppLocalizations.of(context)!.selfCheckStep6Title,
+                    description:
+                        AppLocalizations.of(context)!.selfCheckStep6Body,
+                  ),
+                  SelfCheckStepWidget(
+                    image: 'assets/images/self-check_step_7.jpg',
+                    title: AppLocalizations.of(context)!.selfCheckStep7Title,
+                    description:
+                        AppLocalizations.of(context)!.selfCheckStep7Body,
+                  ),
+                ],
               ),
-              // easysteppersteps[context.read<SelfCheckProvider>().current],
-              // const Spacer(),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  context.read<SelfCheckProvider>().currentStep == 0
-                      ? const SizedBox()
-                      : ElevatedButton(
-                          child: Text(AppLocalizations.of(context)!.prevbutton),
-                          onPressed: () {
-                            // activeStep MUST BE GREATER THAN 0 TO PREVENT OVERFLOW.
-                            if (context.read<SelfCheckProvider>().currentStep >
-                                0) {
-                              context.read<SelfCheckProvider>().currentStep--;
+            ),
+            // easysteppersteps[context.read<SelfCheckProvider>().current],
+            // const Spacer(),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                context.read<SelfCheckProvider>().currentStep == 0
+                    ? const SizedBox()
+                    : ElevatedButton(
+                        child: Text(AppLocalizations.of(context)!.prevbutton),
+                        onPressed: () {
+                          // activeStep MUST BE GREATER THAN 0 TO PREVENT OVERFLOW.
+                          if (context.read<SelfCheckProvider>().currentStep >
+                              0) {
+                            context.read<SelfCheckProvider>().currentStep--;
 
-                              _stepWidgetChange(
-                                  index: context
-                                      .read<SelfCheckProvider>()
-                                      .currentStep);
-                            }
-                          },
-                        ),
-                  context.watch<SelfCheckProvider>().currentStep ==
-                          context.watch<SelfCheckProvider>().totalSteps - 1
-                      ? ElevatedButton(
-                          onPressed: () async {
-                            context.read<SelfCheckProvider>().currentStep = 0;
-                            Utils(context).pushReplacement(
-                              widget: const SelfCheckFinish(),
-                            );
-                          },
-                          child:
-                              Text(AppLocalizations.of(context)!.finishbutton))
-                      : ElevatedButton(
-                          child: Text(AppLocalizations.of(context)!.nextbutton),
-                          onPressed: () {
-                            context.read<SelfCheckProvider>().currentStep++;
                             _stepWidgetChange(
                                 index: context
                                     .read<SelfCheckProvider>()
                                     .currentStep);
-                          },
-                        ),
-                ],
-              ),
-            ],
-          ),
+                          }
+                        },
+                      ),
+                context.watch<SelfCheckProvider>().currentStep ==
+                        context.watch<SelfCheckProvider>().totalSteps - 1
+                    ? ElevatedButton(
+                        onPressed: () async {
+                          context.read<SelfCheckProvider>().currentStep = 0;
+                          Utils(context).pushReplacement(
+                            widget: const SelfCheckFinish(),
+                          );
+                        },
+                        child: Text(AppLocalizations.of(context)!.finishbutton))
+                    : ElevatedButton(
+                        child: Text(AppLocalizations.of(context)!.nextbutton),
+                        onPressed: () {
+                          context.read<SelfCheckProvider>().currentStep++;
+                          _stepWidgetChange(
+                              index: context
+                                  .read<SelfCheckProvider>()
+                                  .currentStep);
+                        },
+                      ),
+              ],
+            ),
+          ],
         ),
       ),
     );
