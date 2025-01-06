@@ -4,14 +4,16 @@ import 'package:provider/provider.dart';
 
 import '../../const/consts.dart';
 import '../../providers/languageprovider.dart';
-import '../../providers/nav_bar_provider.dart';
 import '../../providers/themeprovider.dart';
 import '../../utils/utils.dart';
 import '../../widget/customdropdownbutton.dart';
 
+import '../../widget/mothercarelogo.dart';
 import '../../widget/settingsbuttonitemwidget.dart';
 import '../../widget/settingsectionwidget.dart';
 import '../../widget/settingsitemwidget.dart';
+import 'about.dart';
+import 'changelog.dart';
 import 'profile.dart';
 
 class SettingScreen extends StatelessWidget {
@@ -19,7 +21,6 @@ class SettingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -27,20 +28,23 @@ class SettingScreen extends StatelessWidget {
           AppLocalizations.of(context)!.settings,
         ),
       ),
-      body: Column(
-        children: [
-          _generalSection(context: context),
-          _accountSection(context: context),
-          const Spacer(),
-          _logo(context: context, size: size),
-          _credit(
-            context: context,
-            url: Consts.CREDIT_DEVELOPER_URL,
-          ),
-          SizedBox(
-            height: size.height * 0.01,
-          )
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            _generalSection(context: context),
+            _accountSection(context: context),
+            _otherSection(context: context),
+            const MothercareLogo(),
+            _changeLog(context: context),
+            _credit(
+              context: context,
+              url: Consts.CREDIT_DEVELOPER_URL,
+            ),
+            SizedBox(
+              height: kBottomNavigationBarHeight,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -111,7 +115,7 @@ class SettingScreen extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Text(
-          AppLocalizations.of(context)!.madewithbyasraful,
+          AppLocalizations.of(context)!.madebyasraful,
           style: TextStyle(
             color: Theme.of(context).primaryColor,
             fontWeight: FontWeight.bold,
@@ -121,49 +125,58 @@ class SettingScreen extends StatelessWidget {
     );
   }
 
-  _logo({
-    required BuildContext context,
-    required Size size,
-  }) {
-    return Column(
+  _otherSection({required BuildContext context}) {
+    return SettingsSection(
+      title: AppLocalizations.of(context)!.other,
       children: [
-        Stack(
-          alignment: Alignment.bottomCenter,
-          children: [
-            SizedBox(
-              height: size.height * 0.3,
-              // color: Theme.of(context).primaryColor,
-              child: Image.asset(
-                color: Theme.of(context).primaryColor,
-                Consts.LOGO,
-              ),
-            ),
-            Positioned(
-              // bottom: 20,
-              child: Text(
-                AppLocalizations.of(context)!.appname,
-                style: TextStyle(
-                  fontSize: 24.0,
-                  color: Theme.of(context).primaryColor,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ],
+        SettingsButtonItem(
+          label: AppLocalizations.of(context)!.aboutMothercare,
+          buttonLabel: AppLocalizations.of(context)!.open,
+          onTap: () async {
+            await Utils(context).push(
+              widget: const AboutScreen(),
+            );
+          },
         ),
-        Text(
-          '${AppLocalizations.of(context)!.version} : ${context.watch<NavBarProvider>().appVersionInfo(
-                locale: context.watch<LanguageProvider>().languageCode,
-              )}',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Theme.of(context).primaryColor,
-          ),
+        // SettingsButtonItem(
+        //   label: AppLocalizations.of(context)!.supportMothercare,
+        //   buttonLabel: AppLocalizations.of(context)!.donate,
+        //   onTap: () async {
+        //     await Utils(context).push(
+        //       widget: const SupportScreen(),
+        //     );
+        //   },
+        // ),
+        SettingsButtonItem(
+          label: AppLocalizations.of(context)!.privacypolicy,
+          buttonLabel: AppLocalizations.of(context)!.open,
+          onTap: () async {
+            await Utils(context).launchURL(Consts.PRIVACY_POLICY_URL);
+          },
         ),
-        const SizedBox(
-          height: 20,
+        SettingsButtonItem(
+          label: AppLocalizations.of(context)!.termsconditions,
+          buttonLabel: AppLocalizations.of(context)!.open,
+          onTap: () async {
+            await Utils(context).launchURL(Consts.TERMS_CONDITIONS_URL);
+          },
         ),
       ],
+    );
+  }
+
+  Widget _changeLog({required BuildContext context}) {
+    return TextButton.icon(
+      onPressed: () async {
+        await Utils(context).push(
+          widget: const ChangelogScreen(),
+        );
+      },
+      icon: Icon(
+        Icons.history,
+        color: Theme.of(context).primaryColor,
+      ),
+      label: Text(AppLocalizations.of(context)!.changelog),
     );
   }
 }

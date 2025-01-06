@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../const/consts.dart';
 import '../providers/languageprovider.dart';
+import '../providers/nav_bar_provider.dart';
 import '../widget/responsivesnackbar.dart';
 
 class Utils {
@@ -316,6 +317,20 @@ class Utils {
     await Navigator.of(context).pushAndRemoveUntil(
       CupertinoPageRoute(builder: (_) => widget),
       (Route<dynamic> route) => false,
+    );
+  }
+
+  void showLicense() {
+    showLicensePage(
+      context: context,
+      //applicationIcon: const MothercareLogo(),
+      applicationName: AppLocalizations.of(context)!.appname,
+      applicationVersion:
+          '${AppLocalizations.of(context)!.version} : ${context.read<NavBarProvider>().appVersionInfo(
+                locale: context.read<LanguageProvider>().languageCode,
+              )}',
+      applicationLegalese:
+          '© ${formatNumber(number: DateTime.now().year)} ${AppLocalizations.of(context)!.creditdevelopername1}',
     );
   }
 }

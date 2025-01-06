@@ -11,6 +11,7 @@ import 'const/theme.dart';
 import 'firebase_options.dart';
 import 'providers/authprovider.dart';
 import 'providers/breastcancerprovider.dart';
+import 'providers/changelogprovider.dart';
 import 'providers/doctorprovider.dart';
 import 'providers/languageprovider.dart';
 import 'providers/reminderprovider.dart';
@@ -123,6 +124,9 @@ class _MyAppState extends State<MyApp> {
           ),
           ChangeNotifierProvider(
             create: (_) => ReminderProvider(),
+          ),
+          ChangeNotifierProvider(
+            create: (_) => ChangelogProvider(),
           ),
         ],
         builder: (context, child) {

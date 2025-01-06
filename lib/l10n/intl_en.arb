@@ -1,6 +1,7 @@
 {
 "@@locale": "en",
 "appname":" Mother Care",
+"appdescription":"Mother Care is an ML-based application designed to help detect breast cancer in its early stages using mammography images. It also includes a special feature for self-breast check. In addition to the prediction capabilities, the application provides a range of features to support users in managing their breast health and accessing important resources.",
 "nextbutton":"Next",
 "donebutton":"Done",
 "skipbutton":"Skip",
@@ -173,11 +174,12 @@
 "passvaliderror":"Passwords must have at least one special character",
 "passlengthderror":"Password must be at least 8 digits long",
 "passmatcherror":"Password do not match",
-"sighupnotice":"By Sign up, you agree to accept our Privacy Policy, Terms of Services and Notification settings",
+"sighupnotice":"By Sign up, you agree to accept our Privacy Policy and Terms of Services",
 "privacypolicy":"Privacy Policy",
 "termsservices":"Terms of Services",
+"termsconditions":"Terms & Conditions",
 "notificationsettings":"Notification settings",
-"madewithbyasraful":"Created with ❤️ by Asraful",
+"madebyasraful":"Created with ❤️ by Asraful",
 "general":"General",
 "account":"Account",
 "profile":"Profile",
@@ -187,5 +189,11 @@
 "accountinformation":"Account Information",
 "emailchangenotice":"Email account can't be changed",
 "permissionpermanentlydenied":"Permission Permanently Denied",
-"permissionpermanentlydeniednote":"Allow permissions for better functionality. Please go to settings to enable it"
+"permissionpermanentlydeniednote":"Allow permissions for better functionality. Please go to settings to enable it",
+"other":"Other",
+"aboutMothercare":"About Mother Care",
+"supportMothercare":"Support Mother care",
+"donate":"Donate",
+"changelog":"Changelog"
+
 }
