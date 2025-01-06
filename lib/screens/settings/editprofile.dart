@@ -118,14 +118,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   _showCalender() {
     ShowCalenderWidget(
       context: context,
-      maxDate: date,
       enablePastDates: true,
       initialDisplayDate: date,
       initialSelectedDate: date,
       onSubmit: (date) {
         DateFormat dateFormat = DateFormat('EEE, dd MMMM yyyy', 'en');
         dobController.text = dateFormat.format(DateTime.parse(date.toString()));
-        Navigator.pop(context);
       },
     );
   }

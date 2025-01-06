@@ -93,15 +93,12 @@ class _ReminderState extends State<Reminder> {
                           onTap: () => ShowCalenderWidget(
                             context: context,
                             enablePastDates: false,
-                            initialDisplayDate: DateTime.now(),
-                            initialSelectedDate: DateTime.now(),
                             onSubmit: (date) {
                               dateController.text = Utils(context).formatDate(
                                 dateTime: DateTime.parse(
                                   date.toString(),
                                 ),
                               );
-                              Navigator.pop(context);
                             },
                           ),
                           readOnly: true,
