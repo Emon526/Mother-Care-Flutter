@@ -261,12 +261,12 @@ class _SignupState extends State<Signup> {
                                             .termsservices,
                                         'url': Consts.TERMS_CONDITIONS_URL,
                                       },
-                                      {
-                                        'text': AppLocalizations.of(context)!
-                                            .notificationsettings,
-                                        'url':
-                                            Consts.NOTIFICATIONS_SETTINGS_URL,
-                                      },
+                                      // {
+                                      //   'text': AppLocalizations.of(context)!
+                                      //       .notificationsettings,
+                                      //   'url':
+                                      //       Consts.NOTIFICATIONS_SETTINGS_URL,
+                                      // },
                                     ]),
                               ),
                             ],
