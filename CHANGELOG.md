@@ -1,3 +1,22 @@
+# [1.2.0](https://github.com/Emon526/Mother-Care-Flutter/compare/v1.1.0...v1.2.0) (2025-01-06)
+
+
+### Bug Fixes
+
+* bug fix ([6462862](https://github.com/Emon526/Mother-Care-Flutter/commit/64628625ccd55ec40687b93e80d4ab0099d21ab0))
+* doctor card overflow fixed ([b199c8b](https://github.com/Emon526/Mother-Care-Flutter/commit/b199c8bdc29b3a82265114c71021f13fd162fa7a))
+* minor bug fix ([5a92074](https://github.com/Emon526/Mother-Care-Flutter/commit/5a92074c51c647edd128409c8dc25d640b16dfe0))
+* minor bug fix ([fb3c5e2](https://github.com/Emon526/Mother-Care-Flutter/commit/fb3c5e2b69121441a1d1952e0e508625d97f4d08))
+* Privacy Policy & Terms of Services Url Updated ([c3a43c4](https://github.com/Emon526/Mother-Care-Flutter/commit/c3a43c4a76c6d9550bc7c12287b6b1de1bab8fb0))
+
+
+### Features
+
+* Changelog & About Added ([76d49e6](https://github.com/Emon526/Mother-Care-Flutter/commit/76d49e62b737141506c0c8b70f9e15694a60c53a))
+* Native Date Picker Added ([5e6be74](https://github.com/Emon526/Mother-Care-Flutter/commit/5e6be741c61d4545c61318f25b0152562804bde1))
+
+
+
 # [1.1.0](https://github.com/Emon526/Mother-Care-Flutter/compare/v1.0.4...v1.1.0) (2024-06-15)
 
 
@@ -65,15 +84,6 @@
 ### Bug Fixes
 
 * Bug fix ([e3b19f2](https://github.com/Emon526/Mother-Care-Flutter/commit/e3b19f2734c5375c30732012a6b5c3739ed06e65))
-
-
-
-## [1.0.1](https://github.com/Emon526/Mother-Care-Flutter/compare/v1.0.0...v1.0.1) (2023-08-31)
-
-
-### Bug Fixes
-
-* Bug fix and Dependency Update ([6467ba5](https://github.com/Emon526/Mother-Care-Flutter/commit/6467ba5346a821e60932d44290949ecf1750db05))
 
 
 
