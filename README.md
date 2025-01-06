@@ -50,6 +50,7 @@ Mother Care is an ML-based application designed to help detect breast cancer in 
    ```bash
    dart run flutter_launcher_icons
    ```
+   
 6. Generate Splash Screen:
 
    ```bash

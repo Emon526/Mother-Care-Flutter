@@ -1909,6 +1909,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Permission Permanently Denied`
+  String get permissionpermanentlydenied {
+    return Intl.message(
+      'Permission Permanently Denied',
+      name: 'permissionpermanentlydenied',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Allow permissions for better functionality. Please go to settings to enable it`
+  String get permissionpermanentlydeniednote {
+    return Intl.message(
+      'Allow permissions for better functionality. Please go to settings to enable it',
+      name: 'permissionpermanentlydeniednote',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

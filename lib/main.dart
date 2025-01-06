@@ -11,6 +11,7 @@ import 'const/theme.dart';
 import 'firebase_options.dart';
 import 'providers/authprovider.dart';
 import 'providers/breastcancerprovider.dart';
+import 'providers/changelogprovider.dart';
 import 'providers/doctorprovider.dart';
 import 'providers/languageprovider.dart';
 import 'providers/reminderprovider.dart';
@@ -20,12 +21,12 @@ import 'screens/onboarding/onboarding.dart';
 import 'screens/selfcheck/self_check_steps.dart';
 import 'services/apiservice.dart';
 import 'services/notificationservice.dart';
-import 'providers/modelprovider.dart';
 import 'providers/nav_bar_provider.dart';
 import 'providers/themeprovider.dart';
 import 'services/permissionservice.dart';
 
 // TODO: implement dispose to whole project
+// TODO: make full app responsive
 final navigatorKey = GlobalKey<NavigatorState>();
 FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
@@ -40,12 +41,16 @@ void main() async {
   tz.initializeTimeZones();
 
   ApiService.apirequest();
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
+  await SystemChrome.setEnabledSystemUIMode(
+    SystemUiMode.edgeToEdge,
+  );
+  // TODO: fix landscape view
+  //await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await NotificationService().initNotification();
 
   await Future.delayed(const Duration(seconds: 3), () {
     FlutterNativeSplash.remove();
-    debugPrint('remove splash');
   });
 
   //  handle notification tap in terminated state
@@ -118,10 +123,10 @@ class _MyAppState extends State<MyApp> {
             create: (_) => DoctorProvider(),
           ),
           ChangeNotifierProvider(
-            create: (_) => ModelProvider(),
+            create: (_) => ReminderProvider(),
           ),
           ChangeNotifierProvider(
-            create: (_) => ReminderProvider(),
+            create: (_) => ChangelogProvider(),
           ),
         ],
         builder: (context, child) {

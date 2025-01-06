@@ -216,6 +216,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "passvaliderror": MessageLookupByLibrary.simpleMessage(
             "Passwords must have at least one special character"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "permissionpermanentlydenied": MessageLookupByLibrary.simpleMessage(
+            "Permission Permanently Denied"),
+        "permissionpermanentlydeniednote": MessageLookupByLibrary.simpleMessage(
+            "Allow permissions for better functionality. Please go to settings to enable it"),
         "personalinformation":
             MessageLookupByLibrary.simpleMessage("Personal Information"),
         "pickimageSnakeBar": MessageLookupByLibrary.simpleMessage(

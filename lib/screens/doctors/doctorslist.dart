@@ -61,7 +61,6 @@ class DoctorsList extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: ResponsiveGridView(
-                      crossAxisCount: 2,
                       itemCount: filterdoctorList.length,
                       itemBuilder: (context, index) {
                         var doctordata = filterdoctorList[index];
@@ -104,7 +103,6 @@ class DoctorsList extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.all(16.0),
                             child: ResponsiveGridView(
-                              crossAxisCount: 2,
                               itemCount: doctors.length,
                               itemBuilder: (context, index) {
                                 var doctordata = doctors[index];

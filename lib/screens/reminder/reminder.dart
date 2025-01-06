@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -91,15 +93,12 @@ class _ReminderState extends State<Reminder> {
                           onTap: () => ShowCalenderWidget(
                             context: context,
                             enablePastDates: false,
-                            initialDisplayDate: DateTime.now(),
-                            initialSelectedDate: DateTime.now(),
                             onSubmit: (date) {
                               dateController.text = Utils(context).formatDate(
                                 dateTime: DateTime.parse(
                                   date.toString(),
                                 ),
                               );
-                              Navigator.pop(context);
                             },
                           ),
                           readOnly: true,
@@ -153,7 +152,8 @@ class _ReminderState extends State<Reminder> {
                     height: 20,
                   ),
                   ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
+                      await _checkPermissions();
                       context
                               .read<PermissionService>()
                               .notificationStatus

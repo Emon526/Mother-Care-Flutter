@@ -20,66 +20,68 @@ class DrawerWidget extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Drawer(
       width: size.width * 0.65,
-      child: SafeArea(
-        child: Column(
-          children: [
-            Consumer<AuthrizationProviders>(
-              builder: (context, value, child) {
-                return StreamBuilder<UserModel?>(
-                  stream: value.getUserData(),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      final userData = snapshot.data!;
+      child: SingleChildScrollView(
+        child: SafeArea(
+          child: Column(
+            children: [
+              Consumer<AuthrizationProviders>(
+                builder: (context, value, child) {
+                  return StreamBuilder<UserModel?>(
+                    stream: value.getUserData(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        final userData = snapshot.data!;
 
-                      return _buildHeader(
-                        context: context,
-                        size: size,
-                        userData: userData,
-                      );
-                    } else if (snapshot.hasError) {
-                      return Text('Error: ${snapshot.error}');
-                    } else {
-                      return SpinKitDoubleBounce(
-                        color: Theme.of(context).primaryColor,
-                      );
-                    }
-                  },
-                );
-              },
-            ),
+                        return _buildHeader(
+                          context: context,
+                          size: size,
+                          userData: userData,
+                        );
+                      } else if (snapshot.hasError) {
+                        return Text('Error: ${snapshot.error}');
+                      } else {
+                        return SpinKitDoubleBounce(
+                          color: Theme.of(context).primaryColor,
+                        );
+                      }
+                    },
+                  );
+                },
+              ),
 
-            _buildListtile(
-              context: context,
-              iconData: LineIcons.stethoscope,
-              tiletitle: AppLocalizations.of(context)!.doctors,
-              onTap: () async {
-                await Utils(context).push(widget: const DoctorsList());
-              },
-            ),
-            // _buildListtile(
-            //   iconData: Icons.mobile_friendly,
-            //   tiletitle: 'Delete Model',
-            //   onTap: () {
-            //     context.read<ModelProvider>().deleteModel();
-            //   },
-            // ),
-            _buildListtile(
-              context: context,
-              iconData: LineIcons.calendarAlt,
-              tiletitle: AppLocalizations.of(context)!.reminders,
-              onTap: () async {
-                await Utils(context).push(widget: const ReminderList());
-              },
-            ),
-            _buildListtile(
-              context: context,
-              tiletitle: AppLocalizations.of(context)!.settings,
-              iconData: Icons.settings_outlined,
-              onTap: () async {
-                await Utils(context).push(widget: const SettingScreen());
-              },
-            ),
-          ],
+              _buildListtile(
+                context: context,
+                iconData: LineIcons.stethoscope,
+                tiletitle: AppLocalizations.of(context)!.doctors,
+                onTap: () async {
+                  await Utils(context).push(widget: const DoctorsList());
+                },
+              ),
+              // _buildListtile(
+              //   iconData: Icons.mobile_friendly,
+              //   tiletitle: 'Delete Model',
+              //   onTap: () {
+              //     context.read<ModelProvider>().deleteModel();
+              //   },
+              // ),
+              _buildListtile(
+                context: context,
+                iconData: LineIcons.calendarAlt,
+                tiletitle: AppLocalizations.of(context)!.reminders,
+                onTap: () async {
+                  await Utils(context).push(widget: const ReminderList());
+                },
+              ),
+              _buildListtile(
+                context: context,
+                tiletitle: AppLocalizations.of(context)!.settings,
+                iconData: Icons.settings_outlined,
+                onTap: () async {
+                  await Utils(context).push(widget: const SettingScreen());
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

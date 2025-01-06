@@ -5,10 +5,16 @@ import 'package:flutter/material.dart';
 class Consts {
   static const THEME_STATUS = "THEME_STATUS";
   static const BASE_URL = 'https://mother-care.onrender.com';
-  static const PRIVACY_POLICY_URL = 'https://www.google.com';
-  static const TERMS_CONDITIONS_URL = 'https://www.facebook.com';
+  static const PRIVACY_POLICY_URL =
+      'https://doc-hosting.flycricket.io/mother-care-privacy-policy/0320915a-972b-4dc7-b2c7-14a7c27163ee/privacy';
+  static const TERMS_CONDITIONS_URL =
+      'https://doc-hosting.flycricket.io/mother-care-terms-of-use/fe1b6d83-7a9b-46fb-9e21-471cc86e811d/terms';
   static const NOTIFICATIONS_SETTINGS_URL = 'https://www.twitter.com';
-
+  static const CHANGE_LOG_URL =
+      'https://raw.githubusercontent.com/Emon526/Mother-Care-Flutter/master/CHANGELOG.md';
+  static const HOME_PAGE_URL = 'https://github.com/Emon526/Mother-Care-Flutter';
+  static const PROJECT_URL = 'https://github.com/Emon526/Mother-Care-Flutter';
+  static const LICENSE_URL = 'https://opensource.org/license/mit';
   static const CREDIT_DEVELOPER_URL = 'https://github.com/Emon526';
 
   static const APP_NAME = "Mother Care";

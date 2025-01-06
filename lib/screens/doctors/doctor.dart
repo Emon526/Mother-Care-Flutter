@@ -209,26 +209,6 @@ class Doctor extends StatelessWidget {
                         color: Theme.of(context).primaryColor),
                   ),
                 ),
-                // const SizedBox(
-                //   height: 10,
-                // ),
-                //TODO: Add Book Appointment Button
-                // Card(
-                //   child: InkWell(
-                //     onTap: () {},
-                //     borderRadius:
-                //         BorderRadius.circular(Consts.DefaultBorderRadius),
-                //     child: ListTile(
-                //       title: Text(
-                //         AppLocalizations.of(context)!.bookappointmentbutton,
-                //         textAlign: TextAlign.center,
-                //         style: const TextStyle(
-                //           fontWeight: FontWeight.bold,
-                //         ),
-                //       ),
-                //     ),
-                //   ),
-                // ),
                 Card(
                   child: InkWell(
                     onTap: () => _makePhoneCall(doctor.appointmentNumber),
@@ -244,6 +224,9 @@ class Doctor extends StatelessWidget {
                       ),
                     ),
                   ),
+                ),
+                const SizedBox(
+                  height: 20,
                 ),
               ],
             ),

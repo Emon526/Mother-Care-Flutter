@@ -27,7 +27,7 @@ class SlidingClippedNavBarWidgetState
     return Consumer<NavBarProvider>(builder: (context, navbarprovider, child) {
       return PopScope(
         canPop: false,
-        onPopInvoked: (bool didPop) {
+        onPopInvokedWithResult: (bool didPop, dynamic) {
           if (navbarprovider.selectedIndex != 0) {
             navbarprovider.selectedIndex = 0;
             return navbarprovider.changePage(selectedIndex: 0);

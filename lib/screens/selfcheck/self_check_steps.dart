@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import '../../const/consts.dart';
 import '../../providers/selfcheckprovider.dart';
 import '../../utils/utils.dart';
+import '../../widget/selfcheckstepwidget.dart';
 import 'self_check_finish.dart';
 
 class SelfCheckSteps extends StatefulWidget {
@@ -16,9 +17,204 @@ class SelfCheckSteps extends StatefulWidget {
   State<SelfCheckSteps> createState() => _SelfCheckStepsState();
 }
 
-CarouselController stepcontroller = CarouselController();
+CarouselSliderController stepcontroller = CarouselSliderController();
 
 class _SelfCheckStepsState extends State<SelfCheckSteps> {
+  Widget steps() {
+    return EasyStepper(
+      // enableStepTapping: false,
+      showLoadingAnimation: false,
+      // disableScroll: true,
+      activeStep: context.watch<SelfCheckProvider>().currentStep,
+      // lineLength: 50,
+      // maxReachedStep: dotCount - 1,
+      stepShape: StepShape.rRectangle,
+      stepBorderRadius: Consts.DefaultBorderRadius,
+      borderThickness: 2,
+      // padding: 20,f
+      // stepRadius: 28,
+      // finishedStepTextColor: Colors.deepOrange,
+      finishedStepBackgroundColor: Theme.of(context).colorScheme.secondary,
+      finishedStepBorderColor: Theme.of(context).colorScheme.secondary,
+      lineStyle: LineStyle(
+        defaultLineColor: Theme.of(context).primaryColor,
+      ),
+      // activeStepIconColor: Colors.deepOrange,
+      activeStepBorderColor: Theme.of(context).primaryColor,
+      activeStepBackgroundColor: Theme.of(context).primaryColor,
+      activeStepTextColor: Theme.of(context).primaryColor,
+      // activeLineColor:
+
+      onStepReached: (index) {
+        context.read<SelfCheckProvider>().currentStep = index;
+        _stepWidgetChange(index: index);
+      },
+      steps: [
+        EasyStep(
+          customStep: ClipRRect(
+            borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+            child: Opacity(
+              opacity:
+                  context.watch<SelfCheckProvider>().currentStep == 0 ? 1 : 0.3,
+              child: Image.asset(
+                'assets/images/self-check_step_1.jpg',
+              ),
+            ),
+          ),
+          customTitle: Opacity(
+            opacity:
+                context.watch<SelfCheckProvider>().currentStep == 0 ? 1 : 0.3,
+            child: Text(
+              AppLocalizations.of(context)!.selfCheckStep1Title,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Theme.of(context).primaryColor,
+              ),
+            ),
+          ),
+        ),
+        EasyStep(
+          customStep: ClipRRect(
+            borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+            child: Opacity(
+              opacity:
+                  context.watch<SelfCheckProvider>().currentStep == 1 ? 1 : 0.3,
+              child: Image.asset(
+                'assets/images/self-check_step_2.jpg',
+              ),
+            ),
+          ),
+          customTitle: Opacity(
+            opacity:
+                context.watch<SelfCheckProvider>().currentStep == 1 ? 1 : 0.3,
+            child: Text(
+              AppLocalizations.of(context)!.selfCheckStep2Title,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Theme.of(context).primaryColor,
+              ),
+            ),
+          ),
+        ),
+        EasyStep(
+          customStep: ClipRRect(
+            borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+            child: Opacity(
+              opacity:
+                  context.watch<SelfCheckProvider>().currentStep == 2 ? 1 : 0.3,
+              child: Image.asset(
+                'assets/images/self-check_step_3.jpg',
+              ),
+            ),
+          ),
+          customTitle: Opacity(
+            opacity:
+                context.watch<SelfCheckProvider>().currentStep == 2 ? 1 : 0.3,
+            child: Text(
+              AppLocalizations.of(context)!.selfCheckStep3Title,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Theme.of(context).primaryColor,
+              ),
+            ),
+          ),
+        ),
+        EasyStep(
+          customStep: ClipRRect(
+            borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+            child: Opacity(
+              opacity:
+                  context.watch<SelfCheckProvider>().currentStep == 3 ? 1 : 0.3,
+              child: Image.asset(
+                'assets/images/self-check_step_4.jpg',
+              ),
+            ),
+          ),
+          customTitle: Opacity(
+            opacity:
+                context.watch<SelfCheckProvider>().currentStep == 3 ? 1 : 0.3,
+            child: Text(
+              AppLocalizations.of(context)!.selfCheckStep4Title,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Theme.of(context).primaryColor,
+              ),
+            ),
+          ),
+        ),
+        EasyStep(
+          customStep: ClipRRect(
+            borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+            child: Opacity(
+              opacity:
+                  context.watch<SelfCheckProvider>().currentStep == 4 ? 1 : 0.3,
+              child: Image.asset(
+                'assets/images/self-check_step_5.jpg',
+              ),
+            ),
+          ),
+          customTitle: Opacity(
+            opacity:
+                context.watch<SelfCheckProvider>().currentStep == 4 ? 1 : 0.3,
+            child: Text(
+              AppLocalizations.of(context)!.selfCheckStep5Title,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Theme.of(context).primaryColor,
+              ),
+            ),
+          ),
+        ),
+        EasyStep(
+          customStep: ClipRRect(
+            borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+            child: Opacity(
+              opacity:
+                  context.watch<SelfCheckProvider>().currentStep == 5 ? 1 : 0.3,
+              child: Image.asset(
+                'assets/images/self-check_step_6.jpg',
+              ),
+            ),
+          ),
+          customTitle: Opacity(
+            opacity:
+                context.watch<SelfCheckProvider>().currentStep == 5 ? 1 : 0.3,
+            child: Text(
+              AppLocalizations.of(context)!.selfCheckStep6Title,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Theme.of(context).primaryColor,
+              ),
+            ),
+          ),
+        ),
+        EasyStep(
+          customStep: ClipRRect(
+            borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
+            child: Opacity(
+              opacity:
+                  context.watch<SelfCheckProvider>().currentStep == 6 ? 1 : 0.3,
+              child: Image.asset(
+                'assets/images/self-check_step_7.jpg',
+              ),
+            ),
+          ),
+          customTitle: Opacity(
+            opacity:
+                context.watch<SelfCheckProvider>().currentStep == 6 ? 1 : 0.3,
+            child: Text(
+              AppLocalizations.of(context)!.selfCheckStep7Title,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Theme.of(context).primaryColor,
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
   @override
   void initState() {
     super.initState();
@@ -36,272 +232,123 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
         ),
       ),
       body: SafeArea(
-        child: _easyStepper(
-          size: size,
-          easysteppersteps: easysteppersteps(
-            context: context,
-            size: size,
-          ),
-        ),
-      ),
-    );
-  }
+        child: Column(
+          //mainAxisSize: MainAxisSize.min,
+          // crossAxisAlignment: CrossAxisAlignment.start,
+          // mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            steps(),
+            Expanded(
+              child: CarouselSlider(
+                disableGesture: true,
+                carouselController: stepcontroller,
+                options: CarouselOptions(
+                  initialPage: context.watch<SelfCheckProvider>().currentStep,
+                  scrollPhysics: const NeverScrollableScrollPhysics(),
+                  enableInfiniteScroll: false,
+                  viewportFraction: 0.9,
+                  height:
+                      MediaQuery.of(context).orientation == Orientation.portrait
+                          ? size.height * 0.5
+                          : size.height * 0.3,
+                  // aspectRatio: 1,
+                  enlargeCenterPage: true,
+                  scrollDirection: Axis.horizontal,
+                ),
+                items: [
+                  SelfCheckStepWidget(
+                    image: 'assets/images/self-check_step_1.jpg',
+                    title: AppLocalizations.of(context)!.selfCheckStep1Title,
+                    description:
+                        AppLocalizations.of(context)!.selfCheckStep1Body,
+                  ),
+                  SelfCheckStepWidget(
+                    image: 'assets/images/self-check_step_2.jpg',
+                    title: AppLocalizations.of(context)!.selfCheckStep2Title,
+                    description:
+                        AppLocalizations.of(context)!.selfCheckStep2Body,
+                  ),
+                  SelfCheckStepWidget(
+                    image: 'assets/images/self-check_step_3.jpg',
+                    title: AppLocalizations.of(context)!.selfCheckStep3Title,
+                    description:
+                        AppLocalizations.of(context)!.selfCheckStep3Body,
+                  ),
+                  SelfCheckStepWidget(
+                    image: 'assets/images/self-check_step_4.jpg',
+                    title: AppLocalizations.of(context)!.selfCheckStep4Title,
+                    description:
+                        AppLocalizations.of(context)!.selfCheckStep4Body,
+                  ),
+                  SelfCheckStepWidget(
+                    image: 'assets/images/self-check_step_5.jpg',
+                    title: AppLocalizations.of(context)!.selfCheckStep5Title,
+                    description:
+                        AppLocalizations.of(context)!.selfCheckStep5Body,
+                  ),
+                  SelfCheckStepWidget(
+                    image: 'assets/images/self-check_step_6.jpg',
+                    title: AppLocalizations.of(context)!.selfCheckStep6Title,
+                    description:
+                        AppLocalizations.of(context)!.selfCheckStep6Body,
+                  ),
+                  SelfCheckStepWidget(
+                    image: 'assets/images/self-check_step_7.jpg',
+                    title: AppLocalizations.of(context)!.selfCheckStep7Title,
+                    description:
+                        AppLocalizations.of(context)!.selfCheckStep7Body,
+                  ),
+                ],
+              ),
+            ),
+            // easysteppersteps[context.read<SelfCheckProvider>().current],
+            // const Spacer(),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                context.read<SelfCheckProvider>().currentStep == 0
+                    ? const SizedBox()
+                    : ElevatedButton(
+                        child: Text(AppLocalizations.of(context)!.prevbutton),
+                        onPressed: () {
+                          // activeStep MUST BE GREATER THAN 0 TO PREVENT OVERFLOW.
+                          if (context.read<SelfCheckProvider>().currentStep >
+                              0) {
+                            context.read<SelfCheckProvider>().currentStep--;
 
-  _easyStepper({
-    required List<Widget> easysteppersteps,
-    required Size size,
-  }) {
-    return Column(
-      children: [
-        EasyStepper(
-          // enableStepTapping: false,
-          showLoadingAnimation: false,
-          // disableScroll: true,
-          activeStep: context.watch<SelfCheckProvider>().current,
-          // lineLength: 50,
-          // maxReachedStep: dotCount - 1,
-          stepShape: StepShape.rRectangle,
-          stepBorderRadius: Consts.DefaultBorderRadius,
-          borderThickness: 2,
-          // padding: 20,f
-          // stepRadius: 28,
-          // finishedStepTextColor: Colors.deepOrange,
-          finishedStepBackgroundColor: Theme.of(context).colorScheme.secondary,
-          finishedStepBorderColor: Theme.of(context).colorScheme.secondary,
-          lineStyle: LineStyle(
-            defaultLineColor: Theme.of(context).primaryColor,
-          ),
-          // activeStepIconColor: Colors.deepOrange,
-          activeStepBorderColor: Theme.of(context).primaryColor,
-          activeStepBackgroundColor: Theme.of(context).primaryColor,
-          activeStepTextColor: Theme.of(context).primaryColor,
-          // activeLineColor:
-
-          onStepReached: (index) {
-            context.read<SelfCheckProvider>().current = index;
-            _stepWidgetChange(index: index);
-          },
-          steps: [
-            EasyStep(
-              customStep: ClipRRect(
-                borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
-                child: Opacity(
-                  opacity:
-                      context.watch<SelfCheckProvider>().current == 0 ? 1 : 0.3,
-                  child: Image.asset(
-                    'assets/images/self-check_step_1.jpg',
-                  ),
-                ),
-              ),
-              customTitle: Opacity(
-                opacity:
-                    context.watch<SelfCheckProvider>().current == 0 ? 1 : 0.3,
-                child: Text(
-                  AppLocalizations.of(context)!.selfCheckStep1Title,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Theme.of(context).primaryColor,
-                  ),
-                ),
-              ),
-            ),
-            EasyStep(
-              customStep: ClipRRect(
-                borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
-                child: Opacity(
-                  opacity:
-                      context.watch<SelfCheckProvider>().current == 1 ? 1 : 0.3,
-                  child: Image.asset(
-                    'assets/images/self-check_step_2.jpg',
-                  ),
-                ),
-              ),
-              customTitle: Opacity(
-                opacity:
-                    context.watch<SelfCheckProvider>().current == 1 ? 1 : 0.3,
-                child: Text(
-                  AppLocalizations.of(context)!.selfCheckStep2Title,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Theme.of(context).primaryColor,
-                  ),
-                ),
-              ),
-            ),
-            EasyStep(
-              customStep: ClipRRect(
-                borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
-                child: Opacity(
-                  opacity:
-                      context.watch<SelfCheckProvider>().current == 2 ? 1 : 0.3,
-                  child: Image.asset(
-                    'assets/images/self-check_step_3.jpg',
-                  ),
-                ),
-              ),
-              customTitle: Opacity(
-                opacity:
-                    context.watch<SelfCheckProvider>().current == 2 ? 1 : 0.3,
-                child: Text(
-                  AppLocalizations.of(context)!.selfCheckStep3Title,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Theme.of(context).primaryColor,
-                  ),
-                ),
-              ),
-            ),
-            EasyStep(
-              customStep: ClipRRect(
-                borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
-                child: Opacity(
-                  opacity:
-                      context.watch<SelfCheckProvider>().current == 3 ? 1 : 0.3,
-                  child: Image.asset(
-                    'assets/images/self-check_step_4.jpg',
-                  ),
-                ),
-              ),
-              customTitle: Opacity(
-                opacity:
-                    context.watch<SelfCheckProvider>().current == 3 ? 1 : 0.3,
-                child: Text(
-                  AppLocalizations.of(context)!.selfCheckStep4Title,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Theme.of(context).primaryColor,
-                  ),
-                ),
-              ),
-            ),
-            EasyStep(
-              customStep: ClipRRect(
-                borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
-                child: Opacity(
-                  opacity:
-                      context.watch<SelfCheckProvider>().current == 4 ? 1 : 0.3,
-                  child: Image.asset(
-                    'assets/images/self-check_step_5.jpg',
-                  ),
-                ),
-              ),
-              customTitle: Opacity(
-                opacity:
-                    context.watch<SelfCheckProvider>().current == 4 ? 1 : 0.3,
-                child: Text(
-                  AppLocalizations.of(context)!.selfCheckStep5Title,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Theme.of(context).primaryColor,
-                  ),
-                ),
-              ),
-            ),
-            EasyStep(
-              customStep: ClipRRect(
-                borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
-                child: Opacity(
-                  opacity:
-                      context.watch<SelfCheckProvider>().current == 5 ? 1 : 0.3,
-                  child: Image.asset(
-                    'assets/images/self-check_step_6.jpg',
-                  ),
-                ),
-              ),
-              customTitle: Opacity(
-                opacity:
-                    context.watch<SelfCheckProvider>().current == 5 ? 1 : 0.3,
-                child: Text(
-                  AppLocalizations.of(context)!.selfCheckStep6Title,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Theme.of(context).primaryColor,
-                  ),
-                ),
-              ),
-            ),
-            EasyStep(
-              customStep: ClipRRect(
-                borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
-                child: Opacity(
-                  opacity:
-                      context.watch<SelfCheckProvider>().current == 6 ? 1 : 0.3,
-                  child: Image.asset(
-                    'assets/images/self-check_step_7.jpg',
-                  ),
-                ),
-              ),
-              customTitle: Opacity(
-                opacity:
-                    context.watch<SelfCheckProvider>().current == 6 ? 1 : 0.3,
-                child: Text(
-                  AppLocalizations.of(context)!.selfCheckStep7Title,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Theme.of(context).primaryColor,
-                  ),
-                ),
-              ),
+                            _stepWidgetChange(
+                                index: context
+                                    .read<SelfCheckProvider>()
+                                    .currentStep);
+                          }
+                        },
+                      ),
+                context.watch<SelfCheckProvider>().currentStep ==
+                        context.watch<SelfCheckProvider>().totalSteps - 1
+                    ? ElevatedButton(
+                        onPressed: () async {
+                          context.read<SelfCheckProvider>().currentStep = 0;
+                          Utils(context).pushReplacement(
+                            widget: const SelfCheckFinish(),
+                          );
+                        },
+                        child: Text(AppLocalizations.of(context)!.finishbutton))
+                    : ElevatedButton(
+                        child: Text(AppLocalizations.of(context)!.nextbutton),
+                        onPressed: () {
+                          context.read<SelfCheckProvider>().currentStep++;
+                          _stepWidgetChange(
+                              index: context
+                                  .read<SelfCheckProvider>()
+                                  .currentStep);
+                        },
+                      ),
+              ],
             ),
           ],
         ),
-        CarouselSlider(
-          disableGesture: true,
-          carouselController: stepcontroller,
-          items: easysteppersteps,
-          options: CarouselOptions(
-            initialPage: context.watch<SelfCheckProvider>().current,
-            scrollPhysics: const NeverScrollableScrollPhysics(),
-            enableInfiniteScroll: false,
-            viewportFraction: 0.9,
-            aspectRatio: 1,
-            enlargeCenterPage: true,
-            scrollDirection: Axis.horizontal,
-          ),
-        ),
-        // easysteppersteps[context.read<SelfCheckProvider>().current],
-        const Spacer(),
-        Padding(
-          padding: EdgeInsets.all(size.width * 0.1),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              context.read<SelfCheckProvider>().current == 0
-                  ? const SizedBox()
-                  : ElevatedButton(
-                      child: Text(AppLocalizations.of(context)!.prevbutton),
-                      onPressed: () {
-                        // activeStep MUST BE GREATER THAN 0 TO PREVENT OVERFLOW.
-                        if (context.read<SelfCheckProvider>().current > 0) {
-                          context.read<SelfCheckProvider>().current--;
-
-                          _stepWidgetChange(
-                              index: context.read<SelfCheckProvider>().current);
-                        }
-                      },
-                    ),
-              context.watch<SelfCheckProvider>().current ==
-                      context.watch<SelfCheckProvider>().totalSteps - 1
-                  ? ElevatedButton(
-                      onPressed: () async {
-                        context.read<SelfCheckProvider>().current = 0;
-                        Utils(context).pushReplacement(
-                          widget: const SelfCheckFinish(),
-                        );
-                      },
-                      child: Text(AppLocalizations.of(context)!.finishbutton))
-                  : ElevatedButton(
-                      child: Text(AppLocalizations.of(context)!.nextbutton),
-                      onPressed: () {
-                        context.read<SelfCheckProvider>().current++;
-                        _stepWidgetChange(
-                            index: context.read<SelfCheckProvider>().current);
-                      },
-                    ),
-            ],
-          ),
-        ),
-      ],
+      ),
     );
   }
 
@@ -329,10 +376,13 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
               const SizedBox(
                 height: 10,
               ),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
-                child: Image.asset(
-                  'assets/images/shower.jpg',
+              Expanded(
+                child: ClipRRect(
+                  borderRadius:
+                      BorderRadius.circular(Consts.DefaultBorderRadius),
+                  child: Image.asset(
+                    'assets/images/shower.jpg',
+                  ),
                 ),
               ),
               const SizedBox(
@@ -357,97 +407,6 @@ class _SelfCheckStepsState extends State<SelfCheckSteps> {
   }
 }
 
-_buildStepCard({
-  required Size size,
-  required String stepimagepath,
-  required String steptitle,
-  required String stepsubtitle,
-  required BuildContext context,
-}) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(
-      horizontal: 10,
-      // vertical: 50,
-    ),
-    child: Column(
-      children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(Consts.DefaultBorderRadius),
-          child: Image.asset(
-            stepimagepath,
-            fit: BoxFit.cover,
-          ),
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        Flexible(
-          child: Text(
-            stepsubtitle,
-            style: const TextStyle(
-              fontWeight: FontWeight.normal,
-              fontSize: 18,
-            ),
-          ),
-        ),
-      ],
-    ),
-  );
-}
-
-List<Widget> easysteppersteps(
-        {required BuildContext context, required Size size}) =>
-    [
-      _buildStepCard(
-        context: context,
-        size: size,
-        stepimagepath: 'assets/images/self-check_step_1.jpg',
-        steptitle: AppLocalizations.of(context)!.selfCheckStep1Title,
-        stepsubtitle: AppLocalizations.of(context)!.selfCheckStep1Body,
-      ),
-      _buildStepCard(
-        context: context,
-        size: size,
-        stepimagepath: 'assets/images/self-check_step_2.jpg',
-        steptitle: AppLocalizations.of(context)!.selfCheckStep2Title,
-        stepsubtitle: AppLocalizations.of(context)!.selfCheckStep2Body,
-      ),
-      _buildStepCard(
-        context: context,
-        size: size,
-        stepimagepath: 'assets/images/self-check_step_3.jpg',
-        steptitle: AppLocalizations.of(context)!.selfCheckStep3Title,
-        stepsubtitle: AppLocalizations.of(context)!.selfCheckStep3Body,
-      ),
-      _buildStepCard(
-        context: context,
-        size: size,
-        stepimagepath: 'assets/images/self-check_step_4.jpg',
-        steptitle: AppLocalizations.of(context)!.selfCheckStep4Title,
-        stepsubtitle: AppLocalizations.of(context)!.selfCheckStep4Body,
-      ),
-      _buildStepCard(
-        context: context,
-        size: size,
-        stepimagepath: 'assets/images/self-check_step_5.jpg',
-        steptitle: AppLocalizations.of(context)!.selfCheckStep5Title,
-        stepsubtitle: AppLocalizations.of(context)!.selfCheckStep5Body,
-      ),
-      _buildStepCard(
-        context: context,
-        size: size,
-        stepimagepath: 'assets/images/self-check_step_6.jpg',
-        steptitle: AppLocalizations.of(context)!.selfCheckStep6Title,
-        stepsubtitle: AppLocalizations.of(context)!.selfCheckStep6Body,
-      ),
-      _buildStepCard(
-        context: context,
-        size: size,
-        stepimagepath: 'assets/images/self-check_step_7.jpg',
-        steptitle: AppLocalizations.of(context)!.selfCheckStep7Title,
-        stepsubtitle: AppLocalizations.of(context)!.selfCheckStep7Body,
-      ),
-    ];
 _stepWidgetChange({required int index}) {
   return stepcontroller.animateToPage(
     index,

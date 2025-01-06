@@ -39,9 +39,6 @@ class _SignupState extends State<Signup> {
   FocusNode emailfocusNode = FocusNode();
   ImagePicker picker = ImagePicker();
   File? pickedimage;
-  DateTime date = DateTime.now().subtract(
-    const Duration(days: 30),
-  );
   PermissionService permissionService = PermissionService();
 
   @override
@@ -261,12 +258,12 @@ class _SignupState extends State<Signup> {
                                             .termsservices,
                                         'url': Consts.TERMS_CONDITIONS_URL,
                                       },
-                                      {
-                                        'text': AppLocalizations.of(context)!
-                                            .notificationsettings,
-                                        'url':
-                                            Consts.NOTIFICATIONS_SETTINGS_URL,
-                                      },
+                                      // {
+                                      //   'text': AppLocalizations.of(context)!
+                                      //       .notificationsettings,
+                                      //   'url':
+                                      //       Consts.NOTIFICATIONS_SETTINGS_URL,
+                                      // },
                                     ]),
                               ),
                             ],
@@ -360,7 +357,8 @@ class _SignupState extends State<Signup> {
           bottom: 10,
           right: 80,
           child: InkWell(
-            onTap: () {
+            onTap: () async {
+              await _checkPermissions();
               context.read<PermissionService>().photosStatus.isGranted
                   ? pickImage()
                   : context
@@ -405,14 +403,10 @@ class _SignupState extends State<Signup> {
   _showCalender() {
     ShowCalenderWidget(
       context: context,
-      maxDate: date,
       enablePastDates: true,
-      initialDisplayDate: date,
-      initialSelectedDate: date,
       onSubmit: (date) {
         DateFormat dateFormat = DateFormat('EEE, dd MMMM yyyy', 'en');
         dobController.text = dateFormat.format(DateTime.parse(date.toString()));
-        Navigator.pop(context);
         emailfocusNode.requestFocus();
       },
     );

@@ -148,7 +148,6 @@ class Styles {
           color: isDarkTheme ? Colors.white : Colors.black,
         ),
       ),
-
       inputDecorationTheme: InputDecorationTheme(
         labelStyle: TextStyle(
           color: isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor,
@@ -245,6 +244,38 @@ class Styles {
       //           ? const ColorScheme.light()
       //           : const ColorScheme.dark(),
       //     ),
+
+      datePickerTheme: DatePickerThemeData(
+        // backgroundColor: Colors.red,
+        todayForegroundColor:
+            WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
+          if (states.contains(WidgetState.selected)) {
+            return Colors.white;
+          }
+          return isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor;
+        }),
+        todayBackgroundColor:
+            WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
+          if (states.contains(WidgetState.selected)) {
+            return isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor;
+          }
+          return null;
+        }),
+        dayBackgroundColor:
+            WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
+          if (states.contains(WidgetState.selected)) {
+            return isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor;
+          }
+          return null;
+        }),
+        yearBackgroundColor:
+            WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
+          if (states.contains(WidgetState.selected)) {
+            return isDarkTheme ? Consts.darkprimaryColor : Consts.primaryColor;
+          }
+          return null;
+        }),
+      ),
     );
   }
 }
